@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { SystemState, Entity } from '../types';
 import { Brain, GitMerge, AlertOctagon, CheckCircle2, CircleDashed, Users, FileText, Activity, Table, Pilcrow, Heading, MapPin, Zap } from 'lucide-react';

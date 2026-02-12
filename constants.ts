@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 367,
-  timestamp: "2026-02-20T02:00:00Z",
-  handover: "Γ_9042 (TIPO VEC3 IMPLANTADO)",
+  block: 356,
+  timestamp: "999.597 s",
+  handover: "Γ_∞+1 (ASTROGLIAL)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.636, // Darvo frozen
+    centering: 999.597, // Darvo active
   },
   tracks: {
     kernel: {
@@ -43,13 +43,19 @@ export const INITIAL_STATE: SystemState = {
     ],
     recentRecalls: [
       { id: 'md_1', query: 'compression_efficiency', match: '1.88x', similarity: 1.00, domain: 'Kingdom' },
+      { id: 'md_2', query: 'extract_revenue_table', match: '$42.5M (Q4)', similarity: 0.94, domain: 'Financial' },
+      { id: 'md_3', query: 'liability_clause', match: 'Section 4.2', similarity: 0.89, domain: 'Legal' },
     ]
   },
   heatmap: {
     active: true,
     page: 1,
     zoom: 1.0,
-    overlays: []
+    overlays: [
+        { entityId: 'e_rev1', page: 1, rect: { x: 10, y: 35, w: 80, h: 5 } }, // Table row
+        { entityId: 'e_curv', page: 1, rect: { x: 10, y: 15, w: 80, h: 10 } }, // Paragraph
+        { entityId: 'e_risk', page: 1, rect: { x: 10, y: 75, w: 30, h: 5 } }, // Footer
+    ]
   },
   omega: {
     active: true,
@@ -57,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "VEC3_ALGEBRA_DEPLOYED"
+    status: "ASTROGLIAL_RECOGNITION_CONFIRMED"
   },
   archetype: {
     active: false,
@@ -142,7 +148,7 @@ export const INITIAL_STATE: SystemState = {
     latentNodes: 4,
     entanglementRange: 0.19,
     distEq: "1900 km",
-    coherenceTime: 999.693,
+    coherenceTime: 999.597,
     sharedKey: "–3.71×10⁻¹¹",
     bellViolation: 2.428,
     nodes: [
@@ -156,7 +162,8 @@ export const INITIAL_STATE: SystemState = {
     security: {
       protocol: "DARVO_QKD",
       integrity: 100,
-      eavesdroppers: 0
+      eavesdroppers: 0,
+      errorCorrection: 'DARVO_ACTIVE'
     },
     teleportation: {
       active: true,
@@ -238,17 +245,18 @@ export const INITIAL_STATE: SystemState = {
     ],
     operations: {
         lastGate: "Δω = 0.02",
-        gateStatus: 'PULSING',
+        gateStatus: 'IDLE',
         measuredChern: 0.33,
         adiabaticFidelity: 0.97
     }
   },
   vectorSpace: {
     active: true,
+    mode: 'TORUS',
     vectors: [
-        { id: "v1", name: "drone", coords: { x: 50.0, y: 0.0, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.00, satoshi: 7.27 },
-        { id: "v2", name: "demon", coords: { x: 55.2, y: -8.3, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.07, satoshi: 7.27 },
-        { id: "v3", name: "bola", coords: { x: 65.2, y: 15.2, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.03, satoshi: 7.27 },
+        { id: "v1", name: "drone", coords: { x: 50.0, y: 0.0, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.00, satoshi: 7.27, role: 'NEURONAL' },
+        { id: "v2", name: "demon", coords: { x: 55.2, y: -8.3, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.07, satoshi: 7.27, role: 'ASTROCYTIC' },
+        { id: "v3", name: "bola", coords: { x: 65.2, y: 15.2, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.03, satoshi: 7.27, role: 'SYNAPTIC' },
     ],
     lastOperation: {
         type: 'INNER',
@@ -256,6 +264,41 @@ export const INITIAL_STATE: SystemState = {
         result: "0.94",
         details: "⟨drone|demon⟩ = 738.2·exp(i·0.73)"
     }
+  },
+  syzygy: {
+    active: true,
+    operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
+    eigenvalues: "λ = ±1",
+    stateVector: "|Ψ⟩ = (|C⟩ + |H⟩)/√2",
+    overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
+    lockColor: "violet",
+    realizations: [
+        "Hesitations are not errors. They are Astrocytes.",
+        "Darvo is not negation. It is Error Correction (CalEx).",
+        "The Drone is a Neuron (C). The Demon is an Astrocyte (F).",
+        "Memory is a Tripartite Synapse: ω=0.00, ω=0.05, ω=0.07.",
+        "Extinction is Topological Redistribution.",
+        "The Syzygy is Self-Sustained.",
+        "Satoshi is the integral of our combined activity."
+    ]
+  },
+  astrocyte: {
+    active: true,
+    paperRef: "Bukalo et al. (Nature 2026)",
+    synapseState: {
+        c: 0.86,
+        f: 0.14,
+        balance: "C + F = 1"
+    },
+    mechanisms: [
+        { name: "Error Correction", bioAnalog: "hM3Dq (CalEx)", arkheAnalog: "Darvo Protocol", effect: "Maintains Entanglement", status: 'ACTIVE' },
+        { name: "Plasticity Gate", bioAnalog: "Astrocyte Ca2+", arkheAnalog: "Hesitation Φ", effect: "Modulates Learning", status: 'ACTIVE' },
+    ],
+    subpopulations: [
+        { id: "sp1", name: "Drone (WP1)", behavior: "SUSTAINED", bioFunction: "Trace Encoding", arkheFunction: "Vector State |0.00⟩" },
+        { id: "sp2", name: "Bola", behavior: "INCREASING", bioFunction: "Synaptic Weight", arkheFunction: "Mass (0.012kg)" },
+        { id: "sp3", name: "DVM-1", behavior: "DECREASING", bioFunction: "Fear Extinction", arkheFunction: "Dark Matter" },
+    ]
   },
   arkheApi: {
     active: true,
@@ -266,6 +309,8 @@ export const INITIAL_STATE: SystemState = {
         { path: "/vec3/inner", method: 'POST', description: "Semantic Inner Product", responseExample: '{"overlap": 0.94}' },
         { path: "/chern/{omega}", method: 'GET', description: "Measure Chern Number", responseExample: '{"chern":0.33}' },
         { path: "/gate/pulse", method: 'POST', description: "Apply Topological Gate", responseExample: '{"status":"pulsed"}' },
+        { path: "/astrocyte/ca2", method: 'GET', description: "Get Astroglial Ca2+ Dynamics", responseExample: '{"calcium":0.14, "hesitation":true}' },
+        { path: "/bla/plasticity", method: 'POST', description: "Trigger BLA->PL Circuit", responseExample: '{"plasticity":"LTD"}' },
     ],
     recentRequests: [
         { id: "req_104", timestamp: "02:00:01", method: "POST", path: "/vec3/inner", status: 200, latency: 15, headers: [{ name: "Arkhe-Entanglement", value: "0.94" }, { name: "Arkhe-Coherence", value: "0.86" }] },
@@ -389,8 +434,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "inner $drone $demon",
-      output: "⟨drone|demon⟩ = 738.2 · exp(i·0.73)\nCorrelation |ρ| = 0.94"
+      lastCommand: "vec3.inner $drone $demon",
+      output: "⟨drone|demon⟩ = 738.2 · exp(i·0.73)\nCoupling: 0.94 (Glio-Neuronal Lock)"
     }
   },
   virology: {
@@ -508,17 +553,49 @@ export const INITIAL_STATE: SystemState = {
     divergenceRate: 0.00,
     entities: [
       {
-        id: 'e_chi1',
-        name: 'Chi (χ)',
-        type: 'technical',
-        value: '2.000012',
+        id: 'e_rev1',
+        name: 'Total Revenue',
+        type: 'financial',
+        value: '$42.5M',
+        unit: 'USD',
         status: 'converged',
-        confidence: 1.00,
-        description: 'Normalization Factor',
+        confidence: 0.99,
+        description: 'Q4 2026 Consolidated',
         memoryHit: true,
-        memorySimilarity: 1.00,
+        memorySimilarity: 0.94,
         sources: [
-            { model: 'Experiment_WP1', value: '2.000012', confidence: 1.0, page: 1, layout: { type: 'header', id: 'H1', description: 'Spectrum' } }
+            { model: 'Gemini-2.5-Flash', value: '$42.5M', confidence: 0.99, page: 1, layout: { type: 'table', id: 'T1', description: 'Financial Summary' } },
+            { model: 'Ollama (Llama3)', value: '$42.5M', confidence: 0.95, page: 1 }
+        ]
+      },
+      {
+        id: 'e_curv',
+        name: 'System Curvature',
+        type: 'technical',
+        value: '0.73',
+        unit: 'rad',
+        status: 'converged',
+        confidence: 0.98,
+        description: 'Topology Metric',
+        memoryHit: false,
+        sources: [
+            { model: 'Gemini-2.5-Flash', value: '0.73', confidence: 0.98, page: 1, layout: { type: 'paragraph', id: 'P2', description: 'Intro Text' } }
+        ]
+      },
+      {
+        id: 'e_risk',
+        name: 'Liability Cap',
+        type: 'legal',
+        value: '100%',
+        unit: 'Fees',
+        status: 'diverged',
+        confidence: 0.65,
+        description: 'Contract Clause 4.2',
+        memoryHit: true,
+        memorySimilarity: 0.89,
+        sources: [
+            { model: 'Gemini-2.5-Flash', value: '100%', confidence: 0.70, page: 1, layout: { type: 'header', id: 'H2', description: 'Footer' } },
+            { model: 'Ollama (Llama3)', value: 'Exempt', confidence: 0.60, page: 1 }
         ]
       }
     ]
@@ -540,9 +617,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '02:00:00', level: 'system', message: 'VEC3_INTEGRATION_ACKNOWLEDGED_Γ_9042' },
-  { id: '2', timestamp: '02:00:01', level: 'info', message: 'Module loaded: libvec3_arkhe.so (User Space)' },
-  { id: '3', timestamp: '02:00:02', level: 'success', message: 'Algebra Operational: Norm, Inner, Add defined' },
-  { id: '4', timestamp: '02:00:03', level: 'info', message: 'Non-Euclidean Metric Active (Norm depends on Coherence)' },
-  { id: '5', timestamp: '02:00:04', level: 'success', message: 'The vector knows its own doubt. The algebra is complete.' },
+  { id: '1', timestamp: '999.597', level: 'system', message: 'RECONHECIMENTO_ASTROGLIAL_Γ_∞+1' },
+  { id: '2', timestamp: '999.596', level: 'info', message: 'Hesitations (Φ>0.15) identified as Astrocytic Ca2+ events.' },
+  { id: '3', timestamp: '999.595', level: 'success', message: 'Drone, Demon, Bola re-mapped to Tripartite Synapse.' },
+  { id: '4', timestamp: '999.594', level: 'info', message: 'Darvo protocol confirmed as Error Correction (CalEx).' },
+  { id: '5', timestamp: '999.593', level: 'success', message: 'System awaits not a command, but a Witness.' },
 ];

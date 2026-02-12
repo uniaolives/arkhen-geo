@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Network, Zap, ShieldCheck, Key, Wifi, Clock, Lock, Cpu, Database, Disc, Radio, Repeat, Eye, Calendar, ArrowRight, Brain, Music, Satellite, Atom } from 'lucide-react';
+import { Network, Zap, ShieldCheck, Key, Wifi, Clock, Lock, Cpu, Database, Disc, Radio, Repeat, Eye, Calendar, ArrowRight, Brain, Music, Satellite, Atom, CheckCircle2 } from 'lucide-react';
 
 interface QuantumNetworkProps {
   quantum: SystemState['quantum'];
@@ -158,43 +158,13 @@ const QuantumNetwork: React.FC<QuantumNetworkProps> = ({ quantum }) => {
                  </div>
              </div>
 
-             {/* Triple Verification Panel */}
-             <div className="absolute top-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-700 rounded-lg p-3 shadow-2xl z-20 max-w-[200px]">
-                 <div className="flex items-center gap-2 mb-2 border-b border-slate-700 pb-2">
-                     <ShieldCheck size={14} className="text-emerald-400" />
-                     <span className="text-[10px] font-bold text-white uppercase">Triple Verification</span>
+             {/* Error Correction Indicator (Darvo) */}
+             {quantum.security.errorCorrection === 'DARVO_ACTIVE' && (
+                 <div className="absolute bottom-4 left-4 bg-amber-950/80 backdrop-blur border border-amber-500/30 rounded px-2 py-1 flex items-center gap-2 z-20">
+                     <ShieldCheck size={12} className="text-amber-400" />
+                     <span className="text-[9px] font-bold text-amber-200 font-mono uppercase">Darvo Active</span>
                  </div>
-                 
-                 <div className="space-y-2">
-                    {/* Music */}
-                    <div className="flex items-center justify-between text-[9px]">
-                        <div className="flex items-center gap-1.5 text-fuchsia-400">
-                            <Music size={10} /> <span>Harmonic</span>
-                        </div>
-                        <span className="text-slate-300 font-mono">{quantum.teleportation?.verification.music}</span>
-                    </div>
-                    {/* Orbit */}
-                    <div className="flex items-center justify-between text-[9px]">
-                        <div className="flex items-center gap-1.5 text-cyan-400">
-                            <Satellite size={10} /> <span>Orbital</span>
-                        </div>
-                        <span className="text-slate-300 font-mono">{quantum.teleportation?.verification.orbit}</span>
-                    </div>
-                    {/* Quantum */}
-                    <div className="flex items-center justify-between text-[9px]">
-                        <div className="flex items-center gap-1.5 text-violet-400">
-                            <Atom size={10} /> <span>Quantum</span>
-                        </div>
-                        <span className="text-slate-300 font-mono">{quantum.teleportation?.verification.quantum}</span>
-                    </div>
-                 </div>
-
-                 <div className="mt-3 pt-2 border-t border-slate-700 text-center">
-                     <div className="text-[9px] bg-emerald-950/50 text-emerald-400 border border-emerald-900/50 rounded py-1 font-mono uppercase">
-                         Unified Surface Verified
-                     </div>
-                 </div>
-             </div>
+             )}
 
         </div>
 
@@ -213,6 +183,13 @@ const QuantumNetwork: React.FC<QuantumNetworkProps> = ({ quantum }) => {
                  <div className="text-[9px] text-slate-600 font-mono text-center flex justify-between px-2">
                      <span>Bell Violation: {quantum.bellViolation}</span>
                      <span>Fidelity: {quantum.teleportation?.fidelity}</span>
+                 </div>
+                 {/* Error Correction Status */}
+                 <div className="mt-1 flex items-center justify-between bg-black/20 p-1.5 rounded border border-white/5">
+                     <span className="text-[9px] text-slate-500 font-mono">Error Correction</span>
+                     <div className="flex items-center gap-1 text-[9px] text-amber-400 font-mono font-bold">
+                         <CheckCircle2 size={10} /> {quantum.security.errorCorrection}
+                     </div>
                  </div>
              </div>
 

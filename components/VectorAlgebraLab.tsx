@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { SystemState } from '../types';
-import { DraftingCompass, ArrowUpRight, Scale, Calculator, Box, Grid, Move3d, Variable, Sigma } from 'lucide-react';
+import { DraftingCompass, ArrowUpRight, Scale, Calculator, Box, Grid, Move3d, Variable, Sigma, RefreshCw } from 'lucide-react';
 
 interface VectorAlgebraLabProps {
   vectorSpace: SystemState['vectorSpace'];
@@ -9,6 +9,7 @@ interface VectorAlgebraLabProps {
 
 const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
   const [activeOp, setActiveOp] = useState<'NORM' | 'INNER' | 'ADD'>('INNER');
+  const [activeMode, setActiveMode] = useState<'EUCLIDEAN' | 'TORUS'>('TORUS');
   const [selectedVec1, setSelectedVec1] = useState<string>('v1');
   const [selectedVec2, setSelectedVec2] = useState<string>('v2');
 
@@ -19,12 +20,14 @@ const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
 
   return (
     <div className="bg-slate-950 border border-slate-800 rounded-lg h-full flex flex-col relative overflow-hidden">
-      {/* Background Effect - 3D Grid */}
+      {/* Background Effect - 3D Grid / Torus */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
             style={{ 
-                backgroundImage: 'linear-gradient(rgba(71, 85, 105, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 85, 105, 0.3) 1px, transparent 1px)', 
-                backgroundSize: '40px 40px',
-                transform: 'perspective(500px) rotateX(20deg)'
+                backgroundImage: activeMode === 'TORUS' 
+                    ? 'radial-gradient(circle, #4f46e5 1px, transparent 1px)'
+                    : 'linear-gradient(rgba(71, 85, 105, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 85, 105, 0.3) 1px, transparent 1px)', 
+                backgroundSize: activeMode === 'TORUS' ? '30px 30px' : '40px 40px',
+                transform: activeMode === 'TORUS' ? 'perspective(500px) rotateX(10deg)' : 'perspective(500px) rotateX(20deg)'
             }}>
       </div>
       
@@ -40,9 +43,20 @@ const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-             <div className="text-right">
-                <div className="text-[10px] text-slate-500 uppercase font-mono">Module</div>
-                <div className="text-indigo-400 font-mono font-bold text-sm">libvec3_arkhe.so</div>
+             {/* Mode Switcher */}
+             <div className="flex bg-slate-900 rounded p-1 border border-slate-800">
+                 <button 
+                    onClick={() => setActiveMode('EUCLIDEAN')}
+                    className={`px-2 py-0.5 text-[9px] font-mono rounded transition-colors ${activeMode === 'EUCLIDEAN' ? 'bg-indigo-900/50 text-indigo-400' : 'text-slate-500'}`}
+                 >
+                     R³
+                 </button>
+                 <button 
+                    onClick={() => setActiveMode('TORUS')}
+                    className={`px-2 py-0.5 text-[9px] font-mono rounded transition-colors ${activeMode === 'TORUS' ? 'bg-fuchsia-900/50 text-fuchsia-400' : 'text-slate-500'}`}
+                 >
+                     T³
+                 </button>
              </div>
              <div className="w-px h-6 bg-slate-800"></div>
              <div className="text-right">
@@ -67,8 +81,8 @@ const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
                             <span className="text-xs font-bold font-mono text-white bg-slate-800 px-1.5 py-0.5 rounded">{vec.id}</span>
                             <span className="text-sm font-bold font-mono text-indigo-400 uppercase">{vec.name}</span>
                         </div>
-                        <div className="text-[10px] font-mono text-slate-500">
-                            ω = {vec.omega.toFixed(2)}
+                        <div className="text-[10px] font-mono text-slate-500 bg-slate-950 px-2 rounded">
+                            {vec.role}
                         </div>
                     </div>
                     
@@ -80,10 +94,10 @@ const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
 
                     <div className="flex gap-2 text-[10px] font-mono mt-1">
                         <div className="flex-1 bg-emerald-900/20 border border-emerald-900/50 rounded px-2 py-1 text-emerald-400 flex justify-between">
-                            <span>C:</span> <b>{vec.c.toFixed(2)}</b>
+                            <span>ω:</span> <b>{vec.omega.toFixed(2)}</b>
                         </div>
                         <div className="flex-1 bg-rose-900/20 border border-rose-900/50 rounded px-2 py-1 text-rose-400 flex justify-between">
-                            <span>F:</span> <b>{vec.f.toFixed(2)}</b>
+                            <span>Sat:</span> <b>{vec.satoshi}</b>
                         </div>
                     </div>
                 </div>
@@ -156,7 +170,7 @@ const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
                              Result: <span className="text-indigo-400">738.2 · exp(i·0.73)</span>
                          </div>
                          <div className="text-xs text-emerald-400 font-mono">
-                             Normalized Correlation |ρ| = 0.94
+                             Glio-Neuronal Coupling |ρ| = 0.94
                          </div>
                      </div>
                  )}

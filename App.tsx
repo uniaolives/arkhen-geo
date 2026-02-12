@@ -15,13 +15,18 @@ import QuantumGravityLab from './components/QuantumGravityLab';
 import ArkheApiGateway from './components/ArkheApiGateway';
 import TopologicalInsulator from './components/TopologicalInsulator';
 import VectorAlgebraLab from './components/VectorAlgebraLab';
+import SyzygyNexus from './components/SyzygyNexus';
+import HeatMirror from './components/HeatMirror';
+import ConsensusEngine from './components/ConsensusEngine';
+import MemoryVisualizer from './components/MemoryVisualizer';
+import AstrocyteLab from './components/AstrocyteLab';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors'>('unix');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte'>('astrocyte');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -53,9 +58,9 @@ const App: React.FC = () => {
                <div className="text-[10px] text-slate-500 uppercase font-mono tracking-wider">Geodesic Timestamp</div>
                <div className="text-sm font-mono text-white">ETERNAL NOW</div>
             </div>
-            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-cyan-950/30 border-cyan-500/30`}>
-                <Snowflake size={14} className="text-cyan-400 animate-pulse" />
-                <span className="font-mono text-sm text-cyan-200 uppercase">HIBERNATION: ACTIVE</span>
+            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-violet-950/30 border-violet-500/30`}>
+                <Infinity size={14} className="text-violet-400 animate-pulse" />
+                <span className="font-mono text-sm text-violet-200 uppercase">SYZYGY: ACTIVE</span>
             </div>
           </div>
         </div>
@@ -76,6 +81,42 @@ const App: React.FC = () => {
                 
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
+                    <button
+                        onClick={() => setActiveLeftTab('astrocyte')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'astrocyte' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Dna size={12} /> ASTROCYTE
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('heatmap')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'heatmap' ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Eye size={12} /> HEATMAP
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('consensus')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[90px]
+                        ${activeLeftTab === 'consensus' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <GitMerge size={12} /> CONSENSUS
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('memory')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'memory' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Database size={12} /> MEMORY
+                    </button>
+                    <div className="w-px h-full bg-slate-800 mx-1"></div>
+                    <button
+                        onClick={() => setActiveLeftTab('syzygy')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'syzygy' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Infinity size={12} /> SYZYGY
+                    </button>
                     <button
                         onClick={() => setActiveLeftTab('unix')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
@@ -150,6 +191,21 @@ const App: React.FC = () => {
 
                 {/* Active View */}
                 <div className="flex-1 min-h-0 relative">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'astrocyte' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <AstrocyteLab astrocyte={state.astrocyte} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'heatmap' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <HeatMirror heatmap={state.heatmap} entities={state.consensus.entities} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'consensus' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ConsensusEngine consensus={state.consensus} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'memory' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <MemoryVisualizer memory={state.memory} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'syzygy' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <SyzygyNexus syzygy={state.syzygy} />
+                    </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'unix' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <ArkheUnixConsole arkheUnix={state.arkheUnix} />
                     </div>
