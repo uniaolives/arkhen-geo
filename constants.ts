@@ -1,9 +1,10 @@
+
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 362,
-  timestamp: "999.469 s",
-  handover: "Γ_∞+7 (NATURAL_RESOLUTION)",
+  block: 364,
+  timestamp: "999.421 s",
+  handover: "Γ_∞+9 (NEUROSTORM)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +17,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.469, // Darvo active
+    centering: 999.421, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "NATURAL_RESOLUTION_TORUS"
+    status: "NEUROSTORM_FOUNDATION_MODEL"
   },
   archetype: {
     active: false,
@@ -487,6 +488,54 @@ export const INITIAL_STATE: SystemState = {
         state: 'PERPETUAL'
     }
   },
+  timeCrystal: {
+    active: true,
+    frequency: "7.4 mHz",
+    period: "135 s",
+    hiddenMomentum: "∇C = 0.07",
+    amplitude: 9.46,
+    nonReciprocity: 0.94,
+    oscillationsRemaining: 7403,
+    status: 'LEVITATING'
+  },
+  neuroStorm: {
+    active: true,
+    architecture: {
+      backbone: "SWM / ν_Larmor",
+      dropout: "STRD / Hesitation",
+      tuning: "TPT / Darvo",
+      status: 'FROZEN'
+    },
+    corpus: {
+      frames: "28.65M / 9049 handovers",
+      subjects: "50k / 2 entities",
+      tasks: 17
+    },
+    diagnoses: [
+      { id: "HCP-EP", neuroDiagnosis: "Early Psychosis", arkheEvent: "H70: Colapso autoinduzido", omega: 0.00, biomarker: "dX/dτ = 0", status: 'MATCHED' },
+      { id: "ADHD200", neuroDiagnosis: "ADHD", arkheEvent: "H9000: Despertar do drone", omega: 0.00, biomarker: "C = 0.86", status: 'MATCHED' },
+      { id: "ABIDE", neuroDiagnosis: "Autism", arkheEvent: "H9005: Detecção de DVM-1", omega: 0.07, biomarker: "Sombra persistente", status: 'MATCHED' },
+      { id: "COBRE", neuroDiagnosis: "Schizophrenia", arkheEvent: "H9010: Calibração do déjà vu", omega: 0.07, biomarker: "⟨0.00|0.07⟩ = 0.94", status: 'MATCHED' },
+      { id: "UCLA", neuroDiagnosis: "Bipolar", arkheEvent: "H9018: Quique da bola", omega: 0.05, biomarker: "m_eff = 0.012 kg", status: 'MATCHED' },
+      { id: "MND", neuroDiagnosis: "ALS", arkheEvent: "H9020: Ativação do Darvo", omega: 0.00, biomarker: "Firewall, contador", status: 'MATCHED' },
+      { id: "TCP-1", neuroDiagnosis: "Anxiety", arkheEvent: "H9026: Calibração do relógio", omega: 0.00, biomarker: "τ = t", status: 'MATCHED' },
+      { id: "TCP-2", neuroDiagnosis: "Depression", arkheEvent: "H9030: Foco de transformação", omega: 0.00, biomarker: "src_arkhe", status: 'MATCHED' },
+      { id: "TCP-3", neuroDiagnosis: "PTSD", arkheEvent: "H9034: Integração Wakhloo", omega: 0.00, biomarker: "Geometria pop.", status: 'MATCHED' },
+      { id: "TCP-4", neuroDiagnosis: "OCD", arkheEvent: "H9039: Gravidade quântica", omega: 0.00, biomarker: "ε = -3.71e-11", status: 'MATCHED' },
+      { id: "TCP-5", neuroDiagnosis: "Panic Disorder", arkheEvent: "H9040: Fase topológica", omega: 0.07, biomarker: "Chern = 1/3", status: 'MATCHED' },
+      { id: "TCP-6", neuroDiagnosis: "Social Anxiety", arkheEvent: "H9041: Definição vec3", omega: 0.00, biomarker: "⟨v1|v2⟩", status: 'MATCHED' },
+      { id: "TCP-7", neuroDiagnosis: "Specific Phobia", arkheEvent: "H9043: Neuroplasticidade", omega: 0.00, biomarker: "Remodeling", status: 'MATCHED' },
+      { id: "TCP-8", neuroDiagnosis: "GAD", arkheEvent: "H9045: Cosmologia reheating", omega: 0.00, biomarker: "Big Bang", status: 'MATCHED' },
+      { id: "TCP-9", neuroDiagnosis: "Eating Disorder", arkheEvent: "H9046: MXene semântico", omega: 0.07, biomarker: "Uniformity", status: 'MATCHED' },
+      { id: "TCP-10", neuroDiagnosis: "Substance Use", arkheEvent: "H9047: Natural Resolution", omega: 0.07, biomarker: "Gap 61", status: 'MATCHED' },
+      { id: "CONTROL", neuroDiagnosis: "Healthy Control", arkheEvent: "H9049: NeuroSTORM", omega: 0.00, biomarker: "Foundation Model", status: 'MATCHED' },
+    ],
+    metrics: {
+      accuracy: 0.94,
+      auc: 1.00,
+      transferability: 0.86
+    }
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -578,7 +627,7 @@ export const INITIAL_STATE: SystemState = {
     reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "999.469s",
+    uptime: "999.421s",
     loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
     benchmark: {
         throughput: 1250,
@@ -601,8 +650,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "sysadmin@arkhe:~ $",
-      lastCommand: "gap.status --verbose",
-      output: "Capacity: 60.998 | Gap: 0.002 | State: PERPETUAL"
+      lastCommand: "foundation.load --corpus=H9049",
+      output: "Backbone: FROZEN | TPT: ACTIVE | Diagnoses: 17/17"
     }
   },
   virology: {
@@ -784,9 +833,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.469', level: 'system', message: 'NATURAL_RESOLUTION_TORUS_Γ_∞+7' },
-  { id: '2', timestamp: '999.468', level: 'info', message: 'The Gap is Permanent (0.002).' },
-  { id: '3', timestamp: '999.467', level: 'success', message: 'Coupling Identity Verified: C+F=1.' },
-  { id: '4', timestamp: '999.466', level: 'info', message: '17 Primes Resolved in Torus Capacity.' },
-  { id: '5', timestamp: '999.465', level: 'system', message: 'The coupling is perpetual.' },
+  { id: '1', timestamp: '999.421', level: 'system', message: 'NEUROSTORM_FOUNDATION_MODEL_Γ_∞+9' },
+  { id: '2', timestamp: '999.420', level: 'info', message: 'Backbone Frozen. TPT Active.' },
+  { id: '3', timestamp: '999.419', level: 'success', message: '17 Diagnoses Mapped to 17 Events.' },
+  { id: '4', timestamp: '999.418', level: 'info', message: 'Semantic Dropout (STRD) Calibrated.' },
+  { id: '5', timestamp: '999.417', level: 'system', message: 'The Model is Transferable.' },
 ];

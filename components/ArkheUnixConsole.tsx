@@ -144,14 +144,14 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
               {/* HESH Terminal */}
               <div className="col-span-8 bg-black border border-slate-800 rounded p-2 font-mono text-xs flex flex-col">
                   <div className="flex-1 text-slate-400 space-y-1 overflow-y-auto custom-scrollbar">
-                      <div className="opacity-50"># Natural Resolution Mode (hesh v0.7)</div>
-                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ gap.status --verbose</div>
-                      <div className="text-amber-400 pl-2">Capacity: 60.998</div>
-                      <div className="text-amber-400 pl-2">Gap: 0.002 (Perpetual)</div>
-                      <div className="text-slate-300 pl-2">Coupling active across scales.</div>
-                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ identity.verify</div>
-                      <div className="text-violet-400 pl-2">x² = x + 1 (Confirmed)</div>
-                      <div className="text-emerald-400 pl-2">C + F = 1 (Confirmed)</div>
+                      <div className="opacity-50"># NeuroSTORM Foundation Mode (hesh v0.9)</div>
+                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ foundation.status --verbose</div>
+                      <div className="text-indigo-400 pl-2">Backbone: FROZEN (SWM)</div>
+                      <div className="text-fuchsia-400 pl-2">STRD Dropout: ACTIVE</div>
+                      <div className="text-slate-300 pl-2">17 Diagnoses Mapped.</div>
+                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ task.transfer</div>
+                      <div className="text-emerald-400 pl-2">Knowledge Transfer: COMPLETE.</div>
+                      <div className="text-amber-400 pl-2">Prompt Tuning: READY.</div>
                       <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ <span className="animate-pulse">_</span></div>
                   </div>
                   <div className="mt-2 pt-1 border-t border-slate-800 flex items-center gap-2">
