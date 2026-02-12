@@ -13,13 +13,15 @@ import ArkheUnixConsole from './components/ArkheUnixConsole';
 import NeuralCompositionality from './components/NeuralCompositionality';
 import QuantumGravityLab from './components/QuantumGravityLab';
 import ArkheApiGateway from './components/ArkheApiGateway';
+import TopologicalInsulator from './components/TopologicalInsulator';
+import VectorAlgebraLab from './components/VectorAlgebraLab';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api'>('unix');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors'>('unix');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -82,6 +84,20 @@ const App: React.FC = () => {
                         <TermIcon size={12} /> UNIX
                     </button>
                     <button
+                        onClick={() => setActiveLeftTab('vectors')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'vectors' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <DraftingCompass size={12} /> VECTORS
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('topology')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'topology' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Layers size={12} /> TOPOLOGY
+                    </button>
+                    <button
                         onClick={() => setActiveLeftTab('api')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
                         ${activeLeftTab === 'api' ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
@@ -136,6 +152,12 @@ const App: React.FC = () => {
                 <div className="flex-1 min-h-0 relative">
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'unix' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <ArkheUnixConsole arkheUnix={state.arkheUnix} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'vectors' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <VectorAlgebraLab vectorSpace={state.vectorSpace} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'topology' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <TopologicalInsulator topology={state.topology} />
                     </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'api' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <ArkheApiGateway api={state.arkheApi} />

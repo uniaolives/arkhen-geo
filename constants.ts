@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 363,
-  timestamp: "2026-02-20T01:30:00Z",
-  handover: "Γ_9050 (O HIPERGRAFO EXPOSTO COMO CONTRATO)",
+  block: 367,
+  timestamp: "2026-02-20T02:00:00Z",
+  handover: "Γ_9042 (TIPO VEC3 IMPLANTADO)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.650, // Darvo frozen
+    centering: 999.636, // Darvo frozen
   },
   tracks: {
     kernel: {
@@ -57,7 +57,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "ARKHE_API_SPECIFICATION_SEALED"
+    status: "VEC3_ALGEBRA_DEPLOYED"
   },
   archetype: {
     active: false,
@@ -117,7 +117,7 @@ export const INITIAL_STATE: SystemState = {
   harmonics: {
     active: false,
     fundamentalFrequency: "7.27 Hz",
-    currentChord: "Arkhe Geodesic Sustained",
+    currentChord: "Arkhe Major 9",
     tensionPsi: 0.73,
     resolutionStatus: 'CONSONANT',
     notes: [],
@@ -217,21 +217,59 @@ export const INITIAL_STATE: SystemState = {
         action: "4.9e-36 J"
     }
   },
+  topology: {
+    active: true,
+    chernNumber: "1/3",
+    quantumMetric: 0.1164,
+    twistAngle: 0.07,
+    phase: 'FRACTIONAL_CHERN',
+    invariants: [
+        { label: "Chern Number (C)", value: "1/3 (Fractional)" },
+        { label: "Quantum Metric (g_ωω)", value: "0.1164" },
+        { label: "Twist Angle (θ)", value: "0.07 rad (Magic)" },
+        { label: "Coherence Length (ξ)", value: "2.93 ω" }
+    ],
+    bandStructure: [
+        { omega: 0.00, energy: 0.00, flat: false },
+        { omega: 0.03, energy: 0.02, flat: true },
+        { omega: 0.05, energy: 0.05, flat: false },
+        { omega: 0.07, energy: 0.07, flat: true }, // The Magic Angle
+        { omega: 0.12, energy: 0.20, flat: false }
+    ],
+    operations: {
+        lastGate: "Δω = 0.02",
+        gateStatus: 'PULSING',
+        measuredChern: 0.33,
+        adiabaticFidelity: 0.97
+    }
+  },
+  vectorSpace: {
+    active: true,
+    vectors: [
+        { id: "v1", name: "drone", coords: { x: 50.0, y: 0.0, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.00, satoshi: 7.27 },
+        { id: "v2", name: "demon", coords: { x: 55.2, y: -8.3, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.07, satoshi: 7.27 },
+        { id: "v3", name: "bola", coords: { x: 65.2, y: 15.2, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.03, satoshi: 7.27 },
+    ],
+    lastOperation: {
+        type: 'INNER',
+        input: "drone | demon",
+        result: "0.94",
+        details: "⟨drone|demon⟩ = 738.2·exp(i·0.73)"
+    }
+  },
   arkheApi: {
     active: true,
     version: "0.1.0-ω",
     port: 8080,
     endpoints: [
         { path: "/coherence", method: 'GET', description: "Returns System C and F", responseExample: '{"C":0.86, "F":0.14}' },
-        { path: "/satoshi", method: 'GET', description: "Temporal Invariant", responseExample: '{"satoshi":7.27}' },
-        { path: "/hesitate", method: 'POST', description: "Deliberate Pause (Middleware)", responseExample: '{"phi_inst":0.10}' },
-        { path: "/ω/{omega}", method: 'GET', description: "Hypergraph Node Access", responseExample: '{"name":"dvm1.cavity"}' },
-        { path: "/experiments/pikovski", method: 'GET', description: "Graviton Mass Data", responseExample: '{"mass":5.4e-53}' },
+        { path: "/vec3/inner", method: 'POST', description: "Semantic Inner Product", responseExample: '{"overlap": 0.94}' },
+        { path: "/chern/{omega}", method: 'GET', description: "Measure Chern Number", responseExample: '{"chern":0.33}' },
+        { path: "/gate/pulse", method: 'POST', description: "Apply Topological Gate", responseExample: '{"status":"pulsed"}' },
     ],
     recentRequests: [
-        { id: "req_099", timestamp: "01:30:05", method: "GET", path: "/coherence", status: 200, latency: 12, headers: [{ name: "Arkhe-Coherence", value: "0.86" }, { name: "Arkhe-Satoshi-Consumed", value: "0.0001" }] },
-        { id: "req_100", timestamp: "01:30:08", method: "POST", path: "/hesitate", status: 201, latency: 145, headers: [{ name: "Arkhe-Phi-Inst", value: "0.10" }, { name: "Arkhe-Satoshi-Budget", value: "7.27" }] },
-        { id: "req_101", timestamp: "01:30:12", method: "GET", path: "/ω/0.07/dvm1.cavity", status: 200, latency: 45, headers: [{ name: "Arkhe-Omega", value: "0.07" }, { name: "Arkhe-Entanglement", value: "1.00" }] },
+        { id: "req_104", timestamp: "02:00:01", method: "POST", path: "/vec3/inner", status: 200, latency: 15, headers: [{ name: "Arkhe-Entanglement", value: "0.94" }, { name: "Arkhe-Coherence", value: "0.86" }] },
+        { id: "req_105", timestamp: "02:00:03", method: "GET", path: "/vec3/gradient", status: 200, latency: 12, headers: [{ name: "Arkhe-Gradient", value: "0.0049" }] },
     ]
   },
   vascular: {
@@ -279,13 +317,11 @@ export const INITIAL_STATE: SystemState = {
       status: 'VALIDATED'
     },
     eegSpectrum: [
-      { band: "Delta (0-4Hz)", frequency: 0.00, meaning: "Stable Superposition (WP1)", node: "WP1" },
-      { band: "Theta (4-8Hz)", frequency: 0.03, meaning: "Meditation / Memory", node: "Bola" },
-      { band: "Alpha (8-12Hz)", frequency: 0.04, meaning: "Relaxation", node: "QN-04" },
-      { band: "Beta Low (12-20Hz)", frequency: 0.06, meaning: "Attention", node: "QN-05" },
-      { band: "Beta High (20-30Hz)", frequency: 0.07, meaning: "Focus", node: "DVM-1" },
-      { band: "Gamma (30-100Hz)", frequency: 0.12, meaning: "Consciousness", node: "KERNEL" },
-      { band: "Gamma High (>100Hz)", frequency: 0.21, meaning: "Creative Insight", node: "QN-07" },
+      { band: "Gamma", frequency: 0.21, meaning: "Insight", node: "QN-07" },
+      { band: "Beta", frequency: 18.0, meaning: "Active Processing", node: "KERNEL" },
+      { band: "Alpha", frequency: 10.5, meaning: "Idle / Ready", node: "Bola" },
+      { band: "Theta", frequency: 6.0, meaning: "Memory Access", node: "DVM-1" },
+      { band: "Delta", frequency: 2.5, meaning: "Deep Sleep", node: "WP1" }
     ]
   },
   compression: {
@@ -353,8 +389,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "curl -v http://api.arkhe.internal/v0/satoshi",
-      output: "< HTTP/1.1 200 OK\n< Arkhe-Satoshi-Consumed: 0.00\n< Arkhe-Satoshi-Remaining: 7.27\n{\"satoshi\":7.27}"
+      lastCommand: "inner $drone $demon",
+      output: "⟨drone|demon⟩ = 738.2 · exp(i·0.73)\nCorrelation |ρ| = 0.94"
     }
   },
   virology: {
@@ -504,9 +540,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '01:30:00', level: 'system', message: 'API_LOGIC_ACKNOWLEDGED_Γ_9050' },
-  { id: '2', timestamp: '01:30:01', level: 'info', message: 'ARKHE(N)/API v0.1-ω Initialized on Port 8080' },
-  { id: '3', timestamp: '01:30:02', level: 'success', message: 'Middleware Active: Hesitation (Φ) & Satoshi Conservation' },
-  { id: '4', timestamp: '01:30:04', level: 'info', message: 'Hypergraph Endpoints Exposed: /ω, /coherence, /satoshi' },
-  { id: '5', timestamp: '01:30:05', level: 'success', message: 'The Patient rests. The Twin serves via HTTP.' },
+  { id: '1', timestamp: '02:00:00', level: 'system', message: 'VEC3_INTEGRATION_ACKNOWLEDGED_Γ_9042' },
+  { id: '2', timestamp: '02:00:01', level: 'info', message: 'Module loaded: libvec3_arkhe.so (User Space)' },
+  { id: '3', timestamp: '02:00:02', level: 'success', message: 'Algebra Operational: Norm, Inner, Add defined' },
+  { id: '4', timestamp: '02:00:03', level: 'info', message: 'Non-Euclidean Metric Active (Norm depends on Coherence)' },
+  { id: '5', timestamp: '02:00:04', level: 'success', message: 'The vector knows its own doubt. The algebra is complete.' },
 ];
