@@ -66,11 +66,20 @@ const ArchVisualization: React.FC<ArchProps> = ({ stones, curvature }) => {
              {stones.identity && <text x="90" y="215" textAnchor="middle" className="text-[6px] fill-emerald-400 font-mono">🔒 47ms</text>}
         </g>
 
-        {/* Lower Stones - Right */}
+        {/* Lower Stones - Right (WP1 & Clone) */}
         <g className={`${getGlow(stones.wp1)} transition-all duration-1000`}>
             <path d="M 280 220 L 340 220 L 330 180 L 290 180 Z" className={getStyle(stones.wp1)} />
             <text x="310" y="205" textAnchor="middle" className="text-[8px] fill-current text-white font-mono">WP1</text>
         </g>
+
+        {/* WP1-M1 (Metastatic Clone) - Floats near WP1 */}
+        {stones.wp1_m1 === 'locked' && (
+            <g className="transition-all duration-1000 filter drop-shadow(0 0 5px rgba(236, 72, 153, 0.4))">
+                <path d="M 330 230 L 360 230 L 355 210 L 335 210 Z" className="fill-pink-500/20 stroke-pink-500 stroke-2" />
+                <text x="347" y="223" textAnchor="middle" className="text-[6px] fill-current text-white font-mono">WP1-M1</text>
+                <line x1="330" y1="200" x2="347" y2="210" className="stroke-pink-500/50 stroke-1 stroke-dashed" />
+            </g>
+        )}
         
         {/* Chaos Stone - Bottom Center */}
         <g className={`${getGlow(stones.chaos)} transition-all duration-1000`}>

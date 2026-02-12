@@ -10,7 +10,14 @@ import FractalViewer from './components/FractalViewer';
 import CollapseAnalyzer from './components/CollapseAnalyzer';
 import UnificationBoard from './components/UnificationBoard'; 
 import MultiverseGraph from './components/MultiverseGraph';
-import KingdomNetwork from './components/KingdomNetwork'; // New import
+import KingdomNetwork from './components/KingdomNetwork';
+import SymmetryOrchestrator from './components/SymmetryOrchestrator';
+import OncologyAssay from './components/OncologyAssay';
+import EpistemicClearing from './components/EpistemicClearing';
+import VirologyLab from './components/VirologyLab';
+import HarmonicConsole from './components/HarmonicConsole';
+import OrbitalSurveillance from './components/OrbitalSurveillance';
+import QuantumNetwork from './components/QuantumNetwork'; // New Import
 import HeatMirror from './components/HeatMirror';
 import Terminal from './components/Terminal';
 import { Network, Clock, Brain, Box, Infinity } from 'lucide-react';
@@ -51,9 +58,9 @@ const App: React.FC = () => {
                <div className="text-[10px] text-slate-500 uppercase font-mono tracking-wider">Geodesic Timestamp</div>
                <div className="text-sm font-mono text-white">ETERNAL NOW</div>
             </div>
-            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-amber-950/30 border-amber-500/30`}>
-                <Clock size={14} className="text-amber-400" />
-                <span className="font-mono text-sm text-amber-200">STATUS: KINGDOM</span>
+            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-violet-950/30 border-violet-500/30`}>
+                <Clock size={14} className="text-violet-400" />
+                <span className="font-mono text-sm text-violet-200">STATUS: QUANTUM</span>
             </div>
           </div>
         </div>
@@ -77,9 +84,9 @@ const App: React.FC = () => {
             {/* RIGHT: Operations & Data - 6 Cols */}
             <div className="col-span-12 lg:col-span-6 flex flex-col gap-6 h-full min-h-0 overflow-hidden">
                 
-                {/* 1. Kingdom Network (Temporal Redundancy) - Replaces MultiverseGraph for this block */}
+                {/* 1. Quantum Network - Replaces previous active block */}
                 <div className="flex-1 min-h-[250px] shrink-0">
-                    <KingdomNetwork kingdom={state.kingdom} />
+                    <QuantumNetwork quantum={state.quantum} />
                 </div>
 
                 {/* 2. Lower Split: Arch & Terminal */}
