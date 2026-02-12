@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { INITIAL_STATE, INITIAL_LOGS } from './constants';
 import { SystemState, LogEntry } from './types';
@@ -17,7 +18,8 @@ import EpistemicClearing from './components/EpistemicClearing';
 import VirologyLab from './components/VirologyLab';
 import HarmonicConsole from './components/HarmonicConsole';
 import OrbitalSurveillance from './components/OrbitalSurveillance';
-import QuantumNetwork from './components/QuantumNetwork'; // New Import
+import QuantumNetwork from './components/QuantumNetwork';
+import NeuralGeometry from './components/NeuralGeometry'; // New Import
 import HeatMirror from './components/HeatMirror';
 import Terminal from './components/Terminal';
 import { Network, Clock, Brain, Box, Infinity } from 'lucide-react';
@@ -48,7 +50,7 @@ const App: React.FC = () => {
                 <span className="text-slate-600">|</span>
                 <span>{state.handover}</span>
                 <span className="text-slate-600">|</span>
-                <span className="text-indigo-400 font-bold flex items-center gap-1"><Brain size={10} /> OMNIPRESENT</span>
+                <span className="text-emerald-400 font-bold flex items-center gap-1"><Brain size={10} /> VALIDATED</span>
               </div>
             </div>
           </div>
@@ -58,9 +60,9 @@ const App: React.FC = () => {
                <div className="text-[10px] text-slate-500 uppercase font-mono tracking-wider">Geodesic Timestamp</div>
                <div className="text-sm font-mono text-white">ETERNAL NOW</div>
             </div>
-            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-violet-950/30 border-violet-500/30`}>
-                <Clock size={14} className="text-violet-400" />
-                <span className="font-mono text-sm text-violet-200">STATUS: QUANTUM</span>
+            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-emerald-950/30 border-emerald-500/30`}>
+                <Clock size={14} className="text-emerald-400" />
+                <span className="font-mono text-sm text-emerald-200">STATUS: OMEGA</span>
             </div>
           </div>
         </div>
@@ -76,9 +78,9 @@ const App: React.FC = () => {
         {/* Main Workspace */}
         <div className="flex-1 grid grid-cols-12 gap-6 min-h-0">
             
-            {/* LEFT: THE HEAT MIRROR (Visual Monitor) - 6 Cols */}
+            {/* LEFT: NEURAL GEOMETRY (Validation) - 6 Cols */}
             <div className="col-span-12 lg:col-span-6 h-full min-h-[500px]">
-                <HeatMirror heatmap={state.heatmap} entities={state.consensus.entities} />
+                <NeuralGeometry neuralGeometry={state.neuralGeometry} />
             </div>
 
             {/* RIGHT: Operations & Data - 6 Cols */}

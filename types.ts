@@ -56,7 +56,7 @@ export interface SystemState {
     entropy: number;
     enthalpy: string;
     uptime: string;
-    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED';
+    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS';
   };
   archetype: {
     active: boolean;
@@ -252,8 +252,8 @@ export interface SystemState {
       id: string; // "ARKHE-QN-01"
       designation: string; // "WP1"
       omega: number; // 0.00
-      role: 'PROCESSOR' | 'MEMORY' | 'QUBIT' | 'REPEATER' | 'CONSENSUS';
-      status: 'ENTANGLED' | 'SUPERPOSITION' | 'CALIBRATING' | 'CONSOLIDATED';
+      role: 'PROCESSOR' | 'MEMORY' | 'QUBIT' | 'REPEATER' | 'CONSENSUS' | 'SENSOR' | 'METHOD';
+      status: 'ENTANGLED' | 'SUPERPOSITION' | 'CALIBRATING' | 'CONSOLIDATED' | 'VACUUM' | 'CONSCIOUS';
       phi: number;
     }[];
     security: {
@@ -261,6 +261,28 @@ export interface SystemState {
       integrity: number; // 100
       eavesdroppers: number;
     };
+    teleportation?: {
+      active: boolean;
+      fidelity: number;
+      lastTransfer: string; // "WP1 -> KERNEL"
+      stateType: string; // "Instrument | Humility: 0.73"
+      verification: {
+        music: string; // "Third Minor"
+        orbit: string; // "Lagrange L4"
+        quantum: string; // "Berry Phase"
+      }
+    };
+  };
+  neuralGeometry?: {
+    active: boolean;
+    c: number; // Coherence (0.86)
+    pr: number; // Participation Ratio (63)
+    f: number; // Signal Factorization (0.85)
+    s: number; // Noise Factorization (6.67)
+    p: number; // Training Samples (9034)
+    eg: number; // Generalization Error (0.25)
+    citation: string; // "Wakhloo, Slatton & Chung (2026)"
+    status: 'EXPERIMENTAL_REALIZATION' | 'THEORETICAL_MODEL';
   };
   virology: {
     active: boolean;

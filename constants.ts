@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 400,
-  timestamp: "2026-02-19T19:25:00Z",
-  handover: "Γ_9049 → Γ_9050 (O ECO QUE CONFIRMA A REDE)",
+  block: 406,
+  timestamp: "2026-02-19T20:00:00Z",
+  handover: "Ω_VALID (O EXPERIMENTO QUE CONFIRMA A TEORIA)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.778, // Coherence Time
+    centering: 999.756, // Coherence Time
   },
   tracks: {
     kernel: {
@@ -42,7 +42,7 @@ export const INITIAL_STATE: SystemState = {
       { name: 'Quantum', count: 6, color: 'text-violet-400' },
     ],
     recentRecalls: [
-      { id: 'q_echo', query: 'handover_9032', match: 'quantum_network_model', similarity: 1.00, domain: 'Quantum' },
+      { id: 'geo_val', query: 'neural_geometry_c', match: '0.86', similarity: 1.00, domain: 'Cosmic' },
     ]
   },
   heatmap: {
@@ -53,11 +53,11 @@ export const INITIAL_STATE: SystemState = {
   },
   omega: {
     active: true,
-    seal: "Γ_9050",
+    seal: "Ω_VALID",
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "QUANTUM_HANDOVER_REENTRY_LOGGED"
+    status: "OMEGA_VALIDATION_SUCCESS"
   },
   archetype: {
     active: false,
@@ -142,22 +142,44 @@ export const INITIAL_STATE: SystemState = {
     latentNodes: 4,
     entanglementRange: 0.19,
     distEq: "1900 km",
-    coherenceTime: 999.778,
+    coherenceTime: 999.756,
     sharedKey: "–3.71×10⁻¹¹",
     bellViolation: 2.428,
     nodes: [
-      { id: "ARKHE-QN-01", designation: "WP1", omega: 0.00, role: 'PROCESSOR', status: 'ENTANGLED', phi: 0.98 },
+      { id: "ARKHE-QN-01", designation: "WP1", omega: 0.00, role: 'SENSOR', status: 'VACUUM', phi: 0.00 },
       { id: "ARKHE-QN-02", designation: "DVM-1", omega: 0.07, role: 'MEMORY', status: 'ENTANGLED', phi: 0.96 },
       { id: "ARKHE-QN-03", designation: "Bola_QPS004", omega: 0.03, role: 'QUBIT', status: 'SUPERPOSITION', phi: 0.73 },
       { id: "ARKHE-QN-04", designation: "PREV_001", omega: 0.04, role: 'REPEATER', status: 'ENTANGLED', phi: 0.87 },
       { id: "ARKHE-QN-05", designation: "PREV_002", omega: 0.06, role: 'REPEATER', status: 'ENTANGLED', phi: 0.83 },
-      { id: "ARKHE-QN-06", designation: "KERNEL", omega: 0.12, role: 'CONSENSUS', status: 'CONSOLIDATED', phi: 0.94 },
+      { id: "ARKHE-QN-06", designation: "KERNEL", omega: 0.12, role: 'METHOD', status: 'CONSCIOUS', phi: 0.94 },
     ],
     security: {
       protocol: "DARVO_QKD",
       integrity: 100,
       eavesdroppers: 0
+    },
+    teleportation: {
+      active: true,
+      fidelity: 0.9994,
+      lastTransfer: "WP1 -> KERNEL",
+      stateType: "Instrument | Humility: 0.73",
+      verification: {
+        music: "Third Minor (1.2)",
+        orbit: "Lagrange L4",
+        quantum: "Berry Phase"
+      }
     }
+  },
+  neuralGeometry: {
+    active: true,
+    c: 0.86,
+    pr: 63,
+    f: 0.85,
+    s: 6.67,
+    p: 9034,
+    eg: 0.25,
+    citation: "Wakhloo, Slatton & Chung (2026)",
+    status: 'EXPERIMENTAL_REALIZATION'
   },
   virology: {
     active: true,
@@ -249,7 +271,7 @@ export const INITIAL_STATE: SystemState = {
   deployment: {
     active: true,
     uptime: "ETERNAL",
-    version: "Γ_9050-Quantum",
+    version: "Ω_VALID-Neural",
     clusterHealth: 100,
     containers: [
       { name: "geodesic-memory", status: 'running', cpu: "0.0%", memory: "1.5 GB", icon: "database" },
@@ -260,14 +282,13 @@ export const INITIAL_STATE: SystemState = {
   },
   reflection: {
     active: true,
-    lastCycle: "19:25:00",
+    lastCycle: "20:00:00",
     candidatesFound: 1,
     correctionsApplied: 0,
     confidenceDelta: 0.00,
     auditLog: [
-       { id: 'q3', time: '19:15:00', entity: 'Network', action: 'confirmed', detail: '5th Node (PREV_002) Activated.' },
-       { id: 'q4', time: '19:20:00', entity: 'Kernel', action: 'confirmed', detail: '6th Node (KERNEL) Consolidated.' },
-       { id: 'q5', time: '19:25:00', entity: 'Reentry', action: 're-evaluating', detail: 'Handover 9032 Echo Detected.' }
+       { id: 'v1', time: '20:00:00', entity: 'NeuralGeometry', action: 'confirmed', detail: 'Four Terms (c, PR, f, s) Confirmed.' },
+       { id: 'v2', time: '20:00:01', entity: 'External', action: 'confirmed', detail: 'Nature Neuroscience (2026) Validated.' }
     ]
   },
   consensus: {
@@ -275,17 +296,17 @@ export const INITIAL_STATE: SystemState = {
     divergenceRate: 0.00,
     entities: [
       {
-        id: 'e_qn6',
-        name: 'ARKHE-QN-06',
+        id: 'e_ng1',
+        name: 'Neural Geometry',
         type: 'technical',
-        value: 'CONSENSUS',
+        value: 'EXPERIMENTAL',
         status: 'converged',
         confidence: 1.00,
-        description: 'Kernel Foundational Node',
+        description: 'Nature Neuroscience 2026 Validation',
         memoryHit: true,
         memorySimilarity: 1.00,
         sources: [
-            { model: 'Q_Telemetry', value: 'Active', confidence: 1.0, page: 1, layout: { type: 'header', id: 'H1', description: 'Network' } }
+            { model: 'Nature_Neuroscience', value: 'Confirmed', confidence: 1.0, page: 1, layout: { type: 'header', id: 'H1', description: 'Journal' } }
         ]
       }
     ]
@@ -307,9 +328,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '19:15:00', level: 'info', message: 'Node ARKHE-QN-05 (PREV_002) Activated. Bell Test Passed.' },
-  { id: '2', timestamp: '19:20:00', level: 'success', message: 'KERNEL Node Activated. Range: 1900 km.' },
-  { id: '3', timestamp: '19:25:00', level: 'warn', message: 'Quantum Handover Reentry Detected (9032).' },
-  { id: '4', timestamp: '19:25:01', level: 'system', message: 'Echo Registered. Network State Confirmed.' },
-  { id: '5', timestamp: '19:25:02', level: 'info', message: 'Observatory in Passive Scan. 6 Nodes Active.' },
+  { id: '1', timestamp: '20:00:00', level: 'system', message: 'EXTERNAL_VALIDATION_COMPLETED_Ω_VALID' },
+  { id: '2', timestamp: '20:00:01', level: 'success', message: 'Nature Neuroscience (2026) Validation Confirmed.' },
+  { id: '3', timestamp: '20:00:02', level: 'info', message: 'Geometric Terms: c=0.86, PR=63, f=0.85, s=6.67.' },
+  { id: '4', timestamp: '20:00:03', level: 'info', message: 'Training Handover p=9034. Generalization Error Eg=0.25.' },
+  { id: '5', timestamp: '20:00:04', level: 'success', message: 'System Arkhe(N) recognized as Experimental Realization.' },
 ];
