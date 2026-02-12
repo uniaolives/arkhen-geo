@@ -4,29 +4,19 @@ import { INITIAL_STATE, INITIAL_LOGS } from './constants';
 import { SystemState, LogEntry } from './types';
 import MetricsPanel from './components/MetricsPanel';
 import ArchVisualization from './components/ArchVisualization';
-import ConsensusEngine from './components/ConsensusEngine';
-import OmegaConsole from './components/OmegaConsole';
-import ArchetypeBoard from './components/ArchetypeBoard';
-import FractalViewer from './components/FractalViewer'; 
-import CollapseAnalyzer from './components/CollapseAnalyzer';
-import UnificationBoard from './components/UnificationBoard'; 
-import MultiverseGraph from './components/MultiverseGraph';
-import KingdomNetwork from './components/KingdomNetwork';
-import SymmetryOrchestrator from './components/SymmetryOrchestrator';
-import OncologyAssay from './components/OncologyAssay';
-import EpistemicClearing from './components/EpistemicClearing';
-import VirologyLab from './components/VirologyLab';
-import HarmonicConsole from './components/HarmonicConsole';
-import OrbitalSurveillance from './components/OrbitalSurveillance';
 import QuantumNetwork from './components/QuantumNetwork';
-import NeuralGeometry from './components/NeuralGeometry'; // New Import
-import HeatMirror from './components/HeatMirror';
+import ScarElastography from './components/ScarElastography';
+import OrchOrIntegration from './components/OrchOrIntegration';
+import MarkdownProtocol from './components/MarkdownProtocol';
+import LightPatternThesis from './components/LightPatternThesis';
+import ArkheUnixConsole from './components/ArkheUnixConsole';
 import Terminal from './components/Terminal';
-import { Network, Clock, Brain, Box, Infinity } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix'>('unix');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -49,8 +39,6 @@ const App: React.FC = () => {
                 <span>Block {state.block}</span>
                 <span className="text-slate-600">|</span>
                 <span>{state.handover}</span>
-                <span className="text-slate-600">|</span>
-                <span className="text-emerald-400 font-bold flex items-center gap-1"><Brain size={10} /> VALIDATED</span>
               </div>
             </div>
           </div>
@@ -60,9 +48,9 @@ const App: React.FC = () => {
                <div className="text-[10px] text-slate-500 uppercase font-mono tracking-wider">Geodesic Timestamp</div>
                <div className="text-sm font-mono text-white">ETERNAL NOW</div>
             </div>
-            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-emerald-950/30 border-emerald-500/30`}>
-                <Clock size={14} className="text-emerald-400" />
-                <span className="font-mono text-sm text-emerald-200">STATUS: OMEGA</span>
+            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border bg-cyan-950/30 border-cyan-500/30`}>
+                <Snowflake size={14} className="text-cyan-400 animate-pulse" />
+                <span className="font-mono text-sm text-cyan-200 uppercase">HIBERNATION: ACTIVE</span>
             </div>
           </div>
         </div>
@@ -78,9 +66,66 @@ const App: React.FC = () => {
         {/* Main Workspace */}
         <div className="flex-1 grid grid-cols-12 gap-6 min-h-0">
             
-            {/* LEFT: NEURAL GEOMETRY (Validation) - 6 Cols */}
-            <div className="col-span-12 lg:col-span-6 h-full min-h-[500px]">
-                <NeuralGeometry neuralGeometry={state.neuralGeometry} />
+            {/* LEFT: MULTI-PROTOCOL VIEWER - 6 Cols */}
+            <div className="col-span-12 lg:col-span-6 h-full min-h-[500px] flex flex-col gap-3">
+                
+                {/* Protocol Tabs */}
+                <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto">
+                    <button
+                        onClick={() => setActiveLeftTab('unix')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'unix' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <TermIcon size={12} /> UNIX (OS)
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('light')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'light' ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Sun size={12} /> LIGHT (Χ)
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('scar')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'scar' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Magnet size={12} /> SCAR (MRI)
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('orch')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'orch' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Brain size={12} /> ORCH-OR
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('markdown')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'markdown' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <FileText size={12} /> MARKDOWN
+                    </button>
+                </div>
+
+                {/* Active View */}
+                <div className="flex-1 min-h-0 relative">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'unix' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ArkheUnixConsole arkheUnix={state.arkheUnix} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'light' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <LightPatternThesis lightPattern={state.lightPattern} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'scar' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ScarElastography scar={state.scar} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'orch' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <OrchOrIntegration orchOr={state.orchOr} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'markdown' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <MarkdownProtocol compression={state.compression} />
+                    </div>
+                </div>
             </div>
 
             {/* RIGHT: Operations & Data - 6 Cols */}

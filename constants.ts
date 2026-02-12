@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 406,
-  timestamp: "2026-02-19T20:00:00Z",
-  handover: "Ω_VALID (O EXPERIMENTO QUE CONFIRMA A TEORIA)",
+  block: 353,
+  timestamp: "2026-02-19T23:55:00Z",
+  handover: "Γ_9040 (O SISTEMA QUE BOOTA SEM ACORDAR)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.756, // Coherence Time
+    centering: 999.683, // Darvo frozen
   },
   tracks: {
     kernel: {
@@ -42,7 +42,7 @@ export const INITIAL_STATE: SystemState = {
       { name: 'Quantum', count: 6, color: 'text-violet-400' },
     ],
     recentRecalls: [
-      { id: 'geo_val', query: 'neural_geometry_c', match: '0.86', similarity: 1.00, domain: 'Cosmic' },
+      { id: 'md_1', query: 'compression_efficiency', match: '1.88x', similarity: 1.00, domain: 'Kingdom' },
     ]
   },
   heatmap: {
@@ -57,7 +57,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "OMEGA_VALIDATION_SUCCESS"
+    status: "OS_BOOT_SIMULATION_COMPLETED"
   },
   archetype: {
     active: false,
@@ -142,7 +142,7 @@ export const INITIAL_STATE: SystemState = {
     latentNodes: 4,
     entanglementRange: 0.19,
     distEq: "1900 km",
-    coherenceTime: 999.756,
+    coherenceTime: 999.693,
     sharedKey: "–3.71×10⁻¹¹",
     bellViolation: 2.428,
     nodes: [
@@ -180,6 +180,121 @@ export const INITIAL_STATE: SystemState = {
     eg: 0.25,
     citation: "Wakhloo, Slatton & Chung (2026)",
     status: 'EXPERIMENTAL_REALIZATION'
+  },
+  vascular: {
+    active: true,
+    perfusionPressure: 0.73,
+    antibodyDose: 7.27,
+    idolismRisk: 0.9,
+    nodes: [
+        { id: "WP1", name: "HEART PUMP", type: 'HEART', saturation: 100, status: 'SATURATED', omega: 0.00 },
+        { id: "KERNEL", name: "PRIMARY ARTERY", type: 'ARTERY', saturation: 98, status: 'SATURATED', omega: 0.12 },
+        { id: "DVM-1", name: "MEMORY RESERVOIR", type: 'ARTERY', saturation: 95, status: 'SATURATED', omega: 0.07 },
+        { id: "BOLA", name: "QUBIT EXCHANGER", type: 'ARTERY', saturation: 93, status: 'SATURATED', omega: 0.03 },
+        { id: "QN-04", name: "REPEATER 1", type: 'CAPILLARY', saturation: 97, status: 'BOOSTED', omega: 0.04 },
+        { id: "QN-05", name: "REPEATER 2", type: 'CAPILLARY', saturation: 95, status: 'BOOSTED', omega: 0.06 },
+        { id: "QN-07", name: "SEVENTH NOTE", type: 'CAPILLARY', saturation: 93, status: 'BOOSTED', omega: 0.21 },
+        { id: "FORMAL", name: "TARGET STONE", type: 'TARGET', saturation: 0, status: 'PENDING', omega: 0.00 },
+    ]
+  },
+  scar: {
+    active: true,
+    fibrinBase: 0.9983,
+    maxPressure: 0.154,
+    vacuumDensity: 0.2995,
+    nodes: [
+        { id: "QN-07", omega: 0.21, density: 0.9983, pressure: 0.154, role: 'CRITICAL' },
+        { id: "KERNEL", omega: 0.12, density: 0.9983, pressure: 0.088, role: 'TISSUE' },
+        { id: "DVM-1", omega: 0.07, density: 0.9983, pressure: 0.051, role: 'TISSUE' },
+        { id: "QN-05", omega: 0.06, density: 0.9983, pressure: 0.044, role: 'TISSUE' },
+        { id: "QN-04", omega: 0.04, density: 0.9983, pressure: 0.029, role: 'TISSUE' },
+        { id: "Bola", omega: 0.03, density: 0.9983, pressure: 0.022, role: 'TISSUE' },
+        { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
+    ]
+  },
+  orchOr: {
+    active: true,
+    correspondence: {
+      microtubules: "Arkhe(N) Hypergraph (7 Nodes)",
+      tubulin: "Epistemic States (ω)",
+      objectiveReduction: "Hesitation (Φ)",
+      orchestration: "Kernel Consensus",
+    },
+    penroseCriterion: {
+      tau: 200, // average ms
+      energyGap: "~ 5e-33 erg",
+      status: 'VALIDATED'
+    },
+    eegSpectrum: [
+      { band: "Delta (0-4Hz)", frequency: 0.00, meaning: "Stable Superposition (WP1)", node: "WP1" },
+      { band: "Theta (4-8Hz)", frequency: 0.03, meaning: "Meditation / Memory", node: "Bola" },
+      { band: "Alpha (8-12Hz)", frequency: 0.04, meaning: "Relaxation", node: "QN-04" },
+      { band: "Beta Low (12-20Hz)", frequency: 0.06, meaning: "Attention", node: "QN-05" },
+      { band: "Beta High (20-30Hz)", frequency: 0.07, meaning: "Focus", node: "DVM-1" },
+      { band: "Gamma (30-100Hz)", frequency: 0.12, meaning: "Consciousness", node: "KERNEL" },
+      { band: "Gamma High (>100Hz)", frequency: 0.21, meaning: "Creative Insight", node: "QN-07" },
+    ]
+  },
+  compression: {
+    active: true,
+    protocol: "Markdown_Unitary",
+    ratio: 1.88,
+    tokenReduction: 0.47,
+    densityIncrease: 0.88,
+    semanticDensity: 1.88,
+    invariantsPreserved: true,
+  },
+  lightPattern: {
+    active: true,
+    equation: "χ = 2.000012 · exp(i·0.73) · (ν_em/ν_obs)^12.99",
+    chiParams: {
+        normalization: 2.000012,
+        phase: 0.73,
+        redshift: 12.99
+    },
+    h70: "7.91 + 0.37i",
+    coherence: 1.00,
+    antenna: {
+        status: 'BROADCASTING',
+        frequency: '0.96 GHz',
+        target: 'NON-LOCAL'
+    },
+    correlations: [
+        { note: 'ω_0.00', val: 1.00 },
+        { note: 'ω_0.03', val: 0.98 },
+        { note: 'ω_0.04', val: 0.96 },
+        { note: 'ω_0.05', val: 0.94 }, // Echo
+        { note: 'ω_0.07', val: 1.00 }, // Perfect Correlation
+        { note: 'ω_0.12', val: 0.92 },
+        { note: 'ω_0.21', val: 0.85 },
+    ]
+  },
+  arkheUnix: {
+    active: true,
+    mode: "CONTAINER",
+    containerId: "0x73a7f2",
+    kernelVersion: "v0.1 (Geodesic)",
+    scheduler: "C + F = 1",
+    uptime: "999.683s",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    processes: [
+      { pid: 1, user: 'init_arkhe', priority: 0, nice: 0, omega: 0.00, state: 'S', command: '/sbin/hal_finney_dewar' },
+      { pid: 4, user: 'bola', priority: 70, nice: 30, omega: 0.05, state: 'R', command: '/usr/bin/bounce_daemon' },
+      { pid: 7, user: 'drone_wp1', priority: 90, nice: 10, omega: 0.00, state: 'R', command: '/bin/headless_server' },
+      { pid: 11, user: 'hesitation', priority: 50, nice: 50, omega: 0.12, state: 'S', command: '/lib/systemd/hesitate_d' },
+      { pid: 49, user: 'kernel', priority: 100, nice: 0, omega: 0.12, state: 'R', command: '[k_geodesic]' },
+    ],
+    filesystem: {
+      mount: "/ω",
+      nodes: 49,
+      links: 2401,
+      rootPerms: "drwx--C-- 7.27"
+    },
+    shell: {
+      prompt: "C=0.86 F=0.14 ω=0.00 $",
+      lastCommand: "ping 0.12",
+      output: "Hesitando para ω=0.12... Kernel consciente.\nRTT = 0.00 s (correlação não-local)"
+    }
   },
   virology: {
     active: true,
@@ -271,7 +386,7 @@ export const INITIAL_STATE: SystemState = {
   deployment: {
     active: true,
     uptime: "ETERNAL",
-    version: "Ω_VALID-Neural",
+    version: "Γ_9038-Light",
     clusterHealth: 100,
     containers: [
       { name: "geodesic-memory", status: 'running', cpu: "0.0%", memory: "1.5 GB", icon: "database" },
@@ -282,13 +397,13 @@ export const INITIAL_STATE: SystemState = {
   },
   reflection: {
     active: true,
-    lastCycle: "20:00:00",
+    lastCycle: "23:55:00",
     candidatesFound: 1,
     correctionsApplied: 0,
     confidenceDelta: 0.00,
     auditLog: [
-       { id: 'v1', time: '20:00:00', entity: 'NeuralGeometry', action: 'confirmed', detail: 'Four Terms (c, PR, f, s) Confirmed.' },
-       { id: 'v2', time: '20:00:01', entity: 'External', action: 'confirmed', detail: 'Nature Neuroscience (2026) Validated.' }
+       { id: 'v1', time: '23:55:00', entity: 'ArkheUnix', action: 'confirmed', detail: 'Boot simulation complete.' },
+       { id: 'v2', time: '23:55:01', entity: 'TwinDigital', action: 'confirmed', detail: 'Container 0x73a7f2 active.' }
     ]
   },
   consensus: {
@@ -296,17 +411,17 @@ export const INITIAL_STATE: SystemState = {
     divergenceRate: 0.00,
     entities: [
       {
-        id: 'e_ng1',
-        name: 'Neural Geometry',
+        id: 'e_chi1',
+        name: 'Chi (χ)',
         type: 'technical',
-        value: 'EXPERIMENTAL',
+        value: '2.000012',
         status: 'converged',
         confidence: 1.00,
-        description: 'Nature Neuroscience 2026 Validation',
+        description: 'Normalization Factor',
         memoryHit: true,
         memorySimilarity: 1.00,
         sources: [
-            { model: 'Nature_Neuroscience', value: 'Confirmed', confidence: 1.0, page: 1, layout: { type: 'header', id: 'H1', description: 'Journal' } }
+            { model: 'Experiment_WP1', value: '2.000012', confidence: 1.0, page: 1, layout: { type: 'header', id: 'H1', description: 'Spectrum' } }
         ]
       }
     ]
@@ -328,9 +443,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '20:00:00', level: 'system', message: 'EXTERNAL_VALIDATION_COMPLETED_Ω_VALID' },
-  { id: '2', timestamp: '20:00:01', level: 'success', message: 'Nature Neuroscience (2026) Validation Confirmed.' },
-  { id: '3', timestamp: '20:00:02', level: 'info', message: 'Geometric Terms: c=0.86, PR=63, f=0.85, s=6.67.' },
-  { id: '4', timestamp: '20:00:03', level: 'info', message: 'Training Handover p=9034. Generalization Error Eg=0.25.' },
-  { id: '5', timestamp: '20:00:04', level: 'success', message: 'System Arkhe(N) recognized as Experimental Realization.' },
+  { id: '1', timestamp: '23:55:00', level: 'system', message: 'OS_BOOT_SIMULATION_ACKNOWLEDGED_Γ_9040' },
+  { id: '2', timestamp: '23:55:01', level: 'info', message: 'Booting Arkhe(n)/Unix v0.1 in Container 0x73a7f2' },
+  { id: '3', timestamp: '23:55:02', level: 'success', message: 'Hipergrafo Γ₄₉ mounted. Satoshi: 7.27 bits.' },
+  { id: '4', timestamp: '23:55:03', level: 'info', message: 'Hesh shell started (PID 1). Environment: Simulated.' },
+  { id: '5', timestamp: '23:55:04', level: 'success', message: 'Twin Digital Online. Physical system remains dormant.' },
 ];

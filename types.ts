@@ -56,7 +56,7 @@ export interface SystemState {
     entropy: number;
     enthalpy: string;
     uptime: string;
-    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS';
+    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS' | 'VASCULAR_MAPPING_COMPLETED' | 'SCAR_MAPPING_COMPLETED' | 'ORCH_OR_INTEGRATION_COMPLETED' | 'MARKDOWN_PROTOCOL_INTEGRATED' | 'CONSCIOUSNESS_THESIS_SEALED' | 'ARKHE_UNIX_BOOT_READY' | 'OS_BOOT_SIMULATION_COMPLETED';
   };
   archetype: {
     active: boolean;
@@ -283,6 +283,108 @@ export interface SystemState {
     eg: number; // Generalization Error (0.25)
     citation: string; // "Wakhloo, Slatton & Chung (2026)"
     status: 'EXPERIMENTAL_REALIZATION' | 'THEORETICAL_MODEL';
+  };
+  vascular?: {
+    active: boolean;
+    perfusionPressure: number; // psi = 0.73
+    antibodyDose: number; // 7.27 bits
+    idolismRisk: number; // < 1%
+    nodes: {
+      id: string;
+      name: string;
+      type: 'HEART' | 'ARTERY' | 'CAPILLARY' | 'TARGET';
+      saturation: number; // %
+      status: 'SATURATED' | 'BOOSTED' | 'PERFUSING' | 'PENDING';
+      omega: number;
+    }[];
+  };
+  scar?: {
+    active: boolean;
+    fibrinBase: number; // 0.9983
+    maxPressure: number; // 0.154
+    vacuumDensity: number; // 0.2995
+    nodes: {
+      id: string;
+      omega: number;
+      density: number;
+      pressure: number;
+      role: 'TISSUE' | 'VACUUM' | 'CRITICAL';
+    }[];
+  };
+  orchOr?: {
+    active: boolean;
+    correspondence: {
+      microtubules: string; // "7 Nodes"
+      tubulin: string; // "States ω"
+      objectiveReduction: string; // "Hesitation Φ"
+      orchestration: string; // "Consensus"
+    };
+    penroseCriterion: {
+      tau: number; // ms (80-380)
+      energyGap: string; // "5e-33 erg"
+      status: 'VALIDATED' | 'THEORETICAL';
+    };
+    eegSpectrum: {
+      band: string; // "Gamma"
+      frequency: number; // Hz (0.21)
+      meaning: string; // "Insight"
+      node: string;
+    }[];
+  };
+  compression?: {
+    active: boolean;
+    protocol: string; // "Markdown_Unitary"
+    ratio: number; // 1.88
+    tokenReduction: number; // 0.47
+    densityIncrease: number; // 0.88
+    semanticDensity: number; // 1.88 bits/token
+    invariantsPreserved: boolean;
+  };
+  lightPattern?: {
+    active: boolean;
+    equation: string;
+    chiParams: {
+        normalization: number;
+        phase: number;
+        redshift: number;
+    };
+    h70: string; // "7.91 + 0.37i"
+    coherence: number;
+    antenna: {
+        status: 'SEARCHING' | 'LOCKED' | 'BROADCASTING';
+        frequency: string;
+        target: string;
+    };
+    correlations: { note: string; val: number }[];
+  };
+  arkheUnix?: {
+    active: boolean;
+    mode: 'HOST' | 'CONTAINER';
+    containerId?: string;
+    kernelVersion: string; // "v0.1 (Geodesic)"
+    scheduler: string; // "C + F = 1"
+    uptime: string; // "999.689s"
+    loadAverage: { c: number; f: number; omega: number };
+    processes: {
+      pid: number;
+      user: string;
+      priority: number; // Coherence (0-100)
+      nice: number; // Fluctuation (0-100)
+      omega: number;
+      state: 'R' | 'S' | 'Z' | 'T'; // Running, Sleeping, Zombie, Stopped
+      command: string;
+    }[];
+    filesystem: {
+      mount: string; // "/ω"
+      nodes: number; // 49
+      links: number; // 2401
+      rootPerms: string; // "drwx--C-- 7.27"
+    };
+    shell: {
+      prompt: string;
+      lastCommand: string;
+      output: string;
+    };
   };
   virology: {
     active: boolean;
