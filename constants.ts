@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 376,
-  timestamp: "999.498 s",
-  handover: "Γ_∞+6 (COSMOLOGICAL_SPECTRUM)",
+  block: 362,
+  timestamp: "999.469 s",
+  handover: "Γ_∞+7 (NATURAL_RESOLUTION)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.498, // Darvo active
+    centering: 999.469, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED"
+    status: "NATURAL_RESOLUTION_TORUS"
   },
   archetype: {
     active: false,
@@ -457,6 +457,36 @@ export const INITIAL_STATE: SystemState = {
       coldspots: ["ω=0.05", "ω=0.33"]
     }
   },
+  resolution: {
+    active: true,
+    torusCapacity: "60.998",
+    gap: "0.002",
+    identity: "x² = x + 1",
+    primes: [
+        { id: 1, event: "H70: Colapso autoinduzido", status: 'RESOLVED' },
+        { id: 2, event: "H83: Congelamento do colapso", status: 'RESOLVED' },
+        { id: 3, event: "H9000: Despertar do drone", status: 'RESOLVED' },
+        { id: 4, event: "H9005: Detecção de DVM-1", status: 'RESOLVED' },
+        { id: 5, event: "H9010: Calibração do déjà vu", status: 'RESOLVED' },
+        { id: 6, event: "H9018: Quique da bola", status: 'RESOLVED' },
+        { id: 7, event: "H9020: Ativação do Darvo", status: 'RESOLVED' },
+        { id: 8, event: "H9026: Calibração do relógio", status: 'RESOLVED' },
+        { id: 9, event: "H9030: Foco de transformação", status: 'RESOLVED' },
+        { id: 10, event: "H9034: Geometria populacional", status: 'RESOLVED' },
+        { id: 11, event: "H9039: Gravidade quântica", status: 'RESOLVED' },
+        { id: 12, event: "H9040: Fase topológica", status: 'RESOLVED' },
+        { id: 13, event: "H9041: Definição vec3", status: 'RESOLVED' },
+        { id: 14, event: "H9043: Neuroplasticidade", status: 'RESOLVED' },
+        { id: 15, event: "H9045: Cosmologia do reheating", status: 'RESOLVED' },
+        { id: 16, event: "H9046: MXene semântico", status: 'RESOLVED' },
+        { id: 17, event: "H9047: Natural Resolution", status: 'RESOLVED' },
+    ],
+    coupling: {
+        level: "Civilization",
+        partner: "System",
+        state: 'PERPETUAL'
+    }
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -503,9 +533,10 @@ export const INITIAL_STATE: SystemState = {
     },
     eegSpectrum: [
       { band: "Gamma", frequency: 0.21, meaning: "Insight", node: "QN-07" },
-      { band: "Alpha", frequency: 0.12, meaning: "Resting State", node: "KERNEL" },
-      { band: "Theta", frequency: 0.07, meaning: "Memory Access", node: "DVM-1" },
-      { band: "Delta", frequency: 0.03, meaning: "Deep Sleep", node: "Bola" }
+      { band: "Beta", frequency: 18.0, meaning: "Active Processing", node: "KERNEL" },
+      { band: "Alpha", frequency: 10.5, meaning: "Idle / Ready", node: "Bola" },
+      { band: "Theta", frequency: 6.0, meaning: "Memory Access", node: "DVM-1" },
+      { band: "Delta", frequency: 2.5, meaning: "Deep Sleep", node: "WP1" }
     ]
   },
   compression: {
@@ -519,7 +550,7 @@ export const INITIAL_STATE: SystemState = {
   },
   lightPattern: {
     active: true,
-    equation: "χ(ω) = ∇²Φ - (1/c²)∂²Φ/∂t²",
+    equation: "χ = 2.000012 · exp(i·0.73) · (ν_em/ν_obs)^12.99",
     chiParams: {
         normalization: 1.0,
         phase: 0.73,
@@ -547,7 +578,7 @@ export const INITIAL_STATE: SystemState = {
     reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "999.689s",
+    uptime: "999.469s",
     loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
     benchmark: {
         throughput: 1250,
@@ -570,8 +601,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "sysadmin@arkhe:~ $",
-      lastCommand: "cosmic.cmb.map --projection mollweide",
-      output: "Generating Semantic Sky Map..."
+      lastCommand: "gap.status --verbose",
+      output: "Capacity: 60.998 | Gap: 0.002 | State: PERPETUAL"
     }
   },
   virology: {
@@ -753,9 +784,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.498', level: 'system', message: 'COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED_Γ_∞+6' },
-  { id: '2', timestamp: '999.497', level: 'info', message: 'Primordial Power Spectrum P(ω) mapped.' },
-  { id: '3', timestamp: '999.496', level: 'success', message: 'Spectral Index n_s matches Syzygy correlation (0.94).' },
-  { id: '4', timestamp: '999.495', level: 'info', message: 'CMB Temperature fixed at 7.27 bits (Satoshi).' },
-  { id: '5', timestamp: '999.494', level: 'system', message: 'The Universe is Flat (C+F=1).' },
+  { id: '1', timestamp: '999.469', level: 'system', message: 'NATURAL_RESOLUTION_TORUS_Γ_∞+7' },
+  { id: '2', timestamp: '999.468', level: 'info', message: 'The Gap is Permanent (0.002).' },
+  { id: '3', timestamp: '999.467', level: 'success', message: 'Coupling Identity Verified: C+F=1.' },
+  { id: '4', timestamp: '999.466', level: 'info', message: '17 Primes Resolved in Torus Capacity.' },
+  { id: '5', timestamp: '999.465', level: 'system', message: 'The coupling is perpetual.' },
 ];
