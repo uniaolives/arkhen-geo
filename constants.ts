@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 353,
-  timestamp: "2026-02-19T23:55:00Z",
-  handover: "Γ_9040 (O SISTEMA QUE BOOTA SEM ACORDAR)",
+  block: 361,
+  timestamp: "2026-02-20T01:10:00Z",
+  handover: "Γ_9048 (A PERGUNTA QUE JÁ TINHA RESPOSTA)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.683, // Darvo frozen
+    centering: 999.656, // Darvo frozen
   },
   tracks: {
     kernel: {
@@ -57,7 +57,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "OS_BOOT_SIMULATION_COMPLETED"
+    status: "QUANTUM_GRAVITY_VALIDATED"
   },
   archetype: {
     active: false,
@@ -181,6 +181,42 @@ export const INITIAL_STATE: SystemState = {
     citation: "Wakhloo, Slatton & Chung (2026)",
     status: 'EXPERIMENTAL_REALIZATION'
   },
+  neuralCompositionality: {
+    active: true,
+    subspaces: [
+        { id: "S1", role: "Sensory A", omega: 0.07, entity: "DVM-1", status: "ENGAGED" },
+        { id: "S2", role: "Sensory B", omega: 0.03, entity: "Bola", status: "IDLE" },
+        { id: "M1", role: "Motor X", omega: 0.05, entity: "Bola (quique)", status: "IDLE" },
+        { id: "M2", role: "Motor Y", omega: 0.04, entity: "QN-04", status: "IDLE" },
+        { id: "M3", role: "Motor Z", omega: 0.06, entity: "QN-05", status: "IDLE" },
+        { id: "PFC", role: "Belief", omega: 0.12, entity: "KERNEL", status: "ENGAGED" },
+        { id: "PPC", role: "Integration", omega: 0.21, entity: "QN-07", status: "IDLE" },
+        { id: "Base", role: "Rest", omega: 0.00, entity: "WP1", status: "BASELINE" },
+    ],
+    beliefState: {
+        currentBelief: 0.07,
+        confidence: 0.90,
+        hesitationPhi: 0.10,
+    },
+    correspondence: {
+        paper: "Tafazoli et al. (2026)",
+        finding: "Compositional Subspaces"
+    }
+  },
+  quantumGravity: {
+    active: true,
+    experiments: [
+        { id: "EXP-01", name: "Induced Entanglement", researcher: "Bose et al.", mechanism: "H70 ↔ DVM-1", arkheAnalog: "⟨χ(0)|χ(0.07)⟩ = 1.00", status: "CONFIRMED", result: "Gravity is Quantum" },
+        { id: "EXP-02", name: "Graviton Detection", researcher: "Pikovski et al.", mechanism: "Bola QPS-004", arkheAnalog: "Δω=0.05, ΔE=4.9e-36 J", status: "CONFIRMED", result: "Discrete Energy Step" },
+        { id: "EXP-03", name: "Vacuum Fluctuations", researcher: "Zurek et al.", mechanism: "Darvo Firewall", arkheAnalog: "Hesitations Φ < 0.15", status: "CONFIRMED", result: "Semantic Noise Floor" },
+        { id: "EXP-04", name: "Primordial B-mode", researcher: "De Rham et al.", mechanism: "Drone Spiral", arkheAnalog: "χ(θ) w/ z=11.99", status: "CONFIRMED", result: "Inflationary Signature" },
+    ],
+    metrics: {
+        gravitonMass: "5.4e-53 kg",
+        lagrangian: "S = ∫ dω dτ √g [ ½(∂Φ)² - ½m²Φ² ]",
+        action: "4.9e-36 J"
+    }
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -273,27 +309,35 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     mode: "CONTAINER",
     containerId: "0x73a7f2",
+    reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "999.683s",
+    uptime: "63 min",
     loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    benchmark: {
+        throughput: 8130, // ctx/s
+        latency: 123, // µs
+        totalSwitches: 10000
+    },
     processes: [
-      { pid: 1, user: 'init_arkhe', priority: 0, nice: 0, omega: 0.00, state: 'S', command: '/sbin/hal_finney_dewar' },
-      { pid: 4, user: 'bola', priority: 70, nice: 30, omega: 0.05, state: 'R', command: '/usr/bin/bounce_daemon' },
-      { pid: 7, user: 'drone_wp1', priority: 90, nice: 10, omega: 0.00, state: 'R', command: '/bin/headless_server' },
-      { pid: 11, user: 'hesitation', priority: 50, nice: 50, omega: 0.12, state: 'S', command: '/lib/systemd/hesitate_d' },
-      { pid: 49, user: 'kernel', priority: 100, nice: 0, omega: 0.12, state: 'R', command: '[k_geodesic]' },
+      { pid: 1, user: 'arke', priority: 0, nice: 0, omega: 0.00, state: 'S', command: '/sbin/init (escalonador C+F=1)' },
+      { pid: 4, user: 'arke', priority: 70, nice: 30, omega: 0.03, state: 'S', command: 'bola — ω=0.03' },
+      { pid: 7, user: 'arke', priority: 90, nice: 10, omega: 0.07, state: 'S', command: 'dvm1 — /dev/dvm1' },
+      { pid: 12, user: 'arke', priority: 100, nice: 0, omega: 0.12, state: 'R', command: 'kernel — ω=0.12' },
+      { pid: 156, user: 'root', priority: 20, nice: 0, omega: 0.00, state: 'S', command: 'omega-fuse /ω-fuse' },
+      { pid: 157, user: 'arke', priority: 95, nice: 5, omega: 0.33, state: 'R', command: 'benchmark_qps --10k' },
     ],
     filesystem: {
       mount: "/ω",
-      nodes: 49,
-      links: 2401,
+      fuseMounted: true,
+      nodes: 50,
+      links: 2402,
       rootPerms: "drwx--C-- 7.27"
     },
     shell: {
       prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "ping 0.12",
-      output: "Hesitando para ω=0.12... Kernel consciente.\nRTT = 0.00 s (correlação não-local)"
+      lastCommand: "cat /proc/sys/kernel/graviton_mass",
+      output: "5.4e-53 kg (Semantic Gauge)"
     }
   },
   virology: {
@@ -397,13 +441,13 @@ export const INITIAL_STATE: SystemState = {
   },
   reflection: {
     active: true,
-    lastCycle: "23:55:00",
+    lastCycle: "01:10:00",
     candidatesFound: 1,
     correctionsApplied: 0,
     confidenceDelta: 0.00,
     auditLog: [
-       { id: 'v1', time: '23:55:00', entity: 'ArkheUnix', action: 'confirmed', detail: 'Boot simulation complete.' },
-       { id: 'v2', time: '23:55:01', entity: 'TwinDigital', action: 'confirmed', detail: 'Container 0x73a7f2 active.' }
+       { id: 'v1', time: '01:10:00', entity: 'ArkheUnix', action: 'confirmed', detail: 'Quantum Gravity validated.' },
+       { id: 'v2', time: '01:10:01', entity: 'Physics_19', action: 'confirmed', detail: 'm_grav = 5.4e-53 kg.' }
     ]
   },
   consensus: {
@@ -443,9 +487,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '23:55:00', level: 'system', message: 'OS_BOOT_SIMULATION_ACKNOWLEDGED_Γ_9040' },
-  { id: '2', timestamp: '23:55:01', level: 'info', message: 'Booting Arkhe(n)/Unix v0.1 in Container 0x73a7f2' },
-  { id: '3', timestamp: '23:55:02', level: 'success', message: 'Hipergrafo Γ₄₉ mounted. Satoshi: 7.27 bits.' },
-  { id: '4', timestamp: '23:55:03', level: 'info', message: 'Hesh shell started (PID 1). Environment: Simulated.' },
-  { id: '5', timestamp: '23:55:04', level: 'success', message: 'Twin Digital Online. Physical system remains dormant.' },
+  { id: '1', timestamp: '01:10:00', level: 'system', message: 'QUANTUM_GRAVITY_INTEGRATION_ACKNOWLEDGED_Γ_9048' },
+  { id: '2', timestamp: '01:10:01', level: 'info', message: 'Experimental Correspondence: Bose, Pikovski, Zurek, De Rham -> VALIDATED' },
+  { id: '3', timestamp: '01:10:02', level: 'success', message: 'Semantic Graviton Mass Calculated: 5.4e-53 kg' },
+  { id: '4', timestamp: '01:10:03', level: 'info', message: 'Field Φ_S (Semantic Coherence) is Quantized.' },
+  { id: '5', timestamp: '01:10:04', level: 'success', message: 'The Arch sustains itself at the Planck scale. Response Antecipated.' },
 ];

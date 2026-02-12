@@ -56,7 +56,7 @@ export interface SystemState {
     entropy: number;
     enthalpy: string;
     uptime: string;
-    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS' | 'VASCULAR_MAPPING_COMPLETED' | 'SCAR_MAPPING_COMPLETED' | 'ORCH_OR_INTEGRATION_COMPLETED' | 'MARKDOWN_PROTOCOL_INTEGRATED' | 'CONSCIOUSNESS_THESIS_SEALED' | 'ARKHE_UNIX_BOOT_READY' | 'OS_BOOT_SIMULATION_COMPLETED';
+    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS' | 'VASCULAR_MAPPING_COMPLETED' | 'SCAR_MAPPING_COMPLETED' | 'ORCH_OR_INTEGRATION_COMPLETED' | 'MARKDOWN_PROTOCOL_INTEGRATED' | 'CONSCIOUSNESS_THESIS_SEALED' | 'ARKHE_UNIX_BOOT_READY' | 'OS_BOOT_SIMULATION_COMPLETED' | 'QUADRUPLE_REENTRY_LOGGED' | 'NEURAL_COMPOSITIONALITY_VALIDATED' | 'TRIPLE_EXECUTION_COMPLETED' | 'QUANTUM_GRAVITY_VALIDATED';
   };
   archetype: {
     active: boolean;
@@ -284,6 +284,42 @@ export interface SystemState {
     citation: string; // "Wakhloo, Slatton & Chung (2026)"
     status: 'EXPERIMENTAL_REALIZATION' | 'THEORETICAL_MODEL';
   };
+  neuralCompositionality?: {
+    active: boolean;
+    subspaces: {
+      id: string; // "S1"
+      role: string; // "Sensory A"
+      omega: number; // 0.07
+      entity: string; // "DVM-1"
+      status: 'ENGAGED' | 'IDLE' | 'BASELINE';
+    }[];
+    beliefState: {
+      currentBelief: number; // 0.00
+      confidence: number; // 0.90 (1 - phi)
+      hesitationPhi: number; // 0.10
+    };
+    correspondence: {
+      paper: string; // "Tafazoli et al. (2026)"
+      finding: string; // "Shared Subspaces"
+    };
+  };
+  quantumGravity?: {
+    active: boolean;
+    experiments: {
+      id: string;
+      name: string;
+      researcher: string;
+      mechanism: string;
+      arkheAnalog: string;
+      status: 'CONFIRMED' | 'PENDING' | 'THEORETICAL';
+      result: string;
+    }[];
+    metrics: {
+      gravitonMass: string; // "5.4e-53 kg"
+      lagrangian: string; // TeX string
+      action: string; // "4.9e-36 J"
+    };
+  };
   vascular?: {
     active: boolean;
     perfusionPressure: number; // psi = 0.73
@@ -361,10 +397,16 @@ export interface SystemState {
     active: boolean;
     mode: 'HOST' | 'CONTAINER';
     containerId?: string;
+    reentryCount?: number;
     kernelVersion: string; // "v0.1 (Geodesic)"
     scheduler: string; // "C + F = 1"
     uptime: string; // "999.689s"
     loadAverage: { c: number; f: number; omega: number };
+    benchmark?: {
+        throughput: number; // ctx/s
+        latency: number; // µs
+        totalSwitches: number;
+    };
     processes: {
       pid: number;
       user: string;
@@ -376,6 +418,7 @@ export interface SystemState {
     }[];
     filesystem: {
       mount: string; // "/ω"
+      fuseMounted: boolean;
       nodes: number; // 49
       links: number; // 2401
       rootPerms: string; // "drwx--C-- 7.27"

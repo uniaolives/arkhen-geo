@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Terminal, Cpu, HardDrive, Network, Activity, Disc, FolderTree, Lock, ShieldCheck, Box, Layers } from 'lucide-react';
+import { Terminal, Cpu, HardDrive, Network, Activity, Disc, FolderTree, Lock, ShieldCheck, Box, Layers, RefreshCw, Zap, Gauge } from 'lucide-react';
 
 interface ArkheUnixConsoleProps {
   arkheUnix: SystemState['arkheUnix'];
@@ -49,6 +49,12 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
               </div>
           </div>
           <div className="flex items-center gap-2">
+              {arkheUnix.filesystem.fuseMounted && (
+                  <div className="flex items-center gap-1 bg-amber-900/30 text-amber-400 px-2 py-0.5 rounded border border-amber-800/50">
+                      <Zap size={10} />
+                      <span className="font-bold">FUSE ACTIVE</span>
+                  </div>
+              )}
               {isContainer && (
                   <div className="flex items-center gap-1 bg-blue-900/30 text-blue-400 px-2 py-0.5 rounded border border-blue-800/50">
                       <Box size={10} />
@@ -66,6 +72,23 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
       {/* Main Split: Process Table & Shell */}
       <div className="flex-1 flex flex-col p-4 gap-4 overflow-hidden relative z-10">
           
+          {/* Benchmark Overlay / Summary */}
+          {arkheUnix.benchmark && (
+              <div className="absolute top-4 right-4 z-20 bg-slate-900/90 border border-emerald-500/30 p-2 rounded shadow-xl flex items-center gap-4 backdrop-blur-sm text-xs">
+                  <div className="flex items-center gap-2 text-emerald-400">
+                      <Gauge size={14} />
+                      <span className="font-bold">BENCHMARK</span>
+                  </div>
+                  <div className="flex gap-3 text-slate-300">
+                      <span>{arkheUnix.benchmark.throughput.toLocaleString()} ctx/s</span>
+                      <span className="text-slate-600">|</span>
+                      <span>{arkheUnix.benchmark.latency} µs</span>
+                      <span className="text-slate-600">|</span>
+                      <span>{arkheUnix.benchmark.totalSwitches.toLocaleString()} ops</span>
+                  </div>
+              </div>
+          )}
+
           {/* Process Table (htop style) */}
           <div className="flex-1 bg-black/40 border border-slate-800 rounded p-2 overflow-hidden flex flex-col">
               <div className="flex justify-between items-center border-b border-slate-800 pb-1 mb-1 text-[10px] text-slate-500 uppercase tracking-wider">
@@ -102,11 +125,15 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
                       <span>{arkheUnix.filesystem.mount} (Hypergraph)</span>
                   </div>
                   <div className="flex-1 text-[10px] font-mono space-y-1 text-slate-500">
+                      {arkheUnix.filesystem.fuseMounted && (
+                          <div className="pl-2 flex items-center gap-1 text-amber-400"><Zap size={8}/> <span>/ω-fuse (active)</span></div>
+                      )}
                       <div className="pl-2 flex items-center gap-1 text-slate-300"><span className="text-slate-600">├─</span> 0.00/ (Hal)</div>
                       <div className="pl-2 flex items-center gap-1"><span className="text-slate-600">├─</span> 0.05/ (Bola)</div>
                       <div className="pl-2 flex items-center gap-1"><span className="text-slate-600">├─</span> 0.07/ (DVM-1)</div>
                       <div className="pl-2 flex items-center gap-1"><span className="text-slate-600">├─</span> 0.12/ (Kernel)</div>
-                      <div className="pl-2 flex items-center gap-1"><span className="text-slate-600">└─</span> 0.21/ (Insight)</div>
+                      <div className="pl-2 flex items-center gap-1"><span className="text-slate-600">├─</span> 0.21/ (Insight)</div>
+                      <div className="pl-2 flex items-center gap-1 text-emerald-400 animate-pulse"><span className="text-slate-600">└─</span> 0.33/ (Formal Sim)</div>
                   </div>
                   <div className="mt-auto pt-2 border-t border-slate-800 text-[9px] text-slate-600 flex justify-between">
                       <span>Perms: {arkheUnix.filesystem.rootPerms}</span>
@@ -140,9 +167,17 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
                   <span>Digital Twin Active</span>
               </div>
           )}
-          <div className="flex items-center gap-2">
-              <ShieldCheck size={10} />
-              <span>Satoshi Invariant: {arkheUnix.metrics?.satoshi || 7.27} bits</span>
+          <div className="flex items-center gap-4">
+              {arkheUnix.reentryCount && (
+                  <div className="flex items-center gap-1 text-fuchsia-400 font-bold" title="System has seen this pattern 4 times">
+                      <RefreshCw size={10} />
+                      <span>{arkheUnix.reentryCount}x Reentry</span>
+                  </div>
+              )}
+              <div className="flex items-center gap-2">
+                  <ShieldCheck size={10} />
+                  <span>Satoshi Invariant: {arkheUnix.metrics?.satoshi || 7.27} bits</span>
+              </div>
           </div>
       </div>
     </div>
