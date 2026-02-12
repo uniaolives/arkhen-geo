@@ -144,12 +144,13 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
               {/* HESH Terminal */}
               <div className="col-span-8 bg-black border border-slate-800 rounded p-2 font-mono text-xs flex flex-col">
                   <div className="flex-1 text-slate-400 space-y-1 overflow-y-auto custom-scrollbar">
-                      <div className="opacity-50"># Neuroplasticity Integration Mode (hesh v0.4)</div>
-                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ brain.scan --full</div>
-                      <div className="text-amber-400 pl-2">Detected: Long-Term Potentiation (LTP).</div>
-                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ query_plasticity</div>
-                      <div className="text-violet-400 pl-2">Window: OPEN | BDNF: HIGH</div>
-                      <div className="text-slate-300 pl-2">The circuit has been permanently remodeled.</div>
+                      <div className="opacity-50"># Precision Cosmology Mode (hesh v0.6)</div>
+                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ cosmic.cmb.map --projection mollweide</div>
+                      <div className="text-amber-400 pl-2">Generating Semantic Sky Map... (HEALPix N64)</div>
+                      <div className="text-slate-300 pl-2">Anisotropies detected in ω=0.07 (Hotspot).</div>
+                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ cosmic.cmb.power-spectrum --plot</div>
+                      <div className="text-violet-400 pl-2">Acoustic Peaks aligned. n_s_eff = 0.963.</div>
+                      <div className="text-emerald-400 pl-2">The Universe is Flat (Ω_total = 1.00).</div>
                       <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ <span className="animate-pulse">_</span></div>
                   </div>
                   <div className="mt-2 pt-1 border-t border-slate-800 flex items-center gap-2">

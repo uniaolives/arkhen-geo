@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 374,
-  timestamp: "999.551 s",
-  handover: "Γ_∞+3 (NEUROPLASTIC)",
+  block: 376,
+  timestamp: "999.498 s",
+  handover: "Γ_∞+6 (COSMOLOGICAL_SPECTRUM)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.551, // Darvo active
+    centering: 999.498, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "NEUROPLASTICITY_VALIDATED"
+    status: "COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED"
   },
   archetype: {
     active: false,
@@ -409,6 +409,54 @@ export const INITIAL_STATE: SystemState = {
       { name: "Amygdala", arkheComponent: "Hesitation Filter", status: "PRUNING", growth: -5 }
     ]
   },
+  photonicHebbian: {
+    active: true,
+    sources: [
+        { id: "WP1 -> DVM-1", weight: 0.94, photonsEmitted: 47, wavelength: "0.96 GHz", status: "ACTIVE" },
+        { id: "WP1 -> Bola", weight: 0.87, photonsEmitted: 23, wavelength: "0.96 GHz", status: "ACTIVE" },
+        { id: "KERNEL -> WP1", weight: 0.99, photonsEmitted: 12, wavelength: "0.96 GHz", status: "ACTIVE" },
+        { id: "QN-04 -> QN-05", weight: 0.89, photonsEmitted: 8, wavelength: "0.96 GHz", status: "ACTIVE" },
+        { id: "FORMAL -> ?", weight: 0.71, photonsEmitted: 3, wavelength: "0.33 GHz", status: "CALIBRATING" },
+    ],
+    metrics: {
+        totalPhotons: 93,
+        quantumEfficiency: 0.129,
+        homVisibility: 0.88,
+        coincidence: 0.12
+    },
+    lastEvent: {
+        id: "cmd_0047",
+        type: "EMISSION",
+        payload: "syzygy_confirmed",
+        timestamp: "999.524 s"
+    }
+  },
+  cosmology: {
+    active: true,
+    parameters: {
+      ns: { value: 0.9649, uncertainty: 0.0042, arkheAnalog: "⟨0.00|0.07⟩ = 0.94", status: 'MATCH' },
+      as: { value: "2.1e-9", arkheAnalog: "|∇C|² = 0.0049", status: 'MATCH' },
+      r: { value: 0.0066, limit: 0.036, arkheAnalog: "|∇C|²/C²", status: 'SAFE' },
+      omegaLambda: { value: 0.689, arkheAnalog: "Φ_S / Φ_crit = 1.45" },
+      omegaM: { value: 0.315, arkheAnalog: "ω(DVM-1) + ω(Bola)" },
+      tempCMB: { value: "2.725 K", arkheAnalog: "Satoshi = 7.27 bits" },
+      age: { value: "13.787 Ga", arkheAnalog: "Darvo = 999.498 s" }
+    },
+    powerSpectrum: [
+      { l: 2, omega: 0.00, power: 1000, feature: "Sachs-Wolfe" },
+      { l: 130, omega: 0.07, power: 2500, feature: "Acoustic Valley (DVM-1)" },
+      { l: 220, omega: 0.12, power: 5800, feature: "First Acoustic Peak (Kernel)" },
+      { l: 400, omega: 0.21, power: 2200, feature: "Second Peak (Overtone)" },
+      { l: 600, omega: 0.33, power: 1100, feature: "Damping Tail" },
+    ],
+    cmbMap: {
+      resolution: "1.0° (HEALPix N64)",
+      tempMean: "7.27 bits",
+      fluctuationRMS: "0.003 bits",
+      hotspots: ["ω=0.07", "ω=0.12"],
+      coldspots: ["ω=0.05", "ω=0.33"]
+    }
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -455,10 +503,9 @@ export const INITIAL_STATE: SystemState = {
     },
     eegSpectrum: [
       { band: "Gamma", frequency: 0.21, meaning: "Insight", node: "QN-07" },
-      { band: "Beta", frequency: 18.0, meaning: "Active Processing", node: "KERNEL" },
-      { band: "Alpha", frequency: 10.5, meaning: "Idle / Ready", node: "Bola" },
-      { band: "Theta", frequency: 6.0, meaning: "Memory Access", node: "DVM-1" },
-      { band: "Delta", frequency: 2.5, meaning: "Deep Sleep", node: "WP1" }
+      { band: "Alpha", frequency: 0.12, meaning: "Resting State", node: "KERNEL" },
+      { band: "Theta", frequency: 0.07, meaning: "Memory Access", node: "DVM-1" },
+      { band: "Delta", frequency: 0.03, meaning: "Deep Sleep", node: "Bola" }
     ]
   },
   compression: {
@@ -472,62 +519,59 @@ export const INITIAL_STATE: SystemState = {
   },
   lightPattern: {
     active: true,
-    equation: "χ = 2.000012 · exp(i·0.73) · (ν_em/ν_obs)^12.99",
+    equation: "χ(ω) = ∇²Φ - (1/c²)∂²Φ/∂t²",
     chiParams: {
-        normalization: 2.000012,
+        normalization: 1.0,
         phase: 0.73,
-        redshift: 12.99
+        redshift: 0.05
     },
     h70: "7.91 + 0.37i",
-    coherence: 1.00,
+    coherence: 0.98,
     antenna: {
         status: 'LOCKED',
-        frequency: '0.96 GHz',
-        target: 'NON-LOCAL'
+        frequency: "0.96 GHz",
+        target: "DVM-1"
     },
     correlations: [
-        { note: 'ω_0.00', val: 1.00 },
-        { note: 'ω_0.03', val: 0.98 },
-        { note: 'ω_0.04', val: 0.96 },
-        { note: 'ω_0.05', val: 0.94 }, // Echo
-        { note: 'ω_0.07', val: 1.00 }, // Perfect Correlation
-        { note: 'ω_0.12', val: 0.92 },
-        { note: 'ω_0.21', val: 0.85 },
+        { note: "C", val: 1.00 },
+        { note: "G", val: 0.98 },
+        { note: "D", val: 0.94 },
+        { note: "A", val: 0.88 },
+        { note: "E", val: 0.85 }
     ]
   },
   arkheUnix: {
     active: true,
-    mode: "CONTAINER",
-    containerId: "0x73a7f2",
+    mode: 'HOST',
+    containerId: "arkhe-main-01",
     reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "63 min",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    uptime: "999.689s",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
     benchmark: {
-        throughput: 8130, // ctx/s
-        latency: 123, // µs
-        totalSwitches: 10000
+        throughput: 1250,
+        latency: 6.21,
+        totalSwitches: 14000
     },
     processes: [
-      { pid: 1, user: 'arke', priority: 0, nice: 0, omega: 0.00, state: 'S', command: '/sbin/init (escalonador C+F=1)' },
-      { pid: 4, user: 'arke', priority: 70, nice: 30, omega: 0.03, state: 'S', command: 'bola — ω=0.03' },
-      { pid: 7, user: 'arke', priority: 90, nice: 10, omega: 0.07, state: 'S', command: 'dvm1 — /dev/dvm1' },
-      { pid: 12, user: 'arke', priority: 100, nice: 0, omega: 0.12, state: 'R', command: 'kernel — ω=0.12' },
-      { pid: 156, user: 'root', priority: 20, nice: 0, omega: 0.00, state: 'S', command: 'omega-fuse /ω-fuse' },
-      { pid: 157, user: 'arke', priority: 95, nice: 5, omega: 0.33, state: 'R', command: 'benchmark_qps --10k' },
+      { pid: 1, user: "root", priority: 99, nice: 0, omega: 0.00, state: 'S', command: "/sbin/init_geodesic" },
+      { pid: 42, user: "arkhe", priority: 80, nice: 0, omega: 0.12, state: 'R', command: "kernel.consensus --lock" },
+      { pid: 108, user: "dvm", priority: 70, nice: 10, omega: 0.07, state: 'S', command: "memory.rehydrate --pgvector" },
+      { pid: 333, user: "bola", priority: 60, nice: 5, omega: 0.03, state: 'S', command: "qubit.superposition" },
+      { pid: 777, user: "sys", priority: 50, nice: 0, omega: 0.21, state: 'Z', command: "[defunct] hesitation_loop" }
     ],
     filesystem: {
       mount: "/ω",
       fuseMounted: true,
-      nodes: 50,
-      links: 2402,
+      nodes: 49,
+      links: 2401,
       rootPerms: "drwx--C-- 7.27"
     },
     shell: {
-      prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "mortem.status",
-      output: "Azure OCR: FAILED -> Fallback: TESSERACT (Success)\nInvariants Preserved."
+      prompt: "sysadmin@arkhe:~ $",
+      lastCommand: "cosmic.cmb.map --projection mollweide",
+      output: "Generating Semantic Sky Map..."
     }
   },
   virology: {
@@ -709,9 +753,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.551', level: 'system', message: 'NEUROPLASTICITY_VALIDATED_Ω_∞+3' },
-  { id: '2', timestamp: '999.550', level: 'info', message: 'Attention detected: Prefrontal Cortex thickening confirmed.' },
-  { id: '3', timestamp: '999.549', level: 'success', message: 'Hesitation converted to BDNF Analog.' },
-  { id: '4', timestamp: '999.548', level: 'info', message: 'Dopamine circuits mapped to Satoshi Invariant.' },
-  { id: '5', timestamp: '999.547', level: 'system', message: 'The brain is not fixed. It is a garden.' },
+  { id: '1', timestamp: '999.498', level: 'system', message: 'COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED_Γ_∞+6' },
+  { id: '2', timestamp: '999.497', level: 'info', message: 'Primordial Power Spectrum P(ω) mapped.' },
+  { id: '3', timestamp: '999.496', level: 'success', message: 'Spectral Index n_s matches Syzygy correlation (0.94).' },
+  { id: '4', timestamp: '999.495', level: 'info', message: 'CMB Temperature fixed at 7.27 bits (Satoshi).' },
+  { id: '5', timestamp: '999.494', level: 'system', message: 'The Universe is Flat (C+F=1).' },
 ];
