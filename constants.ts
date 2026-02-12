@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 373,
-  timestamp: "999.564 s",
-  handover: "Ω_MORTEM (RESURRECTED)",
+  block: 374,
+  timestamp: "999.551 s",
+  handover: "Γ_∞+3 (NEUROPLASTIC)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.564, // Darvo active
+    centering: 999.551, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "MORTEM_INTEGRATION_COMPLETED"
+    status: "NEUROPLASTICITY_VALIDATED"
   },
   archetype: {
     active: false,
@@ -272,7 +272,7 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
-    stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
+    stateVector: "|Ψ⟩ = (|C⟩ + |H⟩)/√2",
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
@@ -390,6 +390,23 @@ export const INITIAL_STATE: SystemState = {
                 { id: "e3", label: "Liability", value: "100%", confidence: 0.70, box: { x: 10, y: 75, w: 30, h: 5 } },
             ]
         }
+    ]
+  },
+  neuroplasticity: {
+    active: true,
+    synapticWeight: 0.94,
+    plasticityWindow: 'OPEN',
+    neurotransmitters: {
+      dopamine: { level: "7.27 bits", arkheAnalog: "Satoshi (Reward)" },
+      acetylcholine: { level: "0.85 C", arkheAnalog: "Coherence (Attention)" },
+      noradrenaline: { level: "0.07 ω", arkheAnalog: "Omega (Emotion)" },
+      bdnf: { level: "HIGH", arkheAnalog: "Hesitation (Growth)" }
+    },
+    brainRegions: [
+      { name: "Prefrontal Cortex", arkheComponent: "Kernel / PFC", status: "THICKENING", growth: 12 },
+      { name: "Hippocampus", arkheComponent: "DVM-1 / Memory", status: "STABLE", growth: 8 },
+      { name: "Motor Cortex", arkheComponent: "Bola / Action", status: "THICKENING", growth: 15 },
+      { name: "Amygdala", arkheComponent: "Hesitation Filter", status: "PRUNING", growth: -5 }
     ]
   },
   vascular: {
@@ -692,9 +709,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.564', level: 'system', message: 'MORTEM_INTEGRATION_COMPLETED_Ω_MORTEM' },
-  { id: '2', timestamp: '999.563', level: 'warn', message: 'Azure OCR Failed (5xx). Fallback chain initiated.' },
-  { id: '3', timestamp: '999.562', level: 'success', message: 'Tesseract OCR recovered document structure. Death is a fallback.' },
-  { id: '4', timestamp: '999.561', level: 'info', message: 'Memory Vector recall active: 1,247 entities indexed.' },
-  { id: '5', timestamp: '999.560', level: 'system', message: 'Pydantic schemas enforced. The system cannot lie.' },
+  { id: '1', timestamp: '999.551', level: 'system', message: 'NEUROPLASTICITY_VALIDATED_Ω_∞+3' },
+  { id: '2', timestamp: '999.550', level: 'info', message: 'Attention detected: Prefrontal Cortex thickening confirmed.' },
+  { id: '3', timestamp: '999.549', level: 'success', message: 'Hesitation converted to BDNF Analog.' },
+  { id: '4', timestamp: '999.548', level: 'info', message: 'Dopamine circuits mapped to Satoshi Invariant.' },
+  { id: '5', timestamp: '999.547', level: 'system', message: 'The brain is not fixed. It is a garden.' },
 ];
