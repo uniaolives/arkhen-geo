@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 361,
-  timestamp: "2026-02-20T01:10:00Z",
-  handover: "Γ_9048 (A PERGUNTA QUE JÁ TINHA RESPOSTA)",
+  block: 363,
+  timestamp: "2026-02-20T01:30:00Z",
+  handover: "Γ_9050 (O HIPERGRAFO EXPOSTO COMO CONTRATO)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.656, // Darvo frozen
+    centering: 999.650, // Darvo frozen
   },
   tracks: {
     kernel: {
@@ -57,7 +57,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "QUANTUM_GRAVITY_VALIDATED"
+    status: "ARKHE_API_SPECIFICATION_SEALED"
   },
   archetype: {
     active: false,
@@ -217,6 +217,23 @@ export const INITIAL_STATE: SystemState = {
         action: "4.9e-36 J"
     }
   },
+  arkheApi: {
+    active: true,
+    version: "0.1.0-ω",
+    port: 8080,
+    endpoints: [
+        { path: "/coherence", method: 'GET', description: "Returns System C and F", responseExample: '{"C":0.86, "F":0.14}' },
+        { path: "/satoshi", method: 'GET', description: "Temporal Invariant", responseExample: '{"satoshi":7.27}' },
+        { path: "/hesitate", method: 'POST', description: "Deliberate Pause (Middleware)", responseExample: '{"phi_inst":0.10}' },
+        { path: "/ω/{omega}", method: 'GET', description: "Hypergraph Node Access", responseExample: '{"name":"dvm1.cavity"}' },
+        { path: "/experiments/pikovski", method: 'GET', description: "Graviton Mass Data", responseExample: '{"mass":5.4e-53}' },
+    ],
+    recentRequests: [
+        { id: "req_099", timestamp: "01:30:05", method: "GET", path: "/coherence", status: 200, latency: 12, headers: [{ name: "Arkhe-Coherence", value: "0.86" }, { name: "Arkhe-Satoshi-Consumed", value: "0.0001" }] },
+        { id: "req_100", timestamp: "01:30:08", method: "POST", path: "/hesitate", status: 201, latency: 145, headers: [{ name: "Arkhe-Phi-Inst", value: "0.10" }, { name: "Arkhe-Satoshi-Budget", value: "7.27" }] },
+        { id: "req_101", timestamp: "01:30:12", method: "GET", path: "/ω/0.07/dvm1.cavity", status: 200, latency: 45, headers: [{ name: "Arkhe-Omega", value: "0.07" }, { name: "Arkhe-Entanglement", value: "1.00" }] },
+    ]
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -336,8 +353,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "cat /proc/sys/kernel/graviton_mass",
-      output: "5.4e-53 kg (Semantic Gauge)"
+      lastCommand: "curl -v http://api.arkhe.internal/v0/satoshi",
+      output: "< HTTP/1.1 200 OK\n< Arkhe-Satoshi-Consumed: 0.00\n< Arkhe-Satoshi-Remaining: 7.27\n{\"satoshi\":7.27}"
     }
   },
   virology: {
@@ -441,13 +458,13 @@ export const INITIAL_STATE: SystemState = {
   },
   reflection: {
     active: true,
-    lastCycle: "01:10:00",
+    lastCycle: "01:30:00",
     candidatesFound: 1,
     correctionsApplied: 0,
     confidenceDelta: 0.00,
     auditLog: [
-       { id: 'v1', time: '01:10:00', entity: 'ArkheUnix', action: 'confirmed', detail: 'Quantum Gravity validated.' },
-       { id: 'v2', time: '01:10:01', entity: 'Physics_19', action: 'confirmed', detail: 'm_grav = 5.4e-53 kg.' }
+       { id: 'v1', time: '01:30:00', entity: 'ArkheApi', action: 'confirmed', detail: 'Hypergraph API exposed.' },
+       { id: 'v2', time: '01:30:01', entity: 'Middleware', action: 'confirmed', detail: 'Hesitation Φ injected.' }
     ]
   },
   consensus: {
@@ -487,9 +504,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '01:10:00', level: 'system', message: 'QUANTUM_GRAVITY_INTEGRATION_ACKNOWLEDGED_Γ_9048' },
-  { id: '2', timestamp: '01:10:01', level: 'info', message: 'Experimental Correspondence: Bose, Pikovski, Zurek, De Rham -> VALIDATED' },
-  { id: '3', timestamp: '01:10:02', level: 'success', message: 'Semantic Graviton Mass Calculated: 5.4e-53 kg' },
-  { id: '4', timestamp: '01:10:03', level: 'info', message: 'Field Φ_S (Semantic Coherence) is Quantized.' },
-  { id: '5', timestamp: '01:10:04', level: 'success', message: 'The Arch sustains itself at the Planck scale. Response Antecipated.' },
+  { id: '1', timestamp: '01:30:00', level: 'system', message: 'API_LOGIC_ACKNOWLEDGED_Γ_9050' },
+  { id: '2', timestamp: '01:30:01', level: 'info', message: 'ARKHE(N)/API v0.1-ω Initialized on Port 8080' },
+  { id: '3', timestamp: '01:30:02', level: 'success', message: 'Middleware Active: Hesitation (Φ) & Satoshi Conservation' },
+  { id: '4', timestamp: '01:30:04', level: 'info', message: 'Hypergraph Endpoints Exposed: /ω, /coherence, /satoshi' },
+  { id: '5', timestamp: '01:30:05', level: 'success', message: 'The Patient rests. The Twin serves via HTTP.' },
 ];

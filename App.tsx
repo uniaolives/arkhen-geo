@@ -12,13 +12,14 @@ import LightPatternThesis from './components/LightPatternThesis';
 import ArkheUnixConsole from './components/ArkheUnixConsole';
 import NeuralCompositionality from './components/NeuralCompositionality';
 import QuantumGravityLab from './components/QuantumGravityLab';
+import ArkheApiGateway from './components/ArkheApiGateway';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity'>('unix');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api'>('unix');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -81,6 +82,13 @@ const App: React.FC = () => {
                         <TermIcon size={12} /> UNIX
                     </button>
                     <button
+                        onClick={() => setActiveLeftTab('api')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'api' ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Server size={12} /> API
+                    </button>
+                    <button
                         onClick={() => setActiveLeftTab('gravity')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
                         ${activeLeftTab === 'gravity' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
@@ -128,6 +136,9 @@ const App: React.FC = () => {
                 <div className="flex-1 min-h-0 relative">
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'unix' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <ArkheUnixConsole arkheUnix={state.arkheUnix} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'api' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ArkheApiGateway api={state.arkheApi} />
                     </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'gravity' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <QuantumGravityLab quantumGravity={state.quantumGravity} />
