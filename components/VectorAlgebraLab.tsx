@@ -1,35 +1,175 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SystemState } from '../types';
-import { DraftingCompass, ArrowUpRight, Scale, Calculator, Box, Grid, Move3d, Variable, Sigma, RefreshCw } from 'lucide-react';
+import { DraftingCompass, ArrowUpRight, Scale, Calculator, Box, Grid, Move3d, Variable, Sigma, RefreshCw, Circle, Layers } from 'lucide-react';
 
 interface VectorAlgebraLabProps {
   vectorSpace: SystemState['vectorSpace'];
 }
+
+// Helper to project 3D coordinates onto 2D canvas with perspective
+const project3D = (x: number, y: number, z: number, width: number, height: number, scale: number = 200) => {
+    // Simple perspective projection
+    const fov = 500;
+    const distance = 400;
+    const scaleFactor = fov / (fov + z + distance);
+    
+    // Rotate slightly for better view
+    const angleX = 0.5; // Tilt down
+    const angleY = 0.3; // Rotate side
+    
+    // Rotation X
+    const y1 = y * Math.cos(angleX) - z * Math.sin(angleX);
+    const z1 = y * Math.sin(angleX) + z * Math.cos(angleX);
+    
+    // Rotation Y
+    const x2 = x * Math.cos(angleY) + z1 * Math.sin(angleY);
+    const z2 = -x * Math.sin(angleY) + z1 * Math.cos(angleY);
+    
+    const x2d = x2 * scaleFactor * scale + width / 2;
+    const y2d = y1 * scaleFactor * scale + height / 2;
+    
+    return { x: x2d, y: y2d, scale: scaleFactor };
+};
 
 const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
   const [activeOp, setActiveOp] = useState<'NORM' | 'INNER' | 'ADD'>('INNER');
   const [activeMode, setActiveMode] = useState<'EUCLIDEAN' | 'TORUS'>('TORUS');
   const [selectedVec1, setSelectedVec1] = useState<string>('v1');
   const [selectedVec2, setSelectedVec2] = useState<string>('v2');
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   if (!vectorSpace) return null;
 
   const v1 = vectorSpace.vectors.find(v => v.id === selectedVec1);
   const v2 = vectorSpace.vectors.find(v => v.id === selectedVec2);
 
+  // --- 3D Torus Rendering Logic ---
+  useEffect(() => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let animationFrameId: number;
+      let rotation = 0;
+
+      const render = () => {
+          if (!canvas || !ctx) return;
+          const width = canvas.clientWidth;
+          const height = canvas.clientHeight;
+          canvas.width = width; // Handle high DPI if needed, sticking to 1:1 for simplicity here
+          canvas.height = height;
+
+          ctx.clearRect(0, 0, width, height);
+          
+          rotation += 0.005;
+
+          // Torus Parameters
+          const R = 2; // Major Radius
+          const r = 0.8; // Minor Radius
+          
+          // Draw Wireframe (simplified as rings)
+          ctx.strokeStyle = 'rgba(79, 70, 229, 0.15)'; // Indigo
+          ctx.lineWidth = 1;
+
+          // Longitudinal lines (Phi rings)
+          for (let i = 0; i < 16; i++) {
+              ctx.beginPath();
+              for (let j = 0; j <= 32; j++) {
+                  const phi = (i / 16) * Math.PI * 2;
+                  const theta = (j / 32) * Math.PI * 2;
+                  
+                  // Torus Equation
+                  const x = (R + r * Math.cos(theta)) * Math.cos(phi + rotation);
+                  const y = (R + r * Math.cos(theta)) * Math.sin(phi + rotation);
+                  const z = r * Math.sin(theta);
+                  
+                  const p = project3D(x, y, z, width, height, 60);
+                  if (j === 0) ctx.moveTo(p.x, p.y);
+                  else ctx.lineTo(p.x, p.y);
+              }
+              ctx.stroke();
+          }
+
+          // Latitudinal lines (Theta rings)
+          for (let i = 0; i < 12; i++) {
+              ctx.beginPath();
+              for (let j = 0; j <= 32; j++) {
+                  const theta = (i / 12) * Math.PI * 2;
+                  const phi = (j / 32) * Math.PI * 2;
+                  
+                  const x = (R + r * Math.cos(theta)) * Math.cos(phi + rotation);
+                  const y = (R + r * Math.cos(theta)) * Math.sin(phi + rotation);
+                  const z = r * Math.sin(theta);
+                  
+                  const p = project3D(x, y, z, width, height, 60);
+                  if (j === 0) ctx.moveTo(p.x, p.y);
+                  else ctx.lineTo(p.x, p.y);
+              }
+              ctx.stroke();
+          }
+
+          // Draw Nodes (Vectors mapped to Torus)
+          // Mapping: omega (0..0.33) -> Theta (Poloidal), phase -> Phi (Toroidal)
+          vectorSpace.vectors.forEach(vec => {
+              const omegaNorm = (vec.omega / 0.33) * Math.PI * 2; // Map 0.33 to full circle
+              const phaseNorm = (vec.phase || 0); 
+
+              const x = (R + r * Math.cos(omegaNorm)) * Math.cos(phaseNorm + rotation);
+              const y = (R + r * Math.cos(omegaNorm)) * Math.sin(phaseNorm + rotation);
+              const z = r * Math.sin(omegaNorm);
+
+              const p = project3D(x, y, z, width, height, 60);
+
+              // Visual Style based on Properties
+              const radius = 3 + (vec.satoshi / 7.27) * 4 * p.scale; // Size via Satoshi
+              const opacity = 0.4 + (vec.c * 0.6); // Opacity via Coherence
+              
+              // Draw Node
+              ctx.fillStyle = vec.role === 'NEURONAL' ? `rgba(16, 185, 129, ${opacity})` : 
+                              vec.role === 'ASTROCYTIC' ? `rgba(139, 92, 246, ${opacity})` : 
+                              `rgba(244, 63, 94, ${opacity})`;
+              
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+              ctx.fill();
+              
+              // Glow
+              ctx.shadowBlur = 10;
+              ctx.shadowColor = ctx.fillStyle as string;
+              ctx.stroke();
+              ctx.shadowBlur = 0;
+
+              // Label
+              ctx.fillStyle = 'white';
+              ctx.font = '10px monospace';
+              ctx.fillText(vec.name, p.x + 8, p.y + 4);
+          });
+
+          animationFrameId = requestAnimationFrame(render);
+      };
+
+      if (activeMode === 'TORUS') {
+          render();
+      }
+
+      return () => cancelAnimationFrame(animationFrameId);
+  }, [activeMode, vectorSpace.vectors]);
+
+
   return (
     <div className="bg-slate-950 border border-slate-800 rounded-lg h-full flex flex-col relative overflow-hidden">
       {/* Background Effect - 3D Grid / Torus */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none" 
-            style={{ 
-                backgroundImage: activeMode === 'TORUS' 
-                    ? 'radial-gradient(circle, #4f46e5 1px, transparent 1px)'
-                    : 'linear-gradient(rgba(71, 85, 105, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 85, 105, 0.3) 1px, transparent 1px)', 
-                backgroundSize: activeMode === 'TORUS' ? '30px 30px' : '40px 40px',
-                transform: activeMode === 'TORUS' ? 'perspective(500px) rotateX(10deg)' : 'perspective(500px) rotateX(20deg)'
-            }}>
-      </div>
+      {activeMode === 'EUCLIDEAN' && (
+        <div className="absolute inset-0 opacity-10 pointer-events-none" 
+                style={{ 
+                    backgroundImage: 'linear-gradient(rgba(71, 85, 105, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(71, 85, 105, 0.3) 1px, transparent 1px)', 
+                    backgroundSize: '40px 40px',
+                    transform: 'perspective(500px) rotateX(20deg)'
+                }}>
+        </div>
+      )}
       
       {/* Header */}
       <div className="border-b border-indigo-900/30 bg-slate-900/80 p-4 flex justify-between items-center relative z-10">
@@ -71,6 +211,16 @@ const VectorAlgebraLab: React.FC<VectorAlgebraLabProps> = ({ vectorSpace }) => {
       {/* Main Content */}
       <div className="flex-1 p-6 flex flex-col gap-6 relative z-10 overflow-y-auto custom-scrollbar">
         
+        {/* Canvas for 3D Visual */}
+        {activeMode === 'TORUS' && (
+            <div className="w-full h-64 bg-slate-900/20 border border-slate-800 rounded-lg relative overflow-hidden">
+                <div className="absolute top-2 left-2 text-[10px] text-fuchsia-400 font-mono flex items-center gap-2 z-10">
+                    <RefreshCw size={10} className="animate-spin" /> Torus Projection
+                </div>
+                <canvas ref={canvasRef} className="w-full h-full block" />
+            </div>
+        )}
+
         {/* Vector Registry */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {vectorSpace.vectors.map(vec => (

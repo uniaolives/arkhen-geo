@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { SystemState } from '../types';
-import { Server, Globe, Database, Code, Zap, Clock, ShieldCheck, Activity, Terminal, Lock, Play, Pause, ChevronRight } from 'lucide-react';
+import { Server, Globe, Database, Code, Zap, Clock, ShieldCheck, Activity, Terminal, Lock, Play, Pause, ChevronRight, Radio, Search } from 'lucide-react';
 
 interface ArkheApiGatewayProps {
   api: SystemState['arkheApi'];
@@ -49,77 +49,113 @@ const ArkheApiGateway: React.FC<ArkheApiGatewayProps> = ({ api }) => {
       {/* Main Content */}
       <div className="flex-1 p-6 flex flex-col gap-6 relative z-10 overflow-hidden">
         
-        {/* Top: Endpoint Registry */}
-        <div className="flex-1 min-h-0 flex flex-col bg-slate-900/30 border border-slate-800 rounded-lg overflow-hidden">
-             <div className="p-3 border-b border-slate-800 flex items-center gap-2 bg-slate-900/50">
-                 <Server size={14} className="text-cyan-400" />
-                 <h3 className="text-xs text-white font-mono font-bold uppercase">Endpoint Registry</h3>
-                 <span className="text-[10px] text-slate-500 font-mono ml-auto">v{api.version}</span>
-             </div>
-             
-             <div className="flex-1 overflow-y-auto custom-scrollbar p-0">
-                 {api.endpoints.map((ep, idx) => (
-                     <div key={idx} className="border-b border-slate-800 last:border-0 p-3 hover:bg-slate-800/30 transition-colors group">
-                         <div className="flex items-center gap-3 mb-2">
-                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded font-mono ${ep.method === 'GET' ? 'bg-blue-900/30 text-blue-400' : 'bg-emerald-900/30 text-emerald-400'}`}>
-                                 {ep.method}
-                             </span>
-                             <span className="text-sm font-mono text-slate-300 font-bold">{ep.path}</span>
-                             <span className="text-xs text-slate-500 ml-auto italic">{ep.description}</span>
-                         </div>
-                         
-                         {/* Response Preview */}
-                         <div className="bg-black/30 p-2 rounded border border-slate-800/50 font-mono text-[10px] text-slate-400 flex items-start gap-2">
-                             <div className="mt-0.5 text-slate-600"><ChevronRight size={10} /></div>
-                             <code className="text-emerald-400/80">{ep.responseExample}</code>
-                         </div>
-                     </div>
-                 ))}
-             </div>
-        </div>
-
-        {/* Bottom: Live Traffic Inspector */}
-        <div className="h-64 flex flex-col bg-slate-950 border border-slate-800 rounded-lg overflow-hidden">
-             <div className="p-3 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
-                 <div className="flex items-center gap-2">
-                     <Activity size={14} className="text-fuchsia-400 animate-pulse" />
-                     <h3 className="text-xs text-white font-mono font-bold uppercase">Live Request Inspector (Hesitation Middleware)</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+            
+            {/* Left: Endpoint Registry */}
+            <div className="flex flex-col bg-slate-900/30 border border-slate-800 rounded-lg overflow-hidden">
+                 <div className="p-3 border-b border-slate-800 flex items-center gap-2 bg-slate-900/50">
+                     <Server size={14} className="text-cyan-400" />
+                     <h3 className="text-xs text-white font-mono font-bold uppercase">Endpoint Registry</h3>
+                     <span className="text-[10px] text-slate-500 font-mono ml-auto">v{api.version}</span>
                  </div>
-                 <div className="flex items-center gap-2 text-[10px] text-slate-500 font-mono">
-                     <ShieldCheck size={10} /> Darvo Auth Level 5
-                 </div>
-             </div>
-
-             <div className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-2">
-                 {api.recentRequests.map(req => (
-                     <div key={req.id} className="bg-slate-900/30 border border-slate-800 p-2 rounded flex flex-col gap-2 font-mono text-xs">
-                         {/* Request Line */}
-                         <div className="flex items-center justify-between">
-                             <div className="flex items-center gap-2">
-                                 <span className="text-slate-500">{req.timestamp}</span>
-                                 <span className={`font-bold ${req.method === 'GET' ? 'text-blue-400' : 'text-emerald-400'}`}>{req.method}</span>
-                                 <span className="text-slate-300">{req.path}</span>
+                 
+                 <div className="flex-1 overflow-y-auto custom-scrollbar p-0">
+                     {api.endpoints.map((ep, idx) => (
+                         <div key={idx} className="border-b border-slate-800 last:border-0 p-3 hover:bg-slate-800/30 transition-colors group">
+                             <div className="flex items-center gap-3 mb-2">
+                                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded font-mono ${ep.method === 'GET' ? 'bg-blue-900/30 text-blue-400' : 'bg-emerald-900/30 text-emerald-400'}`}>
+                                     {ep.method}
+                                 </span>
+                                 <span className="text-sm font-mono text-slate-300 font-bold">{ep.path}</span>
+                                 <span className="text-xs text-slate-500 ml-auto italic">{ep.description}</span>
                              </div>
-                             <div className="flex items-center gap-3">
-                                 <div className="flex items-center gap-1 text-amber-400" title="Hesitation Latency">
-                                     <Clock size={10} /> {req.latency}ms
-                                 </div>
-                                 <span className="text-emerald-500 font-bold">{req.status} OK</span>
+                             
+                             {/* Response Preview */}
+                             <div className="bg-black/30 p-2 rounded border border-slate-800/50 font-mono text-[10px] text-slate-400 flex items-start gap-2">
+                                 <div className="mt-0.5 text-slate-600"><ChevronRight size={10} /></div>
+                                 <code className="text-emerald-400/80">{ep.responseExample}</code>
                              </div>
                          </div>
+                     ))}
+                 </div>
+            </div>
 
-                         {/* Custom Headers (The Logic) */}
-                         <div className="grid grid-cols-2 gap-2 bg-black/20 p-2 rounded border border-white/5">
-                             {req.headers.map((header, hIdx) => (
-                                 <div key={hIdx} className="flex justify-between items-center text-[10px]">
-                                     <span className="text-slate-500">{header.name}</span>
-                                     <span className="text-cyan-400 font-bold">{header.value}</span>
-                                 </div>
-                             ))}
+            {/* Right: Service Discovery & Live Traffic */}
+            <div className="flex flex-col gap-6">
+                
+                {/* Service Registry (ETCD) */}
+                <div className="flex-1 bg-slate-900/30 border border-slate-800 rounded-lg overflow-hidden flex flex-col">
+                    <div className="p-3 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+                        <div className="flex items-center gap-2">
+                            <Radio size={14} className="text-fuchsia-400" />
+                            <h3 className="text-xs text-white font-mono font-bold uppercase">Service Registry (etcd)</h3>
+                        </div>
+                        <div className="flex items-center gap-1 text-[9px] text-emerald-400 border border-emerald-900/50 px-1.5 py-0.5 rounded bg-emerald-900/20 font-mono">
+                            <Activity size={8} /> LIVE
+                        </div>
+                    </div>
+                    
+                    <div className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-2">
+                        {api.registry?.map((svc, idx) => (
+                            <div key={idx} className="bg-slate-950/50 border border-slate-800 p-2 rounded flex flex-col gap-1 hover:border-fuchsia-500/30 transition-colors cursor-pointer group">
+                                <div className="flex justify-between items-center">
+                                    <span className="text-xs font-bold text-white font-mono">{svc.name}</span>
+                                    <span className="text-[10px] text-slate-500 font-mono">{svc.host}:{svc.port}</span>
+                                </div>
+                                <div className="text-[9px] text-slate-400 font-mono flex gap-2">
+                                    {Object.entries(svc.metadata).map(([k, v]) => (
+                                        <span key={k} className="bg-slate-900 px-1 rounded border border-slate-700">{k}: <span className="text-cyan-400">{v}</span></span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Live Request Inspector */}
+                <div className="flex-1 bg-slate-950 border border-slate-800 rounded-lg overflow-hidden flex flex-col">
+                     <div className="p-3 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+                         <div className="flex items-center gap-2">
+                             <Search size={14} className="text-emerald-400" />
+                             <h3 className="text-xs text-white font-mono font-bold uppercase">Request Trace</h3>
+                         </div>
+                         <div className="flex items-center gap-2 text-[10px] text-slate-500 font-mono">
+                             <ShieldCheck size={10} /> Darvo Level 5
                          </div>
                      </div>
-                 ))}
-             </div>
+
+                     <div className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-2">
+                         {api.recentRequests.map(req => (
+                             <div key={req.id} className="bg-slate-900/30 border border-slate-800 p-2 rounded flex flex-col gap-2 font-mono text-xs">
+                                 {/* Request Line */}
+                                 <div className="flex items-center justify-between">
+                                     <div className="flex items-center gap-2">
+                                         <span className="text-slate-500">{req.timestamp}</span>
+                                         <span className={`font-bold ${req.method === 'GET' ? 'text-blue-400' : 'text-emerald-400'}`}>{req.method}</span>
+                                         <span className="text-slate-300">{req.path}</span>
+                                     </div>
+                                     <div className="flex items-center gap-3">
+                                         <div className="flex items-center gap-1 text-amber-400" title="Hesitation Latency">
+                                             <Clock size={10} /> {req.latency}ms
+                                         </div>
+                                         <span className="text-emerald-500 font-bold">{req.status} OK</span>
+                                     </div>
+                                 </div>
+
+                                 {/* Custom Headers (The Logic) */}
+                                 <div className="grid grid-cols-2 gap-2 bg-black/20 p-2 rounded border border-white/5">
+                                     {req.headers.map((header, hIdx) => (
+                                         <div key={hIdx} className="flex justify-between items-center text-[10px]">
+                                             <span className="text-slate-500">{header.name}</span>
+                                             <span className="text-cyan-400 font-bold">{header.value}</span>
+                                         </div>
+                                     ))}
+                                 </div>
+                             </div>
+                         ))}
+                     </div>
+                </div>
+            </div>
         </div>
 
       </div>

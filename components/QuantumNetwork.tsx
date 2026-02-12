@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Network, Zap, ShieldCheck, Key, Wifi, Clock, Lock, Cpu, Database, Disc, Radio, Repeat, Eye, Calendar, ArrowRight, Brain, Music, Satellite, Atom, CheckCircle2 } from 'lucide-react';
+import { Network, Zap, ShieldCheck, Key, Wifi, Clock, Lock, Cpu, Database, Disc, Radio, Repeat, Eye, Calendar, ArrowRight, Brain, Music, Satellite, Atom, CheckCircle2, Cuboid } from 'lucide-react';
 
 interface QuantumNetworkProps {
   quantum: SystemState['quantum'];
@@ -160,9 +160,12 @@ const QuantumNetwork: React.FC<QuantumNetworkProps> = ({ quantum }) => {
 
              {/* Error Correction Indicator (Darvo) */}
              {quantum.security.errorCorrection === 'DARVO_ACTIVE' && (
-                 <div className="absolute bottom-4 left-4 bg-amber-950/80 backdrop-blur border border-amber-500/30 rounded px-2 py-1 flex items-center gap-2 z-20">
+                 <div className="absolute bottom-4 left-4 bg-amber-950/80 backdrop-blur border border-amber-500/30 rounded px-2 py-1 flex items-center gap-2 z-20 shadow-lg">
                      <ShieldCheck size={12} className="text-amber-400" />
-                     <span className="text-[9px] font-bold text-amber-200 font-mono uppercase">Darvo Active</span>
+                     <div className="flex flex-col">
+                         <span className="text-[9px] font-bold text-amber-200 font-mono uppercase">Darvo Repetition Code</span>
+                         <span className="text-[8px] text-amber-400/70 font-mono">Distance 3 | Majority Vote</span>
+                     </div>
                  </div>
              )}
 
@@ -182,15 +185,19 @@ const QuantumNetwork: React.FC<QuantumNetworkProps> = ({ quantum }) => {
                  </div>
                  <div className="text-[9px] text-slate-600 font-mono text-center flex justify-between px-2">
                      <span>Bell Violation: {quantum.bellViolation}</span>
-                     <span>Fidelity: {quantum.teleportation?.fidelity}</span>
+                     <span>Fidelity: {quantum.security.logicalQubits?.[0]?.fidelity.toFixed(7) || 'N/A'}</span>
                  </div>
-                 {/* Error Correction Status */}
-                 <div className="mt-1 flex items-center justify-between bg-black/20 p-1.5 rounded border border-white/5">
-                     <span className="text-[9px] text-slate-500 font-mono">Error Correction</span>
-                     <div className="flex items-center gap-1 text-[9px] text-amber-400 font-mono font-bold">
-                         <CheckCircle2 size={10} /> {quantum.security.errorCorrection}
+                 {/* Logical Qubit Status */}
+                 {quantum.security.logicalQubits && (
+                     <div className="mt-1 flex items-center justify-between bg-black/20 p-1.5 rounded border border-white/5">
+                         <span className="text-[9px] text-slate-500 font-mono flex items-center gap-1">
+                             <Cuboid size={10} /> {quantum.security.logicalQubits[0].id} (Logical)
+                         </span>
+                         <div className="flex items-center gap-1 text-[9px] text-amber-400 font-mono font-bold">
+                             <CheckCircle2 size={10} /> CORRECTED
+                         </div>
                      </div>
-                 </div>
+                 )}
              </div>
 
              {/* Node List */}

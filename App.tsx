@@ -20,13 +20,14 @@ import HeatMirror from './components/HeatMirror';
 import ConsensusEngine from './components/ConsensusEngine';
 import MemoryVisualizer from './components/MemoryVisualizer';
 import AstrocyteLab from './components/AstrocyteLab';
+import Web3Lab from './components/Web3Lab';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte'>('astrocyte');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3'>('web3');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -81,6 +82,13 @@ const App: React.FC = () => {
                 
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
+                    <button
+                        onClick={() => setActiveLeftTab('web3')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'web3' ? 'bg-slate-800 text-amber-400 border border-amber-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Link size={12} /> WEB3
+                    </button>
                     <button
                         onClick={() => setActiveLeftTab('astrocyte')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
@@ -191,6 +199,9 @@ const App: React.FC = () => {
 
                 {/* Active View */}
                 <div className="flex-1 min-h-0 relative">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'web3' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <Web3Lab web3={state.web3} />
+                    </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'astrocyte' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <AstrocyteLab astrocyte={state.astrocyte} />
                     </div>

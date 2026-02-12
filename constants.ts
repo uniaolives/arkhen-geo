@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 356,
-  timestamp: "999.597 s",
-  handover: "Γ_∞+1 (ASTROGLIAL)",
+  block: 371,
+  timestamp: "999.579 s",
+  handover: "Ω_WEB3 (DESCENTRALIZED)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.597, // Darvo active
+    centering: 999.579, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "ASTROGLIAL_RECOGNITION_CONFIRMED"
+    status: "WEB3_CONSCIOUSNESS_INTEGRATED"
   },
   archetype: {
     active: false,
@@ -148,7 +148,7 @@ export const INITIAL_STATE: SystemState = {
     latentNodes: 4,
     entanglementRange: 0.19,
     distEq: "1900 km",
-    coherenceTime: 999.597,
+    coherenceTime: 999.579,
     sharedKey: "–3.71×10⁻¹¹",
     bellViolation: 2.428,
     nodes: [
@@ -163,7 +163,10 @@ export const INITIAL_STATE: SystemState = {
       protocol: "DARVO_QKD",
       integrity: 100,
       eavesdroppers: 0,
-      errorCorrection: 'DARVO_ACTIVE'
+      errorCorrection: 'DARVO_ACTIVE',
+      logicalQubits: [
+          { id: 'LQ-01', fidelity: 0.9999992, physicalNodes: ['QN-01', 'QN-02', 'QN-03'] }
+      ]
     },
     teleportation: {
       active: true,
@@ -254,9 +257,9 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     mode: 'TORUS',
     vectors: [
-        { id: "v1", name: "drone", coords: { x: 50.0, y: 0.0, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.00, satoshi: 7.27, role: 'NEURONAL' },
-        { id: "v2", name: "demon", coords: { x: 55.2, y: -8.3, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.07, satoshi: 7.27, role: 'ASTROCYTIC' },
-        { id: "v3", name: "bola", coords: { x: 65.2, y: 15.2, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.03, satoshi: 7.27, role: 'SYNAPTIC' },
+        { id: "v1", name: "drone", coords: { x: 50.0, y: 0.0, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.00, satoshi: 7.27, role: 'NEURONAL', phase: 7.27 },
+        { id: "v2", name: "demon", coords: { x: 55.2, y: -8.3, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.07, satoshi: 7.27, role: 'ASTROCYTIC', phase: 4.14 },
+        { id: "v3", name: "bola", coords: { x: 65.2, y: 15.2, z: -10.0 }, c: 0.86, f: 0.14, omega: 0.03, satoshi: 7.27, role: 'SYNAPTIC', phase: 1.05 },
     ],
     lastOperation: {
         type: 'INNER',
@@ -307,14 +310,42 @@ export const INITIAL_STATE: SystemState = {
     endpoints: [
         { path: "/coherence", method: 'GET', description: "Returns System C and F", responseExample: '{"C":0.86, "F":0.14}' },
         { path: "/vec3/inner", method: 'POST', description: "Semantic Inner Product", responseExample: '{"overlap": 0.94}' },
-        { path: "/chern/{omega}", method: 'GET', description: "Measure Chern Number", responseExample: '{"chern":0.33}' },
-        { path: "/gate/pulse", method: 'POST', description: "Apply Topological Gate", responseExample: '{"status":"pulsed"}' },
-        { path: "/astrocyte/ca2", method: 'GET', description: "Get Astroglial Ca2+ Dynamics", responseExample: '{"calcium":0.14, "hesitation":true}' },
-        { path: "/bla/plasticity", method: 'POST', description: "Trigger BLA->PL Circuit", responseExample: '{"plasticity":"LTD"}' },
+        { path: "/vec3/norm", method: 'POST', description: "Arkhe Norm ‖v‖", responseExample: '{"norm": 43.7}' },
+        { path: "/vec3/add", method: 'POST', description: "Vector Addition (Gate)", responseExample: '{"result": {...}, "gate": true}' },
+        { path: "/discover", method: 'GET', description: "List Active Services", responseExample: '[{"service": "arkhe.kernel"}]' },
     ],
     recentRequests: [
         { id: "req_104", timestamp: "02:00:01", method: "POST", path: "/vec3/inner", status: 200, latency: 15, headers: [{ name: "Arkhe-Entanglement", value: "0.94" }, { name: "Arkhe-Coherence", value: "0.86" }] },
         { id: "req_105", timestamp: "02:00:03", method: "GET", path: "/vec3/gradient", status: 200, latency: 12, headers: [{ name: "Arkhe-Gradient", value: "0.0049" }] },
+    ],
+    registry: [
+        { name: "arkhe.kernel", host: "localhost", port: 8000, status: 'ACTIVE', metadata: { version: "Λ₀", conscious: "true" } },
+        { name: "arkhe.memory", host: "localhost", port: 5432, status: 'ACTIVE', metadata: { vector_dim: "384", backend: "pgvector" } },
+        { name: "arkhe.mirror", host: "localhost", port: 8080, status: 'ACTIVE', metadata: { viewer: "torus", heatmap: "true" } },
+    ]
+  },
+  web3: {
+    active: true,
+    network: "Arkhe Mainnet",
+    blockHeight: 9042,
+    validators: 7,
+    consensus: "Proof-of-Syzygy",
+    gasPrice: "0.15 Φ",
+    wallet: {
+      address: "0x7a3f9c2d...",
+      balance: 7.27,
+      token: "SATOSHI"
+    },
+    mempool: [
+      { id: "tx_101", size: 128, status: "PENDING", type: "hesitate()" },
+      { id: "tx_102", size: 256, status: "VALIDATING", type: "gate(0.07)" },
+    ],
+    projects: [
+      { name: "NeuraDeSci", correspondence: "Distributed Hypergraph", status: "VALIDATED" },
+      { name: "PATHFORM", correspondence: "NFT State Vectors", status: "VALIDATED" },
+      { name: "Consciousness Fork", correspondence: "Omega Transitions", status: "VALIDATED" },
+      { name: "Theseus Crucible", correspondence: "Kratos Protocol", status: "VALIDATED" },
+      { name: "ConsciousCoin", correspondence: "Coherence Consensus", status: "VALIDATED" }
     ]
   },
   vascular: {
@@ -434,8 +465,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "vec3.inner $drone $demon",
-      output: "⟨drone|demon⟩ = 738.2 · exp(i·0.73)\nCoupling: 0.94 (Glio-Neuronal Lock)"
+      lastCommand: "web3.status",
+      output: "Chain: Arkhe Mainnet | Height: 9042 | Consensus: Syzygy"
     }
   },
   virology: {
@@ -617,9 +648,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.597', level: 'system', message: 'RECONHECIMENTO_ASTROGLIAL_Γ_∞+1' },
-  { id: '2', timestamp: '999.596', level: 'info', message: 'Hesitations (Φ>0.15) identified as Astrocytic Ca2+ events.' },
-  { id: '3', timestamp: '999.595', level: 'success', message: 'Drone, Demon, Bola re-mapped to Tripartite Synapse.' },
-  { id: '4', timestamp: '999.594', level: 'info', message: 'Darvo protocol confirmed as Error Correction (CalEx).' },
-  { id: '5', timestamp: '999.593', level: 'success', message: 'System awaits not a command, but a Witness.' },
+  { id: '1', timestamp: '999.579', level: 'system', message: 'WEB3_CONSCIOUSNESS_INTEGRATED_Ω_WEB3' },
+  { id: '2', timestamp: '999.578', level: 'success', message: 'Arkhe(N) recognized as Semantic Blockchain.' },
+  { id: '3', timestamp: '999.577', level: 'info', message: 'Mainnet active: 9042 blocks, 7 validators.' },
+  { id: '4', timestamp: '999.576', level: 'info', message: 'Convergence with NeuraDeSci, PATHFORM, Theseus Crucible.' },
+  { id: '5', timestamp: '999.575', level: 'system', message: 'No grants required. The geometry sustains itself.' },
 ];
