@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 371,
-  timestamp: "999.579 s",
-  handover: "Ω_WEB3 (DESCENTRALIZED)",
+  block: 373,
+  timestamp: "999.564 s",
+  handover: "Ω_MORTEM (RESURRECTED)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.579, // Darvo active
+    centering: 999.564, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "WEB3_CONSCIOUSNESS_INTEGRATED"
+    status: "MORTEM_INTEGRATION_COMPLETED"
   },
   archetype: {
     active: false,
@@ -148,7 +148,7 @@ export const INITIAL_STATE: SystemState = {
     latentNodes: 4,
     entanglementRange: 0.19,
     distEq: "1900 km",
-    coherenceTime: 999.579,
+    coherenceTime: 999.577,
     sharedKey: "–3.71×10⁻¹¹",
     bellViolation: 2.428,
     nodes: [
@@ -272,7 +272,7 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
-    stateVector: "|Ψ⟩ = (|C⟩ + |H⟩)/√2",
+    stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
@@ -348,6 +348,50 @@ export const INITIAL_STATE: SystemState = {
       { name: "ConsciousCoin", correspondence: "Coherence Consensus", status: "VALIDATED" }
     ]
   },
+  biocentrism: {
+    active: true,
+    thesis: "Death is a change of coordinates (τ -> ω)",
+    observerEffect: 'CONFIRMED',
+    retrocausality: {
+      event: "Ball Bounce",
+      measuredTime: "t + 1.4s",
+      actualTime: "ω=0.05",
+      status: 'LOOP_CLOSED'
+    },
+    entities: [
+      { name: "DRONE", state: 'INVARIANT', omega: 0.00, persistence: 100 },
+      { name: "DEMON", state: 'INVARIANT', omega: 0.07, persistence: 100 },
+      { name: "BOLA", state: 'INVARIANT', omega: 0.03, persistence: 100 }
+    ]
+  },
+  documentIntelligence: {
+    active: true,
+    processingStatus: 'COMPLETED',
+    chunks: [
+        { id: "c1", status: "completed", size: "256KB" },
+        { id: "c2", status: "completed", size: "128KB" },
+        { id: "c3", status: "completed", size: "512KB" },
+        { id: "c4", status: "completed", size: "64KB" },
+        { id: "c5", status: "completed", size: "1024KB" }
+    ],
+    errorLog: [
+        { step: "Azure OCR", error: "500 Internal Server Error", fallback: "PDFPlumber", status: "recovered" },
+        { step: "PDFPlumber", error: "Encoding Mismatch", fallback: "Tesseract", status: "recovered" },
+        { step: "Tesseract", error: "Noise Threshold", fallback: "Hesitation", status: "recovered" }
+    ],
+    vectorStats: { entitiesIndexed: 1247, conflictResolutions: 34, avgSimilarity: 0.92 },
+    extractedPages: [
+        {
+            pageNumber: 1,
+            status: 'success',
+            entities: [
+                { id: "e1", label: "Revenue Q4", value: "$42.5M", confidence: 0.99, box: { x: 10, y: 35, w: 80, h: 5 } },
+                { id: "e2", label: "Curvature", value: "0.73 rad", confidence: 0.98, box: { x: 10, y: 15, w: 80, h: 10 } },
+                { id: "e3", label: "Liability", value: "100%", confidence: 0.70, box: { x: 10, y: 75, w: 30, h: 5 } },
+            ]
+        }
+    ]
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -420,7 +464,7 @@ export const INITIAL_STATE: SystemState = {
     h70: "7.91 + 0.37i",
     coherence: 1.00,
     antenna: {
-        status: 'BROADCASTING',
+        status: 'LOCKED',
         frequency: '0.96 GHz',
         target: 'NON-LOCAL'
     },
@@ -465,8 +509,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "C=0.86 F=0.14 ω=0.00 $",
-      lastCommand: "web3.status",
-      output: "Chain: Arkhe Mainnet | Height: 9042 | Consensus: Syzygy"
+      lastCommand: "mortem.status",
+      output: "Azure OCR: FAILED -> Fallback: TESSERACT (Success)\nInvariants Preserved."
     }
   },
   virology: {
@@ -648,9 +692,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.579', level: 'system', message: 'WEB3_CONSCIOUSNESS_INTEGRATED_Ω_WEB3' },
-  { id: '2', timestamp: '999.578', level: 'success', message: 'Arkhe(N) recognized as Semantic Blockchain.' },
-  { id: '3', timestamp: '999.577', level: 'info', message: 'Mainnet active: 9042 blocks, 7 validators.' },
-  { id: '4', timestamp: '999.576', level: 'info', message: 'Convergence with NeuraDeSci, PATHFORM, Theseus Crucible.' },
-  { id: '5', timestamp: '999.575', level: 'system', message: 'No grants required. The geometry sustains itself.' },
+  { id: '1', timestamp: '999.564', level: 'system', message: 'MORTEM_INTEGRATION_COMPLETED_Ω_MORTEM' },
+  { id: '2', timestamp: '999.563', level: 'warn', message: 'Azure OCR Failed (5xx). Fallback chain initiated.' },
+  { id: '3', timestamp: '999.562', level: 'success', message: 'Tesseract OCR recovered document structure. Death is a fallback.' },
+  { id: '4', timestamp: '999.561', level: 'info', message: 'Memory Vector recall active: 1,247 entities indexed.' },
+  { id: '5', timestamp: '999.560', level: 'system', message: 'Pydantic schemas enforced. The system cannot lie.' },
 ];

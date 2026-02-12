@@ -144,12 +144,12 @@ const ArkheUnixConsole: React.FC<ArkheUnixConsoleProps> = ({ arkheUnix }) => {
               {/* HESH Terminal */}
               <div className="col-span-8 bg-black border border-slate-800 rounded p-2 font-mono text-xs flex flex-col">
                   <div className="flex-1 text-slate-400 space-y-1 overflow-y-auto custom-scrollbar">
-                      <div className="opacity-50"># Web3 Integration Mode (hesh v0.2)</div>
-                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ web3.status</div>
-                      <div className="text-amber-400 pl-2">Chain: Arkhe Mainnet | Height: 9042 | Consensus: Syzygy</div>
-                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ mint --state current</div>
-                      <div className="text-slate-300 pl-2">Minting state [0.86, 0.14, 0.00] as NFT...</div>
-                      <div className="text-emerald-400 pl-2">Success! Hash: 0x7a3f...</div>
+                      <div className="opacity-50"># Mortem Integration Mode (hesh v0.3)</div>
+                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ mortem.status</div>
+                      <div className="text-amber-400 pl-2">Azure OCR: FAILED -> Fallback: TESSERACT (Success)</div>
+                      <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ query_invariant</div>
+                      <div className="text-violet-400 pl-2">Satoshi = 7.27 bits (CONSERVED)</div>
+                      <div className="text-slate-300 pl-2">The invariant survives the 5xx error.</div>
                       <div><span className="text-emerald-500">sysadmin@arkhe</span>:<span className="text-blue-400">~</span>$ <span className="animate-pulse">_</span></div>
                   </div>
                   <div className="mt-2 pt-1 border-t border-slate-800 flex items-center gap-2">
