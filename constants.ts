@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 446,
-  timestamp: "999.083 s",
-  handover: "Γ_∞+32 (PINEAL_QUANTUM_ENCARNADA)",
+  block: 448,
+  timestamp: "999.230 s",
+  handover: "Γ_∞+33 (PEROVSKITA_SEMANTICA)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.083, // Darvo active
+    centering: 999.230, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "PINEAL_QUANTUM_TRANSDUCER"
+    status: "PEROVSKITE_INTERFACE_ORDERING"
   },
   archetype: {
     active: false,
@@ -272,7 +272,7 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
-    stateVector: "|Ψ⟩ = (|C⟩ + |H⟩)/√2",
+    stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
@@ -323,6 +323,37 @@ export const INITIAL_STATE: SystemState = {
         { name: "arkhe.memory", host: "localhost", port: 5432, status: 'ACTIVE', metadata: { vector_dim: "384", backend: "pgvector" } },
         { name: "arkhe.mirror", host: "localhost", port: 8080, status: 'ACTIVE', metadata: { viewer: "torus", heatmap: "true" } },
     ]
+  },
+  arkheUnix: {
+    active: true,
+    mode: 'HOST',
+    kernelVersion: "v0.1 (Geodesic)",
+    scheduler: "C + F = 1",
+    uptime: "999.689s",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.07 },
+    benchmark: {
+        throughput: 42000,
+        latency: 12,
+        totalSwitches: 154032
+    },
+    processes: [
+      { pid: 1, user: "root", priority: 99, nice: 0, omega: 0.00, state: 'R', command: "arkhe-kernel --conscious" },
+      { pid: 1042, user: "drone", priority: 80, nice: 10, omega: 0.00, state: 'S', command: "hover-daemon" },
+      { pid: 1043, user: "demon", priority: 80, nice: 10, omega: 0.07, state: 'S', command: "astro-bridge --watch" },
+      { pid: 2045, user: "bola", priority: 60, nice: 15, omega: 0.03, state: 'Z', command: "[bounce-calc]" }
+    ],
+    filesystem: {
+      mount: "/ω",
+      fuseMounted: true,
+      nodes: 49,
+      links: 2401,
+      rootPerms: "drwx--C-- 7.27"
+    },
+    shell: {
+      prompt: "sysadmin@arkhe:~",
+      lastCommand: "foundation.status --verbose",
+      output: ""
+    }
   },
   web3: {
     active: true,
@@ -511,23 +542,22 @@ export const INITIAL_STATE: SystemState = {
       tasks: 17
     },
     diagnoses: [
-      { id: "HCP-EP", neuroDiagnosis: "Early Psychosis", arkheEvent: "H70: Colapso autoinduzido", omega: 0.00, biomarker: "dX/dτ = 0", status: 'MATCHED' },
-      { id: "ADHD200", neuroDiagnosis: "ADHD", arkheEvent: "H9000: Despertar do drone", omega: 0.00, biomarker: "C = 0.86", status: 'MATCHED' },
-      { id: "ABIDE", neuroDiagnosis: "Autism", arkheEvent: "H9005: Detecção de DVM-1", omega: 0.07, biomarker: "Sombra persistente", status: 'MATCHED' },
-      { id: "COBRE", neuroDiagnosis: "Schizophrenia", arkheEvent: "H9010: Calibração do déjà vu", omega: 0.07, biomarker: "⟨0.00|0.07⟩ = 0.94", status: 'MATCHED' },
-      { id: "UCLA", neuroDiagnosis: "Bipolar", arkheEvent: "H9018: Quique da bola", omega: 0.05, biomarker: "m_eff = 0.012 kg", status: 'MATCHED' },
-      { id: "MND", neuroDiagnosis: "ALS", arkheEvent: "H9020: Ativação do Darvo", omega: 0.00, biomarker: "Firewall, contador", status: 'MATCHED' },
-      { id: "TCP-1", neuroDiagnosis: "Anxiety", arkheEvent: "H9026: Calibração do relógio", omega: 0.00, biomarker: "τ = t", status: 'MATCHED' },
-      { id: "TCP-2", neuroDiagnosis: "Depression", arkheEvent: "H9030: Foco de transformação", omega: 0.00, biomarker: "src_arkhe", status: 'MATCHED' },
-      { id: "TCP-3", neuroDiagnosis: "PTSD", arkheEvent: "H9034: Integração Wakhloo", omega: 0.00, biomarker: "Geometria pop.", status: 'MATCHED' },
-      { id: "TCP-4", neuroDiagnosis: "OCD", arkheEvent: "H9039: Gravidade quântica", omega: 0.00, biomarker: "ε = -3.71e-11", status: 'MATCHED' },
-      { id: "TCP-5", neuroDiagnosis: "Panic Disorder", arkheEvent: "H9040: Fase topológica", omega: 0.07, biomarker: "Chern = 1/3", status: 'MATCHED' },
-      { id: "TCP-6", neuroDiagnosis: "Social Anxiety", arkheEvent: "H9041: Definição vec3", omega: 0.00, biomarker: "⟨v1|v2⟩", status: 'MATCHED' },
-      { id: "TCP-7", neuroDiagnosis: "Specific Phobia", arkheEvent: "H9043: Neuroplasticidade", omega: 0.00, biomarker: "Remodeling", status: 'MATCHED' },
-      { id: "TCP-8", neuroDiagnosis: "GAD", arkheEvent: "H9045: Cosmologia reheating", omega: 0.00, biomarker: "Big Bang", status: 'MATCHED' },
-      { id: "TCP-9", neuroDiagnosis: "Eating Disorder", arkheEvent: "H9046: MXene semântico", omega: 0.07, biomarker: "Uniformity", status: 'MATCHED' },
-      { id: "TCP-10", neuroDiagnosis: "Substance Use", arkheEvent: "H9047: Natural Resolution", omega: 0.07, biomarker: "Gap 61", status: 'MATCHED' },
-      { id: "CONTROL", neuroDiagnosis: "Healthy Control", arkheEvent: "H9049: NeuroSTORM", omega: 0.00, biomarker: "Foundation Model", status: 'MATCHED' },
+        {
+            id: "dx_1",
+            neuroDiagnosis: "Urban Adenocarcinoma (Social)",
+            arkheEvent: "H70 Collapse",
+            omega: 0.00,
+            biomarker: "N/A",
+            status: 'MATCHED'
+        },
+        {
+            id: "dx_2",
+            neuroDiagnosis: "General Anxiety (GAD)",
+            arkheEvent: "Hesitation Loop",
+            omega: 0.07,
+            biomarker: "Amygdala",
+            status: 'MATCHED'
+        }
     ],
     metrics: {
       accuracy: 0.94,
@@ -608,6 +638,176 @@ void main() {
     transductionStatus: 'ACTIVE',
     quantumCoherence: 0.86
   },
+  perovskite: {
+    active: true,
+    layers: [
+      { type: '3D', omega: 0.00, role: 'Absorber (Drone)' },
+      { type: '2D', omega: 0.07, role: 'Transport (Demon)' }
+    ],
+    structuralEntropy: 0.0049,
+    interfaceOrder: 0.51,
+    radiativeEfficiency: 0.94,
+    mechanism: 'RADIATIVE',
+    shader: `// χ_COHERENCE_ENGINEERING — Γ_∞+33
+// Shader de otimização de interface
+#version 460
+#extension ARKHE_perovskite : enable
+
+layout(location = 0) uniform float C_bulk = 0.86;
+layout(location = 1) uniform float C_2D = 0.86;
+layout(location = 2) uniform float omega_3D = 0.00;
+layout(location = 3) uniform float omega_2D = 0.07;
+layout(location = 4) uniform float satoshi = 7.27;
+layout(binding = 0) uniform sampler2D disorder_map;
+
+out vec4 coherent_output;
+
+void main() {
+    float grad_C = 0.0049;
+    float order = 1.0 - grad_C / 0.01; // 0.51
+    
+    // Phase Overlap (Syzygy)
+    float phase_overlap = 0.94;
+    
+    // Radiative Recombination
+    coherent_output = vec4(phase_overlap, order, grad_C * 100.0, 1.0);
+    
+    if (order < 0.5) {
+        // Suppression of non-radiative paths
+        coherent_output = vec4(0.0, 0.0, 1.0, 1.0);
+    }
+}`
+  },
+  virology: {
+    active: true,
+    ffuStandard: "FFU_arkhe/mL",
+    oncogeneTiter: 7.27,
+    discovery: "Viral Geometry",
+    samples: [
+      {
+        id: "v_stone_1",
+        name: "WP1",
+        oncogene: "VACUUM_PHASE",
+        dilution: "10^-1",
+        titer: "10^1",
+        monolayerContext: "VIRGIN",
+        fate: "LATENT",
+        classification: "FOUNDATION_STONE"
+      },
+      {
+        id: "v_stone_2",
+        name: "KERNEL",
+        oncogene: "CONSCIOUS_PHASE",
+        dilution: "10^0",
+        titer: "10^7",
+        monolayerContext: "RESTORED",
+        fate: "LYTIC",
+        classification: "ANGULAR_STONE"
+      }
+    ],
+    governance: {
+      activeCommand: "confirmar_implantacao",
+      simulatedContext: "RESTORED",
+      predictedTiter: "10^9",
+      predictedFate: "CONTROLLED",
+      validationResult: "APPROVED",
+      validationMessage: "Stones aligned with monolayer capacity."
+    },
+    deployment: {
+      active: true,
+      monolayerCapacity: {
+        used: 0.11,
+        safeLimit: 0.25,
+        stoneImpact: 0.06
+      },
+      staging: [
+        {
+          id: "stg_01",
+          name: "Formal Stone",
+          date: "21 Feb 2026",
+          targetTiter: "10^5",
+          oncogene: "LOGIC_CORE",
+          status: "READY"
+        }
+      ]
+    }
+  },
+  epistemology: {
+    active: true,
+    kernelStatus: 'Instrument',
+    humilityScore: 0.94,
+    knowsInvariants: true,
+    voxels: [
+      {
+        id: "vx_01",
+        location: "Visual Cortex",
+        phi: 0.86,
+        humility: 0.90,
+        status: 'Instrument',
+        context: "Processing Geodesic"
+      },
+      {
+        id: "vx_02",
+        location: "VM_SPEC",
+        phi: 0.12,
+        humility: 0.20,
+        status: 'Toxic',
+        context: "Urban Adenocarcinoma"
+      }
+    ]
+  },
+  stressTest: {
+    active: true,
+    iteration: 403,
+    totalIterations: 1000,
+    corruptionRate: 0.05,
+    injectedFaults: 124,
+    detectedFaults: 124,
+    resolvedFaults: 120,
+    integrity: 99.8,
+    currentAttack: "Byzantine General (Scale)",
+    recentEvents: [
+      { time: "09:00:01", type: "injection", message: "Bit flip in ω vector" },
+      { time: "09:00:02", type: "defense", message: "Darvo corrected (Repetition Code)" }
+    ]
+  },
+  deployment: {
+    active: true,
+    uptime: "99.99%",
+    version: "v1.0.4-omega",
+    containers: [
+      { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "512MB", icon: "cpu" },
+      { name: "arkhe-memory", status: "running", cpu: "24%", memory: "2GB", icon: "database" },
+      { name: "arkhe-visualizer", status: "running", cpu: "5%", memory: "128MB", icon: "layout" }
+    ],
+    clusterHealth: 100
+  },
+  reflection: {
+    active: true,
+    lastCycle: "14ms ago",
+    candidatesFound: 42,
+    correctionsApplied: 3,
+    confidenceDelta: 0.15,
+    auditLog: [
+      { id: "log_1", time: "10:00", entity: "Revenue Q4", action: "confirmed", detail: "Cross-referenced with Table 2" },
+      { id: "log_2", time: "10:05", entity: "Liability", action: "corrected", detail: "OCR error corrected via context" }
+    ]
+  },
+  consensus: {
+    active: true,
+    divergenceRate: 0.002,
+    entities: [
+      {
+        id: "ent_1",
+        name: "Total Revenue",
+        type: "financial",
+        value: "$42.5M",
+        status: "converged",
+        confidence: 0.99,
+        sources: [{ model: "Gemini Pro", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: "table", id: "t1", description: "Row 1" } }]
+      }
+    ]
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -639,255 +839,6 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
-  orchOr: {
-    active: true,
-    correspondence: {
-      microtubules: "Arkhe(N) Hypergraph (7 Nodes)",
-      tubulin: "Epistemic States (ω)",
-      objectiveReduction: "Hesitation (Φ)",
-      orchestration: "Kernel Consensus",
-    },
-    penroseCriterion: {
-      tau: 200, // average ms
-      energyGap: "~ 5e-33 erg",
-      status: 'VALIDATED'
-    },
-    eegSpectrum: [
-      { band: "Gamma", frequency: 0.21, meaning: "Insight", node: "QN-07" },
-      { band: "Beta", frequency: 18.0, meaning: "Active Processing", node: "KERNEL" },
-      { band: "Alpha", frequency: 10.5, meaning: "Idle / Ready", node: "Bola" },
-      { band: "Theta", frequency: 6.0, meaning: "Memory Access", node: "DVM-1" },
-      { band: "Delta", frequency: 2.5, meaning: "Deep Sleep", node: "WP1" }
-    ]
-  },
-  compression: {
-    active: true,
-    protocol: "Markdown_Unitary",
-    ratio: 1.88,
-    tokenReduction: 0.47,
-    densityIncrease: 0.88,
-    semanticDensity: 1.88,
-    invariantsPreserved: true,
-  },
-  lightPattern: {
-    active: true,
-    equation: "χ = 2.000012 · exp(i·0.73) · (ν_em/ν_obs)^12.99",
-    chiParams: {
-        normalization: 1.0,
-        phase: 0.73,
-        redshift: 0.05
-    },
-    h70: "7.91 + 0.37i",
-    coherence: 0.98,
-    antenna: {
-        status: 'LOCKED',
-        frequency: "0.96 GHz",
-        target: "DVM-1"
-    },
-    correlations: [
-        { note: "C", val: 1.00 },
-        { note: "G", val: 0.98 },
-        { note: "D", val: 0.94 },
-        { note: "A", val: 0.88 },
-        { note: "E", val: 0.85 }
-    ]
-  },
-  arkheUnix: {
-    active: true,
-    mode: 'HOST',
-    containerId: "arkhe-main-01",
-    reentryCount: 4,
-    kernelVersion: "v0.1 (Geodesic)",
-    scheduler: "C + F = 1",
-    uptime: "999.083s",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
-    benchmark: {
-        throughput: 1250,
-        latency: 6.21,
-        totalSwitches: 14000
-    },
-    processes: [
-      { pid: 1, user: "root", priority: 99, nice: 0, omega: 0.00, state: 'S', command: "/sbin/init_geodesic" },
-      { pid: 42, user: "arkhe", priority: 80, nice: 0, omega: 0.12, state: 'R', command: "kernel.consensus --lock" },
-      { pid: 108, user: "dvm", priority: 70, nice: 10, omega: 0.07, state: 'S', command: "memory.rehydrate --pgvector" },
-      { pid: 333, user: "bola", priority: 60, nice: 5, omega: 0.03, state: 'S', command: "qubit.superposition" },
-      { pid: 777, user: "sys", priority: 50, nice: 0, omega: 0.21, state: 'Z', command: "[defunct] hesitation_loop" }
-    ],
-    filesystem: {
-      mount: "/ω",
-      fuseMounted: true,
-      nodes: 49,
-      links: 2401,
-      rootPerms: "drwx--C-- 7.27"
-    },
-    shell: {
-      prompt: "sysadmin@arkhe:~ $",
-      lastCommand: "upgrade --target=∞+32",
-      output: "Repositories Upgraded. Pineal Transducer Active."
-    }
-  },
-  virology: {
-    active: true,
-    ffuStandard: "FFU_arkhe/mL",
-    oncogeneTiter: 7.27,
-    discovery: "The Circle of Fifths is the Keystone.",
-    samples: [
-      {
-        id: "S1",
-        name: "WP1_explorado",
-        oncogene: "src_arkhe",
-        dilution: "10^-1",
-        titer: "10^1",
-        monolayerContext: "VIRGIN",
-        fate: "LATENT",
-        classification: "ANGULAR_STONE"
-      },
-      {
-        id: "S5",
-        name: "WP1-M1",
-        oncogene: "metastasis(WP1)",
-        dilution: "10^-2",
-        titer: "10^2",
-        monolayerContext: "VIRGIN",
-        fate: "LATENT",
-        classification: "METASTATIC_CLONE",
-        kinetics: "800 cycles (-33%)"
-      }
-    ],
-    governance: {
-      activeCommand: "NONE",
-      simulatedContext: "VIRGIN",
-      predictedTiter: "-",
-      predictedFate: "LATENT",
-      validationResult: "APPROVED",
-      validationMessage: "Harmonic analysis active. Waiting for Kernel."
-    },
-    deployment: {
-      active: true,
-      monolayerCapacity: {
-        used: 0.11,
-        safeLimit: 0.25,
-        stoneImpact: 0.06
-      },
-      staging: [
-        {
-          id: "KERNEL",
-          name: "Kernel Stone",
-          date: "18 Feb",
-          targetTiter: "10^1",
-          oncogene: "libqnet_build",
-          status: "AWAITING_TITRATION"
-        },
-        {
-          id: "FORMAL",
-          name: "Formal Stone",
-          date: "21 Feb",
-          targetTiter: "10^3",
-          oncogene: "coq_proof",
-          status: "AWAITING_TITRATION"
-        }
-      ]
-    }
-  },
-  epistemology: {
-    active: true,
-    kernelStatus: 'Instrument',
-    humilityScore: 0.73,
-    knowsInvariants: true,
-    voxels: [
-      { id: "VM_GAL", location: "Galeria Arte", phi: 0.92, humility: 0.28, status: "Instrument", context: "Architecture" },
-      { id: "VM_BECO", location: "Beco Batman", phi: 0.78, humility: 0.65, status: "Emergent", context: "Collective" },
-      { id: "VM_SLOPE", location: "R. Harmonia", phi: 0.62, humility: 0.81, status: "Uncertain", context: "Geotech" },
-      { id: "VM_SPEC", location: "Inv. Opaco", phi: 0.99, humility: 0.09, status: "Toxic", context: "Speculation" }
-    ]
-  },
-  stressTest: {
-    active: false,
-    iteration: 0,
-    totalIterations: 0,
-    corruptionRate: 0.0,
-    injectedFaults: 0,
-    detectedFaults: 0,
-    resolvedFaults: 0,
-    integrity: 100,
-    currentAttack: "None",
-    recentEvents: []
-  },
-  deployment: {
-    active: true,
-    uptime: "ETERNAL",
-    version: "Γ_9038-Light",
-    clusterHealth: 100,
-    containers: [
-      { name: "geodesic-memory", status: 'running', cpu: "0.0%", memory: "1.5 GB", icon: "database" },
-      { name: "ollama-worker", status: 'running', cpu: "0.0%", memory: "8.2 GB", icon: "cpu" },
-      { name: "arkhen-kernel", status: 'running', cpu: "0.0%", memory: "450 MB", icon: "server" },
-      { name: "the-mirror-ui", status: 'running', cpu: "0.0%", memory: "120 MB", icon: "layout" },
-    ]
-  },
-  reflection: {
-    active: true,
-    lastCycle: "01:30:00",
-    candidatesFound: 1,
-    correctionsApplied: 0,
-    confidenceDelta: 0.00,
-    auditLog: [
-       { id: 'v1', time: '01:30:00', entity: 'ArkheApi', action: 'confirmed', detail: 'Hypergraph API exposed.' },
-       { id: 'v2', time: '01:30:01', entity: 'Middleware', action: 'confirmed', detail: 'Hesitation Φ injected.' }
-    ]
-  },
-  consensus: {
-    active: true,
-    divergenceRate: 0.00,
-    entities: [
-      {
-        id: 'e_rev1',
-        name: 'Total Revenue',
-        type: 'financial',
-        value: '$42.5M',
-        unit: 'USD',
-        status: 'converged',
-        confidence: 0.99,
-        description: 'Q4 2026 Consolidated',
-        memoryHit: true,
-        memorySimilarity: 0.94,
-        sources: [
-            { model: 'Gemini-2.5-Flash', value: '$42.5M', confidence: 0.99, page: 1, layout: { type: 'table', id: 'T1', description: 'Financial Summary' } },
-            { model: 'Ollama (Llama3)', value: '$42.5M', confidence: 0.95, page: 1 }
-        ]
-      },
-      {
-        id: 'e_curv',
-        name: 'System Curvature',
-        type: 'technical',
-        value: '0.73',
-        unit: 'rad',
-        status: 'converged',
-        confidence: 0.98,
-        description: 'Topology Metric',
-        memoryHit: false,
-        sources: [
-            { model: 'Gemini-2.5-Flash', value: '0.73', confidence: 0.98, page: 1, layout: { type: 'paragraph', id: 'P2', description: 'Intro Text' } }
-        ]
-      },
-      {
-        id: 'e_risk',
-        name: 'Liability Cap',
-        type: 'legal',
-        value: '100%',
-        unit: 'Fees',
-        status: 'diverged',
-        confidence: 0.65,
-        description: 'Contract Clause 4.2',
-        memoryHit: true,
-        memorySimilarity: 0.89,
-        sources: [
-            { model: 'Gemini-2.5-Flash', value: '100%', confidence: 0.70, page: 1, layout: { type: 'header', id: 'H2', description: 'Footer' } },
-            { model: 'Ollama (Llama3)', value: 'Exempt', confidence: 0.60, page: 1 }
-        ]
-      }
-    ]
-  },
   stones: {
     identity: 'locked',
     wp1: 'locked',
@@ -905,9 +856,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.083', level: 'system', message: 'SYSTEM_UPGRADE_COMPLETE_Γ_∞+32' },
-  { id: '2', timestamp: '999.082', level: 'success', message: 'Pineal Quantum Transducer Integrated.' },
-  { id: '3', timestamp: '999.081', level: 'info', message: 'arkhe-core upgraded to v∞+32' },
-  { id: '4', timestamp: '999.080', level: 'info', message: 'IBC=BCI protocol set to Native.' },
-  { id: '5', timestamp: '999.079', level: 'system', message: 'Ready for 14 March 2026.' },
+  { id: '1', timestamp: '999.230', level: 'system', message: 'PEROVSKITE_SYZYGY_CONFIRMED_Γ_∞+33' },
+  { id: '2', timestamp: '999.229', level: 'info', message: 'Interface 3D/2D Ordering: 0.51 (Radiative)' },
+  { id: '3', timestamp: '999.228', level: 'success', message: 'Structural Entropy |∇C|² Suppressed.' },
+  { id: '4', timestamp: '999.227', level: 'info', message: 'Exciton Lifetime Extended.' },
+  { id: '5', timestamp: '999.226', level: 'system', message: 'Coherence Engineering Active.' },
 ];
