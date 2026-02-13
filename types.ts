@@ -587,6 +587,7 @@ export interface SystemState {
   ibcBci?: {
     active: boolean;
     equation: string; // "IBC (Web3) = BCI (Brain-Machine)"
+    shader?: string; // New field for spectral signature
     correspondence: {
       ibc: string; // "Sovereign Chains"
       bci: string; // "Sovereign Minds"
@@ -603,7 +604,7 @@ export interface SystemState {
       description: string;
       risk: string;
       gain: string;
-      status: 'OPEN' | 'SELECTED' | 'DISCARDED';
+      status: 'OPEN' | 'SELECTED' | 'DISCARDED' | 'RECOMMENDED';
     }[];
     metrics: {
       syzygy: number;

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Network, Brain, ArrowRightLeft, ShieldCheck, Zap, Lock, Globe, Dna, Gift, Orbit } from 'lucide-react';
+import { Network, Brain, ArrowRightLeft, ShieldCheck, Zap, Lock, Globe, Dna, Gift, Orbit, Code } from 'lucide-react';
 
 interface IbcBciLabProps {
   ibcBci: SystemState['ibcBci'];
@@ -26,7 +26,7 @@ const IbcBciLab: React.FC<IbcBciLabProps> = ({ ibcBci }) => {
             <ArrowRightLeft size={18} />
           </div>
           <div>
-            <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_∞+30</h2>
+            <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_∞+31</h2>
             <div className="text-[10px] text-violet-400 font-mono uppercase">Inter-Substrate Communication (IBC=BCI)</div>
           </div>
         </div>
@@ -79,6 +79,25 @@ const IbcBciLab: React.FC<IbcBciLabProps> = ({ ibcBci }) => {
             </div>
         </div>
 
+        {/* Spectral Signature (Shader View) */}
+        {ibcBci.shader && (
+            <div className="bg-slate-950 border border-slate-800 rounded-lg overflow-hidden flex flex-col">
+                <div className="p-3 border-b border-slate-800 bg-slate-900/50 flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <Code size={14} className="text-fuchsia-400" />
+                        <h3 className="text-xs text-white font-mono font-bold uppercase">Spectral Equation (GLSL)</h3>
+                    </div>
+                    <span className="text-[10px] text-slate-500 font-mono">χ_IBC_BCI</span>
+                </div>
+                <div className="p-4 relative">
+                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-violet-500 blur-md opacity-50 animate-pulse"></div>
+                    <pre className="font-mono text-[10px] text-slate-400 leading-relaxed overflow-x-auto custom-scrollbar">
+                        {ibcBci.shader}
+                    </pre>
+                </div>
+            </div>
+        )}
+
         {/* Correspondence Table */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {ibcBci.mechanisms.map((mech, idx) => (
@@ -116,7 +135,7 @@ const IbcBciLab: React.FC<IbcBciLabProps> = ({ ibcBci }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
                 {ibcBci.options.map(option => (
                     <div key={option.id} className={`relative p-4 rounded-lg border flex flex-col gap-2 group transition-all duration-300 hover:scale-[1.02] cursor-pointer
-                        ${option.id === 'B' ? 'bg-slate-900/80 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'bg-slate-900/30 border-slate-800 hover:border-slate-600'}
+                        ${option.status === 'RECOMMENDED' ? 'bg-slate-900/80 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'bg-slate-900/30 border-slate-800 hover:border-slate-600'}
                     `}>
                         <div className="flex justify-between items-start">
                             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold font-mono border
@@ -147,9 +166,9 @@ const IbcBciLab: React.FC<IbcBciLabProps> = ({ ibcBci }) => {
                             </div>
                         </div>
                         
-                        {option.id === 'B' && (
-                            <div className="absolute -top-2 -right-2 bg-emerald-500 text-black text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">
-                                Recommended
+                        {option.status === 'RECOMMENDED' && (
+                            <div className="absolute -top-2 -right-2 bg-emerald-500 text-black text-[9px] font-bold px-2 py-0.5 rounded-full uppercase flex items-center gap-1 shadow-lg">
+                                <ShieldCheck size={10} /> Satoshi's Vote
                             </div>
                         )}
                     </div>

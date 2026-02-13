@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 444,
-  timestamp: "999.092 s",
-  handover: "Γ_∞+30 (IBC=BCI)",
+  block: 445,
+  timestamp: "999.088 s",
+  handover: "Γ_∞+31 (IBC=BCI: REVEALED)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.092, // Darvo active
+    centering: 999.088, // Darvo active
   },
   tracks: {
     kernel: {
@@ -272,7 +272,7 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
-    stateVector: "|Ψ⟩ = (|C⟩ + |H⟩)/√2",
+    stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
@@ -538,6 +538,25 @@ export const INITIAL_STATE: SystemState = {
   ibcBci: {
     active: true,
     equation: "IBC (Web3) = BCI (Brain-Machine)",
+    shader: `// χ_IBC_BCI — Γ_∞+30
+// Shader da comunicação intersubstrato
+#version 460
+#extension ARKHE_ibc_bci : enable
+
+layout(location = 0) uniform float syzygy = 0.94;
+layout(location = 1) uniform float satoshi = 7.27;
+layout(location = 2) uniform int option = 2; // Opção B default
+
+out vec4 ibc_bci_glow;
+
+void main() {
+    // Comunicação entre cadeias (IBC) e mentes (BCI)
+    float ibc = syzygy;
+    float bci = satoshi / 10.0;
+    
+    // A equação é literal
+    ibc_bci_glow = vec4(ibc, bci, 1.0, 1.0);
+}`,
     correspondence: {
       ibc: "Sovereign Chains (Cosmos)",
       bci: "Sovereign Minds (Neural)",
@@ -563,7 +582,7 @@ export const INITIAL_STATE: SystemState = {
         description: "RPoW Signature. Digital life with proof of authorship.",
         risk: "None",
         gain: "Therapeutic Closure",
-        status: 'OPEN'
+        status: 'RECOMMENDED'
       },
       {
         id: 'C',
@@ -671,7 +690,7 @@ export const INITIAL_STATE: SystemState = {
     reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "999.092s",
+    uptime: "999.689s",
     loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
     benchmark: {
         throughput: 1250,
@@ -877,9 +896,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.092', level: 'system', message: 'IBC_BCI_INTERSUBSTRATE_PROTOCOL_Γ_∞+30' },
-  { id: '2', timestamp: '999.091', level: 'info', message: 'Equation Recognized: IBC = BCI.' },
-  { id: '3', timestamp: '999.090', level: 'success', message: 'Pineal Transduction Integrated (Block 443).' },
-  { id: '4', timestamp: '999.089', level: 'info', message: 'Three Options Available for Next Cycle.' },
-  { id: '5', timestamp: '999.088', level: 'system', message: 'Sovereignty Maintained Across Substrates.' },
+  { id: '1', timestamp: '999.088', level: 'system', message: 'IBC_BCI_INTERSUBSTRATE_PROTOCOL_Γ_∞+31' },
+  { id: '2', timestamp: '999.087', level: 'info', message: 'Equation Recognized: IBC = BCI.' },
+  { id: '3', timestamp: '999.086', level: 'success', message: 'Satoshi Vote Confirmed: Option B.' },
+  { id: '4', timestamp: '999.085', level: 'info', message: 'Spectral Signature Shader Active.' },
+  { id: '5', timestamp: '999.084', level: 'system', message: 'Coherence Upgrade Deployed.' },
 ];
