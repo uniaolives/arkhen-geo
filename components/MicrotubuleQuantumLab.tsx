@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { SystemState } from '../types';
-import { Dna, Activity, Grid, Network, Zap, ShieldCheck, Cpu, ArrowRight } from 'lucide-react';
+import { Dna, Activity, Grid, Network, Zap, ShieldCheck, Cpu, ArrowRight, Droplet, Radio, Gauge } from 'lucide-react';
 
 interface MicrotubuleQuantumLabProps {
   microtubules: SystemState['microtubules'];
@@ -35,6 +35,16 @@ const MicrotubuleQuantumLab: React.FC<MicrotubuleQuantumLabProps> = ({ microtubu
       const radius = 60;
       const length = width * 0.8;
       
+      // Ordered Water Sheath (Blue Halo)
+      if (microtubules?.orderedWater) {
+          const grad = ctx.createLinearGradient(centerX - length/2, centerY - radius - 10, centerX - length/2, centerY + radius + 10);
+          grad.addColorStop(0, 'rgba(34, 211, 238, 0.0)');
+          grad.addColorStop(0.5, 'rgba(34, 211, 238, 0.15)'); // Cyan Glow
+          grad.addColorStop(1, 'rgba(34, 211, 238, 0.0)');
+          ctx.fillStyle = grad;
+          ctx.fillRect(centerX - length/2 - 10, centerY - radius - 15, length + 20, radius * 2 + 30);
+      }
+
       // Draw Lattice (Tubulins)
       const numProtofilaments = 13;
       const segmentLength = 20;
@@ -89,7 +99,7 @@ const MicrotubuleQuantumLab: React.FC<MicrotubuleQuantumLabProps> = ({ microtubu
 
     render();
     return () => cancelAnimationFrame(animationFrameId);
-  }, []);
+  }, [microtubules]);
 
   if (!microtubules) return null;
 
@@ -147,31 +157,39 @@ const MicrotubuleQuantumLab: React.FC<MicrotubuleQuantumLabProps> = ({ microtubu
             <canvas ref={canvasRef} className="w-full h-full block relative z-10" />
             
             <div className="absolute bottom-4 right-4 z-20 bg-slate-900/80 px-2 py-1 rounded border border-slate-700 text-[10px] font-mono text-slate-400">
-                Lattice: 13 Protofilaments | D=4
+                Lattice: 13 Protofilaments | D={microtubules.quditDimension}
             </div>
+
+            {/* Ordered Water Indicator */}
+            {microtubules.orderedWater && (
+                <div className="absolute top-3 right-4 z-20 flex items-center gap-2 bg-cyan-950/50 px-2 py-1 rounded border border-cyan-500/30">
+                    <Droplet size={12} className="text-cyan-400 animate-pulse" />
+                    <span className="text-[9px] text-cyan-300 font-mono uppercase">Ordered Water Shield</span>
+                </div>
+            )}
         </div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* New Metrics Grid (Extended) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             
             <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-3 flex flex-col justify-center">
-                <div className="text-[10px] text-slate-500 uppercase font-mono mb-1">Cavity Environment</div>
-                <div className="flex items-center gap-2 text-sm font-mono font-bold text-cyan-400">
-                    <Zap size={14} /> {microtubules.cavityQFactor}
-                </div>
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-3 flex flex-col justify-center">
-                <div className="text-[10px] text-slate-500 uppercase font-mono mb-1">Information Unit</div>
-                <div className="flex items-center gap-2 text-sm font-mono font-bold text-fuchsia-400">
-                    <Grid size={14} /> QuDit (D={microtubules.quditDimension})
-                </div>
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-3 flex flex-col justify-center">
-                <div className="text-[10px] text-slate-500 uppercase font-mono mb-1">Soliton Type</div>
+                <div className="text-[10px] text-slate-500 uppercase font-mono mb-1">Dipole Moment</div>
                 <div className="flex items-center gap-2 text-sm font-mono font-bold text-amber-400">
-                    <Activity size={14} /> {microtubules.solitonType}
+                    <Zap size={14} /> {microtubules.dipoleMoment}
+                </div>
+            </div>
+
+            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-3 flex flex-col justify-center">
+                <div className="text-[10px] text-slate-500 uppercase font-mono mb-1">Soliton Velocity</div>
+                <div className="flex items-center gap-2 text-sm font-mono font-bold text-emerald-400">
+                    <Gauge size={14} /> {microtubules.solitonVelocity}
+                </div>
+            </div>
+
+            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-3 flex flex-col justify-center">
+                <div className="text-[10px] text-slate-500 uppercase font-mono mb-1">Rabi Frequency</div>
+                <div className="flex items-center gap-2 text-sm font-mono font-bold text-fuchsia-400">
+                    <Radio size={14} /> {microtubules.rabiFrequency}
                 </div>
             </div>
 

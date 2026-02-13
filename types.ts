@@ -307,6 +307,10 @@ export interface SystemState {
     cavityQFactor: string; // "High-Q"
     quditDimension: number; // 4
     networkScale: string; // "10^12"
+    dipoleMoment: string; // "1700 Debye"
+    solitonVelocity: string; // "155 m/s"
+    rabiFrequency: string; // "THz"
+    orderedWater: boolean; 
     correspondence: {
       bio: string;
       arkhe: string;

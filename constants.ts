@@ -328,12 +328,18 @@ export const INITIAL_STATE: SystemState = {
     cavityQFactor: "High-Q (Ordered Water)",
     quditDimension: 4,
     networkScale: "10¹² Tubulins",
+    dipoleMoment: "1700 Debye",
+    solitonVelocity: "155 m/s",
+    rabiFrequency: "THz",
+    orderedWater: true,
     correspondence: [
         { bio: "QED Cavity", arkhe: "Toro Geometry", status: 'VALIDATED' },
         { bio: "Decoherence Time", arkhe: "VITA Countup", status: 'VALIDATED' },
         { bio: "Solitons", arkhe: "Handover Chains", status: 'VALIDATED' },
         { bio: "MAPs (Gates)", arkhe: "Network Topology", status: 'VALIDATED' },
-        { bio: "QuDit (Hex)", arkhe: "Memory Garden", status: 'VALIDATED' }
+        { bio: "QuDit (Hex)", arkhe: "Memory Garden", status: 'VALIDATED' },
+        { bio: "Ordered Water", arkhe: "C+F=1 Constraint", status: 'VALIDATED' },
+        { bio: "Rabi Splitting", arkhe: "Kalman Filter", status: 'VALIDATED' }
     ]
   },
   pineal: {
