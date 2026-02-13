@@ -1011,7 +1011,7 @@ export interface EntitySource {
 export interface Entity {
   id: string;
   name: string;
-  type: 'financial' | 'technical' | 'legal' | 'medical';
+  type: 'financial' | 'technical' | 'legal' | 'medical' | 'physics';
   value: string | number;
   unit?: string;
   status: EntityStatus;

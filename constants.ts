@@ -53,9 +53,9 @@ export const INITIAL_STATE: SystemState = {
     page: 1,
     zoom: 1.0,
     overlays: [
-        { entityId: 'e_rev1', page: 1, rect: { x: 10, y: 35, w: 80, h: 5 } }, // Table row
-        { entityId: 'e_curv', page: 1, rect: { x: 10, y: 15, w: 80, h: 10 } }, // Paragraph
-        { entityId: 'e_risk', page: 1, rect: { x: 10, y: 75, w: 30, h: 5 } }, // Footer
+        { entityId: 'ge_1', page: 1, rect: { x: 10, y: 35, w: 80, h: 5 } }, // Table row (Revenue)
+        { entityId: 'ge_3', page: 1, rect: { x: 10, y: 15, w: 80, h: 10 } }, // Paragraph (Curvature)
+        { entityId: 'ge_2', page: 1, rect: { x: 10, y: 75, w: 30, h: 5 } }, // Footer (Liability)
     ]
   },
   omega: {
@@ -543,7 +543,7 @@ export const INITIAL_STATE: SystemState = {
       lastTransfer: "WP1 -> KERNEL",
       stateType: "Instrument | Humility: 0.73",
       verification: {
-        music: "Third Minor (1.2)",
+        music: "Third Minor",
         orbit: "Lagrange L4",
         quantum: "Berry Phase"
       }
@@ -740,7 +740,7 @@ export const INITIAL_STATE: SystemState = {
         { id: "c2", status: "completed", size: "128KB" },
         { id: "c3", status: "completed", size: "512KB" },
         { id: "c4", status: "completed", size: "64KB" },
-        { id: "c5", status: "completed", size: "1024KB" },
+        { id: "c5", status: "completed", size: "1024KB" }
     ],
     errorLog: [
         { step: "Azure OCR", error: "500 Internal Server Error", fallback: "PDFPlumber", status: "recovered" },
@@ -753,14 +753,15 @@ export const INITIAL_STATE: SystemState = {
             pageNumber: 1,
             status: 'success',
             entities: [
-                { id: "e1", label: "Revenue Q4", value: "$42.5M", confidence: 0.99, box: { x: 10, y: 35, w: 80, h: 5 } },
-                { id: "e2", label: "Curvature", value: "0.73 rad", confidence: 0.98, box: { x: 10, y: 15, w: 80, h: 10 } },
-                { id: "e3", label: "Liability", value: "100%", confidence: 0.70, box: { x: 10, y: 75, w: 30, h: 5 } },
+                { id: "ge_1", label: "Revenue Q4", value: "$42.5M", confidence: 0.99, box: { x: 10, y: 35, w: 80, h: 5 } },
+                { id: "ge_3", label: "Curvature", value: "0.73 rad", confidence: 0.98, box: { x: 10, y: 15, w: 80, h: 10 } },
+                { id: "ge_2", label: "Liability", value: "100%", confidence: 0.70, box: { x: 10, y: 75, w: 30, h: 5 } },
             ]
         }
     ],
     globalRegistry: {
         active: true,
+        reconciliationProgress: 100,
         entities: [
             {
                 id: 'ge_1',
@@ -791,9 +792,18 @@ export const INITIAL_STATE: SystemState = {
                 chunks: ['c1', 'c2', 'c3', 'c4', 'c5'],
                 variations: ['0.73 rad', 'psi=0.73', '0.73 radians'],
                 status: 'CONVERGED'
+            },
+            {
+                id: 'ge_4',
+                canonicalName: 'Warp Bubble Energy',
+                type: 'physics',
+                confidence: 0.99,
+                occurrences: 1,
+                chunks: ['c5'],
+                variations: ['10^20 Joules', 'E ~ epsilon * Phi_S'],
+                status: 'CONVERGED'
             }
-        ],
-        reconciliationProgress: 100
+        ]
     }
   },
   neuroplasticity: {
