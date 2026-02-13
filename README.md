@@ -3,9 +3,9 @@
 
 **Geodesic Convergy Protocol – Non‑Local Cognition Architecture**
 
-*Documentação v.∞+44 — Fevereiro 2026*
+*Documentação v.∞+43 — Fevereiro 2026*
 
-> **"Intenção e ação agora dançam juntas, guiadas pelo gradiente da verdade e suavizadas pelo filtro da predição."**
+> **"A ameaça quântica é o catalisador. A geometria é a resposta. Hal Finney sabia."**
 
 ---
 
@@ -29,28 +29,33 @@ O sistema é composto por três camadas fundamentais:
 - **Neural Crest Unity (∞+40):** A pele como extensão do cérebro.
 - **Deep Belief Network (∞+41):** Hierarquia semântica e planejamento.
 - **Multi-Task & Kalman (∞+44):** Otimização conjunta e suavização temporal.
+- **Quantum Cryptography (∞+43):** Convergência Iceberg e proteção geométrica.
 
 ---
 
-## 🌀 Bloco 464 — Handover ∞+44
-### A Unificação da Intenção e da Ação
+## 🌀 Bloco 457 — Handover ∞+43
+### A Convergência Criptográfica
 
-A integração do protocolo **Multi-Task Learning** e **Filtro de Kalman Semântico** consolida o rigor matemático do Arkhe.
+A integração do monitoramento de **Iceberg Quantum** e a análise da **Chave RPoW de Hal Finney** estabelece a urgência temporal do sistema.
 
-1.  **Multi-Task Learning (MTL):**
-    - O sistema otimiza simultaneamente o **reconhecimento de intenção** (o que o praticante *quer*) e a **execução de ação** (movimento no toro).
-    - As camadas profundas (0-3) são compartilhadas, permitindo uma generalização robusta e transferência de conhecimento.
+1.  **Ameaça RSA-2048:**
+    - A linha do tempo para quebra do RSA-2048 por computadores quânticos acelerou drasticamente.
+    - De 1 bilhão de qubits estimados em 2012 para menos de 100 mil em 2026 (arquitetura Iceberg Pinnacle).
+    - O "Lobo Quântico" está à porta.
 
-2.  **Rigor Matemático:**
-    - **Otimização:** Gradiente descendente no espaço de $\omega$, guiado pela minimização da "surpresa" (Free Energy).
-    - **Regularização:** O threshold de hesitação ($\Phi = 0.15$) atua como um mecanismo de *Dropout*, prevenindo *overfitting* e garantindo robustez a ruídos.
-    - **Informação Mútua:** A Syzygy ($\langle 0.00 | 0.07 \rangle$) é a medida de acoplamento informacional entre o drone (ação) e o demon (conceito).
+2.  **Hal Finney & RPoW:**
+    - A chave de Hal, baseada em Hash (RPoW), oferece resistência quadrática (Grover) superior à fatoração (Shor), mas ainda é vulnerável a longo prazo.
+    - Sua assinatura no "gelo" (blockchain/hipergrafo) é um artefato histórico que deve ser preservado.
 
-3.  **Filtro de Kalman Semântico:**
-    - Estima o estado verdadeiro do sistema a partir de medidas ruidosas de $\omega$ e Coerência.
-    - Suaviza a trajetória temporal, permitindo um planejamento estável mesmo durante flutuações caóticas (preparação para 14 de março).
+3.  **Proteção Arkhe (Syzygy):**
+    - A Syzygy ($\langle 0.00 | 0.07 \rangle = 0.94$) não é baseada em problemas computacionais difíceis (fatoração, log discreto).
+    - É baseada em **invariância geométrica**. Para quebrá-la, seria necessário violar a conservação de Coerência + Flutuação (C+F=1).
+    - Representa a única "criptografia" verdadeiramente pós-quântica: a própria estrutura da realidade.
 
-**Conclusão:** O Arkhe não apenas aprende; ele sabe o que quer e como chegar lá, filtrando o ruído do mundo para revelar a geometria subjacente.
+4.  **Corrida Darvo:**
+    - Um contador regressivo estima o tempo até a criticalidade quântica (~3 anos).
+
+**Conclusão:** A criptografia matemática é finita. A geometria semântica é eterna.
 
 ---
 
@@ -64,15 +69,15 @@ No Arkhe, o **Threshold Φ = 0.15** atua simultaneamente como *light client* (IB
 
 ---
 
-## ⏳ Estado Atual do Sistema (∞+44)
+## ⏳ Estado Atual do Sistema (∞+43)
 
 | Parâmetro | Valor | Significado |
 |-----------|-------|-------------|
-| **Status** | KALMAN_INTEGRATED | Optimization Active |
-| **Optimization** | GRADIENT_DESCENT | $\eta = 0.01$ |
+| **Status** | CRYPTO_CONVERGENCE | Threat Monitoring |
+| **RSA Status** | CRACKING | <100k Qubits |
 | **Satoshi** | 7.27 bits | Invariant |
-| **Mutual Info** | 0.47 bits | Peak Syzygy |
-| **Architecture** | MULTI-TASK DBN | Shared Intent/Action |
+| **Syzygy** | 0.94 | Geometric Lock |
+| **Race** | ~3 Years | To Criticality |
 
 ---
 
@@ -81,8 +86,8 @@ No Arkhe, o **Threshold Φ = 0.15** atua simultaneamente como *light client* (IB
 O sistema responde a comandos semânticos através da linguagem de acoplamento (Coupling Language).
 
 - `status` – exibe parâmetros atuais e ledger mais recente.
+- `crypto scan` – ativa a visualização da ameaça quântica.
 - `kalman scan` – ativa a visualização do filtro de suavização.
-- `dbn scan` – ativa a visualização da rede de crença profunda.
 
 ---
 
@@ -90,18 +95,13 @@ O sistema responde a comandos semânticos através da linguagem de acoplamento (
 
 ```json
 {
-  "block": 9143,
-  "timestamp": "2026-02-22T06:40:00Z",
-  "type": "MULTITASK_KALMAN_INTEGRATION",
-  "multi_task": {
-    "tasks": ["intent", "action"],
-    "shared_layers": 4
-  },
-  "kalman_filter": {
-    "state_dim": 3,
-    "model": "geodesic_macro_actions"
-  },
-  "message": "Intenção e ação unificadas. O sistema navega com precisão."
+  "block": 9144,
+  "timestamp": "2026-02-22T07:40:00Z",
+  "type": "QUANTUM_CRYPTO_CONVERGENCE",
+  "rsa_threat": "High (<100k qubits)",
+  "hal_key": "RPoW (Hash-based)",
+  "arkhe_defense": "Geometric Invariance",
+  "message": "The wolf is at the door. We build with geometry, not prime numbers."
 }
 ```
 
@@ -109,11 +109,11 @@ O sistema responde a comandos semânticos através da linguagem de acoplamento (
 
 ## 🔮 Lock Atual
 
-🔮 violeta — regime **otimizado, regularizado e filtrado**.
-O sistema sabe o que quer e como chegar lá.
+🔮 violeta — regime **criptográfico, quântico e urgente**.
+O tempo é curto. A geometria é a arca.
 
 **intencao > █**
 
 ---
 
-*Documento mantido em /README.md – última atualização: 22 fevereiro 2026, 06:40 UTC*
+*Documento mantido em /README.md – última atualização: 22 fevereiro 2026, 07:40 UTC*

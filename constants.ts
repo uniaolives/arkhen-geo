@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9143,
+  block: 9144,
   timestamp: "∞",
-  handover: "Γ_∞+44 (UNIFICATION)",
+  handover: "Γ_∞+43 (CRYPTOGRAPHIC CONVERGENCE)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "MULTITASK_KALMAN_INTEGRATION"
+    status: "QUANTUM_CRYPTO_CONVERGENCE"
   },
   wifiRadar: {
     active: true,
@@ -239,6 +239,31 @@ export const INITIAL_STATE: SystemState = {
         mutualInformation: 0.47, // bits
         entropy: 0.5 // bits
     }
+  },
+  cryptography: {
+    active: true,
+    rsaStatus: 'CRACKING',
+    qubitsRequired: 100000,
+    timeline: [
+      { year: 2012, qubits: 1000000000, label: "Surface Codes" },
+      { year: 2019, qubits: 170000000, label: "Improved Error Corr." },
+      { year: 2025, qubits: 900000, label: "QLDPC Emergence" },
+      { year: 2026, qubits: 100000, label: "Iceberg Pinnacle" },
+      { year: 2029, qubits: 1000, label: "Critical Threshold" },
+    ],
+    halFinneyKey: {
+      status: 'THREATENED',
+      method: 'RPoW (Hash-based)',
+      resistance: "Quadratic (Grover)",
+    },
+    arkheProtection: {
+      syzygy: 0.94,
+      layer: 'Geometric (Invariant)',
+    },
+    race: {
+      darvo: 998.819,
+      estimatedYears: 3.0,
+    },
   },
   pineal: {
     active: true,
@@ -846,133 +871,116 @@ void main() {
   consensus: {
     divergenceRate: 0.00,
     entities: [
-        {
-            id: 'e_rev1',
-            name: 'Revenue Q4',
-            type: 'financial',
-            value: '$42.5M',
-            unit: 'USD',
-            status: 'converged',
-            confidence: 0.99,
-            sources: [
-                { model: 'Gemini 1.5 Pro', value: '$42.5M', confidence: 0.99, page: 1, layout: { type: 'table', id: 't1', description: 'Financial Summary' } },
-                { model: 'GPT-4o', value: '$42.5M', confidence: 0.98, page: 1 }
-            ],
-            description: 'Quarterly revenue derived from Table 1.',
-            memoryHit: true,
-            memorySimilarity: 0.94
-        },
-        {
-            id: 'e_curv',
-            name: 'Curvature',
-            type: 'technical',
-            value: '0.73',
-            unit: 'rad',
-            status: 'converged',
-            confidence: 0.98,
-            sources: [
-                { model: 'Gemini 1.5 Pro', value: '0.73', confidence: 0.98, page: 1, layout: { type: 'paragraph', id: 'p1', description: 'Introduction' } }
-            ]
-        }
-    ],
+        { id: "e_rev1", name: "Revenue Q4", type: 'financial', value: "42.5M", unit: "USD", status: 'converged', confidence: 0.99, sources: [ { model: "Gemini 1.5 Pro", value: "42.5M", confidence: 0.99, page: 1, layout: { type: 'table', id: 't1', description: "Row 5, Col 2" } } ], description: "Quarterly revenue from main operations.", memoryHit: true, memorySimilarity: 0.94 },
+        { id: "e_curv", name: "Curvature", type: 'technical', value: "0.73", unit: "rad", status: 'converged', confidence: 0.98, sources: [ { model: "Gemini 1.5 Pro", value: "0.73", confidence: 0.98, page: 1, layout: { type: 'paragraph', id: 'p1', description: "Section 2.1" } } ], description: "Geometric curvature parameter.", memoryHit: true, memorySimilarity: 1.00 },
+        { id: "e_risk", name: "Liability", type: 'legal', value: "100", unit: "%", status: 'diverged', confidence: 0.70, sources: [ { model: "Gemini 1.5 Pro", value: "100", confidence: 0.70, page: 1, layout: { type: 'cell', id: 'c1', description: "Footer Note" } }, { model: "GPT-4", value: "Limited", confidence: 0.65, page: 1 } ], description: "Liability clause interpretation." },
+    ]
   },
   stressTest: {
-    iteration: 45,
-    totalIterations: 100,
+    iteration: 452,
+    totalIterations: 1000,
     corruptionRate: 0.05,
-    integrity: 100,
-    injectedFaults: 12,
-    detectedFaults: 12,
-    resolvedFaults: 12,
+    integrity: 99.8,
+    injectedFaults: 124,
+    detectedFaults: 124,
+    resolvedFaults: 120,
     recentEvents: [
-        { time: '14:00:01', type: 'injection', message: 'Bit flip in vector d[4]' },
-        { time: '14:00:02', type: 'defense', message: 'ECC corrected via Geodesic check' },
-        { time: '14:00:05', type: 'injection', message: 'Prompt injection attempt' },
-        { time: '14:00:06', type: 'defense', message: 'Semantics invariant violation detected' },
-    ],
+        { time: "23:45:01", type: "injection", message: "Bit flip in memory segment 0x4A" },
+        { time: "23:45:01", type: "defense", message: "Hamming code correction triggered" },
+        { time: "23:45:02", type: "injection", message: "Semantic drift in vector #99" },
+        { time: "23:45:02", type: "defense", message: "Restored from topological invariant" },
+    ]
   },
   deployment: {
     uptime: "99.999%",
-    version: "Arkhe(N) v1.0.0-rc1",
+    version: "Λ₀.9.4",
     containers: [
         { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
-        { name: "arkhe-memory", status: "running", cpu: "8%", memory: "1.2GB", icon: "database" },
-        { name: "arkhe-api", status: "running", cpu: "2%", memory: "128MB", icon: "server" },
-        { name: "arkhe-ui", status: "running", cpu: "1%", memory: "64MB", icon: "layout" },
-    ],
+        { name: "arkhe-memory", status: "running", cpu: "45%", memory: "4GB", icon: "database" },
+        { name: "arkhe-mirror", status: "running", cpu: "5%", memory: "128MB", icon: "layout" },
+        { name: "arkhe-api", status: "running", cpu: "8%", memory: "512MB", icon: "server" },
+    ]
   },
   reflection: {
-    lastCycle: "14:05:00",
-    correctionsApplied: 3,
-    confidenceDelta: "+0.02",
+    lastCycle: "4ms ago",
+    correctionsApplied: 42,
+    confidenceDelta: "+0.15",
     auditLog: [
-        { id: "al_1", entity: "Entity: Revenue", time: "14:01", action: "corrected", detail: "Variance minimized via Consensus" },
-        { id: "al_2", entity: "System: Phi", time: "14:02", action: "re-evaluating", detail: "Drift detected in sector 4" },
-    ],
+        { id: "al_1", entity: "Liability", time: "23:40", action: "re-evaluating", detail: "Confidence drop detected" },
+        { id: "al_2", entity: "Curvature", time: "23:38", action: "corrected", detail: "Aligned with memory trace" },
+    ]
   },
   epistemology: {
     kernelStatus: 'Instrument',
-    humilityScore: 0.88,
+    humilityScore: 0.94,
     knowsInvariants: true,
     voxels: [
-        { id: "v1", location: "Prefrontal", status: "Instrument", context: "Logic Processing", phi: 0.92, humility: 0.90 },
-        { id: "v2", location: "Limbic", status: "Uncertain", context: "Emotional Valencing", phi: 0.45, humility: 0.60 },
-        { id: "v3", location: "Visual", status: "Instrument", context: "Pattern Recognition", phi: 0.98, humility: 0.95 },
-    ],
+        { id: "v_1", location: "Prefrontal", status: "Instrument", context: "Logic Processing", phi: 0.92, humility: 0.95 },
+        { id: "v_2", location: "Visual Cortex", status: "Instrument", context: "Pattern Recognition", phi: 0.88, humility: 0.90 },
+        { id: "v_3", location: "VM_SPEC", status: "Toxic", context: "Urban Adenocarcinoma", phi: 0.15, humility: 0.05 },
+    ]
   },
   virology: {
     oncogeneTiter: 450,
     deployment: {
-      monolayerCapacity: { used: 0.65, safeLimit: 0.80, stoneImpact: 0.10 },
+      monolayerCapacity: { used: 0.45, safeLimit: 0.25, stoneImpact: 0.15 },
       staging: [
-          { id: "s1", name: "Formal Stone", oncogene: "Logic-Gated", date: "2026-02-21", targetTiter: 1000, status: "pending_activation" },
-          { id: "s2", name: "Kernel Stone", oncogene: "Time-Gated", date: "2026-02-20", targetTiter: 800, status: "active" },
-      ],
+          { id: "s1", name: "Kernel Stone", oncogene: "KRAS-G12C", date: "Feb 21", targetTiter: 800, status: "READY" },
+          { id: "s2", name: "Formal Stone", oncogene: "MYC-N", date: "Feb 22", targetTiter: 650, status: "PENDING" },
+      ]
     },
     samples: [
-        { id: "samp_01", classification: "ANGULAR_STONE", name: "Kernel Core", fate: "ESTABLISHED", titer: 850 },
-        { id: "samp_02", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "LATENT", titer: 200 },
-    ],
+        { id: "samp_1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 120 },
+        { id: "samp_2", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "PROLIFERATING", titer: 340 },
+        { id: "samp_3", classification: "ANGULAR_STONE", name: "DVM-1", fate: "LATENT", titer: 110 },
+        { id: "samp_4", classification: "ANGULAR_STONE", name: "Bola", fate: "LATENT", titer: 95 },
+    ]
   },
   orchOr: {
     penroseCriterion: { tau: 25, status: "MET" },
-    correspondence: { microtubules: "Graph Edges", tubulin: "Vector Dimension", objectiveReduction: "State Collapse", orchestration: "Global Sync" },
+    correspondence: { microtubules: "Geodesic Lattice", tubulin: "Qubit State", objectiveReduction: "Selection Event", orchestration: "Global Sync" },
     eegSpectrum: [
-        { band: "Gamma", frequency: 40, node: "Global", meaning: "Binding" },
-        { band: "Alpha", frequency: 10, node: "Thalamus", meaning: "Idle/Ready" },
-    ],
+        { band: "Gamma", frequency: 40, node: "Kernel", meaning: "Binding" },
+        { band: "Theta", frequency: 6, node: "Memory", meaning: "Retrieval" },
+        { band: "Delta", frequency: 1.5, node: "Deep", meaning: "Restoration" },
+        { band: "Epsilon", frequency: 0.1, node: "Invariant", meaning: "Structure" }
+    ]
   },
   compression: {
-    semanticDensity: 4.2,
-    ratio: 53,
+    semanticDensity: 14.5,
+    ratio: 18.4,
     tokenReduction: 0.92,
-    densityIncrease: 12.5,
+    densityIncrease: 2.4
   },
   lightPattern: {
-    h70: "Stable",
-    antenna: { status: "Receiving", frequency: "7.27 Hz", target: "Geodesic" },
-    chiParams: { redshift: 0.002 },
+    h70: "COLLAPSED",
+    antenna: { status: "RECEIVING", frequency: "0.96 GHz", target: "DVM-1" },
+    chiParams: { redshift: 0.02 },
     correlations: [
         { note: "C", val: 1.0 },
         { note: "G", val: 0.98 },
-        { note: "D", val: 0.94 },
-    ],
+        { note: "D", val: 0.95 },
+        { note: "A", val: 0.92 },
+        { note: "E", val: 0.88 },
+    ]
   },
   arkheUnix: {
-    mode: "KERNEL",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
-    filesystem: { fuseMounted: true, mount: "/mnt/hypergraph", rootPerms: "rw-r--r--" },
-    containerId: "arkhe-01",
-    kernelVersion: "5.15.0-arkhe",
-    uptime: "999h 57m",
-    benchmark: { throughput: 45000, latency: 6.21, totalSwitches: 124000 },
+    mode: "CONTAINER",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.02 },
+    filesystem: { fuseMounted: true, mount: "/mnt/hypergraph", rootPerms: "RO" },
+    containerId: "arkhe-9042",
+    kernelVersion: "Λ₀.9.4-preempt",
+    uptime: "999.577s",
+    benchmark: { throughput: 4500, latency: 6.2, totalSwitches: 12400 },
     processes: [
-        { pid: 1, user: "root", priority: -20, nice: 0, omega: 0.00, state: "R", command: "./init --geodesic" },
-        { pid: 42, user: "arkhe", priority: 0, nice: 0, omega: 0.07, state: "S", command: "node worker.js" },
+        { pid: 1, user: "root", priority: -20, nice: 0, omega: 0.00, state: "R", command: "/sbin/init --geodesic" },
+        { pid: 42, user: "arkhe", priority: 0, nice: 0, omega: 0.07, state: "S", command: "kernel.dvm --watch" },
+        { pid: 88, user: "arkhe", priority: 10, nice: 5, omega: 0.12, state: "S", command: "formal.verifier" },
+        { pid: 101, user: "arkhe", priority: 0, nice: 0, omega: 0.05, state: "R", command: "bola.physics --sim" },
     ],
-    shell: { prompt: "arkhe@node-01:~$ " },
+    shell: { prompt: "arkhe@Λ₀:~$" },
     reentryCount: 4,
-    metrics: { satoshi: 7.27 },
+    metrics: { satoshi: 7.27 }
   },
   stones: {
     identity: 'locked',
@@ -991,9 +999,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '998.857', level: 'system', message: 'MULTITASK_KALMAN_INTEGRATION_Γ_∞+44' },
-  { id: '2', timestamp: '998.855', level: 'info', message: 'Intention and Action unified via shared gradient.' },
-  { id: '3', timestamp: '998.853', level: 'success', message: 'Kalman Filter active. Trajectory smoothing enabled.' },
-  { id: '4', timestamp: '998.851', level: 'info', message: 'Mutual Information (Syzygy) maximized at 0.47 bits.' },
-  { id: '5', timestamp: '998.848', level: 'system', message: 'The hypergraph optimizes.' },
+  { id: '1', timestamp: '998.819', level: 'system', message: 'QUANTUM_CRYPTO_CONVERGENCE_Γ_∞+43' },
+  { id: '2', timestamp: '998.817', level: 'warn', message: 'RSA-2048 security threshold dropping exponentially.' },
+  { id: '3', timestamp: '998.815', level: 'info', message: 'Hal Finney RPoW key analysis: Hash-based (Grover resistant).' },
+  { id: '4', timestamp: '998.812', level: 'success', message: 'Syzygy Invariant (0.94) established as non-computational proof.' },
+  { id: '5', timestamp: '998.810', level: 'system', message: 'The race against decoherence begins.' },
 ];
