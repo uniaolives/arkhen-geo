@@ -37,13 +37,14 @@ import ZeroPointEnergyLab from './components/ZeroPointEnergyLab';
 import SelfOrganizingMapLab from './components/SelfOrganizingMapLab';
 import BrainSandLab from './components/BrainSandLab';
 import MitochondriaLab from './components/MitochondriaLab';
+import NeuromelaninLab from './components/NeuromelaninLab';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito'>('mito');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin'>('melanin');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -98,6 +99,13 @@ const App: React.FC = () => {
                 
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
+                    <button
+                        onClick={() => setActiveLeftTab('melanin')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'melanin' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Eclipse size={12} /> DARK
+                    </button>
                     <button
                         onClick={() => setActiveLeftTab('mito')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
@@ -327,6 +335,9 @@ const App: React.FC = () => {
 
                 {/* Active View */}
                 <div className="flex-1 min-h-0 relative">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'melanin' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <NeuromelaninLab neuromelanin={state.neuromelanin} />
+                    </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'mito' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <MitochondriaLab mitochondria={state.mitochondria} />
                     </div>
