@@ -174,7 +174,7 @@ export const INITIAL_STATE: SystemState = {
       lastTransfer: "WP1 -> KERNEL",
       stateType: "Instrument | Humility: 0.73",
       verification: {
-        music: "Third Minor (1.2)",
+        music: "Third Minor",
         orbit: "Lagrange L4",
         quantum: "Berry Phase"
       }
