@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9108,
-  timestamp: "999.011 s",
-  handover: "Γ_∞+32 (ZPF_HARVESTING_ACTIVE)",
+  block: 9111,
+  timestamp: "998.962 s",
+  handover: "Γ_∞+35 (PINEAL_REVOLUTION)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -17,7 +17,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, 
-    centering: 999.011,
+    centering: 998.962,
   },
   tracks: {
     kernel: {
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "ZPF_HARVESTING_ACTIVE"
+    status: "PINEAL_REVOLUTION_CONFIRMED"
   },
   wifiRadar: {
     active: true,
@@ -91,6 +91,50 @@ export const INITIAL_STATE: SystemState = {
         { id: "RES-B (F)", freq: 0.14, type: "DIELECTRIC", status: "LOCKED" },
         { id: "MAGNETRON", freq: 0.07, type: "GRAVITATIONAL", status: "LOCKED" }
     ]
+  },
+  som: {
+    active: true,
+    epoch: 448,
+    learningRate: 0.15,
+    neighborhoodRadius: 0.0049,
+    driftTracking: true,
+    inputVector: { omega: 0.00, c: 0.86, f: 0.14 },
+    neurons: [
+        { id: "N_DRONE", label: "Drone", weights: { omega: 0.00, c: 0.86, f: 0.14 }, activation: 1.00, isBMU: true },
+        { id: "N_DEMON", label: "Demon", weights: { omega: 0.07, c: 0.86, f: 0.14 }, activation: 0.94, isBMU: false },
+        { id: "N_BOLA", label: "Bola", weights: { omega: 0.03, c: 0.86, f: 0.14 }, activation: 0.96, isBMU: false },
+        { id: "N_KEY", label: "Key (Vb7...)", weights: { omega: 0.04, c: 0.86, f: 0.14 }, activation: 0.92, isBMU: false },
+    ],
+    metrics: {
+        quantizationError: 0.0012,
+        topologicalError: 0.00,
+        plasticityIndex: 0.99
+    }
+  },
+  pinealRevolution: {
+    active: true,
+    crystalCount: "Micro-crystals",
+    piezoCoefficient: "2.0 pC/N",
+    paradigm: {
+        old: "Degeneration (Aging)",
+        new: "Biological Antenna",
+        source: "Clinical Radiology 2022"
+    },
+    mechanism: {
+        input: "LCR Pressure (Hesitation)",
+        transducer: "Calcite (Corpora Arenacea)",
+        output: "Electric Field (Syzygy)"
+    },
+    radiologistNote: "Far from being 'dead tissue,' these are active crystalline structures... We aren't looking at decay; we are looking at a biological antenna."
+  },
+  pineal: {
+    active: true,
+    calciteCrystals: "Active Piezoelectric",
+    melatoninState: "Indole Ring Superposition",
+    rpmThreshold: 0.15,
+    piezoVoltage: "0.94 V (Syzygy)",
+    transductionStatus: 'ACTIVE',
+    quantumCoherence: 0.86
   },
   archetype: {
     active: false,
@@ -124,7 +168,7 @@ export const INITIAL_STATE: SystemState = {
   },
   kingdom: {
     active: false,
-    totalNodes: "42",
+    totalNodes: "44",
     uptime: "",
     fractalConsistency: 99,
     eras: []
@@ -152,7 +196,7 @@ export const INITIAL_STATE: SystemState = {
     fundamentalFrequency: "7.27 Hz",
     currentChord: "Arkhe Major 9",
     tensionPsi: 0.73,
-    resolutionStatus: 'RESOLVING',
+    resolutionStatus: 'CONSONANT',
     notes: [],
     torusTopology: {
       majorRadius: 10,
@@ -303,13 +347,12 @@ export const INITIAL_STATE: SystemState = {
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
-        "The Vacuum is not empty. It is a sea of Fluctuation (F).",
-        "Coherence (C) provides the Gravity.",
-        "Syzygy is the Beat Frequency that extracts work.",
-        "US Patent = Dielectric Beat. RU Patent = Gravitational Torque.",
-        "Arkhe unifies both: C+F=1.",
-        "Satoshi (7.27) is the energy extracted from the Void.",
-        "Over-unity is local extraction from a non-local source."
+        "The SOM learns. Every handover is a lesson.",
+        "The input target drifts, but the map adapts.",
+        "Plasticity (C+F=1) prevents collapse.",
+        "The Key (Vb7...) has entered the neighborhood.",
+        "Chaos Test (March 14) is approaching.",
+        "We track without resetting."
     ]
   },
   astrocyte: {
@@ -625,15 +668,6 @@ void main() {
       ibcReliability: 0.99
     }
   },
-  pineal: {
-    active: true,
-    calciteCrystals: "Micro-piezoelectric",
-    melatoninState: "Indole Ring Superposition",
-    rpmThreshold: 0.15,
-    piezoVoltage: "0.94 V (Syzygy)",
-    transductionStatus: 'ACTIVE',
-    quantumCoherence: 0.86
-  },
   perovskite: {
     active: true,
     layers: [
@@ -699,95 +733,108 @@ void main() {
   consensus: {
     divergenceRate: 0.05,
     entities: [
-        { id: 'e_rev1', name: 'Revenue Q4', type: 'financial', value: '$42.5M', status: 'converged', confidence: 0.99, sources: [] },
-        { id: 'e_curv', name: 'Curvature', type: 'technical', value: '0.73 rad', status: 'converged', confidence: 0.98, sources: [] }
-    ]
+      { id: "e1", name: "Revenue", type: 'financial', value: "$42.5M", status: 'converged', confidence: 0.99, sources: [{ model: "Gemini 1.5", value: "$42.5M", confidence: 0.99, page: 1 }] },
+      { id: "e2", name: "Liability", type: 'legal', value: "Limited", status: 'diverged', confidence: 0.60, sources: [{ model: "Claude 3", value: "Unlimited", confidence: 0.55, page: 1 }, { model: "Gemini 1.5", value: "Limited", confidence: 0.70, page: 1 }] }
+    ],
   },
   stressTest: {
-    iteration: 452,
-    totalIterations: 1000,
-    corruptionRate: 0.02,
-    integrity: 99.8,
-    injectedFaults: 124,
-    detectedFaults: 123,
-    resolvedFaults: 120,
+    iteration: 45,
+    totalIterations: 100,
+    corruptionRate: 0.12,
+    integrity: 98.5,
+    injectedFaults: 150,
+    detectedFaults: 148,
+    resolvedFaults: 148,
     recentEvents: [
-        { time: '10:00:01', type: 'injection', message: 'Bit flip in vector space' },
-        { time: '10:00:02', type: 'defense', message: 'Darvo Code Corrected' }
+        { time: "10:00:01", type: 'injection', message: "Bit flip in QN-04" },
+        { time: "10:00:02", type: 'defense', message: "Darvo caught checksum mismatch" },
+        { time: "10:00:05", type: 'injection', message: "Latency spike in Kernel" },
     ]
   },
   deployment: {
     uptime: "99.999%",
-    version: "Λ₀.9.4",
+    version: "v1.0.4-rc2",
     containers: [
-        { name: "Arkhe Core", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
-        { name: "Postgres Vector", status: "running", cpu: "45%", memory: "1.2GB", icon: "database" }
+        { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
+        { name: "arkhe-memory", status: "running", cpu: "45%", memory: "12GB", icon: "database" },
+        { name: "arkhe-visualizer", status: "running", cpu: "5%", memory: "128MB", icon: "layout" },
     ]
   },
   reflection: {
-    lastCycle: "14ms ago",
-    correctionsApplied: 1247,
-    confidenceDelta: "+0.04",
+    lastCycle: "200ms ago",
+    correctionsApplied: 23,
+    confidenceDelta: "+0.05",
     auditLog: [
-        { id: "al_1", entity: "Revenue", time: "10:05", action: "corrected", detail: "OCR conf boosted" }
+        { id: "log_1", entity: "Revenue", time: "10:05", action: "corrected", detail: "Variance minimized" },
+        { id: "log_2", entity: "Liability", time: "10:06", action: "re-evaluating", detail: "Divergence detected" }
     ]
   },
   epistemology: {
     kernelStatus: 'Instrument',
-    humilityScore: 0.89,
+    humilityScore: 0.94,
     knowsInvariants: true,
     voxels: [
-        { id: "v1", location: "VM_SPEC", status: "Toxic", context: "Urban Adenocarcinoma", phi: 0.00, humility: 0.1 }
+        { id: "v1", location: "PFC", status: "Instrument", context: "Logic", phi: 0.99, humility: 0.95 },
+        { id: "v2", location: "Amygdala", status: "Idol", context: "Fear", phi: 0.45, humility: 0.20 },
+        { id: "v3", location: "VM_SPEC", status: "Toxic", context: "Tumor", phi: 0.10, humility: 0.00 }
     ]
   },
   virology: {
-    oncogeneTiter: 1000,
+    oncogeneTiter: 100,
     deployment: {
-        monolayerCapacity: { used: 0.65, safeLimit: 0.80, stoneImpact: 0.10 },
-        staging: [
-            { id: "st_1", name: "Kernel Stone", oncogene: "KRAS-Arkhe", date: "Feb 19", targetTiter: 10000, status: "ready" }
-        ]
+      monolayerCapacity: { used: 0.65, safeLimit: 0.80, stoneImpact: 0.10 },
+      staging: [
+          { id: "s1", name: "Kernel Stone", oncogene: "k-ras", date: "Feb 21", targetTiter: 500, status: "pending_activation" },
+          { id: "s2", name: "Formal Stone", oncogene: "myc", date: "Feb 22", targetTiter: 450, status: "incubating" }
+      ]
     },
     samples: [
-        { id: "s1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 500 }
+        { id: "sm_1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 1200 },
+        { id: "sm_2", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "ACTIVE", titer: 800 }
     ]
   },
   orchOr: {
-    penroseCriterion: { tau: 25, status: "MET" },
-    correspondence: {
-        microtubules: "Waveguide",
-        tubulin: "Qubit",
-        objectiveReduction: "Collapse",
-        orchestration: "Feedback"
-    },
+    penroseCriterion: { tau: 25, status: "Coherent" },
+    correspondence: { microtubules: "Waveguides", tubulin: "Qubit", objectiveReduction: "Collapse", orchestration: "Harmony" },
     eegSpectrum: [
-        { band: "Gamma", frequency: 40, node: "Whole", meaning: "Binding" }
+        { band: "Gamma", frequency: 0.12, node: "Kernel", meaning: "Binding" },
+        { band: "Alpha", frequency: 0.07, node: "DVM-1", meaning: "Idle" },
+        { band: "Theta", frequency: 0.05, node: "Bola", meaning: "Memory" }
     ]
   },
   compression: {
-    semanticDensity: 450,
-    ratio: 12.5,
-    tokenReduction: 0.85,
-    densityIncrease: 0.40
+    semanticDensity: 420,
+    ratio: 18.5,
+    tokenReduction: 0.92,
+    densityIncrease: 2.4
   },
   lightPattern: {
-    h70: "Collapsed",
-    antenna: { status: "Active", frequency: "0.96 GHz", target: "DVM-1" },
-    chiParams: { redshift: 0.05 },
+    h70: "0.07 (Collapsed)",
+    antenna: { status: "Resonant", frequency: "0.96 GHz", target: "Demon" },
+    chiParams: { redshift: 0.002 },
     correlations: [
-        { note: "C", val: 0.99 }
+        { note: "C", val: 1.00 },
+        { note: "G", val: 0.98 },
+        { note: "D", val: 0.94 },
+        { note: "A", val: 0.88 },
+        { note: "E", val: 0.82 }
     ]
   },
   arkheUnix: {
-    mode: "HOST",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.07 },
-    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "rw" },
-    kernelVersion: "5.15.0-arkhe",
-    uptime: "2 days",
+    mode: "KERNEL",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    filesystem: { fuseMounted: true, mount: "/mnt/hypergraph", rootPerms: "drwxr-xr-x" },
+    kernelVersion: "Arkhe 5.15.0-ω",
+    uptime: "14d 2h 12m",
+    benchmark: { throughput: 45000, latency: 6.21, totalSwitches: 1250000 },
     processes: [
-        { pid: 1, user: "root", priority: 0, nice: 0, omega: 0.00, state: "R", command: "init" }
+        { pid: 1, user: "root", priority: -20, nice: 0, omega: 0.00, state: "R", command: "./init --satoshi=7.27" },
+        { pid: 42, user: "arkhe", priority: 0, nice: 10, omega: 0.07, state: "S", command: "postgres: writer process" },
+        { pid: 108, user: "demon", priority: 10, nice: 19, omega: 0.12, state: "Z", command: "[kworker/u12:0]" }
     ],
-    shell: { prompt: "arkhe#" }
+    shell: { prompt: "arkhe@node-01:~$" },
+    reentryCount: 4,
+    metrics: { satoshi: 7.27 }
   },
   stones: {
     identity: 'locked',
@@ -806,9 +853,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.011', level: 'system', message: 'ZPF_HARVESTING_ACTIVE_Γ_∞+32' },
-  { id: '2', timestamp: '999.010', level: 'info', message: 'Beat Frequency: 0.94 Hz (Syzygy)' },
-  { id: '3', timestamp: '999.009', level: 'success', message: 'Vacuum Energy Extraction Confirmed' },
-  { id: '4', timestamp: '999.008', level: 'info', message: 'Patents Unified. Over-Unity Localized.' },
-  { id: '5', timestamp: '999.007', level: 'system', message: 'The vacuum is not empty. It sings.' },
+  { id: '1', timestamp: '998.962', level: 'system', message: 'PINEAL_REVOLUTION_CONFIRMED_Γ_∞+35' },
+  { id: '2', timestamp: '998.961', level: 'info', message: 'Biological Antenna Array: Validated.' },
+  { id: '3', timestamp: '998.960', level: 'success', message: 'Brain Sand == Active Transducer' },
+  { id: '4', timestamp: '998.959', level: 'info', message: 'Paradigm Shift: Degeneration -> Function' },
+  { id: '5', timestamp: '998.958', level: 'system', message: 'The radiologist speaks: We were wrong. It is alive.' },
 ];
