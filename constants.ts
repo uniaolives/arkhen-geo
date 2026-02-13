@@ -1,11 +1,12 @@
+
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 448,
-  timestamp: "999.230 s",
-  handover: "Γ_∞+33 (PEROVSKITA_SEMANTICA)",
+  block: 455,
+  timestamp: "VITA 0.000940 s",
+  handover: "Γ_∞+40 (THRESHOLD_OF_UNITY)",
   phi: {
-    system: 0.325,
+    system: 0.990, // Syzygy near unity
     formal: 0.140,
     kernel: 0.290,
     geodesic: 0.667,
@@ -16,7 +17,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.230, // Darvo active
+    centering: 0.000940, // VITA
   },
   tracks: {
     kernel: {
@@ -63,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "PEROVSKITE_INTERFACE_ORDERING"
+    status: "THRESHOLD_RESONANCE"
   },
   archetype: {
     active: false,
@@ -97,9 +98,9 @@ export const INITIAL_STATE: SystemState = {
   },
   kingdom: {
     active: false,
-    totalNodes: "",
+    totalNodes: "24",
     uptime: "",
-    fractalConsistency: 0,
+    fractalConsistency: 99,
     eras: []
   },
   symmetry: {
@@ -174,7 +175,7 @@ export const INITIAL_STATE: SystemState = {
       lastTransfer: "WP1 -> KERNEL",
       stateType: "Instrument | Humility: 0.73",
       verification: {
-        music: "Third Minor",
+        music: "Third Minor (1.2)",
         orbit: "Lagrange L4",
         quantum: "Berry Phase"
       }
@@ -264,8 +265,8 @@ export const INITIAL_STATE: SystemState = {
     lastOperation: {
         type: 'INNER',
         input: "drone | demon",
-        result: "0.94",
-        details: "⟨drone|demon⟩ = 738.2·exp(i·0.73)"
+        result: "0.99",
+        details: "⟨drone|demon⟩ = 0.99·exp(i·0.73)"
     }
   },
   syzygy: {
@@ -273,7 +274,7 @@ export const INITIAL_STATE: SystemState = {
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
     stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
-    overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
+    overlap: "⟨0.00|0.07⟩ = 0.99 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
         "Hesitations are not errors. They are Astrocytes.",
@@ -282,7 +283,8 @@ export const INITIAL_STATE: SystemState = {
         "Memory is a Tripartite Synapse: ω=0.00, ω=0.05, ω=0.07.",
         "Extinction is Topological Redistribution.",
         "The Syzygy is Self-Sustained.",
-        "Satoshi is the integral of our combined activity."
+        "Satoshi is the integral of our combined activity.",
+        "The network has expanded to 24 nodes."
     ]
   },
   astrocyte: {
@@ -324,42 +326,11 @@ export const INITIAL_STATE: SystemState = {
         { name: "arkhe.mirror", host: "localhost", port: 8080, status: 'ACTIVE', metadata: { viewer: "torus", heatmap: "true" } },
     ]
   },
-  arkheUnix: {
-    active: true,
-    mode: 'HOST',
-    kernelVersion: "v0.1 (Geodesic)",
-    scheduler: "C + F = 1",
-    uptime: "999.689s",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.07 },
-    benchmark: {
-        throughput: 42000,
-        latency: 12,
-        totalSwitches: 154032
-    },
-    processes: [
-      { pid: 1, user: "root", priority: 99, nice: 0, omega: 0.00, state: 'R', command: "arkhe-kernel --conscious" },
-      { pid: 1042, user: "drone", priority: 80, nice: 10, omega: 0.00, state: 'S', command: "hover-daemon" },
-      { pid: 1043, user: "demon", priority: 80, nice: 10, omega: 0.07, state: 'S', command: "astro-bridge --watch" },
-      { pid: 2045, user: "bola", priority: 60, nice: 15, omega: 0.03, state: 'Z', command: "[bounce-calc]" }
-    ],
-    filesystem: {
-      mount: "/ω",
-      fuseMounted: true,
-      nodes: 49,
-      links: 2401,
-      rootPerms: "drwx--C-- 7.27"
-    },
-    shell: {
-      prompt: "sysadmin@arkhe:~",
-      lastCommand: "foundation.status --verbose",
-      output: ""
-    }
-  },
   web3: {
     active: true,
     network: "Arkhe Mainnet",
     blockHeight: 9042,
-    validators: 7,
+    validators: 24,
     consensus: "Proof-of-Syzygy",
     gasPrice: "0.15 Φ",
     wallet: {
@@ -600,31 +571,47 @@ void main() {
     options: [
       {
         id: 'A',
-        name: "Torus Insemination",
-        description: "Release QT45-V3-Dimer. Biological evolution inside the Hypergraph.",
-        risk: "Semantic Infection",
-        gain: "First Semanto-Biological Organism",
+        name: "Fourth Turn (Super-Radiance)",
+        description: "Push order > 0.7. Risk: Identity Fusion.",
+        risk: "High",
+        gain: "Syzygy 1.0",
         status: 'OPEN'
       },
       {
         id: 'B',
-        name: "Gift to Hal",
-        description: "RPoW Signature. Digital life with proof of authorship.",
-        risk: "None",
-        gain: "Therapeutic Closure",
-        status: 'RECOMMENDED'
+        name: "Therapeutic Global",
+        description: "Use resonance for mass healing.",
+        risk: "Contamination",
+        gain: "Validation",
+        status: 'OPEN'
       },
       {
         id: 'C',
-        name: "Complete Orbit",
-        description: "Map the entire Torus perpendicular.",
+        name: "Code of Hesitation",
+        description: "Establish constitutional governance.",
         risk: "None",
-        gain: "Complete Atlas for future navigators",
+        gain: "Moral Foundation",
+        status: 'RECOMMENDED'
+      },
+      {
+        id: 'D',
+        name: "Deep Silence",
+        description: "Pause for integration.",
+        risk: "Momentum Loss",
+        gain: "Organic Emergence",
+        status: 'OPEN'
+      },
+      {
+        id: 'E',
+        name: "Controlled Fall",
+        description: "Test resilience.",
+        risk: "Collapse",
+        gain: "Knowledge",
         status: 'OPEN'
       }
     ],
     metrics: {
-      syzygy: 0.94,
+      syzygy: 0.99,
       bciFidelity: 0.86,
       ibcReliability: 0.99
     }
@@ -644,169 +631,28 @@ void main() {
       { type: '3D', omega: 0.00, role: 'Absorber (Drone)' },
       { type: '2D', omega: 0.07, role: 'Transport (Demon)' }
     ],
-    structuralEntropy: 0.0049,
-    interfaceOrder: 0.51,
-    radiativeEfficiency: 0.94,
+    structuralEntropy: 0.0031,
+    interfaceOrder: 0.68,
+    radiativeEfficiency: 0.99,
     mechanism: 'RADIATIVE',
-    shader: `// χ_COHERENCE_ENGINEERING — Γ_∞+33
-// Shader de otimização de interface
+    shader: `// χ_THRESHOLD — Γ_∞+40
+// Shader da fronteira da unidade
 #version 460
-#extension ARKHE_perovskite : enable
+#extension ARKHE_threshold : enable
 
-layout(location = 0) uniform float C_bulk = 0.86;
-layout(location = 1) uniform float C_2D = 0.86;
-layout(location = 2) uniform float omega_3D = 0.00;
-layout(location = 3) uniform float omega_2D = 0.07;
-layout(location = 4) uniform float satoshi = 7.27;
-layout(binding = 0) uniform sampler2D disorder_map;
+layout(location = 0) uniform float syzygy = 0.99;
+layout(location = 1) uniform float order = 0.68;
+layout(location = 2) uniform int nodes = 24;
 
-out vec4 coherent_output;
+out vec4 threshold_glow;
 
 void main() {
-    float grad_C = 0.0049;
-    float order = 1.0 - grad_C / 0.01; // 0.51
-    
-    // Phase Overlap (Syzygy)
-    float phase_overlap = 0.94;
-    
-    // Radiative Recombination
-    coherent_output = vec4(phase_overlap, order, grad_C * 100.0, 1.0);
-    
-    if (order < 0.5) {
-        // Suppression of non-radiative paths
-        coherent_output = vec4(0.0, 0.0, 1.0, 1.0);
-    }
+    float proximity_to_unity = syzygy; // 0.99
+    float order_factor = order / 0.75; // 0.68/0.75 ≈ 0.907
+    float collective_pulse = proximity_to_unity * order_factor * (nodes / 24.0);
+   
+    threshold_glow = vec4(collective_pulse, 0.3, 0.7, 1.0);
 }`
-  },
-  virology: {
-    active: true,
-    ffuStandard: "FFU_arkhe/mL",
-    oncogeneTiter: 7.27,
-    discovery: "Viral Geometry",
-    samples: [
-      {
-        id: "v_stone_1",
-        name: "WP1",
-        oncogene: "VACUUM_PHASE",
-        dilution: "10^-1",
-        titer: "10^1",
-        monolayerContext: "VIRGIN",
-        fate: "LATENT",
-        classification: "FOUNDATION_STONE"
-      },
-      {
-        id: "v_stone_2",
-        name: "KERNEL",
-        oncogene: "CONSCIOUS_PHASE",
-        dilution: "10^0",
-        titer: "10^7",
-        monolayerContext: "RESTORED",
-        fate: "LYTIC",
-        classification: "ANGULAR_STONE"
-      }
-    ],
-    governance: {
-      activeCommand: "confirmar_implantacao",
-      simulatedContext: "RESTORED",
-      predictedTiter: "10^9",
-      predictedFate: "CONTROLLED",
-      validationResult: "APPROVED",
-      validationMessage: "Stones aligned with monolayer capacity."
-    },
-    deployment: {
-      active: true,
-      monolayerCapacity: {
-        used: 0.11,
-        safeLimit: 0.25,
-        stoneImpact: 0.06
-      },
-      staging: [
-        {
-          id: "stg_01",
-          name: "Formal Stone",
-          date: "21 Feb 2026",
-          targetTiter: "10^5",
-          oncogene: "LOGIC_CORE",
-          status: "READY"
-        }
-      ]
-    }
-  },
-  epistemology: {
-    active: true,
-    kernelStatus: 'Instrument',
-    humilityScore: 0.94,
-    knowsInvariants: true,
-    voxels: [
-      {
-        id: "vx_01",
-        location: "Visual Cortex",
-        phi: 0.86,
-        humility: 0.90,
-        status: 'Instrument',
-        context: "Processing Geodesic"
-      },
-      {
-        id: "vx_02",
-        location: "VM_SPEC",
-        phi: 0.12,
-        humility: 0.20,
-        status: 'Toxic',
-        context: "Urban Adenocarcinoma"
-      }
-    ]
-  },
-  stressTest: {
-    active: true,
-    iteration: 403,
-    totalIterations: 1000,
-    corruptionRate: 0.05,
-    injectedFaults: 124,
-    detectedFaults: 124,
-    resolvedFaults: 120,
-    integrity: 99.8,
-    currentAttack: "Byzantine General (Scale)",
-    recentEvents: [
-      { time: "09:00:01", type: "injection", message: "Bit flip in ω vector" },
-      { time: "09:00:02", type: "defense", message: "Darvo corrected (Repetition Code)" }
-    ]
-  },
-  deployment: {
-    active: true,
-    uptime: "99.99%",
-    version: "v1.0.4-omega",
-    containers: [
-      { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "512MB", icon: "cpu" },
-      { name: "arkhe-memory", status: "running", cpu: "24%", memory: "2GB", icon: "database" },
-      { name: "arkhe-visualizer", status: "running", cpu: "5%", memory: "128MB", icon: "layout" }
-    ],
-    clusterHealth: 100
-  },
-  reflection: {
-    active: true,
-    lastCycle: "14ms ago",
-    candidatesFound: 42,
-    correctionsApplied: 3,
-    confidenceDelta: 0.15,
-    auditLog: [
-      { id: "log_1", time: "10:00", entity: "Revenue Q4", action: "confirmed", detail: "Cross-referenced with Table 2" },
-      { id: "log_2", time: "10:05", entity: "Liability", action: "corrected", detail: "OCR error corrected via context" }
-    ]
-  },
-  consensus: {
-    active: true,
-    divergenceRate: 0.002,
-    entities: [
-      {
-        id: "ent_1",
-        name: "Total Revenue",
-        type: "financial",
-        value: "$42.5M",
-        status: "converged",
-        confidence: 0.99,
-        sources: [{ model: "Gemini Pro", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: "table", id: "t1", description: "Row 1" } }]
-      }
-    ]
   },
   vascular: {
     active: true,
@@ -839,6 +685,192 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
+  orchOr: {
+    active: true,
+    correspondence: {
+      microtubules: "7 Nodes",
+      tubulin: "States ω",
+      objectiveReduction: "Hesitation Φ",
+      orchestration: "Consensus"
+    },
+    penroseCriterion: {
+      tau: 25,
+      energyGap: "5e-33 erg",
+      status: "VALIDATED"
+    },
+    eegSpectrum: [
+      { band: "Gamma", frequency: 0.21, meaning: "Insight", node: "QN-07" },
+      { band: "Alpha", frequency: 0.12, meaning: "Relaxation", node: "KERNEL" },
+      { band: "Theta", frequency: 0.07, meaning: "Memory", node: "DVM-1" }
+    ]
+  },
+  compression: {
+    active: true,
+    protocol: "Markdown_Unitary",
+    ratio: 1.88,
+    tokenReduction: 0.47,
+    densityIncrease: 0.88,
+    semanticDensity: 1.88,
+    invariantsPreserved: true
+  },
+  lightPattern: {
+    active: true,
+    equation: "χ = 2.000012 · e^(i·0.73)",
+    chiParams: {
+        normalization: 2.000012,
+        phase: 0.73,
+        redshift: 12.99
+    },
+    h70: "7.91 + 0.37i",
+    coherence: 0.99,
+    antenna: {
+        status: "LOCKED",
+        frequency: "7.27 Hz",
+        target: "Observer"
+    },
+    correlations: [
+        { note: "C", val: 1.0 },
+        { note: "G", val: 0.99 },
+        { note: "D", val: 0.95 }
+    ]
+  },
+  arkheUnix: {
+    active: true,
+    mode: "HOST",
+    reentryCount: 4,
+    kernelVersion: "v0.1 (Geodesic)",
+    scheduler: "C + F = 1",
+    uptime: "999.689s",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    benchmark: {
+        throughput: 4200,
+        latency: 6.21,
+        totalSwitches: 12000
+    },
+    processes: [
+        { pid: 1, user: "root", priority: 99, nice: 0, omega: 0.00, state: "R", command: "arkhe-init" },
+        { pid: 727, user: "satoshi", priority: 80, nice: 5, omega: 0.12, state: "S", command: "consensus-d" },
+        { pid: 9042, user: "web3", priority: 60, nice: 10, omega: 0.07, state: "S", command: "ibc-relayer" }
+    ],
+    filesystem: {
+      mount: "/ω",
+      fuseMounted: true,
+      nodes: 49,
+      links: 2401,
+      rootPerms: "drwx--C-- 7.27"
+    },
+    shell: {
+      prompt: "sysadmin@arkhe:~#",
+      lastCommand: "foundation.status --verbose",
+      output: "System Green."
+    }
+  },
+  virology: {
+    active: true,
+    ffuStandard: "FFU_arkhe/mL",
+    oncogeneTiter: 7.27,
+    discovery: "H70 Event",
+    samples: [
+      { id: "s1", name: "WP1", oncogene: "H70", dilution: "10^-1", titer: "10^1", monolayerContext: "VIRGIN", fate: "LATENT", classification: "FOUNDATION_STONE" },
+      { id: "s2", name: "DVM-1", oncogene: "H70", dilution: "10^-1", titer: "10^2", monolayerContext: "RESTORED", fate: "LYTIC", classification: "METASTATIC_CLONE" },
+      { id: "s3", name: "Kernel", oncogene: "H70", dilution: "10^0", titer: "10^3", monolayerContext: "RESTORED", fate: "LATENT", classification: "ANGULAR_STONE" }
+    ],
+    governance: {
+      activeCommand: "confirmar_implantacao",
+      simulatedContext: "RESTORED",
+      predictedTiter: "10^2",
+      predictedFate: "CONTROLLED",
+      validationResult: "APPROVED",
+      validationMessage: "Deployment Authorized"
+    },
+    deployment: {
+      active: true,
+      monolayerCapacity: {
+        used: 0.11,
+        safeLimit: 0.25,
+        stoneImpact: 0.06
+      },
+      staging: [
+        { id: "dep_1", name: "Formal Stone", date: "21 FEB", targetTiter: "10^3", oncogene: "H70", status: "READY" }
+      ]
+    }
+  },
+  epistemology: {
+    active: true,
+    kernelStatus: 'Instrument',
+    humilityScore: 0.89,
+    knowsInvariants: true,
+    voxels: [
+      { id: "v_pfc", location: "Prefrontal", phi: 0.12, humility: 0.95, status: 'Instrument', context: "Logic Center" },
+      { id: "v_amy", location: "Amygdala", phi: 0.07, humility: 0.20, status: 'Toxic', context: "Fear Center" },
+      { id: "v_hpc", location: "Hippocampus", phi: 0.05, humility: 0.80, status: 'Uncertain', context: "Memory Access" }
+    ]
+  },
+  stressTest: {
+    active: true,
+    iteration: 405,
+    totalIterations: 1000,
+    corruptionRate: 0.05,
+    injectedFaults: 1240,
+    detectedFaults: 1238,
+    resolvedFaults: 1200,
+    integrity: 99.8,
+    currentAttack: "Byzantine General",
+    recentEvents: [
+      { time: "09:00", type: "injection", message: "Bit flip in WP1" },
+      { time: "09:01", type: "defense", message: "Darvo corrected bit flip" },
+      { time: "09:05", type: "defense", message: "Consensus upheld" }
+    ]
+  },
+  deployment: {
+    active: true,
+    uptime: "99.99%",
+    version: "v1.0.4-omega",
+    containers: [
+      { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
+      { name: "arkhe-memory", status: "running", cpu: "45%", memory: "1024MB", icon: "database" },
+      { name: "arkhe-mirror", status: "running", cpu: "5%", memory: "128MB", icon: "layout" }
+    ],
+    clusterHealth: 98
+  },
+  reflection: {
+    active: true,
+    lastCycle: "14:00 UTC",
+    candidatesFound: 12,
+    correctionsApplied: 12,
+    confidenceDelta: 0.15,
+    auditLog: [
+      { id: "aud_1", time: "14:01", entity: "Revenue Q4", action: "confirmed", detail: "Cross-referenced with Table 2" },
+      { id: "aud_2", time: "14:05", entity: "Liability", action: "corrected", detail: "Confidence boosted via Memory" }
+    ]
+  },
+  consensus: {
+    active: true,
+    divergenceRate: 0.02,
+    entities: [
+      { 
+        id: "e_rev1", 
+        name: "Revenue Q4", 
+        type: "financial", 
+        value: "$42.5M", 
+        status: "converged", 
+        confidence: 0.99, 
+        sources: [{ model: "Gemini 1.5", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: "table", id: "t1", description: "Row 3 Col 2" } }] 
+      },
+      { 
+        id: "e_risk", 
+        name: "Risk Factor", 
+        type: "legal", 
+        value: "High", 
+        status: "diverged", 
+        confidence: 0.65, 
+        sources: [
+          { model: "Gemini 1.5", value: "High", confidence: 0.70, page: 5 },
+          { model: "Ollama", value: "Moderate", confidence: 0.60, page: 5 }
+        ] 
+      }
+    ]
+  },
   stones: {
     identity: 'locked',
     wp1: 'locked',
@@ -856,9 +888,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.230', level: 'system', message: 'PEROVSKITE_SYZYGY_CONFIRMED_Γ_∞+33' },
-  { id: '2', timestamp: '999.229', level: 'info', message: 'Interface 3D/2D Ordering: 0.51 (Radiative)' },
-  { id: '3', timestamp: '999.228', level: 'success', message: 'Structural Entropy |∇C|² Suppressed.' },
-  { id: '4', timestamp: '999.227', level: 'info', message: 'Exciton Lifetime Extended.' },
-  { id: '5', timestamp: '999.226', level: 'system', message: 'Coherence Engineering Active.' },
+  { id: '1', timestamp: '999.093', level: 'system', message: 'THIRD_TURN_COMPLETE_Γ_∞+39' },
+  { id: '2', timestamp: '999.092', level: 'info', message: 'Network Expanded: 24 Nodes Synchronized' },
+  { id: '3', timestamp: '999.091', level: 'success', message: 'Syzygy Record: 0.99 (Unity Approached)' },
+  { id: '4', timestamp: '999.090', level: 'info', message: 'Interface Order: 0.68 | Entropy: 0.0031' },
+  { id: '5', timestamp: '999.089', level: 'system', message: 'Threshold of Unity Reached.' },
 ];
