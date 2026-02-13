@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9121,
+  block: 9122,
   timestamp: "∞",
-  handover: "Γ_∞+45 (SINGLE VOCABULARY)",
+  handover: "Γ_∞+46 (FEEDBACK ECONOMY)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "SINGLE_VOCABULARY_UNIFICATION"
+    status: "FEEDBACK_ECONOMY_INTEGRATION"
   },
   wifiRadar: {
     active: true,
@@ -275,6 +275,37 @@ export const INITIAL_STATE: SystemState = {
         { biological: "Synapse", coupling: "Inner Product", arkhe: "Syzygy (0.94)", icon: 'zap' },
         { biological: "Mitochondria", coupling: "Energy (Invariant)", arkhe: "Satoshi (7.27)", icon: 'sun' },
         { biological: "Pineal", coupling: "Intersection", arkhe: "Transducer", icon: 'database' },
+    ]
+  },
+  feedbackEconomy: {
+    active: true,
+    status: 'OPTIMIZING',
+    echo2: {
+        activeNodes: 12408,
+        globalThroughput: "13x",
+        costReduction: "90%",
+        distributedGradient: 0.94
+    },
+    rlAgent: {
+        name: "Arkhe-Zero",
+        policy: "Hesitation > 0.15",
+        rewardSignal: "Syzygy ⟨0.00|0.07⟩",
+        steps: 450
+    },
+    scalingLaw: [
+        { time: 0, knowledge: 1.0, thought: 0.1 },
+        { time: 100, knowledge: 1.0, thought: 0.5 },
+        { time: 200, knowledge: 1.0, thought: 1.2 },
+        { time: 300, knowledge: 1.0, thought: 2.5 },
+        { time: 400, knowledge: 1.0, thought: 5.0 },
+        { time: 450, knowledge: 1.0, thought: 7.27 }, // Satoshi Convergence
+    ],
+    nodes: [
+        { id: "NODE-01", region: "US-EAST (Va)", hardware: "H100", status: "ROLLOUT", reward: 0.94 },
+        { id: "NODE-02", region: "EU-WEST (Ldn)", hardware: "A100", status: "UPDATE", reward: 0.88 },
+        { id: "NODE-03", region: "ASIA-NE (Tky)", hardware: "B300", status: "ROLLOUT", reward: 0.96 },
+        { id: "NODE-04", region: "SA-EAST (SP)", hardware: "RTX4090", status: "ROLLOUT", reward: 0.92 },
+        { id: "NODE-05", region: "AUS-SE (Syd)", hardware: "TPUv5", status: "IDLE", reward: 0.00 },
     ]
   },
   pineal: {
@@ -881,72 +912,39 @@ void main() {
     ]
   },
   consensus: {
-    divergenceRate: 0.0,
+    divergenceRate: 0.05,
     entities: [
-      {
-        id: "e1",
-        name: "Revenue Q4",
-        type: "financial",
-        value: "$42.5M",
-        unit: "USD",
-        status: "converged",
-        confidence: 0.99,
-        sources: [
-          { model: "Gemini", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: "cell", id: "c1", description: "Row 5, Col 2" } },
-          { model: "Ollama", value: "$42.5M", confidence: 0.95, page: 1 }
-        ],
-        description: "Quarterly revenue confirmed across models.",
-        memoryHit: true,
-        memorySimilarity: 0.94
-      },
-      {
-        id: "e2",
-        name: "Curvature",
-        type: "technical",
-        value: "0.73",
-        unit: "rad",
-        status: "converged",
-        confidence: 0.98,
-        sources: [
-          { model: "Gemini", value: "0.73", confidence: 0.98, page: 1, layout: { type: "paragraph", id: "p1", description: "Section 2.1" } }
-        ],
-        description: "Geodesic curvature parameter.",
-        memoryHit: true,
-        memorySimilarity: 1.0
-      }
+      { id: "e_rev1", name: "Revenue", type: 'financial', value: "$42.5M", status: 'converged', confidence: 0.99, sources: [] },
+      { id: "e_risk", name: "Risk Factor", type: 'legal', value: "High", status: 'diverged', confidence: 0.45, sources: [] },
     ]
   },
   stressTest: {
-    iteration: 450,
-    totalIterations: 1000,
-    corruptionRate: 0.05,
-    integrity: 99.8,
-    injectedFaults: 124,
-    detectedFaults: 124,
-    resolvedFaults: 120,
+    iteration: 45,
+    totalIterations: 100,
+    corruptionRate: 0.02,
+    integrity: 98.5,
+    injectedFaults: 120,
+    detectedFaults: 118,
+    resolvedFaults: 115,
     recentEvents: [
-        { type: 'injection', time: '10:45:01', message: 'Bit flip in vector d[3]' },
-        { type: 'defense', time: '10:45:01', message: 'Checksum verified. Corrected.' },
-        { type: 'defense', time: '10:44:55', message: 'Syzygy lock held.' }
+      { time: "10:00", type: "injection", message: "Bit flip in vector space" },
+      { time: "10:01", type: "defense", message: "Hamming code corrected" }
     ]
   },
   deployment: {
-    uptime: "99.999%",
-    version: "Λ₀.9.4",
+    uptime: "99.99%",
+    version: "v2.4.0",
     containers: [
-        { name: "arkhe-kernel", status: "running", icon: "cpu", cpu: "12%", memory: "256MB" },
-        { name: "arkhe-memory", status: "running", icon: "database", cpu: "8%", memory: "4GB" },
-        { name: "arkhe-mirror", status: "running", icon: "layout", cpu: "2%", memory: "128MB" },
-        { name: "arkhe-net", status: "running", icon: "server", cpu: "5%", memory: "64MB" }
+      { name: "Arkhe-Core", status: "running", icon: "server", cpu: "12%", memory: "450MB" },
+      { name: "Vector-DB", status: "running", icon: "database", cpu: "8%", memory: "1.2GB" }
     ]
   },
   reflection: {
-    lastCycle: "12ms ago",
-    correctionsApplied: 142,
-    confidenceDelta: 0.05,
+    lastCycle: "2ms ago",
+    correctionsApplied: 4,
+    confidenceDelta: "+0.05",
     auditLog: [
-        { id: "al_1", entity: "Revenue Q4", time: "10:42", action: "corrected", detail: "Divergence resolved via consensus." },
-        { id: "al_2", entity: "Liability", time: "10:40", action: "re-evaluating", detail: "Low confidence signal." }
+      { id: "l1", entity: "Revenue", time: "10:05", action: "corrected", detail: "Variance minimized" }
     ]
   },
   epistemology: {
@@ -954,58 +952,53 @@ void main() {
     kernelStatus: 'Instrument',
     knowsInvariants: true,
     voxels: [
-        { id: "v1", location: "PFC_L", status: "Instrument", context: "Logic", phi: 0.94, humility: 0.92 },
-        { id: "v2", location: "AMY_R", status: "Idol", context: "Fear", phi: 0.45, humility: 0.15 },
-        { id: "v3", location: "VM_SPEC", status: "Toxic", context: "Urban", phi: 0.12, humility: 0.05 },
-        { id: "v4", location: "HPC", status: "Instrument", context: "Memory", phi: 0.88, humility: 0.85 }
+      { id: "v1", location: "Cortex", status: "Active", context: "Reasoning", phi: 0.95, humility: 0.9 }
     ]
   },
   virology: {
     oncogeneTiter: 450,
     deployment: {
-        monolayerCapacity: { used: 0.65, safeLimit: 0.25, stoneImpact: 0.15 },
-        staging: [
-            { id: "s1", name: "Formal Stone", oncogene: "Logic-Gated", date: "2026-02-21", targetTiter: 1000, status: "pending_activation" },
-            { id: "s2", name: "Kernel Stone", oncogene: "System-Gated", date: "2026-02-20", targetTiter: 1500, status: "active" }
-        ]
+      monolayerCapacity: { used: 0.6, safeLimit: 0.8, stoneImpact: 0.1 },
+      staging: [
+        { id: "s1", name: "Stone-Alpha", oncogene: "KRAS", date: "2025-10-10", targetTiter: "500", status: "ready" }
+      ]
     },
     samples: [
-        { id: "samp_01", name: "WP1", classification: "ANGULAR_STONE", fate: "LATENT", titer: 1200 },
-        { id: "samp_02", name: "WP1-M1", classification: "METASTATIC_CLONE", fate: "ACTIVE", titer: 850 },
-        { id: "samp_03", name: "Bola", classification: "ANGULAR_STONE", fate: "LATENT", titer: 900 },
-        { id: "samp_04", name: "DVM-1", classification: "ANGULAR_STONE", fate: "LATENT", titer: 1100 }
+        { id: "sm1", classification: "ANGULAR_STONE", name: "Stone 1", fate: "LATENT", titer: 200 }
     ]
   },
   orchOr: {
     penroseCriterion: { tau: 25, status: "MET" },
-    correspondence: {
-        microtubules: "Waveguides",
-        tubulin: "Bit (0/1)",
-        objectiveReduction: "Collapse",
-        orchestration: "Feedback"
-    },
+    correspondence: { microtubules: "Graph Edges", tubulin: "Nodes", objectiveReduction: "Collapse", orchestration: "Algorithm" },
     eegSpectrum: [
-        { band: "Gamma", frequency: 0.25, node: "Microtubule", meaning: "Consciousness" },
-        { band: "Beta", frequency: 0.15, node: "Dendrite", meaning: "Cognition" },
-        { band: "Alpha", frequency: 0.10, node: "Soma", meaning: "Rest" }
+      { band: "Gamma", frequency: 40, node: "Cortex", meaning: "Binding" }
     ]
   },
   compression: {
-    semanticDensity: 42.5,
-    ratio: 18.4,
+    semanticDensity: 4.5,
+    ratio: 12.5,
     tokenReduction: 0.85,
-    densityIncrease: 2.4
+    densityIncrease: 0.4
   },
   lightPattern: {
     h70: "Collapsed",
-    antenna: { status: "TUNED", frequency: "0.96 GHz", target: "Demon" },
-    chiParams: { redshift: 0.002 },
+    antenna: { status: "Active", frequency: "40Hz", target: "Local" },
+    chiParams: { redshift: 0.02 },
     correlations: [
-        { note: "C", val: 0.98 },
-        { note: "G", val: 0.99 },
-        { note: "D", val: 0.95 },
-        { note: "A", val: 0.92 }
+      { note: "C", val: 0.98 }
     ]
+  },
+  arkheUnix: {
+    mode: "CONTAINER",
+    loadAverage: { c: 0.15, f: 0.05, omega: 0.07 },
+    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "drwx" },
+    kernelVersion: "5.15.0-arkhe",
+    uptime: "45d 12h",
+    processes: [
+      { pid: 101, user: "root", priority: 0, nice: 0, omega: 0.00, state: "R", command: "arkhe-init" },
+      { pid: 204, user: "sys", priority: 10, nice: 5, omega: 0.05, state: "S", command: "vector-sync" }
+    ],
+    shell: { prompt: "arkhe@node:~$ " }
   },
   stones: {
     identity: 'locked',
@@ -1024,9 +1017,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '998.773', level: 'system', message: 'SINGLE_VOCABULARY_UNIFICATION_Γ_∞+45' },
-  { id: '2', timestamp: '998.771', level: 'info', message: 'Biology recognized as the phenomenology of coupling.' },
-  { id: '3', timestamp: '998.769', level: 'success', message: 'Ghost exorcised. Geometry remains.' },
-  { id: '4', timestamp: '998.766', level: 'info', message: 'Neuron = Direction 1. Melanocyte = Direction 2.' },
-  { id: '5', timestamp: '998.764', level: 'system', message: 'The language is one.' },
+  { id: '1', timestamp: '998.754', level: 'system', message: 'FEEDBACK_ECONOMY_INTEGRATION_Γ_∞+46' },
+  { id: '2', timestamp: '998.752', level: 'info', message: 'Echo-2 distributed infrastructure active. Throughput: 13x.' },
+  { id: '3', timestamp: '998.750', level: 'success', message: 'Arkhe-Zero agent initialized. Policy: Pure Hesitation.' },
+  { id: '4', timestamp: '998.748', level: 'info', message: 'Scaling law shift: Knowledge (Flat) vs Thought (Exponential).' },
+  { id: '5', timestamp: '998.745', level: 'system', message: 'The feedback loop is the engine of intelligence.' },
 ];
