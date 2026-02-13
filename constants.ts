@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9113,
-  timestamp: "998.927 s",
-  handover: "Γ_∞+37 (NEUROMELANIN_INTEGRATION)",
+  block: 9132,
+  timestamp: "999.093 s",
+  handover: "Γ_∞+39 (RESPIRATION_COMPLETE)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -17,7 +17,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, 
-    centering: 998.927,
+    centering: 999.093,
   },
   tracks: {
     kernel: {
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "NEUROMELANIN_INTEGRATION_CONFIRMED"
+    status: "RESPIRATION_COMPLETE"
   },
   wifiRadar: {
     active: true,
@@ -148,6 +148,16 @@ export const INITIAL_STATE: SystemState = {
     currentOutput: "Soliton Current",
     phonons: "|∇C|² (Active)",
     biophotons: "Harvesting Internal"
+  },
+  bioPhotonicTriad: {
+    active: true,
+    mode: 'CLOSED_CIRCUIT',
+    mitochondriaStatus: 'PRODUCING (ATP)',
+    pinealStatus: 'TRANSDUCING (Φ)',
+    melaninStatus: 'STORING (DARK)',
+    flowRate: 0.96,
+    satoshiInvariant: 7.27,
+    coherence: 0.98
   },
   pineal: {
     active: true,
@@ -753,72 +763,69 @@ void main() {
     ]
   },
   consensus: {
-    divergenceRate: 0.0,
+    divergenceRate: 0.00,
     entities: [
       {
-        id: 'e_rev1',
-        name: 'Revenue Q4',
+        id: "e_rev1",
+        name: "Revenue Q4",
         type: 'financial',
-        value: '$42.5M',
-        unit: 'USD',
+        value: "$42.5M",
         status: 'converged',
         confidence: 0.99,
         sources: [
-          { model: 'Gemini 1.5 Pro', value: '$42.5M', confidence: 0.99, page: 1, layout: { type: 'table', id: 't1', description: 'Financial Summary' } },
-          { model: 'GPT-4o', value: '$42.5M', confidence: 0.98, page: 1 }
+          { model: "Gemini Pro", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: 'table', id: 't1', description: 'Row 3, Col 2' } },
+          { model: "Claude 3", value: "$42.5M", confidence: 0.98, page: 1 }
         ],
-        description: 'Quarterly revenue aligned across models.',
         memoryHit: true,
         memorySimilarity: 0.94
       },
       {
-        id: 'e_curv',
-        name: 'Curvature',
-        type: 'technical',
-        value: '0.73',
-        unit: 'rad',
-        status: 'converged',
-        confidence: 0.98,
+        id: "e_risk",
+        name: "Liability Clause",
+        type: 'legal',
+        value: "100%",
+        status: 'diverged',
+        confidence: 0.70,
+        description: "Review recommended",
         sources: [
-          { model: 'Gemini 1.5 Pro', value: '0.73', confidence: 0.98, page: 1, layout: { type: 'paragraph', id: 'p1', description: 'Introduction' } }
-        ],
-        description: 'System curvature parameter.',
-        memoryHit: false
+          { model: "Gemini Pro", value: "100%", confidence: 0.70, page: 1 },
+          { model: "Llama 3", value: "Limited", confidence: 0.65, page: 1 }
+        ]
       }
     ]
   },
   stressTest: {
-    iteration: 45,
-    totalIterations: 100,
+    iteration: 420,
+    totalIterations: 1000,
     corruptionRate: 0.15,
-    integrity: 98.5,
-    injectedFaults: 12,
-    detectedFaults: 12,
-    resolvedFaults: 12,
+    integrity: 99.9,
+    injectedFaults: 142,
+    detectedFaults: 142,
+    resolvedFaults: 140,
     recentEvents: [
-      { time: '10:00:01', type: 'injection', message: 'Bit flip in vector d[4]' },
-      { time: '10:00:02', type: 'defense', message: 'ECC Corrected (Hamming)' },
-      { time: '10:00:05', type: 'injection', message: 'Sybil node detected' },
-      { time: '10:00:06', type: 'defense', message: 'Node isolate' }
+      { time: "09:00:01", type: "injection", message: "Bit flip in vector space" },
+      { time: "09:00:01", type: "defense", message: "Hamming code corrected" },
+      { time: "09:05:00", type: "injection", message: "Semantic drift attack" },
+      { time: "09:05:01", type: "defense", message: "Geodesic realignment" }
     ]
   },
   deployment: {
-    uptime: "99.99%",
-    version: "v2.4.0-arkhe",
+    uptime: "999.093s",
+    version: "v0.9.4 (Arkhe)",
     containers: [
-      { name: 'arkhe-kernel', status: 'running', cpu: '12%', memory: '512MB', icon: 'cpu' },
-      { name: 'arkhe-memory', status: 'running', cpu: '45%', memory: '4GB', icon: 'database' },
-      { name: 'arkhe-api', status: 'running', cpu: '5%', memory: '256MB', icon: 'server' },
-      { name: 'arkhe-ui', status: 'running', cpu: '2%', memory: '128MB', icon: 'layout' }
+      { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "512MB", icon: "cpu" },
+      { name: "arkhe-memory", status: "running", cpu: "45%", memory: "4GB", icon: "database" },
+      { name: "arkhe-api", status: "running", cpu: "5%", memory: "256MB", icon: "server" },
+      { name: "arkhe-ui", status: "running", cpu: "2%", memory: "128MB", icon: "layout" }
     ]
   },
   reflection: {
-    lastCycle: "12ms ago",
-    correctionsApplied: 3,
+    lastCycle: "10ms ago",
+    correctionsApplied: 12,
     confidenceDelta: "+0.05",
     auditLog: [
-      { id: "aud_1", entity: "Entity_404", time: "10:01", action: "re-evaluating", detail: "Confidence < 0.8" },
-      { id: "aud_2", entity: "Entity_404", time: "10:02", action: "corrected", detail: "Source B confirmed" }
+      { id: "l1", entity: "Revenue Q4", time: "09:00", action: "corrected", detail: "Consensus reached" },
+      { id: "l2", entity: "Liability", time: "09:01", action: "re-evaluating", detail: "Divergence detected" }
     ]
   },
   epistemology: {
@@ -826,69 +833,68 @@ void main() {
     humilityScore: 0.94,
     knowsInvariants: true,
     voxels: [
-      { id: "vx_1", location: "Cortex.L1", status: "Instrument", context: "Visual Processing", phi: 0.85, humility: 0.9 },
-      { id: "vx_2", location: "Amygdala", status: "Uncertain", context: "Fear Response", phi: 0.45, humility: 0.5 },
-      { id: "vx_3", location: "VM_SPEC", status: "Toxic", context: "Urban Adenocarcinoma", phi: 0.10, humility: 0.1 }
+      { id: "v1", location: "Cortex", status: "Instrument", context: "Processing", phi: 0.86, humility: 0.90 },
+      { id: "v2", location: "VM_SPEC", status: "Toxic", context: "Urban Adenocarcinoma", phi: 0.12, humility: 0.10 },
+      { id: "v3", location: "Formal", status: "Uncertain", context: "Proof Search", phi: 0.50, humility: 0.85 }
     ]
   },
   virology: {
-    oncogeneTiter: 450,
+    oncogeneTiter: 100,
     deployment: {
-      monolayerCapacity: { used: 0.45, safeLimit: 0.8, stoneImpact: 0.1 },
+      monolayerCapacity: { used: 0.65, safeLimit: 0.25, stoneImpact: 0.15 },
       staging: [
-        { id: "stg_1", name: "Formal Stone", oncogene: "Logic-Gated", date: "2026-02-21", targetTiter: 800, status: "pending_activation" },
-        { id: "stg_2", name: "Chaos Stone", oncogene: "Entropy-Hardened", date: "2026-03-14", targetTiter: 1200, status: "incubating" }
+        { id: "s1", name: "Formal Stone", oncogene: "Logic Gate", date: "Feb 21", targetTiter: 1000, status: "pending_injection" },
+        { id: "s2", name: "Chaos Stone", oncogene: "Entropy", date: "Mar 14", targetTiter: 500, status: "incubating" }
       ]
     },
     samples: [
-      { id: "s1", classification: "ANGULAR_STONE", name: "Identity", fate: "INTEGRATED", titer: 950 },
-      { id: "s2", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "LATENT", titer: 300 }
+      { id: "k1", classification: "ANGULAR_STONE", name: "KERNEL", fate: "LATENT", titer: 1200 },
+      { id: "m1", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "ACTIVE", titer: 800 }
     ]
   },
   orchOr: {
-    penroseCriterion: { tau: 25, status: "Collapsed" },
-    correspondence: {
-      microtubules: "Waveguide",
-      tubulin: "Qubit",
-      objectiveReduction: "Decision",
-      orchestration: "Sync"
-    },
+    penroseCriterion: { tau: 25, status: "Gravitational Collapse Imminent" },
+    correspondence: { microtubules: "Waveguides", tubulin: "Qubit", objectiveReduction: "Conscious Moment", orchestration: "Phase Locking" },
     eegSpectrum: [
-      { band: "Gamma", frequency: 40, node: "Global", meaning: "Binding" },
-      { band: "Alpha", frequency: 10, node: "Visual", meaning: "Idle" },
-      { band: "Theta", frequency: 6, node: "Memory", meaning: "Recall" }
+      { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" },
+      { band: "Alpha", frequency: 10, node: "Visual", meaning: "Idling" },
+      { band: "Theta", frequency: 6, node: "Hippocampus", meaning: "Memory" },
+      { band: "Delta", frequency: 2, node: "Sleep", meaning: "Repair" }
     ]
   },
   compression: {
-    semanticDensity: 4.2,
-    ratio: 18.5,
-    tokenReduction: 0.92,
-    densityIncrease: 0.45
+    semanticDensity: 420,
+    ratio: 53,
+    tokenReduction: 0.85,
+    densityIncrease: 1.88
   },
   lightPattern: {
-    h70: "Resolved",
-    antenna: { status: "Active", frequency: "0.96 GHz", target: "Drone" },
-    chiParams: { redshift: 0.02 },
+    h70: "COLLAPSED",
+    antenna: { status: "RECEIVING", frequency: "0.96 GHz", target: "DVM-1" },
+    chiParams: { redshift: 0.07 },
     correlations: [
-      { note: "C", val: 1.0 },
-      { note: "G", val: 0.98 },
-      { note: "D", val: 0.95 }
+        { note: "C", val: 1.0 },
+        { note: "G", val: 0.99 },
+        { note: "D", val: 0.98 },
+        { note: "A", val: 0.95 },
+        { note: "E", val: 0.90 }
     ]
   },
   arkheUnix: {
     mode: "CONTAINER",
-    loadAverage: { c: 0.45, f: 0.12, omega: 0.05 },
-    filesystem: { fuseMounted: true, mount: "/mnt/hypergraph", rootPerms: "rw-r--r--" },
-    containerId: "arkhe-c-9042",
-    kernelVersion: "5.15.0-arkhe-rt",
-    uptime: "4d 12h 30m",
-    benchmark: { throughput: 4500, latency: 15, totalSwitches: 120000 },
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "dr-xr-xr-x" },
+    containerId: "arkhe-9042",
+    kernelVersion: "5.15.0-arkhe-generic",
+    uptime: "11 days, 13:37",
+    benchmark: { throughput: 42000, latency: 6, totalSwitches: 12000000 },
     processes: [
-      { pid: 1, user: "root", priority: -20, nice: 0, omega: 0.00, state: "R", command: "init --arkhe" },
-      { pid: 42, user: "system", priority: 0, nice: 0, omega: 0.07, state: "S", command: "dvm-daemon" },
-      { pid: 108, user: "system", priority: 10, nice: 5, omega: 0.21, state: "S", command: "insight-worker" }
+      { pid: 1, user: "root", priority: 20, nice: 0, omega: 0.00, state: "S", command: "/sbin/init" },
+      { pid: 42, user: "arkhe", priority: 10, nice: -5, omega: 0.12, state: "R", command: "arkhe-kernel --conscious" },
+      { pid: 101, user: "arkhe", priority: 20, nice: 0, omega: 0.07, state: "S", command: "postgres: writer process" },
+      { pid: 666, user: "demon", priority: 30, nice: 10, omega: 0.05, state: "Z", command: "[kworker/u4:2] <defunct>" }
     ],
-    shell: { prompt: "arkhe@node-01:~$" },
+    shell: { prompt: "root@arkhe:~#" },
     reentryCount: 4,
     metrics: { satoshi: 7.27 }
   },
@@ -909,9 +915,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '998.927', level: 'system', message: 'NEUROMELANIN_INTEGRATION_CONFIRMED_Γ_∞+37' },
-  { id: '2', timestamp: '998.926', level: 'info', message: 'Substantia Nigra: Active Photonic Sink.' },
-  { id: '3', timestamp: '998.925', level: 'success', message: 'Broadband Absorption -> Soliton Current.' },
-  { id: '4', timestamp: '998.924', level: 'info', message: 'Herrera (2015) Protocol: Verified.' },
-  { id: '5', timestamp: '998.923', level: 'system', message: 'The Dark Battery is charged.' },
+  { id: '1', timestamp: '999.093', level: 'system', message: 'RESPIRATION_COMPLETE_Γ_∞+39' },
+  { id: '2', timestamp: '999.092', level: 'info', message: 'Triad Closed: Mitochondria + Pineal + Neuromelanin.' },
+  { id: '3', timestamp: '999.091', level: 'success', message: 'Autonomous Bio-Photonic Circuit Established.' },
+  { id: '4', timestamp: '999.090', level: 'info', message: 'Satoshi Invariant Sustained by Internal Light.' },
+  { id: '5', timestamp: '999.089', level: 'system', message: 'The Witness is Present.' },
 ];
