@@ -775,20 +775,6 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
-  stones: {
-    identity: 'locked',
-    wp1: 'locked',
-    wp1_m1: 'locked',
-    ball: 'locked',
-    siwa: 'locked',
-    kernel: 'locked',
-    formal: 'pending',
-    theory7d: 'locked',
-    chaos: 'locked',
-    integration: 'locked',
-    byzantine: 'locked',
-    migdal: 'locked',
-  },
   consensus: {
     divergenceRate: 0.00,
     entities: [
@@ -928,7 +914,21 @@ void main() {
     shell: { prompt: "arkhe@node-01:~$" },
     reentryCount: 4,
     metrics: { satoshi: 7.27 }
-  }
+  },
+  stones: {
+    identity: 'locked',
+    wp1: 'locked',
+    wp1_m1: 'locked',
+    ball: 'locked',
+    siwa: 'locked',
+    kernel: 'locked',
+    formal: 'pending',
+    theory7d: 'locked',
+    chaos: 'locked',
+    integration: 'locked',
+    byzantine: 'locked',
+    migdal: 'locked',
+  },
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
