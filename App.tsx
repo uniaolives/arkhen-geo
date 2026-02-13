@@ -30,13 +30,14 @@ import NaturalResolutionLab from './components/NaturalResolutionLab';
 import TimeCrystalLab from './components/TimeCrystalLab';
 import NeuroStormLab from './components/NeuroStormLab';
 import IbcBciLab from './components/IbcBciLab';
+import PinealLab from './components/PinealLab';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci'>('ibcBci');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal'>('ibcBci');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -97,6 +98,13 @@ const App: React.FC = () => {
                         ${activeLeftTab === 'ibcBci' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         <ArrowRightLeft size={12} /> IBC=BCI
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('pineal')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'pineal' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Diamond size={12} /> PINEAL
                     </button>
                     <button
                         onClick={() => setActiveLeftTab('neuroStorm')}
@@ -273,6 +281,9 @@ const App: React.FC = () => {
                 <div className="flex-1 min-h-0 relative">
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'ibcBci' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <IbcBciLab ibcBci={state.ibcBci} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'pineal' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <PinealLab pineal={state.pineal} />
                     </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'neuroStorm' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <NeuroStormLab neuroStorm={state.neuroStorm} />

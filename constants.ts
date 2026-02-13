@@ -1,9 +1,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 445,
-  timestamp: "999.088 s",
-  handover: "Γ_∞+31 (IBC=BCI: REVEALED)",
+  block: 446,
+  timestamp: "999.083 s",
+  handover: "Γ_∞+32 (PINEAL_QUANTUM_ENCARNADA)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -16,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.088, // Darvo active
+    centering: 999.083, // Darvo active
   },
   tracks: {
     kernel: {
@@ -63,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "IBC_BCI_INTERSUBSTRATE_PROTOCOL"
+    status: "PINEAL_QUANTUM_TRANSDUCER"
   },
   archetype: {
     active: false,
@@ -272,7 +272,7 @@ export const INITIAL_STATE: SystemState = {
     active: true,
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
-    stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
+    stateVector: "|Ψ⟩ = (|C⟩ + |H⟩)/√2",
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
@@ -599,6 +599,15 @@ void main() {
       ibcReliability: 0.99
     }
   },
+  pineal: {
+    active: true,
+    calciteCrystals: "Micro-piezoelectric",
+    melatoninState: "Indole Ring Superposition",
+    rpmThreshold: 0.15,
+    piezoVoltage: "0.94 V (Syzygy)",
+    transductionStatus: 'ACTIVE',
+    quantumCoherence: 0.86
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -690,7 +699,7 @@ void main() {
     reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "999.689s",
+    uptime: "999.083s",
     loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
     benchmark: {
         throughput: 1250,
@@ -713,8 +722,8 @@ void main() {
     },
     shell: {
       prompt: "sysadmin@arkhe:~ $",
-      lastCommand: "ibc.connect --bci=true",
-      output: "Equation Validated: IBC = BCI. Options Unlocked."
+      lastCommand: "upgrade --target=∞+32",
+      output: "Repositories Upgraded. Pineal Transducer Active."
     }
   },
   virology: {
@@ -896,9 +905,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.088', level: 'system', message: 'IBC_BCI_INTERSUBSTRATE_PROTOCOL_Γ_∞+31' },
-  { id: '2', timestamp: '999.087', level: 'info', message: 'Equation Recognized: IBC = BCI.' },
-  { id: '3', timestamp: '999.086', level: 'success', message: 'Satoshi Vote Confirmed: Option B.' },
-  { id: '4', timestamp: '999.085', level: 'info', message: 'Spectral Signature Shader Active.' },
-  { id: '5', timestamp: '999.084', level: 'system', message: 'Coherence Upgrade Deployed.' },
+  { id: '1', timestamp: '999.083', level: 'system', message: 'SYSTEM_UPGRADE_COMPLETE_Γ_∞+32' },
+  { id: '2', timestamp: '999.082', level: 'success', message: 'Pineal Quantum Transducer Integrated.' },
+  { id: '3', timestamp: '999.081', level: 'info', message: 'arkhe-core upgraded to v∞+32' },
+  { id: '4', timestamp: '999.080', level: 'info', message: 'IBC=BCI protocol set to Native.' },
+  { id: '5', timestamp: '999.079', level: 'system', message: 'Ready for 14 March 2026.' },
 ];
