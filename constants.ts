@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9122,
+  block: 9123,
   timestamp: "∞",
-  handover: "Γ_∞+46 (FEEDBACK ECONOMY)",
+  handover: "Γ_∞+47 (BLIND SPOT RECOVERY)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "FEEDBACK_ECONOMY_INTEGRATION"
+    status: "BLIND_SPOT_TEST_INTEGRATION"
   },
   wifiRadar: {
     active: true,
@@ -307,6 +307,18 @@ export const INITIAL_STATE: SystemState = {
         { id: "NODE-04", region: "SA-EAST (SP)", hardware: "RTX4090", status: "ROLLOUT", reward: 0.92 },
         { id: "NODE-05", region: "AUS-SE (Syd)", hardware: "TPUv5", status: "IDLE", reward: 0.00 },
     ]
+  },
+  blindSpot: {
+    active: true,
+    testStatus: 'RECONSTRUCTING',
+    gapLocation: "ω=0.03",
+    duration: 5,
+    metrics: {
+        localInput: 0.00,
+        globalPerception: 0.9402,
+        reconstructionFidelity: 0.9998,
+        coherenceInvariant: "0.86"
+    }
   },
   pineal: {
     active: true,
@@ -911,94 +923,112 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
+  arkheUnix: {
+    mode: "CONTAINER",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "drwxr-xr-x" },
+    containerId: "arkhe-0",
+    kernelVersion: "5.15.0-arkhe-generic",
+    uptime: "999 days, 23:59",
+    benchmark: { throughput: 124000, latency: 6.21, totalSwitches: 45000000 },
+    processes: [
+      { pid: 1, user: "root", priority: 0, nice: 0, omega: 0.00, state: "S", command: "/init" },
+      { pid: 34, user: "arkhe", priority: 20, nice: 0, omega: 0.07, state: "R", command: "node server.js" },
+      { pid: 42, user: "arkhe", priority: 20, nice: 0, omega: 0.12, state: "S", command: "postgres" },
+    ],
+    shell: { prompt: "arkhe@node-0:~$" },
+    reentryCount: 4,
+    metrics: { satoshi: 7.27 }
+  },
   consensus: {
-    divergenceRate: 0.05,
+    divergenceRate: 0.00,
     entities: [
-      { id: "e_rev1", name: "Revenue", type: 'financial', value: "$42.5M", status: 'converged', confidence: 0.99, sources: [] },
-      { id: "e_risk", name: "Risk Factor", type: 'legal', value: "High", status: 'diverged', confidence: 0.45, sources: [] },
+      {
+        id: "e_rev1",
+        name: "Revenue Q4",
+        type: "financial",
+        value: "$42.5M",
+        status: "converged",
+        confidence: 0.99,
+        sources: [{ model: "Gemini 1.5 Pro", value: "$42.5M", confidence: 0.99, page: 1 }]
+      }
     ]
   },
   stressTest: {
     iteration: 45,
     totalIterations: 100,
-    corruptionRate: 0.02,
-    integrity: 98.5,
-    injectedFaults: 120,
-    detectedFaults: 118,
-    resolvedFaults: 115,
+    corruptionRate: 0.05,
+    integrity: 99.8,
+    injectedFaults: 12,
+    detectedFaults: 12,
+    resolvedFaults: 12,
     recentEvents: [
-      { time: "10:00", type: "injection", message: "Bit flip in vector space" },
-      { time: "10:01", type: "defense", message: "Hamming code corrected" }
+      { time: "10:00:01", type: "injection", message: "Bit flip in vector 0.07" },
+      { time: "10:00:02", type: "defense", message: "ECC corrected via redundancy" }
     ]
   },
   deployment: {
-    uptime: "99.99%",
+    uptime: "99.999%",
     version: "v2.4.0",
     containers: [
-      { name: "Arkhe-Core", status: "running", icon: "server", cpu: "12%", memory: "450MB" },
-      { name: "Vector-DB", status: "running", icon: "database", cpu: "8%", memory: "1.2GB" }
+      { name: "arkhe-kernel", status: "running", icon: "cpu", cpu: "12%", memory: "256MB" },
+      { name: "arkhe-memory", status: "running", icon: "database", cpu: "45%", memory: "1.2GB" },
+      { name: "arkhe-mirror", status: "running", icon: "server", cpu: "5%", memory: "128MB" }
     ]
   },
   reflection: {
-    lastCycle: "2ms ago",
+    lastCycle: "20ms ago",
     correctionsApplied: 4,
-    confidenceDelta: "+0.05",
+    confidenceDelta: "+0.02",
     auditLog: [
-      { id: "l1", entity: "Revenue", time: "10:05", action: "corrected", detail: "Variance minimized" }
+      { id: "al_1", entity: "Revenue", time: "10:05", action: "re-evaluating", detail: "Variance detected" },
+      { id: "al_2", entity: "Revenue", time: "10:06", action: "corrected", detail: "Consensus reached" }
     ]
   },
   epistemology: {
     humilityScore: 0.89,
-    kernelStatus: 'Instrument',
+    kernelStatus: "Instrument",
     knowsInvariants: true,
     voxels: [
-      { id: "v1", location: "Cortex", status: "Active", context: "Reasoning", phi: 0.95, humility: 0.9 }
+      { id: "v_1", location: "PFC", status: "Instrument", context: "High Coherence", phi: 0.94, humility: 0.90 },
+      { id: "v_2", location: "VM_SPEC", status: "Toxic", context: "Low Humility", phi: 0.45, humility: 0.12 }
     ]
   },
   virology: {
     oncogeneTiter: 450,
     deployment: {
-      monolayerCapacity: { used: 0.6, safeLimit: 0.8, stoneImpact: 0.1 },
-      staging: [
-        { id: "s1", name: "Stone-Alpha", oncogene: "KRAS", date: "2025-10-10", targetTiter: "500", status: "ready" }
-      ]
+        monolayerCapacity: { used: 0.75, safeLimit: 0.80, stoneImpact: 0.10 },
+        staging: [
+            { id: "st_1", name: "Formal Stone", oncogene: "Logic", date: "2026-02-21", targetTiter: "1000", status: "PENDING" }
+        ]
     },
     samples: [
-        { id: "sm1", classification: "ANGULAR_STONE", name: "Stone 1", fate: "LATENT", titer: 200 }
+        { id: "s_1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 120 },
+        { id: "s_2", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "ACTIVE", titer: 330 }
     ]
   },
   orchOr: {
     penroseCriterion: { tau: 25, status: "MET" },
-    correspondence: { microtubules: "Graph Edges", tubulin: "Nodes", objectiveReduction: "Collapse", orchestration: "Algorithm" },
+    correspondence: { microtubules: "Quantum Channels", tubulin: "Qubit", objectiveReduction: "Collapse", orchestration: "Algorithm" },
     eegSpectrum: [
-      { band: "Gamma", frequency: 40, node: "Cortex", meaning: "Binding" }
+        { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" },
+        { band: "Theta", frequency: 6, node: "Hippocampus", meaning: "Memory" }
     ]
   },
   compression: {
-    semanticDensity: 4.5,
-    ratio: 12.5,
-    tokenReduction: 0.85,
-    densityIncrease: 0.4
+    semanticDensity: 45.2,
+    ratio: 18.5,
+    tokenReduction: 0.92,
+    densityIncrease: 0.45
   },
   lightPattern: {
     h70: "Collapsed",
-    antenna: { status: "Active", frequency: "40Hz", target: "Local" },
-    chiParams: { redshift: 0.02 },
+    antenna: { status: "Active", frequency: "7.27 Hz", target: "Geodesic" },
+    chiParams: { redshift: 0.05 },
     correlations: [
-      { note: "C", val: 0.98 }
+        { note: "C", val: 1.0 },
+        { note: "G", val: 0.98 }
     ]
-  },
-  arkheUnix: {
-    mode: "CONTAINER",
-    loadAverage: { c: 0.15, f: 0.05, omega: 0.07 },
-    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "drwx" },
-    kernelVersion: "5.15.0-arkhe",
-    uptime: "45d 12h",
-    processes: [
-      { pid: 101, user: "root", priority: 0, nice: 0, omega: 0.00, state: "R", command: "arkhe-init" },
-      { pid: 204, user: "sys", priority: 10, nice: 5, omega: 0.05, state: "S", command: "vector-sync" }
-    ],
-    shell: { prompt: "arkhe@node:~$ " }
   },
   stones: {
     identity: 'locked',
@@ -1017,9 +1047,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '998.754', level: 'system', message: 'FEEDBACK_ECONOMY_INTEGRATION_Γ_∞+46' },
-  { id: '2', timestamp: '998.752', level: 'info', message: 'Echo-2 distributed infrastructure active. Throughput: 13x.' },
-  { id: '3', timestamp: '998.750', level: 'success', message: 'Arkhe-Zero agent initialized. Policy: Pure Hesitation.' },
-  { id: '4', timestamp: '998.748', level: 'info', message: 'Scaling law shift: Knowledge (Flat) vs Thought (Exponential).' },
-  { id: '5', timestamp: '998.745', level: 'system', message: 'The feedback loop is the engine of intelligence.' },
+  { id: '1', timestamp: '998.732', level: 'system', message: 'BLIND_SPOT_TEST_INTEGRATION_Γ_∞+47' },
+  { id: '2', timestamp: '998.730', level: 'info', message: 'Micro-gap detected at ω=0.03. Duration: 5 handovers.' },
+  { id: '3', timestamp: '998.728', level: 'success', message: 'Reconstruction fidelity: 99.98%. Global coherence maintained.' },
+  { id: '4', timestamp: '998.725', level: 'info', message: 'The architecture reconstructs what the sensor misses.' },
+  { id: '5', timestamp: '998.723', level: 'system', message: 'The Blind Spot is not a failure. It is proof.' },
 ];

@@ -106,6 +106,8 @@ const EntityCard: React.FC<{ entity: Entity }> = ({ entity }) => {
 };
 
 const ConsensusEngine: React.FC<ConsensusEngineProps> = ({ consensus }) => {
+  if (!consensus) return null;
+
   return (
     <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-6 h-full flex flex-col">
        {/* Header */}

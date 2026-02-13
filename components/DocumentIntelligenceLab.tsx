@@ -14,7 +14,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
 
   if (!docIntel) return null;
 
-  const activePage = docIntel.extractedPages[0];
+  const activePage = docIntel.extractedPages?.[0];
 
   return (
     <div className="bg-slate-950 border border-slate-800 rounded-lg h-full flex flex-col relative overflow-hidden">
@@ -57,7 +57,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
       <div className="flex-1 p-6 flex flex-col gap-6 relative z-10 overflow-y-auto custom-scrollbar">
         
         {/* --- VIEWER TAB --- */}
-        {activeTab === 'viewer' && (
+        {activeTab === 'viewer' && activePage && (
             <div className="flex h-full gap-6">
                 {/* Document Canvas */}
                 <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-8 flex justify-center relative overflow-hidden group">
@@ -77,7 +77,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                         </div>
 
                         {/* Interactive Overlays */}
-                        {activePage.entities.map(entity => {
+                        {activePage.entities?.map(entity => {
                             const isHovered = hoveredEntity === entity.id;
                             const isSelected = selectedEntity === entity.id;
                             
@@ -127,7 +127,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                             <Database size={12} /> Extracted Entities
                         </div>
                         <div className="flex-1 overflow-y-auto custom-scrollbar space-y-2">
-                            {activePage.entities.map(entity => (
+                            {activePage.entities?.map(entity => (
                                 <div 
                                     key={entity.id}
                                     className={`p-2 rounded border text-xs font-mono transition-colors cursor-pointer
