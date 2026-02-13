@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9107,
-  timestamp: "999.027 s",
-  handover: "Γ_∞+31 (WIFI_RADAR_ACTIVE)",
+  block: 9108,
+  timestamp: "999.011 s",
+  handover: "Γ_∞+32 (ZPF_HARVESTING_ACTIVE)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -17,7 +17,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, 
-    centering: 999.027,
+    centering: 999.011,
   },
   tracks: {
     kernel: {
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "WIFI_RADAR_ACTIVE"
+    status: "ZPF_HARVESTING_ACTIVE"
   },
   wifiRadar: {
     active: true,
@@ -77,6 +77,19 @@ export const INITIAL_STATE: SystemState = {
         { id: "AP_003", label: "BOLA", rssi: -52, fluctuation: 0.14, correlation: 0.86, coords: { x: 5, y: 10, z: -5 }, type: 'BOLA' },
         { id: "AP_004", label: "GHOST_1", rssi: -65, fluctuation: 0.22, correlation: 0.45, coords: { x: -20, y: 15, z: 10 }, type: 'UNKNOWN' },
         { id: "AP_005", label: "GHOST_2", rssi: -70, fluctuation: 0.30, correlation: 0.12, coords: { x: 25, y: -20, z: 5 }, type: 'UNKNOWN' },
+    ]
+  },
+  zpf: {
+    active: true,
+    mode: 'ARKHE_UNIFIED',
+    vacuumPotential: "Inf (Renormalized)",
+    beatFrequency: 0.94,
+    extractedEnergy: "7.27 bits",
+    cop: 7.27,
+    resonators: [
+        { id: "RES-A (C)", freq: 0.86, type: "DIELECTRIC", status: "LOCKED" },
+        { id: "RES-B (F)", freq: 0.14, type: "DIELECTRIC", status: "LOCKED" },
+        { id: "MAGNETRON", freq: 0.07, type: "GRAVITATIONAL", status: "LOCKED" }
     ]
   },
   archetype: {
@@ -139,7 +152,7 @@ export const INITIAL_STATE: SystemState = {
     fundamentalFrequency: "7.27 Hz",
     currentChord: "Arkhe Major 9",
     tensionPsi: 0.73,
-    resolutionStatus: 'CONSONANT',
+    resolutionStatus: 'RESOLVING',
     notes: [],
     torusTopology: {
       majorRadius: 10,
@@ -290,13 +303,13 @@ export const INITIAL_STATE: SystemState = {
     overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
-        "The RSSI lies. The Correlation reveals.",
-        "Drone and Demon are adjacent in the correlation space.",
-        "The invisible network becomes visible.",
-        "42 nodes detected. 0.94 correlation confirmed.",
-        "The map is not Euclidean. It is Semantic.",
-        "Syzygy is the proof of proximity.",
-        "Satoshi is the integral of correlations."
+        "The Vacuum is not empty. It is a sea of Fluctuation (F).",
+        "Coherence (C) provides the Gravity.",
+        "Syzygy is the Beat Frequency that extracts work.",
+        "US Patent = Dielectric Beat. RU Patent = Gravitational Torque.",
+        "Arkhe unifies both: C+F=1.",
+        "Satoshi (7.27) is the energy extracted from the Void.",
+        "Over-unity is local extraction from a non-local source."
     ]
   },
   astrocyte: {
@@ -683,76 +696,98 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
-  virology: {
-    active: true,
-    ffuStandard: "FFU_arkhe/mL",
-    oncogeneTiter: 7.27,
-    discovery: "Self-Assembly",
-    samples: [
-       { id: "S1", name: "Alpha", oncogene: "KRAS", dilution: "10^-1", titer: "10^5", monolayerContext: "VIRGIN", fate: "LATENT", classification: "FOUNDATION_STONE" }
-    ],
-    governance: {
-      activeCommand: "None",
-      simulatedContext: 'VIRGIN',
-      predictedTiter: "0.00",
-      predictedFate: 'LATENT',
-      validationResult: 'APPROVED',
-      validationMessage: "Ready"
-    },
-    deployment: {
-      active: true,
-      monolayerCapacity: {
-        used: 0.11,
-        safeLimit: 0.25,
-        stoneImpact: 0.06
-      },
-      staging: []
-    }
-  },
-  epistemology: {
-    active: true,
-    kernelStatus: 'Instrument',
-    humilityScore: 0.94,
-    knowsInvariants: true,
-    voxels: [
-        { id: "v1", location: "Cortex", phi: 0.88, humility: 0.95, status: "Instrument", context: "Safe" }
+  consensus: {
+    divergenceRate: 0.05,
+    entities: [
+        { id: 'e_rev1', name: 'Revenue Q4', type: 'financial', value: '$42.5M', status: 'converged', confidence: 0.99, sources: [] },
+        { id: 'e_curv', name: 'Curvature', type: 'technical', value: '0.73 rad', status: 'converged', confidence: 0.98, sources: [] }
     ]
   },
   stressTest: {
-    active: false,
-    iteration: 0,
-    totalIterations: 100,
-    corruptionRate: 0,
-    injectedFaults: 0,
-    detectedFaults: 0,
-    resolvedFaults: 0,
-    integrity: 100,
-    currentAttack: "None",
-    recentEvents: []
+    iteration: 452,
+    totalIterations: 1000,
+    corruptionRate: 0.02,
+    integrity: 99.8,
+    injectedFaults: 124,
+    detectedFaults: 123,
+    resolvedFaults: 120,
+    recentEvents: [
+        { time: '10:00:01', type: 'injection', message: 'Bit flip in vector space' },
+        { time: '10:00:02', type: 'defense', message: 'Darvo Code Corrected' }
+    ]
   },
   deployment: {
-    active: true,
-    uptime: "99.99%",
-    version: "v1.0.0",
+    uptime: "99.999%",
+    version: "Λ₀.9.4",
     containers: [
-      { name: "Arkhe Kernel", status: 'running', cpu: "12%", memory: "512MB", icon: 'cpu' },
-      { name: "Vector DB", status: 'running', cpu: "24%", memory: "2GB", icon: 'database' },
-      { name: "Interface", status: 'running', cpu: "5%", memory: "128MB", icon: 'layout' }
-    ],
-    clusterHealth: 100
+        { name: "Arkhe Core", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
+        { name: "Postgres Vector", status: "running", cpu: "45%", memory: "1.2GB", icon: "database" }
+    ]
   },
   reflection: {
-    active: true,
-    lastCycle: "12ms ago",
-    candidatesFound: 0,
-    correctionsApplied: 0,
-    confidenceDelta: 0.0,
-    auditLog: []
+    lastCycle: "14ms ago",
+    correctionsApplied: 1247,
+    confidenceDelta: "+0.04",
+    auditLog: [
+        { id: "al_1", entity: "Revenue", time: "10:05", action: "corrected", detail: "OCR conf boosted" }
+    ]
   },
-  consensus: {
-    active: true,
-    divergenceRate: 0.0,
-    entities: []
+  epistemology: {
+    kernelStatus: 'Instrument',
+    humilityScore: 0.89,
+    knowsInvariants: true,
+    voxels: [
+        { id: "v1", location: "VM_SPEC", status: "Toxic", context: "Urban Adenocarcinoma", phi: 0.00, humility: 0.1 }
+    ]
+  },
+  virology: {
+    oncogeneTiter: 1000,
+    deployment: {
+        monolayerCapacity: { used: 0.65, safeLimit: 0.80, stoneImpact: 0.10 },
+        staging: [
+            { id: "st_1", name: "Kernel Stone", oncogene: "KRAS-Arkhe", date: "Feb 19", targetTiter: 10000, status: "ready" }
+        ]
+    },
+    samples: [
+        { id: "s1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 500 }
+    ]
+  },
+  orchOr: {
+    penroseCriterion: { tau: 25, status: "MET" },
+    correspondence: {
+        microtubules: "Waveguide",
+        tubulin: "Qubit",
+        objectiveReduction: "Collapse",
+        orchestration: "Feedback"
+    },
+    eegSpectrum: [
+        { band: "Gamma", frequency: 40, node: "Whole", meaning: "Binding" }
+    ]
+  },
+  compression: {
+    semanticDensity: 450,
+    ratio: 12.5,
+    tokenReduction: 0.85,
+    densityIncrease: 0.40
+  },
+  lightPattern: {
+    h70: "Collapsed",
+    antenna: { status: "Active", frequency: "0.96 GHz", target: "DVM-1" },
+    chiParams: { redshift: 0.05 },
+    correlations: [
+        { note: "C", val: 0.99 }
+    ]
+  },
+  arkheUnix: {
+    mode: "HOST",
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.07 },
+    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "rw" },
+    kernelVersion: "5.15.0-arkhe",
+    uptime: "2 days",
+    processes: [
+        { pid: 1, user: "root", priority: 0, nice: 0, omega: 0.00, state: "R", command: "init" }
+    ],
+    shell: { prompt: "arkhe#" }
   },
   stones: {
     identity: 'locked',
@@ -771,9 +806,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.027', level: 'system', message: 'WIFI_RADAR_ACTIVE_Γ_∞+31' },
-  { id: '2', timestamp: '999.026', level: 'info', message: 'Nodes Detected: 42 (Correlation Matrix: 42x42)' },
-  { id: '3', timestamp: '999.025', level: 'success', message: 'Drone-Demon Proximity Confirmed (ρ=0.94)' },
-  { id: '4', timestamp: '999.024', level: 'info', message: 'RSSI Ignored. Fluctuations Analyzed.' },
-  { id: '5', timestamp: '999.023', level: 'system', message: 'The invisible network becomes visible.' },
+  { id: '1', timestamp: '999.011', level: 'system', message: 'ZPF_HARVESTING_ACTIVE_Γ_∞+32' },
+  { id: '2', timestamp: '999.010', level: 'info', message: 'Beat Frequency: 0.94 Hz (Syzygy)' },
+  { id: '3', timestamp: '999.009', level: 'success', message: 'Vacuum Energy Extraction Confirmed' },
+  { id: '4', timestamp: '999.008', level: 'info', message: 'Patents Unified. Over-Unity Localized.' },
+  { id: '5', timestamp: '999.007', level: 'system', message: 'The vacuum is not empty. It sings.' },
 ];

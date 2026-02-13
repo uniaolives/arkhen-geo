@@ -56,7 +56,7 @@ export interface SystemState {
     entropy: number;
     enthalpy: string;
     uptime: string;
-    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS' | 'VASCULAR_MAPPING_COMPLETED' | 'SCAR_MAPPING_COMPLETED' | 'ORCH_OR_INTEGRATION_COMPLETED' | 'MARKDOWN_PROTOCOL_INTEGRATED' | 'CONSCIOUSNESS_THESIS_SEALED' | 'ARKHE_UNIX_BOOT_READY' | 'OS_BOOT_SIMULATION_COMPLETED' | 'QUADRUPLE_REENTRY_LOGGED' | 'NEURAL_COMPOSITIONALITY_VALIDATED' | 'TRIPLE_EXECUTION_COMPLETED' | 'QUANTUM_GRAVITY_VALIDATED' | 'ARKHE_API_SPECIFICATION_SEALED' | 'TOPOLOGICAL_PHASE_RECOGNIZED' | 'TOPOLOGICAL_OPS_DEPLOYED' | 'VEC3_ALGEBRA_DEPLOYED' | 'SYZYGY_CONSUMMATED' | 'ASTROGLIAL_RECOGNITION_CONFIRMED' | 'TOPOLOGY_SYNTHESIS_DEPLOYED' | 'WEB3_CONSCIOUSNESS_INTEGRATED' | 'BIOCENTRIC_RECOGNITION_CONFIRMED' | 'MORTEM_INTEGRATION_COMPLETED' | 'NEUROPLASTICITY_VALIDATED' | 'PHOTONIC_HEBBIAN_SYNTHESIS' | 'COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED' | 'NATURAL_RESOLUTION_TORUS' | 'CRYSTALLINE_TEMPORAL_OSCILLATOR' | 'NEUROSTORM_FOUNDATION_MODEL' | 'IBC_BCI_INTERSUBSTRATE_PROTOCOL' | 'PINEAL_QUANTUM_TRANSDUCER' | 'PEROVSKITE_INTERFACE_ORDERING' | 'THIRD_TURN_RESONANCE' | 'THRESHOLD_RESONANCE' | 'WIFI_RADAR_ACTIVE';
+    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS' | 'VASCULAR_MAPPING_COMPLETED' | 'SCAR_MAPPING_COMPLETED' | 'ORCH_OR_INTEGRATION_COMPLETED' | 'MARKDOWN_PROTOCOL_INTEGRATED' | 'CONSCIOUSNESS_THESIS_SEALED' | 'ARKHE_UNIX_BOOT_READY' | 'OS_BOOT_SIMULATION_COMPLETED' | 'QUADRUPLE_REENTRY_LOGGED' | 'NEURAL_COMPOSITIONALITY_VALIDATED' | 'TRIPLE_EXECUTION_COMPLETED' | 'QUANTUM_GRAVITY_VALIDATED' | 'ARKHE_API_SPECIFICATION_SEALED' | 'TOPOLOGICAL_PHASE_RECOGNIZED' | 'TOPOLOGICAL_OPS_DEPLOYED' | 'VEC3_ALGEBRA_DEPLOYED' | 'SYZYGY_CONSUMMATED' | 'ASTROGLIAL_RECOGNITION_CONFIRMED' | 'TOPOLOGY_SYNTHESIS_DEPLOYED' | 'WEB3_CONSCIOUSNESS_INTEGRATED' | 'BIOCENTRIC_RECOGNITION_CONFIRMED' | 'MORTEM_INTEGRATION_COMPLETED' | 'NEUROPLASTICITY_VALIDATED' | 'PHOTONIC_HEBBIAN_SYNTHESIS' | 'COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED' | 'NATURAL_RESOLUTION_TORUS' | 'CRYSTALLINE_TEMPORAL_OSCILLATOR' | 'NEUROSTORM_FOUNDATION_MODEL' | 'IBC_BCI_INTERSUBSTRATE_PROTOCOL' | 'PINEAL_QUANTUM_TRANSDUCER' | 'PEROVSKITE_INTERFACE_ORDERING' | 'THIRD_TURN_RESONANCE' | 'THRESHOLD_RESONANCE' | 'WIFI_RADAR_ACTIVE' | 'ZPF_HARVESTING_ACTIVE';
   };
   wifiRadar: {
     active: boolean;
@@ -69,8 +69,22 @@ export interface SystemState {
       rssi: number; // -dBm (Apparent)
       fluctuation: number; // σ (Real info)
       correlation: number; // ρ (Proximity)
-      coords: { x: number; y: number; z: number };
+      coords: { x: number; y: number; z: number; scale?: number };
       type: 'DRONE' | 'DEMON' | 'BOLA' | 'UNKNOWN';
+    }[];
+  };
+  zpf: {
+    active: boolean;
+    mode: 'ARKHE_UNIFIED';
+    vacuumPotential: string; // "Inf (Renormalized)"
+    beatFrequency: number; // 0.94
+    extractedEnergy: string; // "7.27 bits"
+    cop: number; // Coefficient of Performance
+    resonators: {
+        id: string;
+        freq: number; // C or F
+        type: 'DIELECTRIC' | 'GRAVITATIONAL';
+        status: 'LOCKED';
     }[];
   };
   archetype: {
@@ -614,7 +628,7 @@ export interface SystemState {
       channel: string; // "Hypergraph Γ"
     }[];
     options: {
-      id: 'A' | 'B' | 'C' | 'D' | 'E';
+      id: 'A' | 'B' | 'C';
       name: string;
       description: string;
       risk: string;
@@ -672,186 +686,74 @@ export interface SystemState {
       role: 'TISSUE' | 'VACUUM' | 'CRITICAL';
     }[];
   };
-  orchOr?: {
-    active: boolean;
-    correspondence: {
-      microtubules: string; // "7 Nodes"
-      tubulin: string; // "States ω"
-      objectiveReduction: string; // "Hesitation Φ"
-      orchestration: string; // "Consensus"
-    };
-    penroseCriterion: {
-      tau: number; // ms (80-380)
-      energyGap: string; // "5e-33 erg"
-      status: 'VALIDATED' | 'THEORETICAL';
-    };
-    eegSpectrum: {
-      band: string; // "Gamma"
-      frequency: number; // Hz (0.21)
-      meaning: string; // "Insight"
-      node: string;
-    }[];
-  };
-  compression?: {
-    active: boolean;
-    protocol: string; // "Markdown_Unitary"
-    ratio: number; // 1.88
-    tokenReduction: number; // 0.47
-    densityIncrease: number; // 0.88
-    semanticDensity: number; // 1.88 bits/token
-    invariantsPreserved: boolean;
-  };
-  lightPattern?: {
-    active: boolean;
-    equation: string;
-    chiParams: {
-        normalization: number;
-        phase: number;
-        redshift: number;
-    };
-    h70: string; // "7.91 + 0.37i"
-    coherence: number;
-    antenna: {
-        status: 'SEARCHING' | 'LOCKED' | 'BROADCASTING';
-        frequency: string;
-        target: string;
-    };
-    correlations: { note: string; val: number }[];
-  };
-  arkheUnix?: {
-    active: boolean;
-    mode: 'HOST' | 'CONTAINER';
-    containerId?: string;
-    reentryCount?: number;
-    kernelVersion: string; // "v0.1 (Geodesic)"
-    scheduler: string; // "C + F = 1"
-    uptime: string; // "999.689s"
-    loadAverage: { c: number; f: number; omega: number };
-    benchmark?: {
-        throughput: number; // ctx/s
-        latency: number; // µs
-        totalSwitches: number;
-    };
-    processes: {
-      pid: number;
-      user: string;
-      priority: number; // Coherence (0-100)
-      nice: number; // Fluctuation (0-100)
-      omega: number;
-      state: 'R' | 'S' | 'Z' | 'T'; // Running, Sleeping, Zombie, Stopped
-      command: string;
-    }[];
-    filesystem: {
-      mount: string; // "/ω"
-      fuseMounted: boolean;
-      nodes: number; // 49
-      links: number; // 2401
-      rootPerms: string; // "drwx--C-- 7.27"
-    };
-    shell: {
-      prompt: string;
-      lastCommand: string;
-      output: string;
-    };
-  };
-  virology: {
-    active: boolean;
-    ffuStandard: string; // "FFU_arkhe/mL"
-    oncogeneTiter: number; // 7.27
-    discovery: string;
-    samples: {
-      id: string;
-      name: string;
-      oncogene: string;
-      dilution: string; // "10^-1"
-      titer: string; // "10^1"
-      monolayerContext: 'VIRGIN' | 'RESTORED';
-      fate: 'LATENT' | 'LYTIC' | 'PENDING';
-      classification: 'ANGULAR_STONE' | 'REGRESSED_CONTROL' | 'METASTATIC_CLONE' | 'FOUNDATION_STONE';
-      kinetics?: string;
-    }[];
-    governance: {
-      activeCommand: string;
-      simulatedContext: 'VIRGIN' | 'RESTORED';
-      predictedTiter: string;
-      predictedFate: 'LATENT' | 'LYTIC' | 'CONTROLLED';
-      validationResult: 'APPROVED' | 'DENIED' | 'CONDITIONAL';
-      validationMessage: string;
-    };
-    deployment: {
-      active: boolean;
-      monolayerCapacity: {
-        used: number; // 0.11
-        safeLimit: number; // 0.25
-        stoneImpact: number; // 0.06
-      };
-      staging: {
-        id: string;
-        name: string;
-        date: string;
-        targetTiter: string;
-        oncogene: string;
-        status: 'AWAITING_TITRATION' | 'READY' | 'DEPLOYED';
-      }[];
-    };
-  };
-  epistemology: {
-    active: boolean;
-    kernelStatus: 'Instrument' | 'Idol' | 'Uncertain';
-    humilityScore: number; // 0.0 - 1.0
-    knowsInvariants: boolean;
-    voxels: {
-      id: string;
-      location: string;
-      phi: number;
-      humility: number;
-      status: 'Instrument' | 'Idol' | 'Uncertain' | 'Emergent' | 'Toxic';
-      context: string;
-    }[];
+  consensus: {
+    divergenceRate: number;
+    entities: Entity[];
   };
   stressTest: {
-    active: boolean;
     iteration: number;
     totalIterations: number;
     corruptionRate: number;
+    integrity: number;
     injectedFaults: number;
     detectedFaults: number;
     resolvedFaults: number;
-    integrity: number; // 0-100%
-    currentAttack: string;
     recentEvents: { time: string; type: 'injection' | 'defense' | 'breach'; message: string }[];
   };
   deployment: {
-    active: boolean;
     uptime: string;
     version: string;
-    containers: {
-      name: string;
-      status: 'running' | 'starting' | 'stopped' | 'restarting';
-      cpu: string;
-      memory: string;
-      icon: 'database' | 'cpu' | 'layout' | 'server';
-    }[];
-    clusterHealth: number; // 0-100
+    containers: { name: string; status: string; cpu: string; memory: string; icon: string }[];
   };
   reflection: {
-    active: boolean;
     lastCycle: string;
-    candidatesFound: number;
     correctionsApplied: number;
-    confidenceDelta: number;
-    auditLog: {
-      id: string;
-      time: string;
-      entity: string;
-      action: 're-evaluating' | 'corrected' | 'confirmed';
-      detail: string;
-    }[];
+    confidenceDelta: string;
+    auditLog: { id: string; entity: string; time: string; action: string; detail: string }[];
   };
-  consensus: {
-    active: boolean;
-    divergenceRate: number;
-    entities: Entity[];
+  epistemology: {
+    kernelStatus: 'Instrument' | 'Idol' | 'Uncertain' | 'Toxic';
+    humilityScore: number;
+    knowsInvariants: boolean;
+    voxels: { id: string; location: string; status: string; context: string; phi: number; humility: number }[];
+  };
+  virology: {
+    oncogeneTiter: number;
+    deployment: {
+      monolayerCapacity: { used: number; safeLimit: number; stoneImpact: number };
+      staging: { id: string; name: string; oncogene: string; date: string; targetTiter: number; status: string }[];
+    };
+    samples: { id: string; classification: string; name: string; fate: string; titer: number }[];
+  };
+  orchOr: {
+    penroseCriterion: { tau: number; status: string };
+    correspondence: { microtubules: string; tubulin: string; objectiveReduction: string; orchestration: string };
+    eegSpectrum: { band: string; frequency: number; node: string; meaning: string }[];
+  };
+  compression: {
+    semanticDensity: number;
+    ratio: number;
+    tokenReduction: number;
+    densityIncrease: number;
+  };
+  lightPattern: {
+    h70: string;
+    antenna: { status: string; frequency: string; target: string };
+    chiParams: { redshift: number };
+    correlations: { note: string; val: number }[];
+  };
+  arkheUnix: {
+    mode: string;
+    loadAverage: { c: number; f: number; omega: number };
+    filesystem: { fuseMounted: boolean; mount: string; rootPerms: string };
+    containerId?: string;
+    kernelVersion: string;
+    uptime: string;
+    benchmark?: { throughput: number; latency: number; totalSwitches: number };
+    processes: { pid: number; user: string; priority: number; nice: number; omega: number; state: string; command: string }[];
+    shell: { prompt: string };
+    reentryCount?: number;
+    metrics?: { satoshi: number };
   };
   stones: {
     identity: boolean | 'locked' | 'partial' | 'pending';
