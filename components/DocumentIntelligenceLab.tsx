@@ -1,14 +1,15 @@
 
 import React, { useState } from 'react';
 import { SystemState } from '../types';
-import { FileText, Eye, AlertTriangle, CheckCircle2, ShieldCheck, Database, Layers, RefreshCw, Braces, Code, Zap, Scan, MousePointer2 } from 'lucide-react';
+import { FileText, Eye, AlertTriangle, CheckCircle2, ShieldCheck, Database, Layers, RefreshCw, Braces, Code, Zap, Scan, MousePointer2, GitMerge } from 'lucide-react';
+import GlobalEntityRegistry from './GlobalEntityRegistry';
 
 interface DocumentIntelligenceLabProps {
   docIntel: SystemState['documentIntelligence'];
 }
 
 const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIntel }) => {
-  const [activeTab, setActiveTab] = useState<'viewer' | 'logs' | 'schema'>('viewer');
+  const [activeTab, setActiveTab] = useState<'viewer' | 'logs' | 'schema' | 'registry'>('viewer');
   const [hoveredEntity, setHoveredEntity] = useState<string | null>(null);
   const [selectedEntity, setSelectedEntity] = useState<string | null>(null);
 
@@ -39,6 +40,12 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                  VIEWER
              </button>
              <button 
+                onClick={() => setActiveTab('registry')}
+                className={`px-3 py-1 text-[10px] font-mono rounded transition-colors ${activeTab === 'registry' ? 'bg-slate-800 text-emerald-400 shadow' : 'text-slate-500 hover:text-slate-300'}`}
+             >
+                 REGISTRY (GLOBAL)
+             </button>
+             <button 
                 onClick={() => setActiveTab('logs')}
                 className={`px-3 py-1 text-[10px] font-mono rounded transition-colors ${activeTab === 'logs' ? 'bg-slate-800 text-amber-400 shadow' : 'text-slate-500 hover:text-slate-300'}`}
              >
@@ -46,7 +53,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
              </button>
              <button 
                 onClick={() => setActiveTab('schema')}
-                className={`px-3 py-1 text-[10px] font-mono rounded transition-colors ${activeTab === 'schema' ? 'bg-slate-800 text-emerald-400 shadow' : 'text-slate-500 hover:text-slate-300'}`}
+                className={`px-3 py-1 text-[10px] font-mono rounded transition-colors ${activeTab === 'schema' ? 'bg-slate-800 text-fuchsia-400 shadow' : 'text-slate-500 hover:text-slate-300'}`}
              >
                  SCHEMA
              </button>
@@ -149,6 +156,11 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                     </div>
                 </div>
             </div>
+        )}
+
+        {/* --- REGISTRY TAB --- */}
+        {activeTab === 'registry' && docIntel.globalRegistry && (
+            <GlobalEntityRegistry registry={docIntel.globalRegistry} />
         )}
 
         {/* --- LOGS TAB --- */}

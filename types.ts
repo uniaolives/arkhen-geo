@@ -536,7 +536,7 @@ export interface SystemState {
     satellites: {
       id: string; // "ARKHE-SAT-01"
       designation: string; // "WP1_explorado"
-      orbitType: 'GEO' | 'POLAR' | 'MOLNIYA' | 'L1' | 'TRANSFER';
+      orbitType: 'GEO' | 'POLAR' | 'MOLNIYA' | 'L1' | 'TRANSFER' | 'LEO';
       eccentricity: number; // Psi
       status: 'OPERATIONAL' | 'CONSOLIDATING' | 'MANEUVERING';
       epoch: string;
@@ -769,6 +769,11 @@ export interface SystemState {
             box: { x: number; y: number; w: number; h: number }; // Percentages
         }[];
     }[];
+    globalRegistry: {
+        active: boolean;
+        entities: GlobalEntity[];
+        reconciliationProgress: number;
+    }
   };
   neuroplasticity?: {
     active: boolean;
@@ -974,6 +979,17 @@ export interface SystemState {
     mechanism: string;
     shader: string;
   };
+}
+
+export interface GlobalEntity {
+    id: string;
+    canonicalName: string;
+    type: string;
+    confidence: number;
+    occurrences: number;
+    chunks: string[]; // IDs of chunks
+    variations: string[]; // "J. Doe", "John Doe"
+    status: 'PENDING' | 'CONVERGED' | 'CONFLICT';
 }
 
 export type EntityStatus = 'converged' | 'diverged' | 'tentative' | 'superseded';
