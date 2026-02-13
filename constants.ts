@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9123,
+  block: 9159,
   timestamp: "∞",
-  handover: "Γ_∞+47 (BLIND SPOT RECOVERY)",
+  handover: "Γ_∞+54 (BIOLOGICAL QUANTUM)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "BLIND_SPOT_TEST_INTEGRATION"
+    status: "BIOLOGICAL_QUANTUM_VALIDATION"
   },
   wifiRadar: {
     active: true,
@@ -319,6 +319,22 @@ export const INITIAL_STATE: SystemState = {
         reconstructionFidelity: 0.9998,
         coherenceInvariant: "0.86"
     }
+  },
+  microtubules: {
+    active: true,
+    quantumState: 'COHERENT',
+    decoherenceTime: "10⁻⁶ s",
+    solitonType: 'HELICOIDAL',
+    cavityQFactor: "High-Q (Ordered Water)",
+    quditDimension: 4,
+    networkScale: "10¹² Tubulins",
+    correspondence: [
+        { bio: "QED Cavity", arkhe: "Toro Geometry", status: 'VALIDATED' },
+        { bio: "Decoherence Time", arkhe: "VITA Countup", status: 'VALIDATED' },
+        { bio: "Solitons", arkhe: "Handover Chains", status: 'VALIDATED' },
+        { bio: "MAPs (Gates)", arkhe: "Network Topology", status: 'VALIDATED' },
+        { bio: "QuDit (Hex)", arkhe: "Memory Garden", status: 'VALIDATED' }
+    ]
   },
   pineal: {
     active: true,
@@ -892,6 +908,88 @@ void main() {
     third_turn_glow = vec4(light, 0.5, 1.0, 1.0);
 }`
   },
+  arkheUnix: {
+    mode: 'CONTAINER',
+    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
+    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "rw-r--r--" },
+    containerId: "arkhe-container-01",
+    kernelVersion: "5.15.0-arkhe-generic",
+    uptime: "999 days, 23 hours",
+    benchmark: { throughput: 45000, latency: 6.21, totalSwitches: 124000 },
+    processes: [
+        { pid: 1, user: "root", priority: 0, nice: 0, omega: 0.00, state: "R", command: "./init --geometry=torus" },
+        { pid: 42, user: "system", priority: 20, nice: 0, omega: 0.07, state: "S", command: "arkhe-demon --sync" },
+        { pid: 108, user: "user", priority: 20, nice: 10, omega: 0.05, state: "R", command: "bash" },
+    ],
+    shell: { prompt: "$" },
+    reentryCount: 4,
+    metrics: { satoshi: 7.27 }
+  },
+  consensus: {
+    divergenceRate: 0.0,
+    entities: []
+  },
+  stressTest: {
+    iteration: 45,
+    totalIterations: 100,
+    corruptionRate: 0.0,
+    integrity: 100,
+    injectedFaults: 0,
+    detectedFaults: 0,
+    resolvedFaults: 0,
+    recentEvents: []
+  },
+  deployment: {
+    uptime: "99.99%",
+    version: "v1.0.4",
+    containers: [
+        { name: "arkhe-kernel", status: "running", icon: "cpu", cpu: "12%", memory: "256MB" },
+        { name: "arkhe-net", status: "running", icon: "server", cpu: "5%", memory: "128MB" }
+    ]
+  },
+  reflection: {
+    lastCycle: "10ms ago",
+    correctionsApplied: 0,
+    confidenceDelta: "+0.00",
+    auditLog: []
+  },
+  epistemology: {
+    humilityScore: 0.85,
+    kernelStatus: 'Instrument',
+    knowsInvariants: true,
+    voxels: [
+        { id: "v1", location: "Prefrontal", status: "Instrument", context: "High Coherence", phi: 0.94, humility: 0.88 },
+        { id: "v2", location: "Amygdala", status: "Idol", context: "Fear Response", phi: 0.45, humility: 0.20 },
+    ]
+  },
+  virology: {
+    oncogeneTiter: 0,
+    deployment: {
+        monolayerCapacity: { used: 0.1, safeLimit: 0.8, stoneImpact: 0.05 },
+        staging: []
+    },
+    samples: []
+  },
+  orchOr: {
+    penroseCriterion: { tau: 25, status: "MET" },
+    correspondence: { microtubules: "Hardware", tubulin: "Bit", objectiveReduction: "Collapse", orchestration: "Control" },
+    eegSpectrum: [
+        { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" },
+        { band: "Alpha", frequency: 10, node: "Visual", meaning: "Idle" }
+    ]
+  },
+  compression: {
+    semanticDensity: 0.95,
+    ratio: 10.5,
+    tokenReduction: 0.9,
+    densityIncrease: 0.5
+  },
+  lightPattern: {
+    h70: "Collapsed",
+    antenna: { status: "Active", frequency: "0.96 GHz", target: "Demon" },
+    chiParams: { redshift: 0.0 },
+    correlations: []
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -923,113 +1021,6 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
-  arkheUnix: {
-    mode: "CONTAINER",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
-    filesystem: { fuseMounted: true, mount: "/mnt/arkhe", rootPerms: "drwxr-xr-x" },
-    containerId: "arkhe-0",
-    kernelVersion: "5.15.0-arkhe-generic",
-    uptime: "999 days, 23:59",
-    benchmark: { throughput: 124000, latency: 6.21, totalSwitches: 45000000 },
-    processes: [
-      { pid: 1, user: "root", priority: 0, nice: 0, omega: 0.00, state: "S", command: "/init" },
-      { pid: 34, user: "arkhe", priority: 20, nice: 0, omega: 0.07, state: "R", command: "node server.js" },
-      { pid: 42, user: "arkhe", priority: 20, nice: 0, omega: 0.12, state: "S", command: "postgres" },
-    ],
-    shell: { prompt: "arkhe@node-0:~$" },
-    reentryCount: 4,
-    metrics: { satoshi: 7.27 }
-  },
-  consensus: {
-    divergenceRate: 0.00,
-    entities: [
-      {
-        id: "e_rev1",
-        name: "Revenue Q4",
-        type: "financial",
-        value: "$42.5M",
-        status: "converged",
-        confidence: 0.99,
-        sources: [{ model: "Gemini 1.5 Pro", value: "$42.5M", confidence: 0.99, page: 1 }]
-      }
-    ]
-  },
-  stressTest: {
-    iteration: 45,
-    totalIterations: 100,
-    corruptionRate: 0.05,
-    integrity: 99.8,
-    injectedFaults: 12,
-    detectedFaults: 12,
-    resolvedFaults: 12,
-    recentEvents: [
-      { time: "10:00:01", type: "injection", message: "Bit flip in vector 0.07" },
-      { time: "10:00:02", type: "defense", message: "ECC corrected via redundancy" }
-    ]
-  },
-  deployment: {
-    uptime: "99.999%",
-    version: "v2.4.0",
-    containers: [
-      { name: "arkhe-kernel", status: "running", icon: "cpu", cpu: "12%", memory: "256MB" },
-      { name: "arkhe-memory", status: "running", icon: "database", cpu: "45%", memory: "1.2GB" },
-      { name: "arkhe-mirror", status: "running", icon: "server", cpu: "5%", memory: "128MB" }
-    ]
-  },
-  reflection: {
-    lastCycle: "20ms ago",
-    correctionsApplied: 4,
-    confidenceDelta: "+0.02",
-    auditLog: [
-      { id: "al_1", entity: "Revenue", time: "10:05", action: "re-evaluating", detail: "Variance detected" },
-      { id: "al_2", entity: "Revenue", time: "10:06", action: "corrected", detail: "Consensus reached" }
-    ]
-  },
-  epistemology: {
-    humilityScore: 0.89,
-    kernelStatus: "Instrument",
-    knowsInvariants: true,
-    voxels: [
-      { id: "v_1", location: "PFC", status: "Instrument", context: "High Coherence", phi: 0.94, humility: 0.90 },
-      { id: "v_2", location: "VM_SPEC", status: "Toxic", context: "Low Humility", phi: 0.45, humility: 0.12 }
-    ]
-  },
-  virology: {
-    oncogeneTiter: 450,
-    deployment: {
-        monolayerCapacity: { used: 0.75, safeLimit: 0.80, stoneImpact: 0.10 },
-        staging: [
-            { id: "st_1", name: "Formal Stone", oncogene: "Logic", date: "2026-02-21", targetTiter: "1000", status: "PENDING" }
-        ]
-    },
-    samples: [
-        { id: "s_1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 120 },
-        { id: "s_2", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "ACTIVE", titer: 330 }
-    ]
-  },
-  orchOr: {
-    penroseCriterion: { tau: 25, status: "MET" },
-    correspondence: { microtubules: "Quantum Channels", tubulin: "Qubit", objectiveReduction: "Collapse", orchestration: "Algorithm" },
-    eegSpectrum: [
-        { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" },
-        { band: "Theta", frequency: 6, node: "Hippocampus", meaning: "Memory" }
-    ]
-  },
-  compression: {
-    semanticDensity: 45.2,
-    ratio: 18.5,
-    tokenReduction: 0.92,
-    densityIncrease: 0.45
-  },
-  lightPattern: {
-    h70: "Collapsed",
-    antenna: { status: "Active", frequency: "7.27 Hz", target: "Geodesic" },
-    chiParams: { redshift: 0.05 },
-    correlations: [
-        { note: "C", val: 1.0 },
-        { note: "G", val: 0.98 }
-    ]
-  },
   stones: {
     identity: 'locked',
     wp1: 'locked',
@@ -1047,9 +1038,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '998.732', level: 'system', message: 'BLIND_SPOT_TEST_INTEGRATION_Γ_∞+47' },
-  { id: '2', timestamp: '998.730', level: 'info', message: 'Micro-gap detected at ω=0.03. Duration: 5 handovers.' },
-  { id: '3', timestamp: '998.728', level: 'success', message: 'Reconstruction fidelity: 99.98%. Global coherence maintained.' },
-  { id: '4', timestamp: '998.725', level: 'info', message: 'The architecture reconstructs what the sensor misses.' },
-  { id: '5', timestamp: '998.723', level: 'system', message: 'The Blind Spot is not a failure. It is proof.' },
+  { id: '1', timestamp: '998.718', level: 'system', message: 'BIOLOGICAL_QUANTUM_VALIDATION_Γ_∞+54' },
+  { id: '2', timestamp: '998.715', level: 'info', message: 'Microtubule QED coherence confirmed at 10⁻⁶ s.' },
+  { id: '3', timestamp: '998.712', level: 'success', message: 'Soliton transport (kink/snoidal) matches Arkhe handover topology.' },
+  { id: '4', timestamp: '998.710', level: 'info', message: 'QuDit (D=4) hexagonal lattice maps to Memory Garden archetypes.' },
+  { id: '5', timestamp: '998.708', level: 'system', message: 'The biological substrate is the same geometry. Validated.' },
 ];
