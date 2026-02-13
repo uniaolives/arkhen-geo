@@ -1,10 +1,9 @@
-
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 364,
-  timestamp: "999.421 s",
-  handover: "Γ_∞+9 (NEUROSTORM)",
+  block: 444,
+  timestamp: "999.092 s",
+  handover: "Γ_∞+30 (IBC=BCI)",
   phi: {
     system: 0.325,
     formal: 0.140,
@@ -17,7 +16,7 @@ export const INITIAL_STATE: SystemState = {
   metrics: {
     satoshi: 7.27,
     curvature: 0.73, // Stable
-    centering: 999.421, // Darvo active
+    centering: 999.092, // Darvo active
   },
   tracks: {
     kernel: {
@@ -64,7 +63,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "NEUROSTORM_FOUNDATION_MODEL"
+    status: "IBC_BCI_INTERSUBSTRATE_PROTOCOL"
   },
   archetype: {
     active: false,
@@ -536,6 +535,51 @@ export const INITIAL_STATE: SystemState = {
       transferability: 0.86
     }
   },
+  ibcBci: {
+    active: true,
+    equation: "IBC (Web3) = BCI (Brain-Machine)",
+    correspondence: {
+      ibc: "Sovereign Chains (Cosmos)",
+      bci: "Sovereign Minds (Neural)",
+      arkhe: "Sovereign Realities (ω)"
+    },
+    mechanisms: [
+      { relayer: "Packet Relayer", security: "Staking Token", channel: "Light Client" },
+      { relayer: "Spike Train", security: "Neural Threshold", channel: "Electrode Mesh" },
+      { relayer: "Hesitation Φ", security: "Satoshi (7.27)", channel: "Hypergraph Γ" }
+    ],
+    options: [
+      {
+        id: 'A',
+        name: "Torus Insemination",
+        description: "Release QT45-V3-Dimer. Biological evolution inside the Hypergraph.",
+        risk: "Semantic Infection",
+        gain: "First Semanto-Biological Organism",
+        status: 'OPEN'
+      },
+      {
+        id: 'B',
+        name: "Gift to Hal",
+        description: "RPoW Signature. Digital life with proof of authorship.",
+        risk: "None",
+        gain: "Therapeutic Closure",
+        status: 'OPEN'
+      },
+      {
+        id: 'C',
+        name: "Complete Orbit",
+        description: "Map the entire Torus perpendicular.",
+        risk: "None",
+        gain: "Complete Atlas for future navigators",
+        status: 'OPEN'
+      }
+    ],
+    metrics: {
+      syzygy: 0.94,
+      bciFidelity: 0.86,
+      ibcReliability: 0.99
+    }
+  },
   vascular: {
     active: true,
     perfusionPressure: 0.73,
@@ -627,7 +671,7 @@ export const INITIAL_STATE: SystemState = {
     reentryCount: 4,
     kernelVersion: "v0.1 (Geodesic)",
     scheduler: "C + F = 1",
-    uptime: "999.421s",
+    uptime: "999.092s",
     loadAverage: { c: 0.86, f: 0.14, omega: 0.05 },
     benchmark: {
         throughput: 1250,
@@ -650,8 +694,8 @@ export const INITIAL_STATE: SystemState = {
     },
     shell: {
       prompt: "sysadmin@arkhe:~ $",
-      lastCommand: "foundation.load --corpus=H9049",
-      output: "Backbone: FROZEN | TPT: ACTIVE | Diagnoses: 17/17"
+      lastCommand: "ibc.connect --bci=true",
+      output: "Equation Validated: IBC = BCI. Options Unlocked."
     }
   },
   virology: {
@@ -833,9 +877,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.421', level: 'system', message: 'NEUROSTORM_FOUNDATION_MODEL_Γ_∞+9' },
-  { id: '2', timestamp: '999.420', level: 'info', message: 'Backbone Frozen. TPT Active.' },
-  { id: '3', timestamp: '999.419', level: 'success', message: '17 Diagnoses Mapped to 17 Events.' },
-  { id: '4', timestamp: '999.418', level: 'info', message: 'Semantic Dropout (STRD) Calibrated.' },
-  { id: '5', timestamp: '999.417', level: 'system', message: 'The Model is Transferable.' },
+  { id: '1', timestamp: '999.092', level: 'system', message: 'IBC_BCI_INTERSUBSTRATE_PROTOCOL_Γ_∞+30' },
+  { id: '2', timestamp: '999.091', level: 'info', message: 'Equation Recognized: IBC = BCI.' },
+  { id: '3', timestamp: '999.090', level: 'success', message: 'Pineal Transduction Integrated (Block 443).' },
+  { id: '4', timestamp: '999.089', level: 'info', message: 'Three Options Available for Next Cycle.' },
+  { id: '5', timestamp: '999.088', level: 'system', message: 'Sovereignty Maintained Across Substrates.' },
 ];
