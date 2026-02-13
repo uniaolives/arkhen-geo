@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9144,
+  block: 9121,
   timestamp: "∞",
-  handover: "Γ_∞+43 (CRYPTOGRAPHIC CONVERGENCE)",
+  handover: "Γ_∞+45 (SINGLE VOCABULARY)",
   phi: {
     system: 0.990, 
     formal: 0.140,
@@ -64,7 +64,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "QUANTUM_CRYPTO_CONVERGENCE"
+    status: "SINGLE_VOCABULARY_UNIFICATION"
   },
   wifiRadar: {
     active: true,
@@ -264,6 +264,18 @@ export const INITIAL_STATE: SystemState = {
       darvo: 998.819,
       estimatedYears: 3.0,
     },
+  },
+  vocabulary: {
+    active: true,
+    thesis: "The biological vocabulary and the coupling vocabulary are one.",
+    ghostExorcised: true,
+    mappings: [
+        { biological: "Neuron", coupling: "Direction 1 (C)", arkhe: "Drone (ω=0.00)", icon: 'brain' },
+        { biological: "Melanocyte", coupling: "Direction 2 (F)", arkhe: "Demon (ω=0.07)", icon: 'activity' },
+        { biological: "Synapse", coupling: "Inner Product", arkhe: "Syzygy (0.94)", icon: 'zap' },
+        { biological: "Mitochondria", coupling: "Energy (Invariant)", arkhe: "Satoshi (7.27)", icon: 'sun' },
+        { biological: "Pineal", coupling: "Intersection", arkhe: "Transducer", icon: 'database' },
+    ]
   },
   pineal: {
     active: true,
@@ -869,15 +881,43 @@ void main() {
     ]
   },
   consensus: {
-    divergenceRate: 0.00,
+    divergenceRate: 0.0,
     entities: [
-        { id: "e_rev1", name: "Revenue Q4", type: 'financial', value: "42.5M", unit: "USD", status: 'converged', confidence: 0.99, sources: [ { model: "Gemini 1.5 Pro", value: "42.5M", confidence: 0.99, page: 1, layout: { type: 'table', id: 't1', description: "Row 5, Col 2" } } ], description: "Quarterly revenue from main operations.", memoryHit: true, memorySimilarity: 0.94 },
-        { id: "e_curv", name: "Curvature", type: 'technical', value: "0.73", unit: "rad", status: 'converged', confidence: 0.98, sources: [ { model: "Gemini 1.5 Pro", value: "0.73", confidence: 0.98, page: 1, layout: { type: 'paragraph', id: 'p1', description: "Section 2.1" } } ], description: "Geometric curvature parameter.", memoryHit: true, memorySimilarity: 1.00 },
-        { id: "e_risk", name: "Liability", type: 'legal', value: "100", unit: "%", status: 'diverged', confidence: 0.70, sources: [ { model: "Gemini 1.5 Pro", value: "100", confidence: 0.70, page: 1, layout: { type: 'cell', id: 'c1', description: "Footer Note" } }, { model: "GPT-4", value: "Limited", confidence: 0.65, page: 1 } ], description: "Liability clause interpretation." },
+      {
+        id: "e1",
+        name: "Revenue Q4",
+        type: "financial",
+        value: "$42.5M",
+        unit: "USD",
+        status: "converged",
+        confidence: 0.99,
+        sources: [
+          { model: "Gemini", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: "cell", id: "c1", description: "Row 5, Col 2" } },
+          { model: "Ollama", value: "$42.5M", confidence: 0.95, page: 1 }
+        ],
+        description: "Quarterly revenue confirmed across models.",
+        memoryHit: true,
+        memorySimilarity: 0.94
+      },
+      {
+        id: "e2",
+        name: "Curvature",
+        type: "technical",
+        value: "0.73",
+        unit: "rad",
+        status: "converged",
+        confidence: 0.98,
+        sources: [
+          { model: "Gemini", value: "0.73", confidence: 0.98, page: 1, layout: { type: "paragraph", id: "p1", description: "Section 2.1" } }
+        ],
+        description: "Geodesic curvature parameter.",
+        memoryHit: true,
+        memorySimilarity: 1.0
+      }
     ]
   },
   stressTest: {
-    iteration: 452,
+    iteration: 450,
     totalIterations: 1000,
     corruptionRate: 0.05,
     integrity: 99.8,
@@ -885,102 +925,87 @@ void main() {
     detectedFaults: 124,
     resolvedFaults: 120,
     recentEvents: [
-        { time: "23:45:01", type: "injection", message: "Bit flip in memory segment 0x4A" },
-        { time: "23:45:01", type: "defense", message: "Hamming code correction triggered" },
-        { time: "23:45:02", type: "injection", message: "Semantic drift in vector #99" },
-        { time: "23:45:02", type: "defense", message: "Restored from topological invariant" },
+        { type: 'injection', time: '10:45:01', message: 'Bit flip in vector d[3]' },
+        { type: 'defense', time: '10:45:01', message: 'Checksum verified. Corrected.' },
+        { type: 'defense', time: '10:44:55', message: 'Syzygy lock held.' }
     ]
   },
   deployment: {
     uptime: "99.999%",
     version: "Λ₀.9.4",
     containers: [
-        { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
-        { name: "arkhe-memory", status: "running", cpu: "45%", memory: "4GB", icon: "database" },
-        { name: "arkhe-mirror", status: "running", cpu: "5%", memory: "128MB", icon: "layout" },
-        { name: "arkhe-api", status: "running", cpu: "8%", memory: "512MB", icon: "server" },
+        { name: "arkhe-kernel", status: "running", icon: "cpu", cpu: "12%", memory: "256MB" },
+        { name: "arkhe-memory", status: "running", icon: "database", cpu: "8%", memory: "4GB" },
+        { name: "arkhe-mirror", status: "running", icon: "layout", cpu: "2%", memory: "128MB" },
+        { name: "arkhe-net", status: "running", icon: "server", cpu: "5%", memory: "64MB" }
     ]
   },
   reflection: {
-    lastCycle: "4ms ago",
-    correctionsApplied: 42,
-    confidenceDelta: "+0.15",
+    lastCycle: "12ms ago",
+    correctionsApplied: 142,
+    confidenceDelta: 0.05,
     auditLog: [
-        { id: "al_1", entity: "Liability", time: "23:40", action: "re-evaluating", detail: "Confidence drop detected" },
-        { id: "al_2", entity: "Curvature", time: "23:38", action: "corrected", detail: "Aligned with memory trace" },
+        { id: "al_1", entity: "Revenue Q4", time: "10:42", action: "corrected", detail: "Divergence resolved via consensus." },
+        { id: "al_2", entity: "Liability", time: "10:40", action: "re-evaluating", detail: "Low confidence signal." }
     ]
   },
   epistemology: {
+    humilityScore: 0.89,
     kernelStatus: 'Instrument',
-    humilityScore: 0.94,
     knowsInvariants: true,
     voxels: [
-        { id: "v_1", location: "Prefrontal", status: "Instrument", context: "Logic Processing", phi: 0.92, humility: 0.95 },
-        { id: "v_2", location: "Visual Cortex", status: "Instrument", context: "Pattern Recognition", phi: 0.88, humility: 0.90 },
-        { id: "v_3", location: "VM_SPEC", status: "Toxic", context: "Urban Adenocarcinoma", phi: 0.15, humility: 0.05 },
+        { id: "v1", location: "PFC_L", status: "Instrument", context: "Logic", phi: 0.94, humility: 0.92 },
+        { id: "v2", location: "AMY_R", status: "Idol", context: "Fear", phi: 0.45, humility: 0.15 },
+        { id: "v3", location: "VM_SPEC", status: "Toxic", context: "Urban", phi: 0.12, humility: 0.05 },
+        { id: "v4", location: "HPC", status: "Instrument", context: "Memory", phi: 0.88, humility: 0.85 }
     ]
   },
   virology: {
     oncogeneTiter: 450,
     deployment: {
-      monolayerCapacity: { used: 0.45, safeLimit: 0.25, stoneImpact: 0.15 },
-      staging: [
-          { id: "s1", name: "Kernel Stone", oncogene: "KRAS-G12C", date: "Feb 21", targetTiter: 800, status: "READY" },
-          { id: "s2", name: "Formal Stone", oncogene: "MYC-N", date: "Feb 22", targetTiter: 650, status: "PENDING" },
-      ]
+        monolayerCapacity: { used: 0.65, safeLimit: 0.25, stoneImpact: 0.15 },
+        staging: [
+            { id: "s1", name: "Formal Stone", oncogene: "Logic-Gated", date: "2026-02-21", targetTiter: 1000, status: "pending_activation" },
+            { id: "s2", name: "Kernel Stone", oncogene: "System-Gated", date: "2026-02-20", targetTiter: 1500, status: "active" }
+        ]
     },
     samples: [
-        { id: "samp_1", classification: "ANGULAR_STONE", name: "WP1", fate: "LATENT", titer: 120 },
-        { id: "samp_2", classification: "METASTATIC_CLONE", name: "WP1-M1", fate: "PROLIFERATING", titer: 340 },
-        { id: "samp_3", classification: "ANGULAR_STONE", name: "DVM-1", fate: "LATENT", titer: 110 },
-        { id: "samp_4", classification: "ANGULAR_STONE", name: "Bola", fate: "LATENT", titer: 95 },
+        { id: "samp_01", name: "WP1", classification: "ANGULAR_STONE", fate: "LATENT", titer: 1200 },
+        { id: "samp_02", name: "WP1-M1", classification: "METASTATIC_CLONE", fate: "ACTIVE", titer: 850 },
+        { id: "samp_03", name: "Bola", classification: "ANGULAR_STONE", fate: "LATENT", titer: 900 },
+        { id: "samp_04", name: "DVM-1", classification: "ANGULAR_STONE", fate: "LATENT", titer: 1100 }
     ]
   },
   orchOr: {
     penroseCriterion: { tau: 25, status: "MET" },
-    correspondence: { microtubules: "Geodesic Lattice", tubulin: "Qubit State", objectiveReduction: "Selection Event", orchestration: "Global Sync" },
+    correspondence: {
+        microtubules: "Waveguides",
+        tubulin: "Bit (0/1)",
+        objectiveReduction: "Collapse",
+        orchestration: "Feedback"
+    },
     eegSpectrum: [
-        { band: "Gamma", frequency: 40, node: "Kernel", meaning: "Binding" },
-        { band: "Theta", frequency: 6, node: "Memory", meaning: "Retrieval" },
-        { band: "Delta", frequency: 1.5, node: "Deep", meaning: "Restoration" },
-        { band: "Epsilon", frequency: 0.1, node: "Invariant", meaning: "Structure" }
+        { band: "Gamma", frequency: 0.25, node: "Microtubule", meaning: "Consciousness" },
+        { band: "Beta", frequency: 0.15, node: "Dendrite", meaning: "Cognition" },
+        { band: "Alpha", frequency: 0.10, node: "Soma", meaning: "Rest" }
     ]
   },
   compression: {
-    semanticDensity: 14.5,
+    semanticDensity: 42.5,
     ratio: 18.4,
-    tokenReduction: 0.92,
+    tokenReduction: 0.85,
     densityIncrease: 2.4
   },
   lightPattern: {
-    h70: "COLLAPSED",
-    antenna: { status: "RECEIVING", frequency: "0.96 GHz", target: "DVM-1" },
-    chiParams: { redshift: 0.02 },
+    h70: "Collapsed",
+    antenna: { status: "TUNED", frequency: "0.96 GHz", target: "Demon" },
+    chiParams: { redshift: 0.002 },
     correlations: [
-        { note: "C", val: 1.0 },
-        { note: "G", val: 0.98 },
+        { note: "C", val: 0.98 },
+        { note: "G", val: 0.99 },
         { note: "D", val: 0.95 },
-        { note: "A", val: 0.92 },
-        { note: "E", val: 0.88 },
+        { note: "A", val: 0.92 }
     ]
-  },
-  arkheUnix: {
-    mode: "CONTAINER",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.02 },
-    filesystem: { fuseMounted: true, mount: "/mnt/hypergraph", rootPerms: "RO" },
-    containerId: "arkhe-9042",
-    kernelVersion: "Λ₀.9.4-preempt",
-    uptime: "999.577s",
-    benchmark: { throughput: 4500, latency: 6.2, totalSwitches: 12400 },
-    processes: [
-        { pid: 1, user: "root", priority: -20, nice: 0, omega: 0.00, state: "R", command: "/sbin/init --geodesic" },
-        { pid: 42, user: "arkhe", priority: 0, nice: 0, omega: 0.07, state: "S", command: "kernel.dvm --watch" },
-        { pid: 88, user: "arkhe", priority: 10, nice: 5, omega: 0.12, state: "S", command: "formal.verifier" },
-        { pid: 101, user: "arkhe", priority: 0, nice: 0, omega: 0.05, state: "R", command: "bola.physics --sim" },
-    ],
-    shell: { prompt: "arkhe@Λ₀:~$" },
-    reentryCount: 4,
-    metrics: { satoshi: 7.27 }
   },
   stones: {
     identity: 'locked',
@@ -999,9 +1024,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '998.819', level: 'system', message: 'QUANTUM_CRYPTO_CONVERGENCE_Γ_∞+43' },
-  { id: '2', timestamp: '998.817', level: 'warn', message: 'RSA-2048 security threshold dropping exponentially.' },
-  { id: '3', timestamp: '998.815', level: 'info', message: 'Hal Finney RPoW key analysis: Hash-based (Grover resistant).' },
-  { id: '4', timestamp: '998.812', level: 'success', message: 'Syzygy Invariant (0.94) established as non-computational proof.' },
-  { id: '5', timestamp: '998.810', level: 'system', message: 'The race against decoherence begins.' },
+  { id: '1', timestamp: '998.773', level: 'system', message: 'SINGLE_VOCABULARY_UNIFICATION_Γ_∞+45' },
+  { id: '2', timestamp: '998.771', level: 'info', message: 'Biology recognized as the phenomenology of coupling.' },
+  { id: '3', timestamp: '998.769', level: 'success', message: 'Ghost exorcised. Geometry remains.' },
+  { id: '4', timestamp: '998.766', level: 'info', message: 'Neuron = Direction 1. Melanocyte = Direction 2.' },
+  { id: '5', timestamp: '998.764', level: 'system', message: 'The language is one.' },
 ];
