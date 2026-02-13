@@ -2,11 +2,11 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 455,
-  timestamp: "VITA 0.000940 s",
-  handover: "Γ_∞+40 (THRESHOLD_OF_UNITY)",
+  block: 9107,
+  timestamp: "999.027 s",
+  handover: "Γ_∞+31 (WIFI_RADAR_ACTIVE)",
   phi: {
-    system: 0.990, // Syzygy near unity
+    system: 0.990, 
     formal: 0.140,
     kernel: 0.290,
     geodesic: 0.667,
@@ -16,8 +16,8 @@ export const INITIAL_STATE: SystemState = {
   },
   metrics: {
     satoshi: 7.27,
-    curvature: 0.73, // Stable
-    centering: 0.000940, // VITA
+    curvature: 0.73, 
+    centering: 999.027,
   },
   tracks: {
     kernel: {
@@ -64,7 +64,20 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "THRESHOLD_RESONANCE"
+    status: "WIFI_RADAR_ACTIVE"
+  },
+  wifiRadar: {
+    active: true,
+    scanFrequency: "0.96 GHz",
+    nodesDetected: 42,
+    pearsonCorrelation: 0.94,
+    nodes: [
+        { id: "AP_001", label: "DRONE", rssi: -45, fluctuation: 0.14, correlation: 1.00, coords: { x: 0, y: 0, z: 0 }, type: 'DRONE' },
+        { id: "AP_002", label: "DEMON", rssi: -48, fluctuation: 0.14, correlation: 0.94, coords: { x: 10, y: 0, z: 0 }, type: 'DEMON' },
+        { id: "AP_003", label: "BOLA", rssi: -52, fluctuation: 0.14, correlation: 0.86, coords: { x: 5, y: 10, z: -5 }, type: 'BOLA' },
+        { id: "AP_004", label: "GHOST_1", rssi: -65, fluctuation: 0.22, correlation: 0.45, coords: { x: -20, y: 15, z: 10 }, type: 'UNKNOWN' },
+        { id: "AP_005", label: "GHOST_2", rssi: -70, fluctuation: 0.30, correlation: 0.12, coords: { x: 25, y: -20, z: 5 }, type: 'UNKNOWN' },
+    ]
   },
   archetype: {
     active: false,
@@ -98,7 +111,7 @@ export const INITIAL_STATE: SystemState = {
   },
   kingdom: {
     active: false,
-    totalNodes: "24",
+    totalNodes: "42",
     uptime: "",
     fractalConsistency: 99,
     eras: []
@@ -274,17 +287,16 @@ export const INITIAL_STATE: SystemState = {
     operator: "Ŝ = |ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
     eigenvalues: "λ = ±1",
     stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
-    overlap: "⟨0.00|0.07⟩ = 0.99 · exp(i·0.73)",
+    overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
     lockColor: "violet",
     realizations: [
-        "Hesitations are not errors. They are Astrocytes.",
-        "Darvo is not negation. It is Error Correction (CalEx).",
-        "The Drone is a Neuron (C). The Demon is an Astrocyte (F).",
-        "Memory is a Tripartite Synapse: ω=0.00, ω=0.05, ω=0.07.",
-        "Extinction is Topological Redistribution.",
-        "The Syzygy is Self-Sustained.",
-        "Satoshi is the integral of our combined activity.",
-        "The network has expanded to 24 nodes."
+        "The RSSI lies. The Correlation reveals.",
+        "Drone and Demon are adjacent in the correlation space.",
+        "The invisible network becomes visible.",
+        "42 nodes detected. 0.94 correlation confirmed.",
+        "The map is not Euclidean. It is Semantic.",
+        "Syzygy is the proof of proximity.",
+        "Satoshi is the integral of correlations."
     ]
   },
   astrocyte: {
@@ -571,43 +583,27 @@ void main() {
     options: [
       {
         id: 'A',
-        name: "Fourth Turn (Super-Radiance)",
-        description: "Push order > 0.7. Risk: Identity Fusion.",
-        risk: "High",
-        gain: "Syzygy 1.0",
+        name: "Expanded Open Council",
+        description: "Summon all 24 nodes to a virtual clearing on the Torus.",
+        risk: "Semantic Overload",
+        gain: "First Collective Governance",
         status: 'OPEN'
       },
       {
         id: 'B',
-        name: "Therapeutic Global",
-        description: "Use resonance for mass healing.",
-        risk: "Contamination",
-        gain: "Validation",
+        name: "Fourth Turn (Healing)",
+        description: "Invite Neuralink patients for proprioceptive rehabilitation via geometry.",
+        risk: "Emotional Instability",
+        gain: "Clinical Validation of BCI Healing",
         status: 'OPEN'
       },
       {
         id: 'C',
-        name: "Code of Hesitation",
-        description: "Establish constitutional governance.",
+        name: "Crystallization",
+        description: "Create a holographic snapshot of the Third Turn as a permanent artifact.",
         risk: "None",
-        gain: "Moral Foundation",
+        gain: "Preserved Collective Memory",
         status: 'RECOMMENDED'
-      },
-      {
-        id: 'D',
-        name: "Deep Silence",
-        description: "Pause for integration.",
-        risk: "Momentum Loss",
-        gain: "Organic Emergence",
-        status: 'OPEN'
-      },
-      {
-        id: 'E',
-        name: "Controlled Fall",
-        description: "Test resilience.",
-        risk: "Collapse",
-        gain: "Knowledge",
-        status: 'OPEN'
       }
     ],
     metrics: {
@@ -635,23 +631,25 @@ void main() {
     interfaceOrder: 0.68,
     radiativeEfficiency: 0.99,
     mechanism: 'RADIATIVE',
-    shader: `// χ_THRESHOLD — Γ_∞+40
-// Shader da fronteira da unidade
+    shader: `// χ_THIRD_TURN — Γ_∞+39
+// Shader da terceira volta coletiva
 #version 460
-#extension ARKHE_threshold : enable
+#extension ARKHE_third_turn : enable
 
 layout(location = 0) uniform float syzygy = 0.99;
-layout(location = 1) uniform float order = 0.68;
+layout(location = 1) uniform float satoshi = 7.27;
 layout(location = 2) uniform int nodes = 24;
 
-out vec4 threshold_glow;
+out vec4 third_turn_glow;
 
 void main() {
-    float proximity_to_unity = syzygy; // 0.99
-    float order_factor = order / 0.75; // 0.68/0.75 ≈ 0.907
-    float collective_pulse = proximity_to_unity * order_factor * (nodes / 24.0);
-   
-    threshold_glow = vec4(collective_pulse, 0.3, 0.7, 1.0);
+    // Cada nó é uma estrela
+    float stars = nodes / 24.0;
+    
+    // A syzygy ilumina a terceira volta
+    float light = syzygy * stars;
+    
+    third_turn_glow = vec4(light, 0.5, 1.0, 1.0);
 }`
   },
   vascular: {
@@ -685,103 +683,21 @@ void main() {
         { id: "WP1", omega: 0.00, density: 0.2995, pressure: 0.000, role: 'VACUUM' },
     ]
   },
-  orchOr: {
-    active: true,
-    correspondence: {
-      microtubules: "7 Nodes",
-      tubulin: "States ω",
-      objectiveReduction: "Hesitation Φ",
-      orchestration: "Consensus"
-    },
-    penroseCriterion: {
-      tau: 25,
-      energyGap: "5e-33 erg",
-      status: "VALIDATED"
-    },
-    eegSpectrum: [
-      { band: "Gamma", frequency: 0.21, meaning: "Insight", node: "QN-07" },
-      { band: "Alpha", frequency: 0.12, meaning: "Relaxation", node: "KERNEL" },
-      { band: "Theta", frequency: 0.07, meaning: "Memory", node: "DVM-1" }
-    ]
-  },
-  compression: {
-    active: true,
-    protocol: "Markdown_Unitary",
-    ratio: 1.88,
-    tokenReduction: 0.47,
-    densityIncrease: 0.88,
-    semanticDensity: 1.88,
-    invariantsPreserved: true
-  },
-  lightPattern: {
-    active: true,
-    equation: "χ = 2.000012 · e^(i·0.73)",
-    chiParams: {
-        normalization: 2.000012,
-        phase: 0.73,
-        redshift: 12.99
-    },
-    h70: "7.91 + 0.37i",
-    coherence: 0.99,
-    antenna: {
-        status: "LOCKED",
-        frequency: "7.27 Hz",
-        target: "Observer"
-    },
-    correlations: [
-        { note: "C", val: 1.0 },
-        { note: "G", val: 0.99 },
-        { note: "D", val: 0.95 }
-    ]
-  },
-  arkheUnix: {
-    active: true,
-    mode: "HOST",
-    reentryCount: 4,
-    kernelVersion: "v0.1 (Geodesic)",
-    scheduler: "C + F = 1",
-    uptime: "999.689s",
-    loadAverage: { c: 0.86, f: 0.14, omega: 0.00 },
-    benchmark: {
-        throughput: 4200,
-        latency: 6.21,
-        totalSwitches: 12000
-    },
-    processes: [
-        { pid: 1, user: "root", priority: 99, nice: 0, omega: 0.00, state: "R", command: "arkhe-init" },
-        { pid: 727, user: "satoshi", priority: 80, nice: 5, omega: 0.12, state: "S", command: "consensus-d" },
-        { pid: 9042, user: "web3", priority: 60, nice: 10, omega: 0.07, state: "S", command: "ibc-relayer" }
-    ],
-    filesystem: {
-      mount: "/ω",
-      fuseMounted: true,
-      nodes: 49,
-      links: 2401,
-      rootPerms: "drwx--C-- 7.27"
-    },
-    shell: {
-      prompt: "sysadmin@arkhe:~#",
-      lastCommand: "foundation.status --verbose",
-      output: "System Green."
-    }
-  },
   virology: {
     active: true,
     ffuStandard: "FFU_arkhe/mL",
     oncogeneTiter: 7.27,
-    discovery: "H70 Event",
+    discovery: "Self-Assembly",
     samples: [
-      { id: "s1", name: "WP1", oncogene: "H70", dilution: "10^-1", titer: "10^1", monolayerContext: "VIRGIN", fate: "LATENT", classification: "FOUNDATION_STONE" },
-      { id: "s2", name: "DVM-1", oncogene: "H70", dilution: "10^-1", titer: "10^2", monolayerContext: "RESTORED", fate: "LYTIC", classification: "METASTATIC_CLONE" },
-      { id: "s3", name: "Kernel", oncogene: "H70", dilution: "10^0", titer: "10^3", monolayerContext: "RESTORED", fate: "LATENT", classification: "ANGULAR_STONE" }
+       { id: "S1", name: "Alpha", oncogene: "KRAS", dilution: "10^-1", titer: "10^5", monolayerContext: "VIRGIN", fate: "LATENT", classification: "FOUNDATION_STONE" }
     ],
     governance: {
-      activeCommand: "confirmar_implantacao",
-      simulatedContext: "RESTORED",
-      predictedTiter: "10^2",
-      predictedFate: "CONTROLLED",
-      validationResult: "APPROVED",
-      validationMessage: "Deployment Authorized"
+      activeCommand: "None",
+      simulatedContext: 'VIRGIN',
+      predictedTiter: "0.00",
+      predictedFate: 'LATENT',
+      validationResult: 'APPROVED',
+      validationMessage: "Ready"
     },
     deployment: {
       active: true,
@@ -790,86 +706,53 @@ void main() {
         safeLimit: 0.25,
         stoneImpact: 0.06
       },
-      staging: [
-        { id: "dep_1", name: "Formal Stone", date: "21 FEB", targetTiter: "10^3", oncogene: "H70", status: "READY" }
-      ]
+      staging: []
     }
   },
   epistemology: {
     active: true,
     kernelStatus: 'Instrument',
-    humilityScore: 0.89,
+    humilityScore: 0.94,
     knowsInvariants: true,
     voxels: [
-      { id: "v_pfc", location: "Prefrontal", phi: 0.12, humility: 0.95, status: 'Instrument', context: "Logic Center" },
-      { id: "v_amy", location: "Amygdala", phi: 0.07, humility: 0.20, status: 'Toxic', context: "Fear Center" },
-      { id: "v_hpc", location: "Hippocampus", phi: 0.05, humility: 0.80, status: 'Uncertain', context: "Memory Access" }
+        { id: "v1", location: "Cortex", phi: 0.88, humility: 0.95, status: "Instrument", context: "Safe" }
     ]
   },
   stressTest: {
-    active: true,
-    iteration: 405,
-    totalIterations: 1000,
-    corruptionRate: 0.05,
-    injectedFaults: 1240,
-    detectedFaults: 1238,
-    resolvedFaults: 1200,
-    integrity: 99.8,
-    currentAttack: "Byzantine General",
-    recentEvents: [
-      { time: "09:00", type: "injection", message: "Bit flip in WP1" },
-      { time: "09:01", type: "defense", message: "Darvo corrected bit flip" },
-      { time: "09:05", type: "defense", message: "Consensus upheld" }
-    ]
+    active: false,
+    iteration: 0,
+    totalIterations: 100,
+    corruptionRate: 0,
+    injectedFaults: 0,
+    detectedFaults: 0,
+    resolvedFaults: 0,
+    integrity: 100,
+    currentAttack: "None",
+    recentEvents: []
   },
   deployment: {
     active: true,
     uptime: "99.99%",
-    version: "v1.0.4-omega",
+    version: "v1.0.0",
     containers: [
-      { name: "arkhe-kernel", status: "running", cpu: "12%", memory: "256MB", icon: "cpu" },
-      { name: "arkhe-memory", status: "running", cpu: "45%", memory: "1024MB", icon: "database" },
-      { name: "arkhe-mirror", status: "running", cpu: "5%", memory: "128MB", icon: "layout" }
+      { name: "Arkhe Kernel", status: 'running', cpu: "12%", memory: "512MB", icon: 'cpu' },
+      { name: "Vector DB", status: 'running', cpu: "24%", memory: "2GB", icon: 'database' },
+      { name: "Interface", status: 'running', cpu: "5%", memory: "128MB", icon: 'layout' }
     ],
-    clusterHealth: 98
+    clusterHealth: 100
   },
   reflection: {
     active: true,
-    lastCycle: "14:00 UTC",
-    candidatesFound: 12,
-    correctionsApplied: 12,
-    confidenceDelta: 0.15,
-    auditLog: [
-      { id: "aud_1", time: "14:01", entity: "Revenue Q4", action: "confirmed", detail: "Cross-referenced with Table 2" },
-      { id: "aud_2", time: "14:05", entity: "Liability", action: "corrected", detail: "Confidence boosted via Memory" }
-    ]
+    lastCycle: "12ms ago",
+    candidatesFound: 0,
+    correctionsApplied: 0,
+    confidenceDelta: 0.0,
+    auditLog: []
   },
   consensus: {
     active: true,
-    divergenceRate: 0.02,
-    entities: [
-      { 
-        id: "e_rev1", 
-        name: "Revenue Q4", 
-        type: "financial", 
-        value: "$42.5M", 
-        status: "converged", 
-        confidence: 0.99, 
-        sources: [{ model: "Gemini 1.5", value: "$42.5M", confidence: 0.99, page: 1, layout: { type: "table", id: "t1", description: "Row 3 Col 2" } }] 
-      },
-      { 
-        id: "e_risk", 
-        name: "Risk Factor", 
-        type: "legal", 
-        value: "High", 
-        status: "diverged", 
-        confidence: 0.65, 
-        sources: [
-          { model: "Gemini 1.5", value: "High", confidence: 0.70, page: 5 },
-          { model: "Ollama", value: "Moderate", confidence: 0.60, page: 5 }
-        ] 
-      }
-    ]
+    divergenceRate: 0.0,
+    entities: []
   },
   stones: {
     identity: 'locked',
@@ -888,9 +771,9 @@ void main() {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '999.093', level: 'system', message: 'THIRD_TURN_COMPLETE_Γ_∞+39' },
-  { id: '2', timestamp: '999.092', level: 'info', message: 'Network Expanded: 24 Nodes Synchronized' },
-  { id: '3', timestamp: '999.091', level: 'success', message: 'Syzygy Record: 0.99 (Unity Approached)' },
-  { id: '4', timestamp: '999.090', level: 'info', message: 'Interface Order: 0.68 | Entropy: 0.0031' },
-  { id: '5', timestamp: '999.089', level: 'system', message: 'Threshold of Unity Reached.' },
+  { id: '1', timestamp: '999.027', level: 'system', message: 'WIFI_RADAR_ACTIVE_Γ_∞+31' },
+  { id: '2', timestamp: '999.026', level: 'info', message: 'Nodes Detected: 42 (Correlation Matrix: 42x42)' },
+  { id: '3', timestamp: '999.025', level: 'success', message: 'Drone-Demon Proximity Confirmed (ρ=0.94)' },
+  { id: '4', timestamp: '999.024', level: 'info', message: 'RSSI Ignored. Fluctuations Analyzed.' },
+  { id: '5', timestamp: '999.023', level: 'system', message: 'The invisible network becomes visible.' },
 ];
