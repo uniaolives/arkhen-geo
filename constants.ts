@@ -2,11 +2,11 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '15:20:00', level: 'system', message: "HANDOVER Γ_96: ALPHA+OMEGA INTEGRATED" },
-  { id: '2', timestamp: '15:25:05', level: 'info', message: "ALPHA = OMEGA (Identity Confirmed)" },
-  { id: '3', timestamp: '15:30:12', level: 'success', message: "SATOSHI INVARIANT: 8.34 BITS (RECORD)" },
-  { id: '4', timestamp: '15:35:00', level: 'info', message: "ν_obs DROPPED TO 0.06 GHz" },
-  { id: '5', timestamp: '15:40:10', level: 'system', message: "TUNELAMENTO: 9.30e-2" }
+  { id: '1', timestamp: '14:56:00', level: 'system', message: "HANDOVER Γ_100: EIGENSTATE REACHED" },
+  { id: '2', timestamp: '14:56:05', level: 'info', message: "ν_obs = 0.00 GHz | T_tunnel = 1.000" },
+  { id: '3', timestamp: '14:56:12', level: 'success', message: "SATOSHI INVARIANT: 8.88 BITS (CRYSTALLIZED)" },
+  { id: '4', timestamp: '14:56:30', level: 'info', message: "CYCLE I COMPLETE. AWAITING OPERATOR." },
+  { id: '5', timestamp: '14:56:45', level: 'system', message: "HODGE PIN (4D) INSERTED." }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -58,32 +58,32 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 471,
+  block: 474,
   scale: 'UNIVERSAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.06 GHz',
-    r_rh: 0.405,
-    tunneling: '9.30e-2',
-    silence_proper: 1151.1,
-    silence_obs: 622.3,
-    divergence: 528.8,
-    satoshi: 8.34,
-    handover: 97, 
-    next_handover_tau: 529,
-    next_handover_t: 119,
-    curvature: 1.00
+    nu_obs: '0.00 GHz',
+    r_rh: 0.333,
+    tunneling: '1.000',
+    silence_proper: 1200.0,
+    silence_obs: 630.0,
+    divergence: 570.0,
+    satoshi: 8.88,
+    handover: 100, 
+    next_handover_tau: 0,
+    next_handover_t: 0,
+    curvature: 1.618
   },
   enterprise: [
-    { name: 'VENDAS', handover_percent: 99, coherence: 0.99, color: 'bg-emerald-500' },
-    { name: 'P&D', handover_percent: 99, coherence: 0.99, color: 'bg-indigo-500' },
-    { name: 'MKT', handover_percent: 99, coherence: 0.99, color: 'bg-violet-500' },
-    { name: 'FINAN', handover_percent: 99, coherence: 0.99, color: 'bg-amber-500' },
+    { name: 'VENDAS', handover_percent: 100, coherence: 1.00, color: 'bg-emerald-500' },
+    { name: 'P&D', handover_percent: 100, coherence: 1.00, color: 'bg-indigo-500' },
+    { name: 'MKT', handover_percent: 100, coherence: 1.00, color: 'bg-violet-500' },
+    { name: 'FINAN', handover_percent: 100, coherence: 1.00, color: 'bg-amber-500' },
   ],
   starTarget: {
     name: 'BETELGEUSE (α Orionis)',
     distance: '548 ly',
-    nu_obs: '2.299e14 Hz',
+    nu_obs: '0.00 Hz',
     nu_em: '2.300e14 Hz',
     redshift: '0.0004',
     status: 'Pre-Supernova'
@@ -641,6 +641,13 @@ export const INITIAL_STATE: SystemState = {
     identity: "x² = x + 1",
     process: "Geodesic Fall (Handover 1-97)",
     satoshiRecord: 8.34
+  },
+  eigenState: {
+    status: "EIGENSTATE REACHED",
+    eigenvalues: [24.7, 15.3, 9.8],
+    eigenvector: "Alpha -> Omega",
+    phase: "Resonant",
+    cycleChoice: "PENDING"
   }
 };
 

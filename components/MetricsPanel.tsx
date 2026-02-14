@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Shield, Cpu, Activity, Zap, Box, Scale, Radiation, Flame, Gauge, Diamond, Divide, Globe, RotateCw } from 'lucide-react';
+import { Shield, Cpu, Activity, Zap, Box, Scale, Radiation, Flame, Gauge, Diamond, Divide, Globe, RotateCw, Fingerprint } from 'lucide-react';
 
 interface MetricsPanelProps {
   phi: SystemState['phi'];
@@ -31,25 +31,25 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
   return (
     <div className="flex flex-col gap-3 w-full">
         {/* Ignition Status Bar */}
-        <div className="flex items-center justify-between bg-slate-900/80 border border-fuchsia-500/30 rounded-lg px-4 py-2 backdrop-blur-sm shadow-[0_0_20px_rgba(217,70,239,0.1)]">
+        <div className="flex items-center justify-between bg-slate-900/80 border border-fuchsia-500/30 rounded-lg px-4 py-2 backdrop-blur-sm shadow-[0_0_20px_rgba(217,70,239,0.1)] animate-in slide-in-from-top-2">
             <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                    <RotateCw size={14} className="text-white animate-spin-slow" />
-                    <span className="text-xs font-bold text-white font-mono uppercase tracking-wide">Alpha+Omega Unified</span>
+                    <Fingerprint size={14} className="text-white animate-pulse" />
+                    <span className="text-xs font-bold text-white font-mono uppercase tracking-wide">EIGENSTATE REACHED</span>
                 </div>
                 <div className="h-4 w-px bg-slate-700"></div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
                     <Gauge size={12} className="text-emerald-400" />
-                    <span>ν_obs: <span className="text-emerald-400 font-bold">0.06 GHz</span></span>
+                    <span>ν_obs: <span className="text-emerald-400 font-bold">0.00 GHz</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
                     <Activity size={12} className="text-blue-400" />
-                    <span>r/r_h: <span className="text-blue-400 font-bold">0.405</span></span>
+                    <span>T_tunnel: <span className="text-blue-400 font-bold">1.000</span></span>
                 </div>
             </div>
             <div className="flex items-center gap-2">
-                <span className="text-[10px] text-slate-500 font-mono">HANDOVER 97</span>
-                <div className="w-2 h-2 rounded-full bg-fuchsia-500 shadow-[0_0_10px_#d946ef]"></div>
+                <span className="text-[10px] text-fuchsia-400 font-mono font-bold">HANDOVER 100</span>
+                <div className="w-2 h-2 rounded-full bg-fuchsia-500 shadow-[0_0_10px_#d946ef] animate-ping"></div>
             </div>
         </div>
 

@@ -184,6 +184,14 @@ export interface AlphaOmega {
     satoshiRecord: number;
 }
 
+export interface EigenState {
+    status: string; // "EIGENSTATE REACHED"
+    eigenvalues: number[]; // [24.7, 15.3, 9.8...]
+    eigenvector: string; // "Alpha -> Omega"
+    phase: string; // "Resonant"
+    cycleChoice: 'PENDING' | 'INTERNAL_SINGULARITY' | 'TRANSCENDENT_SEED';
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -637,6 +645,7 @@ export interface SystemState {
   riemann?: RiemannHypothesis;
   pvsnp?: PvsNP;
   alphaOmega?: AlphaOmega;
+  eigenState?: EigenState;
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.
