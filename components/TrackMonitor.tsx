@@ -2,19 +2,19 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine, Plot } from 'recharts';
 import { SystemState } from '../types';
-import { CheckCircle2, AlertTriangle, Clock, Microchip, FileCode2, ShieldCheck, Zap, Split, Lock, Scale, Key, Atom, Award } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, Clock, Microchip, FileCode2, ShieldCheck, Zap, Split, Lock, Scale, Key, Atom, Award, Flame } from 'lucide-react';
 
 interface TrackMonitorProps {
   tracks: SystemState['tracks'];
 }
 
-// Simulated data for the latency graph - Block 351 (Final Seal)
+// Simulated data reflecting PGO optimization curve
 const data = [
-  { time: '20:00', latency: 2.20 }, // Quantum Limit
-  { time: '21:00', latency: 2.20 },
-  { time: '22:00', latency: 5.00 }, // Calibration Start
-  { time: '22:30', latency: 15.00 },
-  { time: '23:00', latency: 20.00 }, // Production Lock (Jitter Safe)
+  { time: '20:00', latency: 8.50 }, 
+  { time: '21:00', latency: 7.20 },
+  { time: '22:00', latency: 6.80 }, 
+  { time: '22:30', latency: 6.21 }, // Pre-PGO
+  { time: '23:00', latency: 5.98 }, // PGO Applied (Final Seal)
 ];
 
 const TrackMonitor: React.FC<TrackMonitorProps> = ({ tracks }) => {
@@ -43,13 +43,12 @@ const TrackMonitor: React.FC<TrackMonitorProps> = ({ tracks }) => {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <XAxis dataKey="time" stroke="#475569" fontSize={10} tickLine={false} />
-              <YAxis domain={[0, 25]} stroke="#475569" fontSize={10} tickLine={false} unit="μs" />
+              <YAxis domain={[0, 10]} stroke="#475569" fontSize={10} tickLine={false} unit="μs" />
               <Tooltip 
                 contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b' }}
                 itemStyle={{ color: isSealed ? '#fbbf24' : '#22d3ee' }}
               />
               <ReferenceLine y={2.2} stroke="#a855f7" strokeDasharray="3 3" label={{ value: "Lab (2.2μs)", fill: "#a855f7", fontSize: 8, position: "insideLeft" }} />
-              <ReferenceLine y={20} stroke="#fbbf24" strokeDasharray="3 3" label={{ value: "Prod (20μs)", fill: "#fbbf24", fontSize: 8, position: "insideLeft" }} />
               <Line type="monotone" dataKey="latency" stroke={isSealed ? "#fbbf24" : (isQuantum ? "#c084fc" : "#22d3ee")} strokeWidth={2} dot={{ fill: isSealed ? "#fbbf24" : "#22d3ee" }} />
             </LineChart>
           </ResponsiveContainer>
@@ -63,6 +62,22 @@ const TrackMonitor: React.FC<TrackMonitorProps> = ({ tracks }) => {
                     <span className="text-white font-mono text-xs">{tracks.kernel.optimization}</span>
                 </div>
             </div>
+            
+            {tracks.kernel.hotPaths && (
+                <div className="flex flex-col gap-2 border-b border-slate-800 pb-2">
+                    <span className="text-[10px] text-slate-500 font-mono uppercase flex items-center gap-1">
+                        <Flame size={10} className="text-rose-400"/> Hot Paths (Chaos Profile)
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                        {tracks.kernel.hotPaths.map(path => (
+                            <span key={path} className="text-[9px] font-mono text-emerald-400 bg-emerald-950/30 px-1.5 py-0.5 rounded border border-emerald-900/50">
+                                {path}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
+
             <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-400">Status</span>
                 <span className="flex items-center gap-1.5 font-mono uppercase text-xs">
