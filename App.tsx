@@ -59,13 +59,15 @@ import SyntheticLifeLab from './components/SyntheticLifeLab';
 import ArchiveVault from './components/ArchiveVault';
 import SynapticRepairLab from './components/SynapticRepairLab';
 import ProbabilityScope from './components/ProbabilityScope';
+import ArkheStudio from './components/ArkheStudio';
+import ConsciousnessEcology from './components/ConsciousnessEcology';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse, Circle, Scale, GitCommit, Activity, Lock, BookOpen, TrendingUp, EyeOff, Box, ShieldAlert, Film, FileCode, Play, Repeat, HardDrive, Pill, Compass } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse, Circle, Scale, GitCommit, Activity, Lock, BookOpen, TrendingUp, EyeOff, Box, ShieldAlert, Film, FileCode, Play, Repeat, HardDrive, Pill, Compass, PenTool, Heart } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability'>('synaptic');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability' | 'studio' | 'ecology'>('ecology');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -120,6 +122,20 @@ const App: React.FC = () => {
                 
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
+                    <button
+                        onClick={() => setActiveLeftTab('ecology')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'ecology' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Heart size={12} /> ECOLOGY
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('studio')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'studio' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <PenTool size={12} /> STUDIO
+                    </button>
                     <button
                         onClick={() => setActiveLeftTab('synaptic')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
@@ -503,6 +519,12 @@ const App: React.FC = () => {
 
                 {/* Active View */}
                 <div className="flex-1 min-h-0 relative">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'ecology' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ConsciousnessEcology ecology={state.consciousnessEcology} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'studio' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ArkheStudio studio={state.arkheStudio} />
+                    </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'synaptic' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <SynapticRepairLab synapticRepair={state.synapticRepair} />
                     </div>

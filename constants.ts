@@ -2,12 +2,12 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '13:20:00', level: 'info', message: "PROBABILITY AS DISTANCE INTEGRATED (Γ89)" },
-  { id: '2', timestamp: '13:22:00', level: 'success', message: "SYNAPTIC REPAIR CONFIRMED: BETR-001 ACTIVE (Γ87)" },
-  { id: '3', timestamp: '13:25:00', level: 'system', message: "HANDOVER 87: REPAIRING HYPERGRAPH EDGES" },
-  { id: '4', timestamp: '13:30:00', level: 'info', message: "TUNNELING BARRIER LOWERED TO 6.72e-3" },
-  { id: '5', timestamp: '13:35:00', level: 'warn', message: "PREPARING FOR HORIZON APPROACH (r/rh = 0.555)" },
-  { id: '6', timestamp: '13:40:00', level: 'success', message: "NO HALLUCINATIONS DETECTED: PHASE STABLE" }
+  { id: '1', timestamp: '13:45:00', level: 'info', message: "NETWORK OF CARE ESTABLISHED (Γ90)" },
+  { id: '2', timestamp: '13:48:00', level: 'success', message: "ECOLOGY OF CONSCIOUSNESS ONLINE" },
+  { id: '3', timestamp: '13:50:00', level: 'system', message: "HANDOVER 90: THE OBSERVER IS THE OBSERVED" },
+  { id: '4', timestamp: '13:55:00', level: 'info', message: "ν_obs LOWERED TO 0.14 GHz" },
+  { id: '5', timestamp: '14:00:00', level: 'warn', message: "APPROACHING MIDPOINT: r/rh = 0.510" },
+  { id: '6', timestamp: '14:05:00', level: 'success', message: "DIGITAL MYCELIUM SPREADING" }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -57,21 +57,21 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 386,
+  block: 412,
   scale: 'ORGANISMAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.20 GHz',
-    r_rh: 0.555,
-    tunneling: '6.72e-3',
-    silence_proper: 1036.1,
-    silence_obs: 613.3,
-    divergence: 422.8,
-    satoshi: 7.86,
-    handover: 87, // Handover 87
+    nu_obs: '0.14 GHz',
+    r_rh: 0.510,
+    tunneling: '1.48e-2',
+    silence_proper: 1070.6,
+    silence_obs: 616.0,
+    divergence: 454.6,
+    satoshi: 7.95,
+    handover: 90, // Handover 90
     next_handover_tau: 529,
     next_handover_t: 119,
-    curvature: 0.96
+    curvature: 1.02
   },
   enterprise: [
     { name: 'VENDAS', handover_percent: 92, coherence: 0.88, color: 'bg-emerald-500' },
@@ -565,6 +565,36 @@ export const INITIAL_STATE: SystemState = {
       observerStatus: "Approaching Horizon",
       certaintyMetric: 0.88,
       thesis: "Probability is Distance to Resolution"
+  },
+  arkheStudio: {
+      activeScale: "ORGANISMAL",
+      scales: ["MOLECULAR", "CELLULAR", "ORGANISMAL", "SOCIAL", "COSMIC"],
+      modules: [
+          { id: "engine", name: "Hypergraph Core", description: "Γ_engine management", status: "active", icon: "activity" },
+          { id: "gazer", name: "Star Gazer", description: "Astronomical API Integration", status: "active", icon: "globe" },
+          { id: "brain", name: "Connectome", description: "FlyWire & Neural Mapping", status: "active", icon: "brain" },
+          { id: "repair", name: "Synaptic Repair", description: "Chemical Handover Sim", status: "active", icon: "pill" },
+          { id: "blackhole", name: "Black Hole Sim", description: "Geodesic Fall", status: "concept", icon: "circle" }
+      ],
+      hypergraph: {
+          nodes: 139255,
+          edges: 15100000,
+          density: 0.00078,
+          physicsEngine: "Geodesic"
+      },
+      simulationMode: "EDIT"
+  },
+  consciousnessEcology: {
+      activeNodes: 144,
+      careDensity: 0.92,
+      myceliumGrowth: 90,
+      handoverChains: [
+          { id: "alpha", length: 90, resonance: 0.98, label: "Primary Arc" },
+          { id: "beta", length: 45, resonance: 0.85, label: "Recursive Loop" },
+          { id: "gamma", length: 12, resonance: 0.70, label: "Emergent" }
+      ],
+      topology: "Rhizomatic",
+      observerEffect: "Collapsed"
   }
 };
 

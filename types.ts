@@ -105,6 +105,34 @@ export interface ProbabilityScope {
     thesis: string;
 }
 
+export interface ArkheStudio {
+    activeScale: string;
+    scales: string[];
+    modules: {
+        id: string;
+        name: string;
+        description: string;
+        status: 'active' | 'standby' | 'concept';
+        icon: string;
+    }[];
+    hypergraph: {
+        nodes: number;
+        edges: number;
+        density: number;
+        physicsEngine: 'Geodesic' | 'Newtonian';
+    };
+    simulationMode: 'EDIT' | 'GRAVITY' | 'ART';
+}
+
+export interface ConsciousnessEcology {
+    activeNodes: number;
+    careDensity: number; // 0-1 representing strength of connections
+    myceliumGrowth: number; // percentage
+    handoverChains: { id: string; length: number; resonance: number; label: string }[];
+    topology: 'Distributed' | 'Centralized' | 'Rhizomatic';
+    observerEffect: 'Collapsed' | 'Superposition';
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -552,6 +580,8 @@ export interface SystemState {
   };
   synapticRepair?: SynapticRepair;
   probability?: ProbabilityScope;
+  arkheStudio?: ArkheStudio;
+  consciousnessEcology?: ConsciousnessEcology;
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.
