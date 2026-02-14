@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { SystemState } from '../types';
 
@@ -27,20 +28,22 @@ const ArchVisualization: React.FC<ArchProps> = ({ stones, curvature }) => {
 
   return (
     <div className="relative w-full h-80 flex items-center justify-center overflow-hidden">
-        {/* Background Grid */}
-        <div className="absolute inset-0 opacity-10" 
+        {/* Background Grid - Geodesic Field */}
+        <div className="absolute inset-0 opacity-20" 
              style={{ 
-                 backgroundImage: 'radial-gradient(circle, #4f46e5 1px, transparent 1px)', 
-                 backgroundSize: '20px 20px' 
+                 backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px), radial-gradient(circle, #6366f1 1px, transparent 1px)', 
+                 backgroundSize: '20px 20px',
+                 backgroundPosition: '0 0, 10px 10px'
              }}>
         </div>
 
-        {/* Tension Aura */}
-        {isTensioned && (
-             <div className="absolute inset-0 bg-gradient-to-t from-rose-900/10 to-transparent pointer-events-none animate-pulse" />
-        )}
+        {/* Tension Aura (Ignition) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/20 to-transparent pointer-events-none" />
+        
+        {/* Central Beam */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-500/50 to-transparent -translate-x-1/2"></div>
 
-      <svg viewBox="0 0 400 300" className="w-full h-full max-w-lg">
+      <svg viewBox="0 0 400 300" className="w-full h-full max-w-lg relative z-10">
         <defs>
             <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -49,21 +52,23 @@ const ArchVisualization: React.FC<ArchProps> = ({ stones, curvature }) => {
                     <feMergeNode in="SourceGraphic" />
                 </feMerge>
             </filter>
+            <linearGradient id="beamGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="transparent" />
+                <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="transparent" />
+            </linearGradient>
         </defs>
 
         {/* Centering Pin (The Line) */}
-        <line x1="200" y1="20" x2="200" y2="280" className={`stroke-1 stroke-dashed ${isTensioned ? "stroke-rose-500/50" : (isSealed ? "stroke-emerald-500/50" : "stroke-indigo-500/30")}`} />
-        <text x="205" y="270" className={`text-[8px] font-mono ${isTensioned ? "fill-rose-400" : (isSealed ? "fill-emerald-400" : "fill-indigo-400")}`}>
-            {isTensioned ? "DIVERGENCE" : (isSealed ? "CALIBRATED" : "CENTERING")}
-        </text>
-
+        <line x1="200" y1="20" x2="200" y2="280" className={`stroke-1 stroke-dashed ${isTensioned ? "stroke-cyan-500/50" : "stroke-indigo-500/30"}`} />
+        
         {/* --- MAIN ARCH --- */}
 
         {/* Lower Stones - Left */}
         <g className={`${getGlow(stones.identity)} transition-all duration-1000`}>
              <path d="M 60 220 L 120 220 L 110 180 L 70 180 Z" className={getStyle(stones.identity)} />
              <text x="90" y="205" textAnchor="middle" className="text-[8px] fill-current text-white font-mono">IDENTITY</text>
-             {stones.identity && <text x="90" y="215" textAnchor="middle" className="text-[6px] fill-emerald-400 font-mono">🔒 47ms</text>}
+             {stones.identity && <text x="90" y="215" textAnchor="middle" className="text-[6px] fill-emerald-400 font-mono">🔒 LOCKED</text>}
         </g>
 
         {/* Lower Stones - Right (WP1 & Clone) */}
@@ -119,14 +124,14 @@ const ArchVisualization: React.FC<ArchProps> = ({ stones, curvature }) => {
         </g>
 
         {/* Keystone (Locked/Visible) - The Seal */}
-        <g className={isSealed ? "filter drop-shadow(0 0 20px rgba(251, 191, 36, 0.6))" : (isKeystoneLocked ? "filter drop-shadow(0 0 15px rgba(99, 102, 241, 0.6))" : "animate-pulse")}>
+        <g className={isSealed ? "filter drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))" : (isKeystoneLocked ? "filter drop-shadow(0 0 15px rgba(99, 102, 241, 0.6))" : "animate-pulse")}>
             <path d="M 170 80 L 230 80 L 215 50 L 185 50 Z" 
-                  className={isTensioned ? "fill-rose-900/40 stroke-rose-500 stroke-2" : (isSealed ? "fill-amber-400/20 stroke-amber-400 stroke-2" : "fill-indigo-500/10 stroke-indigo-500 stroke-1 stroke-dashed")} />
-            <text x="200" y="70" textAnchor="middle" className={`text-[8px] font-mono ${isTensioned ? "fill-rose-300" : (isSealed ? "fill-amber-100" : "fill-indigo-400")}`}>
-                {isTensioned ? "HESITATION" : (isSealed ? "SEALED" : "KEYSTONE")}
+                  className={isSealed ? "fill-blue-500/30 stroke-blue-400 stroke-2" : (isKeystoneLocked ? "fill-indigo-500/20 stroke-indigo-400 stroke-2" : "fill-slate-800 stroke-slate-600 stroke-1")} />
+            <text x="200" y="70" textAnchor="middle" className={`text-[8px] font-mono ${isSealed ? "fill-blue-200" : "fill-slate-400"}`}>
+                {isSealed ? "DIRAC BLUE" : "KEYSTONE"}
             </text>
-            <text x="200" y="45" textAnchor="middle" className={`text-[6px] font-mono ${isTensioned ? "fill-rose-400" : (isSealed ? "fill-amber-300" : "fill-indigo-300")}`}>
-                {isTensioned ? "ACTIVE" : (isSealed ? "ETERNAL" : "VISIBLE")}
+            <text x="200" y="45" textAnchor="middle" className={`text-[6px] font-mono ${isSealed ? "fill-cyan-400 font-bold" : "fill-slate-500"}`}>
+                {isSealed ? "IGNITION" : "WAITING"}
             </text>
         </g>
 
@@ -149,14 +154,14 @@ const ArchVisualization: React.FC<ArchProps> = ({ stones, curvature }) => {
         </g>
 
         {/* Connection Lines (Geodesics) */}
-        <path d="M 200 220 Q 90 220 90 200 Q 90 100 200 80" className={`fill-none stroke-1 ${isTensioned ? "stroke-rose-500/50" : (isSealed ? "stroke-emerald-500/30" : "stroke-purple-500/20")}`} />
-        <path d="M 200 220 Q 310 220 310 200 Q 310 100 200 80" className={`fill-none stroke-1 ${isTensioned ? "stroke-rose-500/50" : (isSealed ? "stroke-emerald-500/30" : "stroke-purple-500/20")}`} />
+        <path d="M 200 220 Q 90 220 90 200 Q 90 100 200 80" className={`fill-none stroke-1 ${isTensioned ? "stroke-cyan-500/50" : "stroke-slate-700"}`} />
+        <path d="M 200 220 Q 310 220 310 200 Q 310 100 200 80" className={`fill-none stroke-1 ${isTensioned ? "stroke-cyan-500/50" : "stroke-slate-700"}`} />
         
         {/* Connection from Arch to Foundations */}
         <line x1="100" y1="220" x2="100" y2="240" className="stroke-slate-700 stroke-1 stroke-dashed" />
         <line x1="300" y1="220" x2="300" y2="240" className="stroke-slate-700 stroke-1 stroke-dashed" />
 
-        <text x="350" y="290" className={`text-[8px] font-mono ${isTensioned ? "fill-rose-400 animate-pulse" : "fill-slate-500"}`}>ψ = {curvature.toFixed(2)} rad</text>
+        <text x="350" y="290" className={`text-[8px] font-mono ${isTensioned ? "fill-cyan-400 animate-pulse" : "fill-slate-500"}`}>ψ = {curvature.toFixed(2)} rad</text>
       </svg>
     </div>
   );

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Network, Zap, ShieldCheck, Key, Wifi, Clock, Lock, Cpu, Database, Disc, Radio, Repeat, Eye, Calendar, ArrowRight, Brain, Music, Satellite, Atom, CheckCircle2, Cuboid } from 'lucide-react';
+import { Network, Zap, ShieldCheck, Key, Wifi, Clock, Lock, Cpu, Database, Disc, Radio, ArrowRight, Brain, Cuboid, CheckCircle2, Eye, Calendar, Repeat } from 'lucide-react';
 
 interface QuantumNetworkProps {
   quantum: SystemState['quantum'];
@@ -39,7 +39,7 @@ const QuantumNetwork: React.FC<QuantumNetworkProps> = ({ quantum }) => {
           </div>
           <div>
             <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_9051</h2>
-            <div className="text-[10px] text-violet-400 font-mono uppercase">Quantum Teleportation & Unification</div>
+            <div className="text-[10px] text-violet-400 font-mono uppercase">Quantum Teleportation (Ignition)</div>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -71,8 +71,8 @@ const QuantumNetwork: React.FC<QuantumNetworkProps> = ({ quantum }) => {
                     {/* WP1 <-> PREV_001 */}
                     <line x1="20%" y1="50%" x2="35%" y2="70%" stroke="#475569" strokeWidth="1" strokeDasharray="2 2" />
                     
-                    {/* Teleportation Path (WP1 -> KERNEL) */}
-                    <path d="M 20% 50% Q 45% 90% 75% 70%" fill="none" stroke="#22d3ee" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_1s_linear_infinite]" />
+                    {/* Teleportation Path (WP1 -> KERNEL) - HIGH SPEED */}
+                    <path d="M 20% 50% Q 45% 90% 75% 70%" fill="none" stroke="#22d3ee" strokeWidth="2" strokeDasharray="2 2" className="animate-[dash_0.5s_linear_infinite]" />
                     
                     {/* DVM-1 <-> Bola */}
                     <line x1="40%" y1="20%" x2="75%" y2="30%" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4 4" className="animate-pulse" />
