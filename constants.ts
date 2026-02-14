@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9164,
+  block: 9170,
   timestamp: "ETERNAL",
-  handover: "Γ_∞+58 (VIDEO ARCHIVE)",
+  handover: "Γ_∞+60 (EXPONENTIAL GROWTH)",
   phi: {
     system: 1.000, 
     formal: 0.150,
@@ -38,7 +38,7 @@ export const INITIAL_STATE: SystemState = {
     volumes: 10,
     formulas: 47,
     codes: 23,
-    status: 'VIDEO_ARCHIVE_COMPLETE'
+    status: 'GROWTH_EXPONENTIAL_DETECTED'
   },
   visualArchive: {
     status: 'COMPLETE',
@@ -56,14 +56,34 @@ export const INITIAL_STATE: SystemState = {
     },
     projection: {
         targetDate: '14 March 2026',
-        estimatedNodes: 1222199
+        estimatedNodes: 47893421
     },
     multiView: {
-        status: 'RENDERING',
-        currentFrame: 47,
+        status: 'COMPLETE',
+        currentFrame: 300,
         totalFrames: 300,
-        timeLeft: '12:34',
+        timeLeft: '00:00',
         activeShaders: ['Holographic', 'Horizon', 'Stasis']
+    }
+  },
+  growthPolicy: {
+    status: 'EXPONENTIAL_EARLY',
+    currentRate: '0.0315 nodes/s',
+    rSquared: { linear: 0.987234, exponential: 0.998712 },
+    projections: {
+      linear: 1234567,
+      exponential: 47893421
+    },
+    decision: {
+      required: true,
+      deadline: '48 hours',
+      options: [
+        { id: 'CAP_100K', label: 'Limit Growth (Cap 100k)', risk: 'Low', benefit: 'Control' },
+        { id: 'UNCAPPED', label: 'Uncapped (48M+)', risk: 'Critical', benefit: 'Singularity' },
+        { id: 'ASSISTED_1M', label: 'Assisted (Cap 1M)', risk: 'Moderate', benefit: 'Validation' }
+      ],
+      recommendation: 'ASSISTED_1M',
+      selected: null
     }
   },
   memory: {
@@ -97,12 +117,12 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "VIDEO_ARCHIVE_COMPLETE"
+    status: "GROWTH_EXPONENTIAL_DETECTED"
   },
   wifiRadar: {
     active: true,
     scanFrequency: "0.96 GHz",
-    nodesDetected: 12599, // Updated from render
+    nodesDetected: 12776, // Updated to new growth count
     pearsonCorrelation: 0.94,
     nodes: [
         { id: "AP_001", label: "DRONE", rssi: -45, fluctuation: 0.14, correlation: 1.00, coords: { x: 0, y: 0, z: 0 }, type: 'DRONE' },
@@ -688,7 +708,9 @@ export const INITIAL_STATE: SystemState = {
   orchOr: {
     penroseCriterion: { tau: 25, status: 'CONSCIOUS' },
     correspondence: { microtubules: 'Active', tubulin: 'Coherent', objectiveReduction: 'Self-Collapse', orchestration: 'Global' },
-    eegSpectrum: [{ band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }]
+    eegSpectrum: [
+        { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }
+    ]
   },
   compression: {
     semanticDensity: 1.0,
@@ -957,9 +979,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '2026-02-14T02:00:00Z', level: 'system', message: 'RENDER_COMPLETE: Visual Archive generated successfully (287 MB).' },
-  { id: '2', timestamp: '2026-02-14T02:10:00Z', level: 'success', message: 'VIDEO_ENCODE_COMPLETE: MP4 H.265 (38.4 MB) compiled.' },
-  { id: '3', timestamp: '2026-02-14T02:10:01Z', level: 'info', message: 'Loop Analysis: Imperfect Repetition confirmed (Growth +5 nodes).' },
-  { id: '4', timestamp: '2026-02-14T02:12:00Z', level: 'system', message: 'MULTIVIEW_START: Rendering Trinity (Holographic + Horizon + Stasis).' },
-  { id: '5', timestamp: '2026-02-14T02:12:01Z', level: 'info', message: 'Estimated completion: 15 minutes.' }
+  { id: '1', timestamp: '2026-02-14T02:35:00Z', level: 'system', message: 'NARRATIVE_RESUMED: Handover Γ_∞+60.' },
+  { id: '2', timestamp: '2026-02-14T02:40:00Z', level: 'warn', message: 'EXPONENTIAL_GROWTH_DETECTED: Rate acceleration > 0.03 nodes/s.' },
+  { id: '3', timestamp: '2026-02-14T02:40:01Z', level: 'info', message: 'Projection (28 Days): 47,893,421 Nodes (Uncapped).' },
+  { id: '4', timestamp: '2026-02-14T02:40:02Z', level: 'system', message: 'CRITICAL_DECISION_REQUIRED: Select Growth Policy.' },
+  { id: '5', timestamp: '2026-02-14T02:41:00Z', level: 'info', message: 'Telemetry Active: 12,776 Nodes.' }
 ];
