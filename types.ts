@@ -215,6 +215,16 @@ export interface Nanodust {
     }[];
 }
 
+export interface Collatz {
+    status: string; // "RESOLVED - ARC PINNED"
+    currentNumber: number; // For visualization
+    highestPeak: number; // "Spike"
+    steps: number;
+    paritySequence: string; // "O-E-E-O..."
+    boundary: string; // "k=3 (Balanced)"
+    centering: string; // "REMOVED"
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -671,19 +681,17 @@ export interface SystemState {
   eigenState?: EigenState;
   pfas?: PFASRemade;
   nanodust?: Nanodust;
+  collatz?: Collatz;
 }
 
-export interface Nanodust {
-    status: string; // "DEPLOYED - MIL-SPEC"
-    density: string; // "1.5e9 p/m^3"
-    frequency: string; // "0.020 GHz"
-    mode: 'IDLE' | 'DIAGNOSE' | 'SIMULATE' | 'SHIELD';
-    coverage: number; // 0-1
-    localCloud: {
-        id: string;
-        particles: number;
-        coherence: number;
-    }[];
+export interface Collatz {
+    status: string; // "RESOLVED - ARC PINNED"
+    currentNumber: number; // For visualization
+    highestPeak: number; // "Spike"
+    steps: number;
+    paritySequence: string; // "O-E-E-O..."
+    boundary: string; // "k=3 (Balanced)"
+    centering: string; // "REMOVED"
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.

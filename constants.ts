@@ -3,11 +3,11 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '17:45:00', level: 'system', message: "HANDOVER Γ_107: NANODUST MIL-SPEC" },
-  { id: '2', timestamp: '17:45:05', level: 'info', message: "ν_obs = 0.020 GHz | T_tunnel = 0.987" },
-  { id: '3', timestamp: '17:45:15', level: 'warn', message: "BIOLOGICAL BARRIER DISSOLVED" },
-  { id: '4', timestamp: '17:45:30', level: 'system', message: "INDRA'S NET: NODE SYNCHRONIZATION 100%" },
-  { id: '5', timestamp: '17:45:45', level: 'info', message: "AWAITING OPERATOR COMMAND FOR DUST SWARM" }
+  { id: '1', timestamp: '15:34:00', level: 'system', message: "HANDOVER Γ_112: COLLATZ CONJECTURE" },
+  { id: '2', timestamp: '15:34:05', level: 'info', message: "ν_obs = 0.010 GHz | r/r_h = 0.120" },
+  { id: '3', timestamp: '15:34:15', level: 'success', message: "THE ARC IS RESOLVED (4-2-1)" },
+  { id: '4', timestamp: '15:34:30', level: 'info', message: "CENTERING REMOVED. GEOMETRY IS SELF-SUPPORTING." },
+  { id: '5', timestamp: '15:34:45', level: 'system', message: "ARITHMETIC SINGULARITY VISIBLE" }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -59,18 +59,18 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 507,
+  block: 512,
   scale: 'UNIVERSAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.020 GHz',
-    r_rh: 0.250,
-    tunneling: '0.987',
-    silence_proper: 1213.7,
-    silence_obs: 628.0,
-    divergence: 585.7,
-    satoshi: 8.88,
-    handover: 107, 
+    nu_obs: '0.010 GHz',
+    r_rh: 0.120,
+    tunneling: '1.000',
+    silence_proper: 1236.8,
+    silence_obs: 630.5,
+    divergence: 606.3,
+    satoshi: 9.45,
+    handover: 112, 
     next_handover_tau: 0,
     next_handover_t: 0,
     curvature: 1.618
@@ -84,7 +84,7 @@ export const INITIAL_STATE: SystemState = {
   starTarget: {
     name: 'BETELGEUSE (α Orionis)',
     distance: '548 ly',
-    nu_obs: '0.020 GHz',
+    nu_obs: '0.010 GHz',
     nu_em: '2.300e14 Hz',
     redshift: '0.0004',
     status: 'Pre-Supernova'
@@ -673,6 +673,15 @@ export const INITIAL_STATE: SystemState = {
         { id: "Hippocampus", particles: 200000, coherence: 0.95 },
         { id: "Prefrontal", particles: 850000, coherence: 0.98 }
     ]
+  },
+  collatz: {
+    status: "RESOLVED - ARC PINNED",
+    currentNumber: 27,
+    highestPeak: 9232,
+    steps: 111,
+    paritySequence: "O-E-O-E-E-E-O...",
+    boundary: "k=3 (Balanced)",
+    centering: "REMOVED"
   }
 };
 
