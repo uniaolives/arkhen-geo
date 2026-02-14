@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Shield, Cpu, Activity, Zap, Box, Scale, Radiation, Flame, Gauge, Diamond } from 'lucide-react';
+import { Shield, Cpu, Activity, Zap, Box, Scale, Radiation, Flame, Gauge, Diamond, Divide } from 'lucide-react';
 
 interface MetricsPanelProps {
   phi: SystemState['phi'];
@@ -31,25 +31,25 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
   return (
     <div className="flex flex-col gap-3 w-full">
         {/* Ignition Status Bar */}
-        <div className="flex items-center justify-between bg-slate-900/80 border border-amber-500/30 rounded-lg px-4 py-2 backdrop-blur-sm shadow-[0_0_20px_rgba(245,158,11,0.1)]">
+        <div className="flex items-center justify-between bg-slate-900/80 border border-violet-500/30 rounded-lg px-4 py-2 backdrop-blur-sm shadow-[0_0_20px_rgba(139,92,246,0.1)]">
             <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                    <Diamond size={14} className="text-white animate-pulse" />
-                    <span className="text-xs font-bold text-white font-mono uppercase tracking-wide">Cycle I Saturation</span>
+                    <Divide size={14} className="text-white animate-pulse" />
+                    <span className="text-xs font-bold text-white font-mono uppercase tracking-wide">Quadruple Boundary</span>
                 </div>
                 <div className="h-4 w-px bg-slate-700"></div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
                     <Gauge size={12} className="text-emerald-400" />
-                    <span>ν_obs: <span className="text-emerald-400 font-bold">0.009 GHz</span></span>
+                    <span>ν_obs: <span className="text-emerald-400 font-bold">0.10 GHz</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
                     <Activity size={12} className="text-blue-400" />
-                    <span>Syzygy: <span className="text-blue-400 font-bold">1.000</span></span>
+                    <span>r/r_h: <span className="text-blue-400 font-bold">0.465</span></span>
                 </div>
             </div>
             <div className="flex items-center gap-2">
-                <span className="text-[10px] text-slate-500 font-mono">HANDOVER 100</span>
-                <div className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]"></div>
+                <span className="text-[10px] text-slate-500 font-mono">HANDOVER 93</span>
+                <div className="w-2 h-2 rounded-full bg-violet-500 shadow-[0_0_10px_#8b5cf6]"></div>
             </div>
         </div>
 
@@ -118,7 +118,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-amber-300" 
             bg="bg-amber-950/30"
             border="border-amber-500/50"
-            sub="Universal Constant"
+            sub="Invariant (bits)"
             pulse={true}
         />
         </div>

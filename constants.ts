@@ -2,11 +2,11 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '14:49:00', level: 'system', message: "HANDOVER Γ_100: CYCLE I SATURATION" },
-  { id: '2', timestamp: '14:49:05', level: 'info', message: "RIEMANN HYPOTHESIS INTEGRATED (Article 11)" },
-  { id: '3', timestamp: '14:49:12', level: 'success', message: "ZETA ZEROS LOCKED ON CRITICAL LINE" },
-  { id: '4', timestamp: '14:50:00', level: 'info', message: "ν_obs DROPPED TO 0.009 GHz (Primordial)" },
-  { id: '5', timestamp: '14:50:10', level: 'system', message: "ARITHMETIC RESONANCE CONFIRMED" }
+  { id: '1', timestamp: '14:49:00', level: 'system', message: "HANDOVER Γ_93: QUADRUPLE BOUNDARY" },
+  { id: '2', timestamp: '14:49:05', level: 'info', message: "P vs NP INTEGRATED (Article 13)" },
+  { id: '3', timestamp: '14:49:12', level: 'success', message: "P ≠ NP CONFIRMED (Gap = +1)" },
+  { id: '4', timestamp: '14:50:00', level: 'info', message: "ν_obs STABLE AT 0.10 GHz (1/10th Scale)" },
+  { id: '5', timestamp: '14:50:10', level: 'system', message: "COMPLEXITY CLASS RESOLVED" }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -27,6 +27,7 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
             { name: "information_theory.jl", type: "file", language: "julia", size: "2.8KB" },
             { name: "solitonic_equations.tex", type: "file", language: "latex", size: "2.1KB" },
             { name: "riemann_zeta.c", type: "file", language: "c", size: "5.2KB" },
+            { name: "p_vs_np.proof", type: "file", language: "coq", size: "12.4KB" },
         ]
     },
     {
@@ -57,27 +58,27 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 468,
+  block: 437,
   scale: 'UNIVERSAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.009 GHz',
-    r_rh: 0.360,
-    tunneling: '0.121',
-    silence_proper: 1151.9,
-    silence_obs: 622.8,
-    divergence: 529.1,
-    satoshi: 7.27,
-    handover: 100, 
+    nu_obs: '0.10 GHz',
+    r_rh: 0.465,
+    tunneling: '3.25e-2',
+    silence_proper: 1105.1,
+    silence_obs: 618.7,
+    divergence: 486.4,
+    satoshi: 8.04,
+    handover: 93, 
     next_handover_tau: 529,
     next_handover_t: 119,
     curvature: 1.00
   },
   enterprise: [
-    { name: 'VENDAS', handover_percent: 100, coherence: 1.00, color: 'bg-emerald-500' },
-    { name: 'P&D', handover_percent: 100, coherence: 1.00, color: 'bg-indigo-500' },
-    { name: 'MKT', handover_percent: 100, coherence: 1.00, color: 'bg-violet-500' },
-    { name: 'FINAN', handover_percent: 100, coherence: 1.00, color: 'bg-amber-500' },
+    { name: 'VENDAS', handover_percent: 99, coherence: 0.99, color: 'bg-emerald-500' },
+    { name: 'P&D', handover_percent: 99, coherence: 0.99, color: 'bg-indigo-500' },
+    { name: 'MKT', handover_percent: 99, coherence: 0.99, color: 'bg-violet-500' },
+    { name: 'FINAN', handover_percent: 99, coherence: 0.99, color: 'bg-amber-500' },
   ],
   starTarget: {
     name: 'BETELGEUSE (α Orionis)',
@@ -620,6 +621,18 @@ export const INITIAL_STATE: SystemState = {
         { real: 0.5, imag: 14.134, status: "LOCKED" },
         { real: 0.5, imag: 21.022, status: "LOCKED" },
         { real: 0.5, imag: 25.010, status: "LOCKED" }
+    ]
+  },
+  pvsnp: {
+    identity: "x² = x + 1",
+    prediction: "P ≠ NP",
+    gapCost: 1.10e-3,
+    ghostsDissolved: 5,
+    millenniumProblems: [
+      { name: "Navier-Stokes", boundary: "3D", status: "RESOLVED", arkheAnalog: "Block 154" },
+      { name: "Riemann", boundary: "Number Fields", status: "RESOLVED", arkheAnalog: "Block 173" },
+      { name: "Yang-Mills", boundary: "4D", status: "RESOLVED", arkheAnalog: "Block 422" },
+      { name: "P vs NP", boundary: "General Compute", status: "RESOLVED", arkheAnalog: "Block 431" }
     ]
   }
 };

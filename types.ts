@@ -168,6 +168,14 @@ export interface RiemannHypothesis {
     zetaZero: { real: number; imag: number; status: string }[];
 }
 
+export interface PvsNP {
+    identity: string; // "x² = x + 1"
+    prediction: string; // "P ≠ NP"
+    gapCost: number; // The +1 cost
+    ghostsDissolved: number; // 5
+    millenniumProblems: { name: string; boundary: string; status: string; arkheAnalog: string }[];
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -619,6 +627,7 @@ export interface SystemState {
   consciousnessEcology?: ConsciousnessEcology;
   neuroImmune?: NeuroImmune;
   riemann?: RiemannHypothesis;
+  pvsnp?: PvsNP;
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.
