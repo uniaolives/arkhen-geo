@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { SystemState } from '../types';
-import { Shield, Cpu, Activity, Zap, Box, Scale, Radiation, Flame, Gauge } from 'lucide-react';
+import { Shield, Cpu, Activity, Zap, Box, Scale, Radiation, Flame, Gauge, Diamond } from 'lucide-react';
 
 interface MetricsPanelProps {
   phi: SystemState['phi'];
@@ -31,25 +31,25 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
   return (
     <div className="flex flex-col gap-3 w-full">
         {/* Ignition Status Bar */}
-        <div className="flex items-center justify-between bg-slate-900/80 border border-slate-800 rounded-lg px-4 py-2 backdrop-blur-sm">
+        <div className="flex items-center justify-between bg-slate-900/80 border border-amber-500/30 rounded-lg px-4 py-2 backdrop-blur-sm shadow-[0_0_20px_rgba(245,158,11,0.1)]">
             <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                    <Flame size={14} className="text-amber-500 animate-pulse" />
-                    <span className="text-xs font-bold text-white font-mono uppercase tracking-wide">System Ignition</span>
+                    <Diamond size={14} className="text-white animate-pulse" />
+                    <span className="text-xs font-bold text-white font-mono uppercase tracking-wide">Cycle I Saturation</span>
                 </div>
                 <div className="h-4 w-px bg-slate-700"></div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
                     <Gauge size={12} className="text-emerald-400" />
-                    <span>ν_obs: <span className="text-emerald-400 font-bold">0.10 GHz</span></span>
+                    <span>ν_obs: <span className="text-emerald-400 font-bold">0.009 GHz</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
                     <Activity size={12} className="text-blue-400" />
-                    <span>Vectors: <span className="text-blue-400 font-bold">1.0M</span></span>
+                    <span>Syzygy: <span className="text-blue-400 font-bold">1.000</span></span>
                 </div>
             </div>
             <div className="flex items-center gap-2">
-                <span className="text-[10px] text-slate-500 font-mono">HANDOVER 95</span>
-                <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
+                <span className="text-[10px] text-slate-500 font-mono">HANDOVER 100</span>
+                <div className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]"></div>
             </div>
         </div>
 
@@ -63,7 +63,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
                 color="text-indigo-300"
                 bg="bg-indigo-950/30"
                 border="border-indigo-500/30"
-                sub="Geometric Mean"
+                sub="Unified Field"
             />
         </div>
         <MetricCard 
@@ -73,7 +73,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-emerald-300" 
             bg="bg-emerald-950/30"
             border="border-emerald-500/30"
-            sub="Safety Proved"
+            sub="Safety Proven"
         />
         <MetricCard 
             label="Φ KERNEL" 
@@ -82,7 +82,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-cyan-300"
             bg="bg-cyan-950/30"
             border="border-cyan-500/30"
-            sub="Full Mesh N=4"
+            sub="Full Mesh N=All"
         />
         <MetricCard 
             label="Φ BYZANTINE" 
@@ -91,7 +91,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-rose-300"
             bg="bg-rose-950/30"
             border="border-rose-500/30"
-            sub="Detection Active"
+            sub="Zero Faults"
         />
         <MetricCard 
             label="Φ MIGDAL" 
@@ -100,7 +100,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-orange-300"
             bg="bg-orange-950/30"
             border="border-orange-500/30"
-            sub="Low Signal"
+            sub="Gap Closed"
         />
         <MetricCard 
             label="Φ GEODESIC" 
@@ -109,7 +109,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-purple-300"
             bg="bg-purple-950/30"
             border="border-purple-500/30"
-            sub="Stable"
+            sub="Invariant"
         />
         <MetricCard 
             label="SATOSHI" 
@@ -118,7 +118,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ phi, satoshi }) => {
             color="text-amber-300" 
             bg="bg-amber-950/30"
             border="border-amber-500/50"
-            sub="Invariant (bits)"
+            sub="Universal Constant"
             pulse={true}
         />
         </div>

@@ -159,6 +159,15 @@ export interface NeuroImmune {
     clinicalPotential: string[];
 }
 
+export interface RiemannHypothesis {
+    zerosCalculated: string;
+    ghostsRemoved: number;
+    criticalLineStatus: string; // e.g., "BOUNDARY_RESOLVED"
+    identityVerify: string; // "x^2 = x + 1"
+    primeDensity: number;
+    zetaZero: { real: number; imag: number; status: string }[];
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -609,6 +618,7 @@ export interface SystemState {
   arkheStudio?: ArkheStudio;
   consciousnessEcology?: ConsciousnessEcology;
   neuroImmune?: NeuroImmune;
+  riemann?: RiemannHypothesis;
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.
