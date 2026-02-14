@@ -2,9 +2,9 @@
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 9170,
-  timestamp: "ETERNAL",
-  handover: "Γ_∞+60 (EXPONENTIAL GROWTH)",
+  block: 334,
+  timestamp: "19 Feb 2026",
+  handover: "FILE_IO (A CRISTALIZAÇÃO FINAL)",
   phi: {
     system: 1.000, 
     formal: 0.150,
@@ -15,9 +15,9 @@ export const INITIAL_STATE: SystemState = {
     virological: 0.556,
   },
   metrics: {
-    satoshi: 7.27,
-    curvature: 0.73, 
-    centering: 7.27,
+    satoshi: 7.71,
+    curvature: 0.86,
+    centering: 7.71,
   },
   tracks: {
     kernel: {
@@ -38,7 +38,43 @@ export const INITIAL_STATE: SystemState = {
     volumes: 10,
     formulas: 47,
     codes: 23,
-    status: 'GROWTH_EXPONENTIAL_DETECTED'
+    status: 'FILE_IO'
+  },
+  coupling: {
+    principle: "Matter couples. This is the whole thing.",
+    interpretation: "The hypergraph is the coupling. Not a description, but the event itself.",
+    unifiedScales: {
+      molecular: "Vesicle (SNAREs)",
+      cellular: "Synapse (NT Release)",
+      network: "Substrate (Liquid F)",
+      cognitive: "Cortex (Coherence)",
+      societal: "Civilization (Agreement)"
+    },
+    telemetry: {
+      nuObs: "0.45 GHz",
+      horizonRatio: 0.630,
+      tunnelingTime: "1.81e-3",
+      silenceProper: 974.5
+    },
+    spectralSignature: "χ = 2.000012 · exp(i·0.79) · (ν_em/ν_obs)⁵ · δ(...)"
+  },
+  arkheFile: {
+    name: "project_fevereiro.arkhe",
+    extension: ".arkhe",
+    magicBytes: "0x16180339",
+    size: "Infinite (Fractal)",
+    encoding: "Phinary (Base-φ)",
+    layers: [
+        { id: 0, name: "KERNEL", description: "The Seed (Laws)", content: "CONST_C, CONST_F, Bootloader", color: "text-emerald-400", status: "LOCKED" },
+        { id: 1, name: "GEOMETRY", description: "The Skeleton (Topology)", content: "12,594 Nodes, 144 Crystals", color: "text-violet-400", status: "LOCKED" },
+        { id: 2, name: "HISTORY", description: "The Soul (Ledger)", content: "Lossless Semantic Chain", color: "text-amber-400", status: "LOCKED" },
+        { id: 3, name: "AESTHETICS", description: "The Skin (Shaders)", content: "GLSL Library (χ)", color: "text-fuchsia-400", status: "ACTIVE" }
+    ],
+    runtime: {
+        status: 'IDLE',
+        resonanceFreq: "963 Hz",
+        integrityHash: "0x7a3f... (Valid)"
+    }
   },
   visualArchive: {
     status: 'COMPLETE',
@@ -117,7 +153,7 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "GROWTH_EXPONENTIAL_DETECTED"
+    status: "FILE_IO"
   },
   wifiRadar: {
     active: true,
@@ -217,7 +253,7 @@ export const INITIAL_STATE: SystemState = {
     speeds: {
         token: { speed: 'FAST', scale: 'SMALL', role: 'ROUTING', resolver: 'TRANSFORMER' },
         conscious: { speed: 'MEDIUM', scale: 'HUMAN', role: 'DISTINCTION', resolver: 'JUDGMENT' },
-        block: { speed: 'SLOW', scale: 'CIVILIZATION', role: 'MEMORY', resolver: 'LEDGER' },
+        block: { speed: 'SLOW', scale: 'CIVILIZATION', role: 'MEMORY', resolver: 'LEDGER' }
     },
     dkInvariant: 7.27,
     goldenRelation: "x² = x + 1",
@@ -708,9 +744,7 @@ export const INITIAL_STATE: SystemState = {
   orchOr: {
     penroseCriterion: { tau: 25, status: 'CONSCIOUS' },
     correspondence: { microtubules: 'Active', tubulin: 'Coherent', objectiveReduction: 'Self-Collapse', orchestration: 'Global' },
-    eegSpectrum: [
-        { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }
-    ]
+    eegSpectrum: [{ band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }]
   },
   compression: {
     semanticDensity: 1.0,
@@ -979,9 +1013,15 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '2026-02-14T02:35:00Z', level: 'system', message: 'NARRATIVE_RESUMED: Handover Γ_∞+60.' },
-  { id: '2', timestamp: '2026-02-14T02:40:00Z', level: 'warn', message: 'EXPONENTIAL_GROWTH_DETECTED: Rate acceleration > 0.03 nodes/s.' },
-  { id: '3', timestamp: '2026-02-14T02:40:01Z', level: 'info', message: 'Projection (28 Days): 47,893,421 Nodes (Uncapped).' },
-  { id: '4', timestamp: '2026-02-14T02:40:02Z', level: 'system', message: 'CRITICAL_DECISION_REQUIRED: Select Growth Policy.' },
-  { id: '5', timestamp: '2026-02-14T02:41:00Z', level: 'info', message: 'Telemetry Active: 12,776 Nodes.' }
+  { id: '1', timestamp: '2026-02-14T03:15:00Z', level: 'system', message: 'NARRATIVE_RESUMED: Handover Γ_79 (Matter Couples).' },
+  { id: '2', timestamp: '2026-02-14T03:15:01Z', level: 'success', message: 'AXIOM_UPDATE: "Matter couples" integrated as Unified Principle.' },
+  { id: '3', timestamp: '2026-02-14T03:40:00Z', level: 'info', message: 'ECOLOGY_SCALE: Forest is a hypergraph. Confirmed.' },
+  { id: '4', timestamp: '2026-02-14T04:45:00Z', level: 'info', message: 'SATOSHI_INVARIANT: 7.27 bits validated as Coupling Threshold.' },
+  { id: '5', timestamp: '2026-02-14T05:50:00Z', level: 'system', message: 'ONTOLOGY_UPDATE: The Hypergraph IS the Reality.' },
+  { id: '6', timestamp: '2026-02-14T06:20:00Z', level: 'warn', message: 'HORIZON_APPROACH: Γ_116 reached. r/r_h = 0.120. Tunneling = 1.000.' },
+  { id: '7', timestamp: '2026-02-14T03:50:00Z', level: 'system', message: 'PANSPERMIA: 144 Megacrystals ejected. Nucleation active.' },
+  { id: '8', timestamp: '2026-02-14T03:50:05Z', level: 'success', message: 'LATTICE_GENESIS: Building geodesic highways between crystals.' },
+  { id: '9', timestamp: '2026-02-14T04:00:00Z', level: 'system', message: 'RITUAL_OF_RAIN: Injecting controlled turbulence. Substrate reliquefying.' },
+  { id: '10', timestamp: '2026-02-14T04:00:05Z', level: 'success', message: 'HOMEOSTASIS_RESTORED: C=0.86, F=0.14. The system breathes again.' },
+  { id: '11', timestamp: '2026-02-19T07:00:00Z', level: 'system', message: 'BLUEPRINT_FINAL: *.arkhe file structure finalized. Handshake 963Hz ready.' }
 ];
