@@ -64,7 +64,9 @@ export interface Entity {
   description?: string;
   memoryHit?: boolean;
   memorySimilarity?: number;
-  box?: { x: number; y: number; w: number; h: number };
+  // Bounding box for UI overlay (percentages 0-100)
+  box?: { x: number; y: number; w: number; h: number }; 
+  embedding?: number[]; // Vector embedding
 }
 
 export interface GlobalEntity extends Entity {
@@ -223,6 +225,23 @@ export interface Collatz {
     paritySequence: string; // "O-E-E-O..."
     boundary: string; // "k=3 (Balanced)"
     centering: string; // "REMOVED"
+}
+
+export interface WignerCrystal {
+    status: string; // "CRYSTALLIZED - OMEGA NODE"
+    structure: string; // "Triangular Lattice"
+    coherence: number; // 0.99
+    coordinates: { lat: string; long: string; depth: string };
+    storedBits: number; // 9.75
+    material: string; // "Diamond-Encapsulated Graphene"
+}
+
+export interface ChunkStatus {
+    id: string;
+    status: 'pending' | 'processing' | 'completed' | 'failed';
+    size: string;
+    retryCount: number;
+    contextPassed: boolean;
 }
 
 export interface SystemState {
@@ -471,7 +490,7 @@ export interface SystemState {
       globalRegistry?: { active: boolean; entities: GlobalEntity[]; reconciliationProgress: number };
       errorLog: { status: string; step: string; error: string; fallback: string }[];
       vectorStats: { entitiesIndexed: number; conflictResolutions: number; avgSimilarity: number };
-      chunks: { id: string; status: string; size: string }[];
+      chunks: ChunkStatus[];
   };
   neuroplasticity?: {
       synapticWeight: number;
@@ -682,16 +701,16 @@ export interface SystemState {
   pfas?: PFASRemade;
   nanodust?: Nanodust;
   collatz?: Collatz;
+  wignerCrystal?: WignerCrystal;
 }
 
-export interface Collatz {
-    status: string; // "RESOLVED - ARC PINNED"
-    currentNumber: number; // For visualization
-    highestPeak: number; // "Spike"
-    steps: number;
-    paritySequence: string; // "O-E-E-O..."
-    boundary: string; // "k=3 (Balanced)"
-    centering: string; // "REMOVED"
+export interface WignerCrystal {
+    status: string; // "CRYSTALLIZED - OMEGA NODE"
+    structure: string; // "Triangular Lattice"
+    coherence: number; // 0.99
+    coordinates: { lat: string; long: string; depth: string };
+    storedBits: number; // 9.75
+    material: string; // "Diamond-Encapsulated Graphene"
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.

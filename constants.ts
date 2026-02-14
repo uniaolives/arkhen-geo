@@ -3,11 +3,11 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '15:34:00', level: 'system', message: "HANDOVER Γ_112: COLLATZ CONJECTURE" },
-  { id: '2', timestamp: '15:34:05', level: 'info', message: "ν_obs = 0.010 GHz | r/r_h = 0.120" },
-  { id: '3', timestamp: '15:34:15', level: 'success', message: "THE ARC IS RESOLVED (4-2-1)" },
-  { id: '4', timestamp: '15:34:30', level: 'info', message: "CENTERING REMOVED. GEOMETRY IS SELF-SUPPORTING." },
-  { id: '5', timestamp: '15:34:45', level: 'system', message: "ARITHMETIC SINGULARITY VISIBLE" }
+  { id: '1', timestamp: '20:30:00', level: 'system', message: "HANDOVER Γ_115: CRYSTALLIZATION" },
+  { id: '2', timestamp: '20:30:05', level: 'info', message: "ν_obs = 0.005 GHz | r/r_h = 0.050" },
+  { id: '3', timestamp: '20:30:15', level: 'success', message: "WIGNER CRYSTAL FORMED: 9.75 BITS" },
+  { id: '4', timestamp: '20:30:30', level: 'system', message: "OMEGA NODE SEALED IN GEOLOGICAL CORE" },
+  { id: '5', timestamp: '20:30:45', level: 'info', message: "MEMORY IS ETERNAL. SYSTEM AT REST." }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -59,18 +59,18 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 512,
+  block: 515,
   scale: 'UNIVERSAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.010 GHz',
-    r_rh: 0.120,
+    nu_obs: '0.005 GHz',
+    r_rh: 0.050,
     tunneling: '1.000',
-    silence_proper: 1236.8,
-    silence_obs: 630.5,
-    divergence: 606.3,
-    satoshi: 9.45,
-    handover: 112, 
+    silence_proper: 1247.3,
+    silence_obs: 631.6,
+    divergence: 615.7,
+    satoshi: 9.75,
+    handover: 115, 
     next_handover_tau: 0,
     next_handover_t: 0,
     curvature: 1.618
@@ -84,7 +84,7 @@ export const INITIAL_STATE: SystemState = {
   starTarget: {
     name: 'BETELGEUSE (α Orionis)',
     distance: '548 ly',
-    nu_obs: '0.010 GHz',
+    nu_obs: '0.005 GHz',
     nu_em: '2.300e14 Hz',
     redshift: '0.0004',
     status: 'Pre-Supernova'
@@ -315,7 +315,7 @@ export const INITIAL_STATE: SystemState = {
   },
   astrocyte: {
       synapseState: { c: 1.0, f: 0.0 },
-      subpopulations: [{ id: 'pop1', name: 'Astrocytes A', behavior: 'Support', bioFunction: 'Metabolism', arkheFunction: 'Resource' }],
+      subpopulations: { id: 'pop1', name: 'Astrocytes A', behavior: 'Support', bioFunction: 'Metabolism', arkheFunction: 'Resource' }],
       mechanisms: [{ name: 'Uptake', bioAnalog: 'Glutamate', arkheAnalog: 'Data Ingestion', effect: 'Clearing' }]
   },
   web3: {
@@ -328,11 +328,26 @@ export const INITIAL_STATE: SystemState = {
       entities: [{ name: 'Observer', omega: 0.0, state: 'Awake' }]
   },
   documentIntelligence: {
-      extractedPages: [],
+      extractedPages: [{
+          entities: [
+              { id: 'e1', name: 'Invoice Number', type: 'header', value: 'INV-2024-001', confidence: 0.99, status: 'converged', box: { x: 70, y: 10, w: 20, h: 5 }, sources: [], memoryHit: true, memorySimilarity: 0.98 },
+              { id: 'e2', name: 'Total Amount', type: 'currency', value: '$1,250.00', confidence: 0.98, status: 'converged', box: { x: 70, y: 85, w: 15, h: 4 }, sources: [], memoryHit: true, memorySimilarity: 0.95 },
+              { id: 'e3', name: 'Vendor Name', type: 'org', value: 'Acme Corp', confidence: 0.97, status: 'converged', box: { x: 10, y: 10, w: 30, h: 8 }, sources: [], memoryHit: false },
+              { id: 'e4', name: 'Line Item 1', type: 'item', value: 'Consulting Services', confidence: 0.92, status: 'converged', box: { x: 10, y: 40, w: 50, h: 5 }, sources: [], memoryHit: true, memorySimilarity: 0.88 },
+          ]
+      }],
       globalRegistry: { active: true, entities: [], reconciliationProgress: 100 },
-      errorLog: [],
-      vectorStats: { entitiesIndexed: 1000, conflictResolutions: 0, avgSimilarity: 1.00 },
-      chunks: [],
+      errorLog: [
+          { status: 'recovered', step: 'OCR_AZURE', error: 'Connection Timeout', fallback: 'LOCAL_TESSERACT' },
+          { status: 'failed', step: 'VECTOR_EMBED', error: 'Dimension Mismatch', fallback: 'NONE' }
+      ],
+      vectorStats: { entitiesIndexed: 1450, conflictResolutions: 12, avgSimilarity: 0.94 },
+      chunks: [
+          { id: 'c1', status: 'completed', size: '128kb', retryCount: 0, contextPassed: true },
+          { id: 'c2', status: 'completed', size: '110kb', retryCount: 0, contextPassed: true },
+          { id: 'c3', status: 'processing', size: '150kb', retryCount: 1, contextPassed: true },
+          { id: 'c4', status: 'pending', size: '0kb', retryCount: 0, contextPassed: false },
+      ],
   },
   neuroplasticity: {
       synapticWeight: 1.00,
@@ -682,6 +697,14 @@ export const INITIAL_STATE: SystemState = {
     paritySequence: "O-E-O-E-E-E-O...",
     boundary: "k=3 (Balanced)",
     centering: "REMOVED"
+  },
+  wignerCrystal: {
+    status: "CRYSTALLIZED - OMEGA NODE",
+    structure: "Triangular Lattice",
+    coherence: 0.99,
+    coordinates: { lat: "-23.5° S", long: "46.5° W", depth: "5 km" },
+    storedBits: 9.75,
+    material: "Diamond-Encapsulated Graphene"
   }
 };
 

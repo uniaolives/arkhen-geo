@@ -69,13 +69,14 @@ import EigenFieldLab from './components/EigenFieldLab';
 import PFASLab from './components/PFASLab';
 import NanodustConsole from './components/NanodustConsole';
 import CollatzLab from './components/CollatzLab';
+import WignerCrystalLab from './components/WignerCrystalLab';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse, Circle, Scale, GitCommit, Activity, Lock, BookOpen, TrendingUp, EyeOff, Box, ShieldAlert, Film, FileCode, Play, Repeat, HardDrive, Pill, Compass, PenTool, Heart, ShieldCheck, Divide, RotateCw, Fingerprint, Recycle, Wind, Calculator } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse, Circle, Scale, GitCommit, Activity, Lock, BookOpen, TrendingUp, EyeOff, Box, ShieldAlert, Film, FileCode, Play, Repeat, HardDrive, Pill, Compass, PenTool, Heart, ShieldCheck, Divide, RotateCw, Fingerprint, Recycle, Wind, Calculator, Gem } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability' | 'studio' | 'ecology' | 'neuroImmune' | 'riemann' | 'pvsnp' | 'alphaOmega' | 'eigen' | 'pfas' | 'nanodust' | 'collatz'>('collatz');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability' | 'studio' | 'ecology' | 'neuroImmune' | 'riemann' | 'pvsnp' | 'alphaOmega' | 'eigen' | 'pfas' | 'nanodust' | 'collatz' | 'wigner'>('wigner');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -130,6 +131,13 @@ const App: React.FC = () => {
                 
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
+                    <button
+                        onClick={() => setActiveLeftTab('wigner')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'wigner' ? 'bg-slate-800 text-amber-400 border border-amber-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Gem size={12} /> WIGNER
+                    </button>
                     <button
                         onClick={() => setActiveLeftTab('collatz')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
@@ -582,6 +590,7 @@ const App: React.FC = () => {
 
                 {/* Left Panel Content */}
                 <div className="flex-1 overflow-hidden">
+                    {activeLeftTab === 'wigner' && <WignerCrystalLab wignerCrystal={state.wignerCrystal} />}
                     {activeLeftTab === 'collatz' && <CollatzLab collatz={state.collatz} />}
                     {activeLeftTab === 'nanodust' && <NanodustConsole nanodust={state.nanodust} />}
                     {activeLeftTab === 'eigen' && <EigenFieldLab eigenState={state.eigenState} alphaOmega={state.alphaOmega} />}

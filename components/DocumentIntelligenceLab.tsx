@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { SystemState } from '../types';
-import { FileText, Eye, AlertTriangle, CheckCircle2, ShieldCheck, Database, Layers, RefreshCw, Braces, Code, Zap, Scan, MousePointer2, GitMerge } from 'lucide-react';
+import { FileText, Eye, AlertTriangle, CheckCircle2, ShieldCheck, Database, Layers, RefreshCw, Braces, Code, Zap, Scan, MousePointer2, GitMerge, FileCode2, Terminal, ArrowRight, Link } from 'lucide-react';
 import GlobalEntityRegistry from './GlobalEntityRegistry';
 
 interface DocumentIntelligenceLabProps {
@@ -120,14 +120,14 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                 </div>
 
                 {/* Sidebar Info */}
-                <div className="w-64 flex flex-col gap-4">
+                <div className="w-80 flex flex-col gap-4">
                     <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
                         <div className="text-[10px] text-slate-500 font-mono uppercase mb-2 flex items-center gap-1">
                             <MousePointer2 size={12} /> Interactive Mode
                         </div>
                         <div className="text-xs text-slate-300 font-mono">
-                            Hover to validate.<br/>Click to lock entity.<br/>
-                            <span className="text-emerald-400">Tactile Mirror Active.</span>
+                            Hover list or document to validate.<br/>
+                            <span className="text-emerald-400">Two-way binding active.</span>
                         </div>
                     </div>
 
@@ -139,19 +139,29 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                             {activePage.entities?.map(entity => (
                                 <div 
                                     key={entity.id}
-                                    className={`p-2 rounded border text-xs font-mono transition-colors cursor-pointer
+                                    className={`p-3 rounded border text-xs font-mono transition-all cursor-pointer flex flex-col gap-1
                                         ${selectedEntity === entity.id 
-                                            ? 'bg-amber-900/20 border-amber-500/50 text-amber-100' 
+                                            ? 'bg-amber-900/20 border-amber-500/50 text-amber-100 shadow-[0_0_10px_rgba(245,158,11,0.1)]' 
                                             : hoveredEntity === entity.id
-                                                ? 'bg-emerald-900/20 border-emerald-500/50 text-emerald-100'
+                                                ? 'bg-emerald-900/20 border-emerald-500/50 text-emerald-100 transform translate-x-1'
                                                 : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-600'}
                                     `}
                                     onMouseEnter={() => setHoveredEntity(entity.id)}
                                     onMouseLeave={() => setHoveredEntity(null)}
                                     onClick={() => setSelectedEntity(entity.id === selectedEntity ? null : entity.id)}
                                 >
-                                    <div className="font-bold mb-1">{entity.name}</div>
-                                    <div className="text-white">{entity.value}</div>
+                                    <div className="flex justify-between items-start">
+                                        <span className="font-bold uppercase text-[10px]">{entity.name}</span>
+                                        <span className={`text-[9px] px-1 rounded ${entity.confidence > 0.9 ? 'text-emerald-400 bg-emerald-950/50' : 'text-amber-400 bg-amber-950/50'}`}>
+                                            {entity.confidence}
+                                        </span>
+                                    </div>
+                                    <div className="text-white text-sm">{entity.value}</div>
+                                    {entity.memoryHit && (
+                                        <div className="flex items-center gap-1 text-[9px] text-fuchsia-400 pt-1 border-t border-white/5 mt-1">
+                                            <GitMerge size={8} /> Memory Match: {(entity.memorySimilarity! * 100).toFixed(0)}%
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -175,13 +185,13 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                     </h3>
                     <div className="space-y-2">
                         {docIntel.errorLog.map((log, idx) => (
-                            <div key={idx} className="flex items-center gap-4 text-xs font-mono p-2 rounded bg-slate-950 border border-slate-800">
+                            <div key={idx} className="flex items-center gap-4 text-xs font-mono p-3 rounded bg-slate-950 border border-slate-800">
                                 <div className={`w-2 h-2 rounded-full ${log.status === 'recovered' ? 'bg-emerald-500' : 'bg-rose-500'}`}></div>
-                                <div className="w-24 text-slate-400">{log.step}</div>
+                                <div className="w-24 text-slate-400 uppercase font-bold">{log.step}</div>
                                 <div className="flex-1 text-rose-400 flex items-center gap-2">
                                     <AlertTriangle size={12} /> {log.error}
                                 </div>
-                                <div className="text-emerald-400 flex items-center gap-2">
+                                <div className="text-emerald-400 flex items-center gap-2 bg-emerald-950/20 px-2 py-1 rounded border border-emerald-900/50">
                                     <RefreshCw size={12} /> Fallback: {log.fallback}
                                 </div>
                             </div>
@@ -211,20 +221,25 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                 {/* Parallel Processing Progress */}
                 <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-4 overflow-hidden">
                     <h3 className="text-xs text-white font-mono font-bold uppercase mb-4 flex items-center gap-2">
-                        <Zap size={14} className="text-amber-400" /> Parallel Chunk Processing
+                        <Zap size={14} className="text-amber-400" /> Parallel Chunk Processing (Context Awareness)
                     </h3>
                     <div className="space-y-3">
                         {docIntel.chunks.map((chunk) => (
-                            <div key={chunk.id} className="flex items-center gap-3">
+                            <div key={chunk.id} className="flex items-center gap-3 p-2 bg-slate-950/30 rounded border border-slate-800/50">
                                 <span className="text-[10px] font-mono text-slate-500 w-8">{chunk.id}</span>
                                 <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
                                     <div 
-                                        className={`h-full ${chunk.status === 'completed' ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'}`} 
-                                        style={{ width: chunk.status === 'completed' ? '100%' : '60%' }}
+                                        className={`h-full ${chunk.status === 'completed' ? 'bg-emerald-500' : (chunk.status === 'processing' ? 'bg-amber-500 animate-pulse' : 'bg-slate-700')}`} 
+                                        style={{ width: chunk.status === 'completed' ? '100%' : (chunk.status === 'processing' ? '60%' : '0%') }}
                                     ></div>
                                 </div>
                                 <span className="text-[10px] font-mono text-slate-400 w-12 text-right">{chunk.size}</span>
-                                <span className="text-[10px] font-mono text-emerald-400 uppercase w-16 text-right">{chunk.status}</span>
+                                {chunk.contextPassed && (
+                                    <span className="text-[10px] font-mono text-indigo-400 flex items-center gap-1" title="Context Passed"><Link size={8}/> CTX</span>
+                                )}
+                                <span className={`text-[10px] font-mono uppercase w-16 text-right ${chunk.status === 'completed' ? 'text-emerald-400' : 'text-amber-400'}`}>
+                                    {chunk.status}
+                                </span>
                             </div>
                         ))}
                     </div>
@@ -235,36 +250,56 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
         {/* --- SCHEMA TAB --- */}
         {activeTab === 'schema' && (
             <div className="flex-1 bg-slate-950 border border-slate-800 rounded-lg p-4 font-mono text-xs overflow-hidden flex flex-col">
-                <div className="flex items-center gap-2 text-emerald-400 mb-2 pb-2 border-b border-slate-800">
+                <div className="flex items-center gap-2 text-emerald-400 mb-4 pb-2 border-b border-slate-800">
                     <Braces size={14} />
-                    <span className="font-bold uppercase">Pydantic Schema (The Contract)</span>
+                    <span className="font-bold uppercase">Pydantic Schema (Strict Enforcement)</span>
                 </div>
                 <div className="flex-1 overflow-auto custom-scrollbar text-slate-400">
                     <pre className="language-python">
-{`class ExtractedEntity(BaseModel):
-    name: str = Field(..., pattern=r"^[a-z_][a-z0-9_]*$")
-    entity_type: EntityType
-    value: float | int | str
+{`from pydantic import BaseModel, Field, confloat
+from typing import List, Optional
+
+class ExtractedEntity(BaseModel):
+    name: str = Field(..., description="Canonical name of the entity")
+    entity_type: str = Field(..., pattern=r"^[a-z_]+$")
+    value: str | float | int
     unit: Optional[str] = None
-    confidence: confloat(ge=0.0, le=1.0) = 0.95
-    coherence: confloat(ge=0.0, le=1.0) = 0.86
-    omega: confloat(ge=0.0, le=0.33) = 0.00
     
-    # Provenance tracks the source location
-    provenance: Provenance
+    # Validation Layer
+    confidence: confloat(ge=0.0, le=1.0) = 0.95
+    bounding_box: List[float] = Field(..., min_items=4, max_items=4)
+    
+    # Semantic Linking
+    vector_embedding: Optional[List[float]] = None
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "name": "Invoice Total",
+                "entity_type": "currency",
+                "value": 1250.00,
+                "confidence": 0.99,
+                "bounding_box": [0.7, 0.85, 0.15, 0.04]
+            }
+        }
 
 class ExtractionReport(BaseModel):
-    document_name: str
+    document_id: str
     total_pages: int
     entities: List[ExtractedEntity]
     
     # The Invariant survives the extraction
-    satoshi_conserved: confloat(ge=7.26, le=7.28) = 7.27
-    timestamp: str`}
+    processing_time_ms: float
+    status: str = "completed"`}
                     </pre>
                 </div>
-                <div className="mt-2 pt-2 border-t border-slate-800 text-[10px] text-emerald-500 flex items-center gap-2">
-                    <CheckCircle2 size={12} /> Gemini & Ollama Outputs Validated
+                <div className="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center">
+                     <div className="text-[10px] text-emerald-500 flex items-center gap-2">
+                        <CheckCircle2 size={12} /> Gemini & Ollama Outputs Validated
+                    </div>
+                    <div className="text-[10px] text-indigo-400 flex items-center gap-2">
+                        <FileCode2 size={12} /> Automatic JSON Repair Active
+                    </div>
                 </div>
             </div>
         )}
