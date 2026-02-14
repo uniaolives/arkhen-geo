@@ -119,9 +119,15 @@ export interface ArkheStudio {
         nodes: number;
         edges: number;
         density: number;
-        physicsEngine: 'Geodesic' | 'Newtonian';
+        physicsEngine: 'Geodesic' | 'Newtonian' | 'Arkhe-Kernel';
     };
-    simulationMode: 'EDIT' | 'GRAVITY' | 'ART';
+    simulationMode: 'EDIT' | 'GRAVITY' | 'ART' | 'STRESS_TEST';
+    engineMetrics?: {
+        fps: number;
+        coherence: number;
+        fluctuation: number;
+        vectors: number;
+    };
 }
 
 export interface ConsciousnessEcology {

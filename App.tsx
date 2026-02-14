@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from 'react';
 import { INITIAL_STATE, INITIAL_LOGS } from './constants';
 import { SystemState, LogEntry } from './types';
@@ -68,7 +69,7 @@ import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as T
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability' | 'studio' | 'ecology' | 'neuroImmune'>('neuroImmune');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability' | 'studio' | 'ecology' | 'neuroImmune'>('studio');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -124,6 +125,13 @@ const App: React.FC = () => {
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
                     <button
+                        onClick={() => setActiveLeftTab('studio')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'studio' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <PenTool size={12} /> STUDIO
+                    </button>
+                    <button
                         onClick={() => setActiveLeftTab('neuroImmune')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
                         ${activeLeftTab === 'neuroImmune' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
@@ -136,13 +144,6 @@ const App: React.FC = () => {
                         ${activeLeftTab === 'ecology' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         <Heart size={12} /> ECOLOGY
-                    </button>
-                    <button
-                        onClick={() => setActiveLeftTab('studio')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
-                        ${activeLeftTab === 'studio' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
-                    >
-                        <PenTool size={12} /> STUDIO
                     </button>
                     <button
                         onClick={() => setActiveLeftTab('synaptic')}
@@ -425,40 +426,32 @@ const App: React.FC = () => {
                         <Dna size={12} /> ASTROCYTE
                     </button>
                     <button
-                        onClick={() => setActiveLeftTab('heatmap')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
-                        ${activeLeftTab === 'heatmap' ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
-                    >
-                        <Eye size={12} /> HEATMAP
-                    </button>
-                    <button
-                        onClick={() => setActiveLeftTab('consensus')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[90px]
-                        ${activeLeftTab === 'consensus' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
-                    >
-                        <GitMerge size={12} /> CONSENSUS
-                    </button>
-                    <button
                         onClick={() => setActiveLeftTab('memory')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
                         ${activeLeftTab === 'memory' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         <Database size={12} /> MEMORY
                     </button>
-                    <div className="w-px h-full bg-slate-800 mx-1"></div>
+                    <button
+                        onClick={() => setActiveLeftTab('consensus')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'consensus' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <GitMerge size={12} /> CONSENSUS
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('heatmap')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'heatmap' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Eye size={12} /> HEATMAP
+                    </button>
                     <button
                         onClick={() => setActiveLeftTab('syzygy')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
                         ${activeLeftTab === 'syzygy' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         <Infinity size={12} /> SYZYGY
-                    </button>
-                    <button
-                        onClick={() => setActiveLeftTab('unix')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
-                        ${activeLeftTab === 'unix' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
-                    >
-                        <TermIcon size={12} /> UNIX
                     </button>
                     <button
                         onClick={() => setActiveLeftTab('vectors')}
@@ -491,9 +484,16 @@ const App: React.FC = () => {
                     <button
                         onClick={() => setActiveLeftTab('neural')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
-                        ${activeLeftTab === 'neural' ? 'bg-slate-800 text-cyan-400 border border-cyan-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                        ${activeLeftTab === 'neural' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         <Share2 size={12} /> NEURAL
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('unix')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'unix' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <TermIcon size={12} /> UNIX
                     </button>
                     <button
                         onClick={() => setActiveLeftTab('light')}
@@ -503,225 +503,120 @@ const App: React.FC = () => {
                         <Sun size={12} /> LIGHT
                     </button>
                     <button
-                        onClick={() => setActiveLeftTab('scar')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
-                        ${activeLeftTab === 'scar' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                        onClick={() => setActiveLeftTab('markdown')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'markdown' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
-                        <Magnet size={12} /> SCAR
+                        <FileText size={12} /> MARKDOWN
                     </button>
                     <button
                         onClick={() => setActiveLeftTab('orch')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
                         ${activeLeftTab === 'orch' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
                         <Brain size={12} /> ORCH-OR
                     </button>
                     <button
-                        onClick={() => setActiveLeftTab('markdown')}
-                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
-                        ${activeLeftTab === 'markdown' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                        onClick={() => setActiveLeftTab('scar')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[80px]
+                        ${activeLeftTab === 'scar' ? 'bg-slate-800 text-rose-400 border border-rose-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
-                        <FileText size={12} /> MARKDOWN
+                        <Magnet size={12} /> SCAR
                     </button>
                 </div>
 
-                {/* Active View */}
-                <div className="flex-1 min-h-0 relative">
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'neuroImmune' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NeuroImmuneDefense neuroImmune={state.neuroImmune} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'ecology' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ConsciousnessEcology ecology={state.consciousnessEcology} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'studio' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ArkheStudio studio={state.arkheStudio} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'synaptic' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <SynapticRepairLab synapticRepair={state.synapticRepair} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'probability' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ProbabilityScope probability={state.probability} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'vault' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        {state.archiveTree && <ArchiveVault tree={state.archiveTree} />}
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'synthetic' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <SyntheticLifeLab syntheticLife={state.syntheticLife} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'kernel' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <CognitiveKernel kernel={state.cognitiveKernel} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'arkheFile' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ArkheFileViewer file={state.arkheFile} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'coupling' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <CouplingUnification coupling={state.coupling} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'growth' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <GrowthMonitor growthPolicy={state.growthPolicy} currentNodes={state.wifiRadar.nodesDetected} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'archive' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <VisualArchiveConsole archive={state.visualArchive} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'immune' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ImmuneCalibrationLab immuneCalibration={state.immuneCalibration} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'synthesis' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <UniversalSynthesizer eeg={state.eeg} ionTraps={state.ionTraps} microtubules={state.microtubules} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'microtubule' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <MicrotubuleQuantumLab microtubules={state.microtubules} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'blindSpot' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <BlindSpotLab blindSpot={state.blindSpot} satoshi={state.metrics.satoshi} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'economy' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <FeedbackEconomyLab feedback={state.feedbackEconomy} satoshi={state.metrics.satoshi} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'vocab' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <UnifiedVocabularyLab vocabulary={state.vocabulary} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'crypto' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <QuantumCryptographyLab cryptography={state.cryptography} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'kalman' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <MultitaskKalmanLab multitask={state.multitask} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'dbn' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <DeepBeliefNetworkLab dbn={state.deepBeliefNetwork} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'crest' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NeuralCrestLab neuralCrest={state.neuralCrest} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'natural' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NaturalNetworkLab naturalNetwork={state.naturalNetwork} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'triad' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <BioPhotonicTriad triad={state.bioPhotonicTriad} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'melanin' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NeuromelaninLab neuromelanin={state.neuromelanin} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'mito' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <MitochondriaLab mitochondria={state.mitochondria} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'sand' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <BrainSandLab pinealRevolution={state.pinealRevolution} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'som' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <SelfOrganizingMapLab som={state.som} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'zpf' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ZeroPointEnergyLab zpf={state.zpf} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'wifi' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <WiFiRadar wifiRadar={state.wifiRadar} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'perovskite' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <PerovskiteLab perovskite={state.perovskite} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'ibcBci' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <IbcBciLab ibcBci={state.ibcBci} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'pineal' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <PinealLab pineal={state.pineal} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'neuroStorm' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NeuroStormLab neuroStorm={state.neuroStorm} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'timeCrystal' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <TimeCrystalLab timeCrystal={state.timeCrystal} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'resolution' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NaturalResolutionLab resolution={state.resolution} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'cosmology' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <CosmicSpectrumLab cosmology={state.cosmology} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'photonic' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <PhotonicHebbianLab photonic={state.photonicHebbian} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'neuroplasticity' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NeuroplasticityLab neuroplasticity={state.neuroplasticity} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'docIntel' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <DocumentIntelligenceLab docIntel={state.documentIntelligence} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'biocentrism' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <BiocentrismLab biocentrism={state.biocentrism} satoshi={state.metrics.satoshi} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'web3' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <Web3Lab web3={state.web3} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'astrocyte' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <AstrocyteLab astrocyte={state.astrocyte} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'heatmap' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <HeatMirror heatmap={state.heatmap} entities={state.consensus?.entities || []} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'consensus' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ConsensusEngine consensus={state.consensus} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'memory' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <MemoryVisualizer memory={state.memory} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'syzygy' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <SyzygyNexus syzygy={state.syzygy} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'unix' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ArkheUnixConsole arkheUnix={state.arkheUnix} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'vectors' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <VectorAlgebraLab vectorSpace={state.vectorSpace} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'topology' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <TopologicalInsulator topology={state.topology} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'api' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ArkheApiGateway api={state.arkheApi} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'gravity' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <QuantumGravityLab quantumGravity={state.quantumGravity} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'neural' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <NeuralCompositionality compositionality={state.neuralCompositionality} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'light' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <LightPatternThesis lightPattern={state.lightPattern} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'scar' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <ScarElastography scar={state.scar} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'orch' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <OrchOrIntegration orchOr={state.orchOr} />
-                    </div>
-                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'markdown' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                        <MarkdownProtocol compression={state.compression} />
-                    </div>
+                {/* Left Panel Content */}
+                <div className="flex-1 overflow-hidden">
+                    {activeLeftTab === 'studio' && <ArkheStudio studio={state.arkheStudio} />}
+                    {activeLeftTab === 'neuroImmune' && <NeuroImmuneDefense neuroImmune={state.neuroImmune} />}
+                    {activeLeftTab === 'ecology' && <ConsciousnessEcology ecology={state.consciousnessEcology} />}
+                    {activeLeftTab === 'synaptic' && <SynapticRepairLab synapticRepair={state.synapticRepair} />}
+                    {activeLeftTab === 'probability' && <ProbabilityScope probability={state.probability} />}
+                    {activeLeftTab === 'vault' && <ArchiveVault tree={state.archiveTree} />}
+                    {activeLeftTab === 'synthetic' && <SyntheticLifeLab syntheticLife={state.syntheticLife} />}
+                    {activeLeftTab === 'kernel' && <CognitiveKernel kernel={state.cognitiveKernel} />}
+                    {activeLeftTab === 'arkheFile' && <ArkheFileViewer file={state.arkheFile} />}
+                    {activeLeftTab === 'coupling' && <CouplingUnification coupling={state.coupling} />}
+                    {activeLeftTab === 'growth' && <GrowthMonitor growthPolicy={state.growthPolicy} currentNodes={state.kingdom.totalNodes} />}
+                    {activeLeftTab === 'archive' && <VisualArchiveConsole archive={state.visualArchive} />}
+                    {activeLeftTab === 'immune' && <ImmuneCalibrationLab immuneCalibration={state.immuneCalibration} />}
+                    {activeLeftTab === 'synthesis' && <UniversalSynthesizer eeg={state.eeg} ionTraps={state.ionTraps} microtubules={state.microtubules} />}
+                    {activeLeftTab === 'microtubule' && <MicrotubuleQuantumLab microtubules={state.microtubules} />}
+                    {activeLeftTab === 'blindSpot' && <BlindSpotLab blindSpot={state.blindSpot} satoshi={state.metrics.satoshi} />}
+                    {activeLeftTab === 'economy' && <FeedbackEconomyLab feedback={state.feedbackEconomy} satoshi={state.metrics.satoshi} />}
+                    {activeLeftTab === 'vocab' && <UnifiedVocabularyLab vocabulary={state.vocabulary} />}
+                    {activeLeftTab === 'crypto' && <QuantumCryptographyLab cryptography={state.cryptography} />}
+                    {activeLeftTab === 'kalman' && <MultitaskKalmanLab multitask={state.multitask} />}
+                    {activeLeftTab === 'dbn' && <DeepBeliefNetworkLab dbn={state.deepBeliefNetwork} />}
+                    {activeLeftTab === 'crest' && <NeuralCrestLab neuralCrest={state.neuralCrest} />}
+                    {activeLeftTab === 'natural' && <NaturalNetworkLab naturalNetwork={state.naturalNetwork} />}
+                    {activeLeftTab === 'triad' && <BioPhotonicTriad triad={state.bioPhotonicTriad} />}
+                    {activeLeftTab === 'melanin' && <NeuromelaninLab neuromelanin={state.neuromelanin} />}
+                    {activeLeftTab === 'mito' && <MitochondriaLab mitochondria={state.mitochondria} />}
+                    {activeLeftTab === 'sand' && <BrainSandLab pinealRevolution={state.pinealRevolution} />}
+                    {activeLeftTab === 'som' && <SelfOrganizingMapLab som={state.som} />}
+                    {activeLeftTab === 'zpf' && <ZeroPointEnergyLab zpf={state.zpf} />}
+                    {activeLeftTab === 'wifi' && <WiFiRadar wifiRadar={state.wifiRadar} />}
+                    {activeLeftTab === 'perovskite' && <PerovskiteLab perovskite={state.perovskite} />}
+                    {activeLeftTab === 'pineal' && <PinealLab pineal={state.pineal} />}
+                    {activeLeftTab === 'ibcBci' && <IbcBciLab ibcBci={state.ibcBci} />}
+                    {activeLeftTab === 'neuroStorm' && <NeuroStormLab neuroStorm={state.neuroStorm} />}
+                    {activeLeftTab === 'timeCrystal' && <TimeCrystalLab timeCrystal={state.timeCrystal} />}
+                    {activeLeftTab === 'resolution' && <NaturalResolutionLab resolution={state.resolution} />}
+                    {activeLeftTab === 'cosmology' && <CosmicSpectrumLab cosmology={state.cosmology} />}
+                    {activeLeftTab === 'photonic' && <PhotonicHebbianLab photonic={state.photonicHebbian} />}
+                    {activeLeftTab === 'neuroplasticity' && <NeuroplasticityLab neuroplasticity={state.neuroplasticity} />}
+                    {activeLeftTab === 'docIntel' && <DocumentIntelligenceLab docIntel={state.documentIntelligence} />}
+                    {activeLeftTab === 'biocentrism' && <BiocentrismLab biocentrism={state.biocentrism} satoshi={state.metrics.satoshi} />}
+                    {activeLeftTab === 'web3' && <Web3Lab web3={state.web3} />}
+                    {activeLeftTab === 'astrocyte' && <AstrocyteLab astrocyte={state.astrocyte} />}
+                    {activeLeftTab === 'memory' && <MemoryVisualizer memory={state.memory} />}
+                    {activeLeftTab === 'consensus' && <ConsensusEngine consensus={state.consensus} />}
+                    {activeLeftTab === 'heatmap' && <HeatMirror heatmap={state.heatmap} entities={state.consensus?.entities || []} />}
+                    {activeLeftTab === 'syzygy' && <SyzygyNexus syzygy={state.syzygy} />}
+                    {activeLeftTab === 'vectors' && <VectorAlgebraLab vectorSpace={state.vectorSpace} />}
+                    {activeLeftTab === 'topology' && <TopologicalInsulator topology={state.topology} />}
+                    {activeLeftTab === 'api' && <ArkheApiGateway api={state.arkheApi} />}
+                    {activeLeftTab === 'gravity' && <QuantumGravityLab quantumGravity={state.quantumGravity} />}
+                    {activeLeftTab === 'neural' && <NeuralCompositionality compositionality={state.neuralCompositionality} />}
+                    {activeLeftTab === 'unix' && <ArkheUnixConsole arkheUnix={state.arkheUnix} />}
+                    {activeLeftTab === 'light' && <LightPatternThesis lightPattern={state.lightPattern} />}
+                    {activeLeftTab === 'markdown' && <MarkdownProtocol compression={state.compression} />}
+                    {activeLeftTab === 'orch' && <OrchOrIntegration orchOr={state.orchOr} />}
+                    {activeLeftTab === 'scar' && <ScarElastography scar={state.scar} />}
                 </div>
             </div>
 
-            {/* RIGHT: Operations & Data - 6 Cols */}
-            <div className="col-span-12 lg:col-span-6 flex flex-col gap-6 h-full min-h-0 overflow-hidden">
-                
-                {/* 1. Quantum Network - Replaces previous active block */}
-                <div className="flex-1 min-h-[250px] shrink-0">
+            {/* CENTER: Arch (Compact) - 3 Cols */}
+            <div className="col-span-12 lg:col-span-3 flex flex-col gap-6">
+                <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 flex items-center justify-center shrink-0">
+                    <ArchVisualization stones={state.stones} curvature={state.metrics.curvature} />
+                </div>
+                <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-4 overflow-hidden relative">
                     <QuantumNetwork quantum={state.quantum} />
                 </div>
-
-                {/* 2. Lower Split: Arch & Terminal */}
-                <div className="h-64 flex gap-6 shrink-0">
-                     <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-2 overflow-hidden">
-                         <ArchVisualization stones={state.stones} curvature={state.metrics.curvature || 0} />
-                     </div>
-                     <div className="flex-1 overflow-hidden">
-                         <Terminal logs={logs} />
-                     </div>
-                </div>
-
             </div>
-        </div>
 
+            {/* RIGHT: Terminal & Logs - 3 Cols */}
+            <div className="col-span-12 lg:col-span-3 h-full flex flex-col gap-6 min-h-[500px]">
+                <div className="flex-1">
+                    <Terminal logs={logs} />
+                </div>
+                
+                {/* Status Footer */}
+                <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 text-[10px] font-mono text-slate-500">
+                    <div className="flex justify-between mb-1">
+                        <span>ARKHE_PID: {state.arkheUnix?.processes?.[0]?.pid || 1}</span>
+                        <span className="text-emerald-400 font-bold">ONLINE</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span>MEMORY_USAGE: 4.2GB</span>
+                        <span>LATENCY: 12ms</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
       </main>
     </div>
   );

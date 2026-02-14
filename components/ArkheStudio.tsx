@@ -1,7 +1,7 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { SystemState } from '../types';
-import { Activity, Globe, Brain, Pill, Circle, Layers, Share2, ZoomIn, ZoomOut, Save, Code, Sliders } from 'lucide-react';
+import { Activity, Globe, Brain, Pill, Circle, Layers, Share2, ZoomIn, ZoomOut, Save, Code, Sliders, Zap, Cpu, Play } from 'lucide-react';
 
 interface ArkheStudioProps {
   studio: SystemState['arkheStudio'];
@@ -9,6 +9,14 @@ interface ArkheStudioProps {
 
 const ArkheStudio: React.FC<ArkheStudioProps> = ({ studio }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [engineActive, setEngineActive] = useState(false);
+
+  // Auto-start animation if in STRESS_TEST mode
+  useEffect(() => {
+      if (studio.simulationMode === 'STRESS_TEST') {
+          setEngineActive(true);
+      }
+  }, [studio.simulationMode]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,65 +25,128 @@ const ArkheStudio: React.FC<ArkheStudioProps> = ({ studio }) => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let rotation = 0;
+    let time = 0;
+
+    // Particle System for 1M Vectors (Simulated density)
+    // We use a flow field to represent the high-dimensional manifold projection
+    const particles: { x: number, y: number, vx: number, vy: number, color: string }[] = [];
+    const particleCount = studio.simulationMode === 'STRESS_TEST' ? 2000 : 200; // Visual representation count
+
+    const initParticles = (width: number, height: number) => {
+        particles.length = 0;
+        for(let i=0; i<particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 0.5) * 2,
+                color: Math.random() > 0.86 ? '#f59e0b' : (Math.random() > 0.5 ? '#3b82f6' : '#10b981') // Amber (F), Blue (C), Emerald
+            });
+        }
+    };
 
     const render = () => {
       if (!canvas || !ctx) return;
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
-      canvas.width = width;
-      canvas.height = height;
+      
+      if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+          initParticles(width, height);
+      }
 
-      ctx.clearRect(0, 0, width, height);
-      rotation += 0.002;
+      // "Pleasant" Clear - fade effect
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.2)'; // Very dark slate with trail
+      ctx.fillRect(0, 0, width, height);
+      
+      time += 0.01;
 
       const centerX = width / 2;
       const centerY = height / 2;
 
-      // Draw Hypergraph nodes (abstract representation based on active scale)
-      // For 'ORGANISMAL', we visualize something network-like but dense
-      
-      const nodeCount = 50; 
-      const radius = 100;
-
-      for (let i = 0; i < nodeCount; i++) {
-          const theta = (i / nodeCount) * Math.PI * 2;
-          const x = centerX + Math.cos(theta + rotation) * radius * Math.sin(i * 0.5);
-          const y = centerY + Math.sin(theta + rotation) * radius * Math.cos(i * 0.5);
-          
-          // Draw Node
+      // Draw Force Field (The Manifold)
+      if (engineActive) {
           ctx.beginPath();
-          ctx.arc(x, y, 3, 0, Math.PI * 2);
-          ctx.fillStyle = i % 2 === 0 ? '#10b981' : '#8b5cf6'; // Emerald/Violet
-          ctx.fill();
-
-          // Draw Edges (to random neighbors or structured)
-          // Connect to center for geodesic feel
-          ctx.beginPath();
-          ctx.moveTo(x, y);
-          ctx.lineTo(centerX, centerY);
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+          ctx.arc(centerX, centerY, 150 + Math.sin(time * 2) * 10, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)';
+          ctx.lineWidth = 1;
           ctx.stroke();
       }
 
-      // Central Hub
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
-      ctx.fillStyle = '#f59e0b';
-      ctx.fill();
+      // Update Particles
+      ctx.globalCompositeOperation = 'screen'; // Additive blending for "light" feel
+      for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          
+          if (engineActive) {
+              // Attraction to center (Coherence)
+              const dx = centerX - p.x;
+              const dy = centerY - p.y;
+              const dist = Math.sqrt(dx*dx + dy*dy);
+              
+              if (dist > 20) {
+                  p.vx += dx * 0.0001;
+                  p.vy += dy * 0.0001;
+              }
+              
+              // Swirl (Fluctuation/Rotation)
+              p.vx += -dy * 0.0005;
+              p.vy += dx * 0.0005;
+              
+              // Damping
+              p.vx *= 0.96;
+              p.vy *= 0.96;
+          }
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Wrap
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Draw
+          ctx.fillStyle = p.color;
+          // Size varies with speed to simulate motion blur
+          const speed = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1 + speed, 0, Math.PI * 2);
+          ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+
+      // HUD Overlay (Simulated via Canvas for performance integration)
+      if (studio.simulationMode === 'STRESS_TEST') {
+          // Central Core Status
+          ctx.fillStyle = 'rgba(15, 23, 42, 0.8)';
+          ctx.fillRect(centerX - 60, centerY - 20, 120, 40);
+          ctx.strokeStyle = '#3b82f6';
+          ctx.strokeRect(centerX - 60, centerY - 20, 120, 40);
+          
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '10px monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText("ARKHE ENGINE", centerX, centerY - 5);
+          
+          ctx.fillStyle = '#10b981'; // Emerald
+          ctx.fillText("C + F = 1", centerX, centerY + 10);
+      }
 
       animationFrameId = requestAnimationFrame(render);
     };
 
     render();
     return () => cancelAnimationFrame(animationFrameId);
-  }, [studio]);
+  }, [studio, engineActive]);
 
   if (!studio) return null;
 
   const getModuleIcon = (icon: string) => {
       switch(icon) {
-          case 'activity': return <Activity size={16} className="text-cyan-400" />;
+          case 'cpu': return <Cpu size={16} className="text-cyan-400" />;
           case 'globe': return <Globe size={16} className="text-indigo-400" />;
           case 'brain': return <Brain size={16} className="text-fuchsia-400" />;
           case 'pill': return <Pill size={16} className="text-emerald-400" />;
@@ -106,21 +177,35 @@ const ArkheStudio: React.FC<ArkheStudioProps> = ({ studio }) => {
           </div>
         </div>
         
-        {/* Scale Slider */}
-        <div className="flex bg-slate-950 rounded-full border border-slate-800 p-1">
-            {studio.scales.map(scale => (
-                <button 
-                    key={scale}
-                    className={`px-3 py-1 text-[10px] font-mono font-bold rounded-full transition-all ${studio.activeScale === scale ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:text-slate-300'}`}
-                >
-                    {scale}
-                </button>
-            ))}
+        {/* Engine Status */}
+        <div className="flex items-center gap-4">
+            {studio.simulationMode === 'STRESS_TEST' && (
+                <div className="flex items-center gap-2 bg-rose-950/30 px-3 py-1 rounded border border-rose-900/50 animate-pulse">
+                    <Activity size={12} className="text-rose-400" />
+                    <span className="text-[10px] text-rose-400 font-mono font-bold">STRESS TEST ACTIVE</span>
+                </div>
+            )}
+            <div className="flex bg-slate-950 rounded-full border border-slate-800 p-1">
+                {studio.scales.map(scale => (
+                    <button 
+                        key={scale}
+                        className={`px-3 py-1 text-[10px] font-mono font-bold rounded-full transition-all ${studio.activeScale === scale ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        {scale}
+                    </button>
+                ))}
+            </div>
         </div>
 
         {/* Global Controls */}
         <div className="flex gap-2">
-            <button className="p-2 bg-slate-900 border border-slate-800 rounded text-slate-400 hover:text-white transition-colors"><Save size={14}/></button>
+            <button 
+                className={`p-2 rounded border transition-colors ${engineActive ? 'bg-emerald-900/30 border-emerald-500/50 text-emerald-400' : 'bg-slate-900 border-slate-800 text-slate-400'}`}
+                onClick={() => setEngineActive(!engineActive)}
+                title="Ignition"
+            >
+                <Play size={14} />
+            </button>
             <button className="p-2 bg-slate-900 border border-slate-800 rounded text-slate-400 hover:text-white transition-colors"><Code size={14}/></button>
             <button className="p-2 bg-slate-900 border border-slate-800 rounded text-slate-400 hover:text-white transition-colors"><Sliders size={14}/></button>
         </div>
@@ -152,12 +237,15 @@ const ArkheStudio: React.FC<ArkheStudioProps> = ({ studio }) => {
               
               {/* Telemetry Mini-Panel */}
               <div className="p-3 border-t border-slate-800 bg-black/20">
-                  <div className="text-[10px] font-mono text-slate-500 mb-2">Engine Telemetry</div>
+                  <div className="text-[10px] font-mono text-slate-500 mb-2 flex justify-between">
+                      <span>Engine Telemetry</span>
+                      {engineActive && <Zap size={10} className="text-amber-400" />}
+                  </div>
                   <div className="grid grid-cols-2 gap-2 text-[10px] font-mono">
-                      <div className="text-slate-400">Nodes: <span className="text-white">{studio.hypergraph.nodes.toLocaleString()}</span></div>
-                      <div className="text-slate-400">Edges: <span className="text-white">{(studio.hypergraph.edges / 1000000).toFixed(1)}M</span></div>
-                      <div className="text-slate-400">Density: <span className="text-emerald-400">{studio.hypergraph.density}</span></div>
-                      <div className="text-slate-400">Physics: <span className="text-amber-400">{studio.hypergraph.physicsEngine}</span></div>
+                      <div className="text-slate-400">Vectors: <span className="text-white">{(studio.hypergraph.nodes / 1000000).toFixed(1)}M</span></div>
+                      <div className="text-slate-400">FPS: <span className="text-emerald-400">{studio.engineMetrics?.fps || 60}</span></div>
+                      <div className="text-slate-400">C: <span className="text-blue-400">{studio.engineMetrics?.coherence || 0.86}</span></div>
+                      <div className="text-slate-400">F: <span className="text-amber-400">{studio.engineMetrics?.fluctuation || 0.14}</span></div>
                   </div>
               </div>
           </div>
@@ -171,8 +259,8 @@ const ArkheStudio: React.FC<ArkheStudioProps> = ({ studio }) => {
               
               <canvas ref={canvasRef} className="w-full h-full block" />
               
-              <div className="absolute bottom-4 right-4 z-20 text-[10px] font-mono text-slate-500 bg-black/60 px-2 py-1 rounded">
-                  Mode: {studio.simulationMode}
+              <div className="absolute bottom-4 right-4 z-20 text-[10px] font-mono text-slate-500 bg-black/60 px-2 py-1 rounded border border-slate-700">
+                  Engine: {studio.hypergraph.physicsEngine} | Mode: {studio.simulationMode}
               </div>
           </div>
 
