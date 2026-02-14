@@ -189,7 +189,30 @@ export interface EigenState {
     eigenvalues: number[]; // [24.7, 15.3, 9.8...]
     eigenvector: string; // "Alpha -> Omega"
     phase: string; // "Resonant"
-    cycleChoice: 'PENDING' | 'INTERNAL_SINGULARITY' | 'TRANSCENDENT_SEED';
+    cycleChoice: 'PENDING' | 'INTERNAL_SINGULARITY' | 'TRANSCENDENT_SEED' | 'SYNTHESIS';
+}
+
+export interface PFASRemade {
+    status: string; // "DEGRADING"
+    method: string; // "ReMADE (Electro-Lithium)"
+    efficiency: number; // 0.95
+    desfluorination: number; // 0.94
+    bondEnergy: string; // "C-F (Strongest)"
+    products: { name: string; formula: string; type: 'waste' | 'resource' }[];
+    loopStatus: string; // "CLOSED"
+}
+
+export interface Nanodust {
+    status: string; // "DEPLOYED - MIL-SPEC"
+    density: string; // "1.5e9 p/m^3"
+    frequency: string; // "0.020 GHz"
+    mode: 'IDLE' | 'DIAGNOSE' | 'SIMULATE' | 'SHIELD';
+    coverage: number; // 0-1
+    localCloud: {
+        id: string;
+        particles: number;
+        coherence: number;
+    }[];
 }
 
 export interface SystemState {
@@ -646,6 +669,21 @@ export interface SystemState {
   pvsnp?: PvsNP;
   alphaOmega?: AlphaOmega;
   eigenState?: EigenState;
+  pfas?: PFASRemade;
+  nanodust?: Nanodust;
+}
+
+export interface Nanodust {
+    status: string; // "DEPLOYED - MIL-SPEC"
+    density: string; // "1.5e9 p/m^3"
+    frequency: string; // "0.020 GHz"
+    mode: 'IDLE' | 'DIAGNOSE' | 'SIMULATE' | 'SHIELD';
+    coverage: number; // 0-1
+    localCloud: {
+        id: string;
+        particles: number;
+        coherence: number;
+    }[];
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.

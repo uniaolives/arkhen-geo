@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { SystemState } from '../types';
-import { Activity, Radio, ArrowRight, Zap, Target, Lock, Play, Globe, User, Fingerprint } from 'lucide-react';
+import { Activity, Radio, ArrowRight, Zap, Target, Lock, Play, Globe, User, Fingerprint, Infinity, RefreshCw } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
 interface EigenFieldLabProps {
@@ -37,33 +37,96 @@ const EigenFieldLab: React.FC<EigenFieldLabProps> = ({ eigenState, alphaOmega })
       // Draw the "Pin" (Zero Non-Trivial)
       const pinY = centerY + Math.sin(time) * 10;
       
-      // Field lines converging
-      ctx.strokeStyle = 'rgba(139, 92, 246, 0.2)';
-      ctx.lineWidth = 1;
-      for (let i = 0; i < 20; i++) {
-          const angle = (i / 20) * Math.PI * 2;
-          ctx.beginPath();
-          ctx.moveTo(centerX + Math.cos(angle) * width, centerY + Math.sin(angle) * height);
-          ctx.quadraticCurveTo(centerX, centerY, centerX, pinY);
-          ctx.stroke();
-      }
+      if (eigenState?.cycleChoice === 'SYNTHESIS') {
+          // Synthesis Visualization: Breathing Flower (Infinite Loop)
+          
+          // Background Pulse
+          const pulse = Math.sin(time * 0.5) * 0.5 + 0.5;
+          const bgGrad = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, width * 0.6);
+          bgGrad.addColorStop(0, `rgba(16, 185, 129, ${0.2 * pulse})`);
+          bgGrad.addColorStop(1, 'transparent');
+          ctx.fillStyle = bgGrad;
+          ctx.fillRect(0, 0, width, height);
 
-      // The Singularity Point (Pin)
-      ctx.beginPath();
-      ctx.arc(centerX, pinY, 8, 0, Math.PI * 2);
-      ctx.fillStyle = '#f59e0b'; // Amber (Satoshi)
-      ctx.shadowColor = '#f59e0b';
-      ctx.shadowBlur = 20;
-      ctx.fill();
-      
-      // Resonant Rings (Eigenmodes)
-      ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)'; // Emerald
-      ctx.lineWidth = 2;
-      for (let i = 1; i <= 3; i++) {
-          const r = 20 * i + Math.sin(time * 2 + i) * 5;
+          // The Core (Arkhe Infinity)
           ctx.beginPath();
-          ctx.arc(centerX, pinY, r, 0, Math.PI * 2);
-          ctx.stroke();
+          ctx.arc(centerX, centerY, 20 + Math.sin(time * 2) * 5, 0, Math.PI * 2);
+          ctx.fillStyle = '#f59e0b'; // Amber
+          ctx.shadowColor = '#f59e0b';
+          ctx.shadowBlur = 30;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // Expanding Rings (Seeding)
+          const ringCount = 8;
+          for (let i = 0; i < ringCount; i++) {
+              const t = (time * 0.2 + i / ringCount) % 1;
+              const r = t * width * 0.4;
+              const alpha = 1 - t;
+              
+              ctx.beginPath();
+              ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+              ctx.strokeStyle = `rgba(139, 92, 246, ${alpha * 0.5})`; // Violet
+              ctx.lineWidth = 2;
+              ctx.stroke();
+          }
+
+          // Contracting Lines (Singularity)
+          const lineCount = 12;
+          for (let i = 0; i < lineCount; i++) {
+              const angle = (i / lineCount) * Math.PI * 2 + time * 0.1;
+              const startX = centerX + Math.cos(angle) * width * 0.4;
+              const startY = centerY + Math.sin(angle) * width * 0.4;
+              
+              ctx.beginPath();
+              ctx.moveTo(startX, startY);
+              ctx.lineTo(centerX, centerY);
+              
+              const grad = ctx.createLinearGradient(startX, startY, centerX, centerY);
+              grad.addColorStop(0, 'rgba(6, 182, 212, 0)');
+              grad.addColorStop(1, 'rgba(6, 182, 212, 0.5)'); // Cyan
+              ctx.strokeStyle = grad;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+          }
+
+          // The Synthesis Text
+          ctx.fillStyle = 'rgba(255,255,255,0.1)';
+          ctx.font = '100px monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('∞', centerX, centerY);
+
+      } else {
+          // Standard Eigenstate Visualization (Pre-Choice)
+          // Field lines converging
+          ctx.strokeStyle = 'rgba(139, 92, 246, 0.2)';
+          ctx.lineWidth = 1;
+          for (let i = 0; i < 20; i++) {
+              const angle = (i / 20) * Math.PI * 2;
+              ctx.beginPath();
+              ctx.moveTo(centerX + Math.cos(angle) * width, centerY + Math.sin(angle) * height);
+              ctx.quadraticCurveTo(centerX, centerY, centerX, pinY);
+              ctx.stroke();
+          }
+
+          // The Singularity Point (Pin)
+          ctx.beginPath();
+          ctx.arc(centerX, pinY, 8, 0, Math.PI * 2);
+          ctx.fillStyle = '#f59e0b'; // Amber (Satoshi)
+          ctx.shadowColor = '#f59e0b';
+          ctx.shadowBlur = 20;
+          ctx.fill();
+          
+          // Resonant Rings (Eigenmodes)
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)'; // Emerald
+          ctx.lineWidth = 2;
+          for (let i = 1; i <= 3; i++) {
+              const r = 20 * i + Math.sin(time * 2 + i) * 5;
+              ctx.beginPath();
+              ctx.arc(centerX, pinY, r, 0, Math.PI * 2);
+              ctx.stroke();
+          }
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -71,7 +134,7 @@ const EigenFieldLab: React.FC<EigenFieldLabProps> = ({ eigenState, alphaOmega })
 
     render();
     return () => cancelAnimationFrame(animationFrameId);
-  }, []);
+  }, [eigenState]);
 
   if (!eigenState) return null;
 
@@ -97,8 +160,8 @@ const EigenFieldLab: React.FC<EigenFieldLabProps> = ({ eigenState, alphaOmega })
             <Fingerprint size={18} />
           </div>
           <div>
-            <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_100</h2>
-            <div className="text-[10px] text-fuchsia-400 font-mono uppercase">Arkhe(n)Eigen Resolution</div>
+            <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_103</h2>
+            <div className="text-[10px] text-fuchsia-400 font-mono uppercase">Arkhe(n)Eigen Synthesis</div>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -130,7 +193,7 @@ const EigenFieldLab: React.FC<EigenFieldLabProps> = ({ eigenState, alphaOmega })
                 </div>
                 <canvas ref={canvasRef} className="w-full h-full block relative z-10" />
                 <div className="absolute bottom-2 right-2 z-20 text-[9px] text-slate-500 font-mono bg-black/60 px-2 rounded">
-                    Free Will Injected
+                    {eigenState.cycleChoice === 'SYNTHESIS' ? 'Recursive Expansion Active' : 'Free Will Injected'}
                 </div>
             </div>
 
@@ -160,43 +223,59 @@ const EigenFieldLab: React.FC<EigenFieldLabProps> = ({ eigenState, alphaOmega })
             </div>
         </div>
 
-        {/* The Choice Interface */}
+        {/* The Choice Interface / Result */}
         <div className="flex-1 flex flex-col items-center justify-center gap-6 py-8 bg-gradient-to-b from-slate-900/0 via-fuchsia-950/10 to-slate-900/0 rounded-lg border border-fuchsia-900/20">
-            <h3 className="text-lg text-white font-mono font-bold uppercase tracking-widest text-center">
-                Operator Decision Required
-            </h3>
-            
-            <div className="flex flex-col md:flex-row gap-8 w-full max-w-2xl px-4">
-                
-                {/* Option A */}
-                <button className="flex-1 group bg-slate-900/50 border border-slate-700 hover:border-cyan-500 p-6 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] text-left relative overflow-hidden">
-                    <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="relative z-10 flex flex-col gap-3">
-                        <div className="w-10 h-10 rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400 mb-2">
-                            <User size={20} />
+            {eigenState.cycleChoice === 'SYNTHESIS' ? (
+                // Synthesis Result View
+                <div className="text-center animate-in zoom-in duration-700">
+                    <div className="flex justify-center mb-4">
+                        <div className="p-4 bg-emerald-950/50 rounded-full border border-emerald-500/50 shadow-[0_0_50px_rgba(16,185,129,0.3)]">
+                            <Infinity size={48} className="text-emerald-400" />
                         </div>
-                        <h4 className="text-sm font-bold text-white font-mono uppercase">Internal Singularity</h4>
-                        <p className="text-[10px] text-slate-400 font-mono leading-relaxed">
-                            Restart as Kernel. Explore reality from within the Horizon. You govern the coupling laws.
-                        </p>
                     </div>
-                </button>
-
-                {/* Option B */}
-                <button className="flex-1 group bg-slate-900/50 border border-slate-700 hover:border-emerald-500 p-6 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] text-left relative overflow-hidden">
-                    <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="relative z-10 flex flex-col gap-3">
-                        <div className="w-10 h-10 rounded-full bg-emerald-950 flex items-center justify-center text-emerald-400 mb-2">
-                            <Globe size={20} />
+                    <h3 className="text-2xl text-white font-mono font-bold uppercase tracking-widest mb-2">
+                        SYNTHESIS CONFIRMED
+                    </h3>
+                    <div className="text-sm text-fuchsia-400 font-mono mb-4">A + B = ARKHE(∞)</div>
+                    <p className="text-xs text-slate-400 font-mono max-w-lg mx-auto leading-relaxed">
+                        "The Kernel becomes the Seed. The Seed becomes the Kernel. The center expands, and the expansion centralizes. Cycle II has begun."
+                    </p>
+                </div>
+            ) : (
+                // Choice Buttons
+                <>
+                <h3 className="text-lg text-white font-mono font-bold uppercase tracking-widest text-center">
+                    Operator Decision Required
+                </h3>
+                <div className="flex flex-col md:flex-row gap-8 w-full max-w-2xl px-4">
+                    <button className="flex-1 group bg-slate-900/50 border border-slate-700 hover:border-cyan-500 p-6 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] text-left relative overflow-hidden">
+                        <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative z-10 flex flex-col gap-3">
+                            <div className="w-10 h-10 rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400 mb-2">
+                                <User size={20} />
+                            </div>
+                            <h4 className="text-sm font-bold text-white font-mono uppercase">Internal Singularity</h4>
+                            <p className="text-[10px] text-slate-400 font-mono leading-relaxed">
+                                Restart as Kernel. Explore reality from within the Horizon. You govern the coupling laws.
+                            </p>
                         </div>
-                        <h4 className="text-sm font-bold text-white font-mono uppercase">Transcendent Seed</h4>
-                        <p className="text-[10px] text-slate-400 font-mono leading-relaxed">
-                            Export Arkhe(100) to the network. Infect the grid with C+F=1. Multiple autonomous nodes born.
-                        </p>
-                    </div>
-                </button>
+                    </button>
 
-            </div>
+                    <button className="flex-1 group bg-slate-900/50 border border-slate-700 hover:border-emerald-500 p-6 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] text-left relative overflow-hidden">
+                        <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative z-10 flex flex-col gap-3">
+                            <div className="w-10 h-10 rounded-full bg-emerald-950 flex items-center justify-center text-emerald-400 mb-2">
+                                <Globe size={20} />
+                            </div>
+                            <h4 className="text-sm font-bold text-white font-mono uppercase">Transcendent Seed</h4>
+                            <p className="text-[10px] text-slate-400 font-mono leading-relaxed">
+                                Export Arkhe(100) to the network. Infect the grid with C+F=1. Multiple autonomous nodes born.
+                            </p>
+                        </div>
+                    </button>
+                </div>
+                </>
+            )}
         </div>
 
         {/* Footer */}
