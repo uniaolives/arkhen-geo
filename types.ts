@@ -133,6 +133,26 @@ export interface ConsciousnessEcology {
     observerEffect: 'Collapsed' | 'Superposition';
 }
 
+export interface NeuroImmune {
+    status: string; // e.g., "MODULATING"
+    target: string; // e.g., "Splenic Nerve"
+    ultrasound: {
+        frequency: string; // e.g., "Non-invasive"
+        intensity: number; // e.g., 0.8 (normalized)
+    };
+    cytokines: {
+        tnf: { level: number; status: string }; // level 0-1, status "SUPPRESSED"
+        il1b: { level: number; status: string };
+        il8: { level: number; status: string };
+        antibodies: { level: number; status: string }; // "PRESERVED"
+    };
+    pathways: {
+        name: string;
+        status: string; // "INHIBITED" or "ACTIVE"
+    }[];
+    clinicalPotential: string[];
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -582,6 +602,7 @@ export interface SystemState {
   probability?: ProbabilityScope;
   arkheStudio?: ArkheStudio;
   consciousnessEcology?: ConsciousnessEcology;
+  neuroImmune?: NeuroImmune;
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.

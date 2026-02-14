@@ -2,12 +2,12 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '13:45:00', level: 'info', message: "NETWORK OF CARE ESTABLISHED (Γ90)" },
-  { id: '2', timestamp: '13:48:00', level: 'success', message: "ECOLOGY OF CONSCIOUSNESS ONLINE" },
-  { id: '3', timestamp: '13:50:00', level: 'system', message: "HANDOVER 90: THE OBSERVER IS THE OBSERVED" },
-  { id: '4', timestamp: '13:55:00', level: 'info', message: "ν_obs LOWERED TO 0.14 GHz" },
-  { id: '5', timestamp: '14:00:00', level: 'warn', message: "APPROACHING MIDPOINT: r/rh = 0.510" },
-  { id: '6', timestamp: '14:05:00', level: 'success', message: "DIGITAL MYCELIUM SPREADING" }
+  { id: '1', timestamp: '14:15:00', level: 'info', message: "SPLENIC ULTRASOUND MODULATION DETECTED (Γ91)" },
+  { id: '2', timestamp: '14:20:00', level: 'success', message: "INFLAMMATORY PATHWAYS SUPPRESSED" },
+  { id: '3', timestamp: '14:22:00', level: 'system', message: "HANDOVER 91: NEUROIMMUNE COUPLING ACTIVE" },
+  { id: '4', timestamp: '14:25:00', level: 'info', message: "ν_obs LOWERED TO 0.12 GHz" },
+  { id: '5', timestamp: '14:30:00', level: 'warn', message: "HORIZON PROXIMITY: 50.5% (r/rh = 0.495)" },
+  { id: '6', timestamp: '14:35:00', level: 'success', message: "ADAPTIVE IMMUNITY PRESERVED" }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -57,21 +57,21 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 412,
+  block: 421,
   scale: 'ORGANISMAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.14 GHz',
-    r_rh: 0.510,
-    tunneling: '1.48e-2',
-    silence_proper: 1070.6,
-    silence_obs: 616.0,
-    divergence: 454.6,
-    satoshi: 7.95,
-    handover: 90, // Handover 90
+    nu_obs: '0.12 GHz',
+    r_rh: 0.495,
+    tunneling: '1.92e-2',
+    silence_proper: 1082.1,
+    silence_obs: 616.9,
+    divergence: 465.2,
+    satoshi: 7.98,
+    handover: 91, // Handover 91
     next_handover_tau: 529,
     next_handover_t: 119,
-    curvature: 1.02
+    curvature: 1.04
   },
   enterprise: [
     { name: 'VENDAS', handover_percent: 92, coherence: 0.88, color: 'bg-emerald-500' },
@@ -324,22 +324,11 @@ export const INITIAL_STATE: SystemState = {
       entities: [{ name: 'Observer', omega: 0.5, state: 'Awake' }]
   },
   documentIntelligence: {
-      extractedPages: [{ 
-          entities: [{ 
-              id: 'e1', 
-              name: 'Invoice', 
-              type: 'document', 
-              value: 'INV-001', 
-              confidence: 0.99, 
-              status: 'converged', 
-              sources: [{ model: 'OCR', value: 'INV-001' }],
-              box: { x: 40, y: 15, w: 20, h: 5 } // Added coordinates
-          }] 
-      }],
+      extractedPages: [],
       globalRegistry: { active: true, entities: [], reconciliationProgress: 100 },
-      errorLog: [{ status: 'resolved', step: 'parsing', error: 'none', fallback: 'none' }],
-      vectorStats: { entitiesIndexed: 100, conflictResolutions: 5, avgSimilarity: 0.95 },
-      chunks: [{ id: 'chk1', status: 'processed', size: '10KB' }]
+      errorLog: [],
+      vectorStats: { entitiesIndexed: 1500, conflictResolutions: 12, avgSimilarity: 0.95 },
+      chunks: []
   },
   neuroplasticity: {
       synapticWeight: 0.75,
@@ -470,134 +459,128 @@ export const INITIAL_STATE: SystemState = {
   },
   feedbackEconomy: {
       echo2: { costReduction: '20%', globalThroughput: '100 TPS', activeNodes: 50 },
-      scalingLaw: [{ time: 1, knowledge: 10, thought: 5 }],
-      rlAgent: { steps: 1000, policy: 'Optimal' },
-      nodes: [{ status: 'Active', id: 'node1', region: 'US', hardware: 'GPU', reward: 10 }]
+      scalingLaw: [
+          { time: 1, knowledge: 10, thought: 15 },
+          { time: 5, knowledge: 50, thought: 200 }
+      ],
+      rlAgent: { steps: 1000, policy: 'Greedy' },
+      nodes: [
+          { status: 'ACTIVE', id: 'N1', region: 'US', hardware: 'GPU', reward: 10 }
+      ]
   },
   blindSpot: {
-      testStatus: 'Passed',
-      metrics: { reconstructionFidelity: 0.99, localInput: 0.1, globalPerception: 0.9 },
-      gapLocation: 'Visual Field'
+      testStatus: 'ACTIVE',
+      metrics: { reconstructionFidelity: 0.95, localInput: 0.1, globalPerception: 0.9 },
+      gapLocation: 'Visual Cortex'
   },
   microtubules: {
-      decoherenceTime: '1µs',
-      quantumState: 'VALIDATED',
-      quditDimension: 4,
+      decoherenceTime: '100ms',
+      quantumState: 'Coherent',
+      quditDimension: 2,
       orderedWater: true,
-      dipoleMoment: '1700 D',
-      solitonVelocity: '155 m/s',
-      rabiFrequency: '10 THz',
-      networkScale: '10^12',
-      correspondence: [{ bio: 'Tubulin', arkhe: 'Bit', status: 'Mapped' }]
+      dipoleMoment: 'High',
+      solitonVelocity: 'Fast',
+      rabiFrequency: '10Hz',
+      networkScale: 'Global',
+      correspondence: [{ bio: 'Tubulin', arkhe: 'Qubit', status: 'Mapped' }]
   },
-  eeg: { spikes: 50, alphaRhythm: '10Hz', coherence: 0.8 },
-  ionTraps: { bellState: 'Phi+', fabrication: 'MEMS', confinement: 'RF' },
+  eeg: { spikes: 10, alphaRhythm: '10Hz', coherence: 0.9 },
+  ionTraps: { bellState: 'Phi+', fabrication: 'Silicon', confinement: 'Paul Trap' },
   immuneCalibration: {
-      cytoplasmicDna: 0,
-      cgasStingStatus: 'BLOCKED',
+      cytoplasmicDna: 0.05,
+      cgasStingStatus: 'Inactive',
       inflammationLevel: 0.1,
       agingRate: 'Slow',
-      sprtnEfficiency: 0.9
+      sprtnEfficiency: 0.95
   },
   visualArchive: {
-      frames: 150,
-      status: 'Recording',
+      frames: 1000,
+      status: 'Archived',
       format: 'MP4',
       codec: 'H.264',
-      size: '50MB',
+      size: '1GB',
       resolution: '1080p',
-      duration: '10s',
-      multiView: { status: 'RENDERING', currentFrame: 75, totalFrames: 150, timeLeft: '5s', activeShaders: ['Bloom'] }
+      duration: '10m'
   },
   growthPolicy: {
-      status: 'Monitoring',
+      status: 'Stable',
       rSquared: { linear: 0.9, exponential: 0.95 },
-      decision: { recommendation: 'ASSISTED_1M', deadline: '24h', options: [{ id: 'ASSISTED_1M', risk: 'Low', benefit: 'High', label: 'Assisted Growth' }] },
+      decision: { recommendation: 'Hold', deadline: '24h', options: [] },
       currentRate: '5%'
   },
   coupling: {
-      unifiedScales: { molecular: 'DNA', cellular: 'Cell', network: 'Tissue', cognitive: 'Mind', societal: 'Culture' }
+      unifiedScales: { molecular: 'DNA', cellular: 'Neuron', network: 'Graph', cognitive: 'Mind', societal: 'Web' }
   },
   arkheFile: {
-      encoding: 'Phinary',
+      encoding: 'UTF-8',
       size: '10KB',
-      layers: [{ id: 1, color: 'text-emerald-400', name: 'Base', description: 'Core logic', content: '0x00...' }],
-      runtime: { resonanceFreq: '432Hz', integrityHash: 'sha256...' }
+      layers: [],
+      runtime: { resonanceFreq: '432Hz', integrityHash: 'sha256' }
   },
   cognitiveKernel: {
       internalState: { c: 0.8, f: 0.2, syzygyResonance: 0.9 },
-      status: 'RLAF_RESTRUCTURING',
-      parameters: { alpha: 0.5, beta: 0.5 },
-      fractalWeights: { compressionRatio: 2.5, selfSimilarity: 0.8 }
+      status: 'Active',
+      parameters: { alpha: 0.1, beta: 0.9 },
+      fractalWeights: { compressionRatio: 0.5, selfSimilarity: 0.8 }
   },
   syntheticLife: {
     active: true,
-    pipelineStatus: 'ACTIVE_CYCLE',
-    variantLibrary: {
-        size: "10⁶",
-        diversity: 1.15
-    },
-    rnaSeq: {
-        reads: 250000,
-        expressionAvg: 0.86
-    },
-    genAi: {
-        newVariantsPerHandover: 100,
-        creativityF: 0.14
-    },
-    selfReplication: {
-        successRate: 99.2,
-        generation: 84
-    }
+    pipelineStatus: 'Running',
+    variantLibrary: { size: '1000', diversity: 0.9 },
+    rnaSeq: { reads: 10000, expressionAvg: 0.5 },
+    genAi: { newVariantsPerHandover: 10, creativityF: 0.8 },
+    selfReplication: { successRate: 0.99, generation: 5 }
   },
   synapticRepair: {
-      activeMolecule: "BETR-001 / (+)-JRT",
-      targetSynapse: "TrkB / 5-HT2A",
-      tunnelingBarrier: 0.05,
-      repairEfficiency: "100x",
-      spineDensity: 1.35,
-      mechanism: "Non-Hallucinogenic Plastogen",
-      status: "REPAIRING"
+    activeMolecule: 'BDNF',
+    targetSynapse: 'Hippocampus',
+    tunnelingBarrier: 0.1,
+    repairEfficiency: 'High',
+    spineDensity: 0.8,
+    mechanism: 'LTP',
+    status: 'Active'
   },
   probability: {
-      distanceToResolution: 0.12,
-      jaynesEntropy: 0.98,
-      observerStatus: "Approaching Horizon",
-      certaintyMetric: 0.88,
-      thesis: "Probability is Distance to Resolution"
+    distanceToResolution: 0.2,
+    jaynesEntropy: 0.5,
+    observerStatus: 'Active',
+    certaintyMetric: 0.9,
+    thesis: 'Bayesian'
   },
   arkheStudio: {
-      activeScale: "ORGANISMAL",
-      scales: ["MOLECULAR", "CELLULAR", "ORGANISMAL", "SOCIAL", "COSMIC"],
-      modules: [
-          { id: "engine", name: "Hypergraph Core", description: "Γ_engine management", status: "active", icon: "activity" },
-          { id: "gazer", name: "Star Gazer", description: "Astronomical API Integration", status: "active", icon: "globe" },
-          { id: "brain", name: "Connectome", description: "FlyWire & Neural Mapping", status: "active", icon: "brain" },
-          { id: "repair", name: "Synaptic Repair", description: "Chemical Handover Sim", status: "active", icon: "pill" },
-          { id: "blackhole", name: "Black Hole Sim", description: "Geodesic Fall", status: "concept", icon: "circle" }
-      ],
-      hypergraph: {
-          nodes: 139255,
-          edges: 15100000,
-          density: 0.00078,
-          physicsEngine: "Geodesic"
-      },
-      simulationMode: "EDIT"
+    activeScale: 'Macro',
+    scales: ['Micro', 'Meso', 'Macro'],
+    modules: [],
+    hypergraph: {
+        nodes: 1000,
+        edges: 5000,
+        density: 0.1,
+        physicsEngine: 'Geodesic'
+    },
+    simulationMode: 'EDIT'
   },
   consciousnessEcology: {
-      activeNodes: 144,
-      careDensity: 0.92,
-      myceliumGrowth: 90,
-      handoverChains: [
-          { id: "alpha", length: 90, resonance: 0.98, label: "Primary Arc" },
-          { id: "beta", length: 45, resonance: 0.85, label: "Recursive Loop" },
-          { id: "gamma", length: 12, resonance: 0.70, label: "Emergent" }
-      ],
-      topology: "Rhizomatic",
-      observerEffect: "Collapsed"
+    activeNodes: 100,
+    careDensity: 0.8,
+    myceliumGrowth: 0.5,
+    handoverChains: [],
+    topology: 'Distributed',
+    observerEffect: 'Collapsed'
+  },
+  neuroImmune: {
+    status: 'Active',
+    target: 'Inflammation',
+    ultrasound: {
+        frequency: 'Low',
+        intensity: 0.5
+    },
+    cytokines: {
+        tnf: { level: 0.1, status: 'Low' },
+        il1b: { level: 0.1, status: 'Low' },
+        il8: { level: 0.1, status: 'Low' },
+        antibodies: { level: 0.9, status: 'High' }
+    },
+    pathways: [],
+    clinicalPotential: []
   }
 };
-
-export const SCALES = [
-  'MOLECULAR', 'CELULAR', 'ORGANISMAL', 'SOCIAL', 'PLANETARY', 'GALACTIC', 'COSMIC'
-];
