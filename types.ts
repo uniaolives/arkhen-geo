@@ -31,6 +31,13 @@ export interface SystemState {
       transitions: number;
     };
   };
+  omniversal?: {
+    active: boolean;
+    volumes: number;
+    formulas: number;
+    codes: number;
+    status: string;
+  };
   memory: {
     active: boolean;
     totalTraces: number;
