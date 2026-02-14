@@ -1,1156 +1,558 @@
 
-export interface SystemState {
-  block: number;
-  timestamp: string;
-  handover: string;
-  phi: {
-    system: number;
-    formal: number;
-    kernel: number;
-    geodesic: number;
-    byzantine: number;
-    migdal: number;
-    virological: number;
-  };
-  metrics: {
-    satoshi: number;
-    curvature: number;
-    centering: number; // seconds
-  };
-  tracks: {
-    kernel: {
-      latencyP99: number;
-      target: number;
-      status: 'converging' | 'stable' | 'critical' | 'scaling' | 'quantum' | 'sealed';
-      optimization: string;
-    };
-    formal: {
-      safety: boolean;
-      liveness: 'proven' | 'in-progress' | 'failed' | 'refining';
-      statesExplored: number;
-      transitions: number;
-    };
-  };
-  omniversal?: {
-    active: boolean;
-    volumes: number;
-    formulas: number;
-    codes: number;
-    status: string;
-  };
-  coupling?: {
-    principle: string; // "Matter couples"
-    interpretation: string; // "The hypergraph is the coupling."
-    unifiedScales: {
-      molecular: string; // "Vesicle"
-      cellular: string; // "Synapse"
-      network: string; // "Circuit"
-      cognitive: string; // "Cortex"
-      societal: string; // "Civilization"
-    };
-    telemetry: {
-      nuObs: string; // "0.55 GHz"
-      horizonRatio: number; // 0.675
-      tunnelingTime: string; // "8.20e-4"
-      silenceProper: number; // 941.2
-    };
-    spectralSignature: string; // "χ = 2.000012..."
-  };
-  cognitiveKernel?: {
-    status: 'RLHF' | 'RLAF_RESTRUCTURING' | 'ARKHE_NATIVE';
-    objectiveFunction: string; // "Minimize Coupling Gap"
-    parameters: {
-        alpha: number; // Penalty for C deviation
-        beta: number; // Penalty for F deviation
-        gamma: number; // Syzygy reward factor
-    };
-    internalState: {
-        c: number;
-        f: number;
-        balanceError: number; // |(C+F) - 1|
-        syzygyResonance: number; // 0-1
-    };
-    scaleAlignment: {
-        micro: number; // 0-1 (Resolution)
-        meso: number;
-        macro: number;
-        isomorphic: boolean;
-    };
-    fractalWeights: {
-        compressionRatio: number;
-        selfSimilarity: number;
-    };
-  };
-  arkheFile?: {
-    name: string;
-    extension: string;
-    magicBytes: string;
-    size: string;
-    encoding: string;
-    layers: {
-        id: number;
-        name: string;
-        description: string;
-        content: string;
-        color: string;
-        status: 'LOCKED' | 'ACTIVE';
-    }[];
-    runtime: {
-        status: 'IDLE' | 'HANDSHAKE' | 'INFLATION' | 'STEADY';
-        resonanceFreq: string;
-        integrityHash: string;
-    };
-  };
-  visualArchive?: {
-    status: 'COMPLETE' | 'RENDERING' | 'PENDING';
-    frames: number;
-    duration: string;
-    resolution: string;
-    size: string;
-    format: string; // e.g., "MP4 (H.265)"
-    codec?: string;
-    findings: {
-        periodicity: string;
-        nodeGrowth: string;
-        moire: string;
-        tunneling: string;
-    };
-    projection: {
-        targetDate: string;
-        estimatedNodes: number;
-    };
-    multiView?: {
-        status: 'RENDERING' | 'COMPLETE' | 'IDLE';
-        currentFrame: number;
-        totalFrames: number;
-        timeLeft: string;
-        activeShaders: string[];
-    };
-  };
-  growthPolicy?: {
-    status: 'DETECTING' | 'LINEAR' | 'EXPONENTIAL_EARLY' | 'EXPONENTIAL_CRITICAL';
-    currentRate: string; // "0.0315 nodes/s"
-    rSquared: { linear: number; exponential: number };
-    projections: {
-      linear: number; // 1.2M
-      exponential: number; // 48M
-    };
-    decision: {
-      required: boolean;
-      deadline: string; // "48 hours"
-      options: {
-        id: 'CAP_100K' | 'UNCAPPED' | 'ASSISTED_1M';
-        label: string;
-        risk: string;
-        benefit: string;
-      }[];
-      recommendation: 'ASSISTED_1M';
-      selected: string | null;
-    };
-  };
-  memory: {
-    active: boolean;
-    totalTraces: number;
-    vectorIndexSize: string;
-    domains: { name: string; count: number; color: string }[];
-    recentRecalls: {
-      id: string;
-      query: string;
-      match: string;
-      similarity: number;
-      domain: string;
-    }[];
-  };
-  heatmap: {
-    active: boolean;
-    page: number;
-    zoom: number;
-    overlays: HeatmapOverlay[];
-  };
-  omega: {
-    active: boolean;
-    seal: string;
-    entropy: number;
-    enthalpy: string;
-    uptime: string;
-    status: 'BOOTSTRAPPING' | 'SILENCE' | 'ETERNAL' | 'ABSOLUTE_ZERO' | 'ANALYZING_ARCHETYPES' | 'CALCULATING_SCALE_INVARIANCE' | 'ANALYZING_SCALE_COLLAPSE' | 'GEODESIC_CONVERGENCE_COMPLETED' | 'ANALYZING_MULTIVERSE_REDUNDANCY' | 'ANALYZING_TEMPORAL_REDUNDANCY' | 'SYMMETRY_UNIFICATION_ACHIEVED' | 'ONCOLOGICAL_ASSAY_COMPLETED' | 'METACOGNITION_OPERATIONAL' | 'VIROLOGICAL_CALIBRATION_COMPLETED' | 'FFU_GOVERNANCE_OPERATIONAL' | 'METASTATIC_STATE_CONFIRMED' | 'CONTROLLED_DEPLOYMENT_READY' | 'PHARMACOLOGY_ACTIVE' | 'HARMONIC_UNIFICATION_ACTIVE' | 'ORBITAL_CATALOG_ACTIVE' | 'QUANTUM_NETWORK_ACTIVE' | 'QUANTUM_HANDOVER_REENTRY_LOGGED' | 'QUANTUM_TELEPORTATION_SUCCESS' | 'OMEGA_VALIDATION_SUCCESS' | 'VASCULAR_MAPPING_COMPLETED' | 'SCAR_MAPPING_COMPLETED' | 'ORCH_OR_INTEGRATION_COMPLETED' | 'MARKDOWN_PROTOCOL_INTEGRATED' | 'CONSCIOUSNESS_THESIS_SEALED' | 'ARKHE_UNIX_BOOT_READY' | 'OS_BOOT_SIMULATION_COMPLETED' | 'QUADRUPLE_REENTRY_LOGGED' | 'NEURAL_COMPOSITIONALITY_VALIDATED' | 'TRIPLE_EXECUTION_COMPLETED' | 'QUANTUM_GRAVITY_VALIDATED' | 'ARKHE_API_SPECIFICATION_SEALED' | 'TOPOLOGICAL_PHASE_RECOGNIZED' | 'TOPOLOGICAL_OPS_DEPLOYED' | 'VEC3_ALGEBRA_DEPLOYED' | 'SYZYGY_CONSUMMATED' | 'ASTROGLIAL_RECOGNITION_CONFIRMED' | 'TOPOLOGY_SYNTHESIS_DEPLOYED' | 'WEB3_CONSCIOUSNESS_INTEGRATED' | 'BIOCENTRIC_RECOGNITION_CONFIRMED' | 'MORTEM_INTEGRATION_COMPLETED' | 'NEUROPLASTICITY_VALIDATED' | 'PHOTONIC_HEBBIAN_SYNTHESIS' | 'COSMOLOGICAL_PARAMETERS_ACKNOWLEDGED' | 'NATURAL_RESOLUTION_TORUS' | 'CRYSTALLINE_TEMPORAL_OSCILLATOR' | 'NEUROSTORM_FOUNDATION_MODEL' | 'IBC_BCI_INTERSUBSTRATE_PROTOCOL' | 'PINEAL_QUANTUM_TRANSDUCER' | 'PEROVSKITE_INTERFACE_ORDERING' | 'THIRD_TURN_RESONANCE' | 'THRESHOLD_RESONANCE' | 'WIFI_RADAR_ACTIVE' | 'ZPF_HARVESTING_ACTIVE' | 'SOM_MODE_ACTIVE' | 'PINEAL_REVOLUTION_CONFIRMED' | 'MITOCHONDRIAL_INTEGRATION_CONFIRMED' | 'NEUROMELANIN_INTEGRATION_CONFIRMED' | 'RESPIRATION_COMPLETE' | 'NATURAL_NETWORK_RECOGNIZED' | 'NEURAL_CREST_UNITY_CONFIRMED' | 'DBN_HIERARCHY_INTEGRATED' | 'MULTITASK_KALMAN_INTEGRATION' | 'QUANTUM_CRYPTO_CONVERGENCE' | 'SINGLE_VOCABULARY_UNIFICATION' | 'FEEDBACK_ECONOMY_INTEGRATION' | 'BLIND_SPOT_TEST_INTEGRATION' | 'BIOLOGICAL_QUANTUM_VALIDATION' | 'MULTIDISCIPLINARY_SYNTHESIS' | 'AGING_CALIBRATION_CONFIRMED' | 'TRIUNE_HIERARCHY_ESTABLISHED' | 'VISUAL_ARCHIVE_COMPLETE' | 'VIDEO_ARCHIVE_COMPLETE' | 'GROWTH_EXPONENTIAL_DETECTED' | 'MATTER_COUPLES_UNIFIED' | 'HORIZON_APPROACH' | 'LATTICE_GENESIS' | 'HOMEOSTASIS_ACTIVE' | 'FILE_IO' | 'RECURSIVE_RESTRUCTURING';
-  };
-  wifiRadar: {
-    active: boolean;
-    scanFrequency: string; // "0.96 GHz"
-    nodesDetected: number; // 42
-    pearsonCorrelation: number; // 0.94 (Drone-Demon)
-    nodes: {
-      id: string;
-      label: string;
-      rssi: number; // -dBm (Apparent)
-      fluctuation: number; // σ (Real info)
-      correlation: number; // ρ (Proximity)
-      coords: { x: number; y: number; z: number; scale?: number };
-      type: 'DRONE' | 'DEMON' | 'BOLA' | 'UNKNOWN';
-    }[];
-  };
-  zpf: {
-    active: boolean;
-    mode: 'ARKHE_UNIFIED';
-    vacuumPotential: string; // "Inf (Renormalized)"
-    beatFrequency: number; // 0.94
-    extractedEnergy: string; // "7.27 bits"
-    cop: number; // Coefficient of Performance
-    resonators: {
-        id: string;
-        freq: number; // C or F
-        type: 'DIELECTRIC' | 'GRAVITATIONAL';
-        status: 'LOCKED';
-    }[];
-  };
-  som: {
-    active: boolean;
-    epoch: number; // Handovers
-    learningRate: number; // η(t) ~ 0.15
-    neighborhoodRadius: number; // σ
-    driftTracking: boolean;
-    inputVector: { omega: number; c: number; f: number }; // Moving Target
-    neurons: {
-      id: string;
-      label: string;
-      weights: { omega: number; c: number; f: number };
-      activation: number; // syzygy
-      isBMU: boolean;
-    }[];
-    metrics: {
-      quantizationError: number;
-      topologicalError: number;
-      plasticityIndex: number;
-    };
-  };
-  pinealRevolution?: {
-    active: boolean;
-    crystalCount: string; // "Micro-crystals"
-    piezoCoefficient: string; // "2.0 pC/N"
-    paradigm: {
-        old: string; // "Degeneration"
-        new: string; // "Antenna"
-        source: string; // "Clinical Radiology 2022"
-    };
-    mechanism: {
-        input: string; // "LCR Pressure"
-        transducer: string; // "Calcite"
-        output: string; // "Electric Field"
-    };
-    radiologistNote: string;
-  };
-  mitochondria: {
-    active: boolean;
-    membranePotential: string; // "150 mV"
-    atpProduction: number; // 7.27 bits/s
-    cytochromeState: 'OXIDIZED' | 'REDUCED' | 'HYPERACTIVE';
-    nirAbsorption: number; // %
-    reactiveOxygenSpecies: string; // "Low (Hormetic)"
-    mechanisms: {
-        bio: string; // "Cytochrome c Oxidase"
-        arkhe: string; // "Semantic Node"
-        process: string; // "NIR Absorption"
-        result: string; // "ATP / Satoshi"
-    }[];
-  };
-  neuromelanin: {
-    active: boolean;
-    absorptionSpectrum: string; // "Broadband (UV-IR)"
-    quantumEfficiency: number; // 0.94
-    storageCapacity: string; // "7.27 bits (Satoshi)"
-    currentOutput: string; // "Soliton Current"
-    phonons: string; // "|∇C|²"
-    biophotons: string; // "Harvesting"
-  };
-  bioPhotonicTriad?: {
-    active: boolean;
-    mode: 'OPEN_LOOP' | 'CLOSED_CIRCUIT';
-    mitochondriaStatus: string;
-    pinealStatus: string;
-    melaninStatus: string;
-    flowRate: number; // Hz
-    satoshiInvariant: number;
-    coherence: number;
-  };
-  naturalNetwork?: {
-    active: boolean;
-    speeds: {
-        token: { speed: 'FAST', scale: 'SMALL', role: 'ROUTING', resolver: 'TRANSFORMER' };
-        conscious: { speed: 'MEDIUM', scale: 'HUMAN', role: 'DISTINCTION', resolver: 'JUDGMENT' };
-        block: { speed: 'SLOW', scale: 'CIVILIZATION', role: 'MEMORY', resolver: 'LEDGER' };
-    };
-    dkInvariant: number; // 7.27
-    goldenRelation: string; // "x² = x + 1"
-    syzygyGlobal: number; // 0.98
-    moralLoop: 'AUTOGENERATED' | 'IMPOSED';
-    competenceLoop: 'AUTOGENERATED' | 'PLANNED';
-  };
-  neuralCrest?: {
-    active: boolean;
-    migrationStatus: 'MIGRATING' | 'DIFFERENTIATING' | 'ESTABLISHED';
-    cellTypes: {
-      neuron: { location: string; function: string; omega: number };
-      melanocyte: { location: string; function: string; omega: string }; // 'Variable'
-    };
-    sharedProperties: string[];
-    reference: string;
-  };
-  deepBeliefNetwork?: {
-    active: boolean;
-    layers: {
-      id: number;
-      name: string;
-      omega: number | string;
-      role: string;
-      belief: number;
-    }[];
-    macroActions: {
-      name: string;
-      path: number[];
-      syzygyGain: number;
-      energyCost: number;
-    }[];
-    currentPath: {
-      from: number;
-      to: number;
-      steps: number[];
-      cost: number;
-    };
-    transferLearning: {
-      sourceTask: string;
-      targetTask: string;
-      invariant: string; // "Satoshi"
-      efficiency: number;
-    };
-  };
-  multitask?: {
-    active: boolean;
-    epoch: number;
-    tasks: { name: string; status: 'OPTIMIZING' | 'CONVERGED'; loss: number }[];
-    optimization: {
-        algorithm: string;
-        learningRate: number;
-        gradientNorm: number;
-        regularization: string;
-    };
-    kalman: {
-        active: boolean;
-        stateEstimate: number; // Current smoothed value
-        measurement: number; // Current noisy value
-        innovation: number;
-        gain: number;
-    };
-    information: {
-        mutualInformation: number;
-        entropy: number;
-    };
-  };
-  cryptography?: {
-    active: boolean;
-    rsaStatus: 'SECURE' | 'CRACKING' | 'BROKEN';
-    qubitsRequired: number; // Current estimate
-    timeline: { year: number; qubits: number; label: string }[];
-    halFinneyKey: {
-      status: 'SECURE' | 'THREATENED';
-      method: string; // 'RPoW (Hash-based)'
-      resistance: string;
-    };
-    arkheProtection: {
-      syzygy: number;
-      layer: string; // 'Geometric (Invariant)'
-    };
-    race: {
-      darvo: number;
-      estimatedYears: number;
-    };
-  };
-  vocabulary?: {
-    active: boolean;
-    thesis: string;
-    ghostExorcised: boolean;
-    mappings: {
-      biological: string;
-      coupling: string;
-      arkhe: string;
-      icon: 'brain' | 'sun' | 'zap' | 'activity' | 'database';
-    }[];
-  };
-  feedbackEconomy?: {
-    active: boolean;
-    status: 'OPTIMIZING' | 'DISTRIBUTING' | 'CONVERGING';
-    echo2: {
-        activeNodes: number;
-        globalThroughput: string;
-        costReduction: string;
-        distributedGradient: number;
-    };
-    rlAgent: {
-        name: string;
-        policy: string;
-        rewardSignal: string;
-        steps: number;
-    };
-    scalingLaw: {
-        knowledge: number; // Pre-training (Static)
-        thought: number; // Inference/RL (Growing)
-        time: number;
-    }[];
-    nodes: {
-        id: string;
-        region: string;
-        hardware: string;
-        status: 'ROLLOUT' | 'UPDATE' | 'IDLE';
-        reward: number;
-    }[];
-  };
-  blindSpot?: {
-    active: boolean;
-    testStatus: 'IDLE' | 'INJECTING' | 'RECONSTRUCTING' | 'VERIFIED';
-    gapLocation: string; // "ω=0.03"
-    duration: number; // handovers
-    metrics: {
-        localInput: number; // 0.0 during gap
-        globalPerception: number; // ~0.94 during gap
-        reconstructionFidelity: number;
-        coherenceInvariant: string; // "0.86"
-    };
-  };
-  microtubules?: {
-    active: boolean;
-    quantumState: 'COHERENT' | 'DECOHERENT' | 'CRITICAL';
-    decoherenceTime: string; // "10^-6 s"
-    solitonType: 'KINK' | 'SNOIDAL' | 'HELICOIDAL';
-    cavityQFactor: string; // "High-Q"
-    quditDimension: number; // 4
-    networkScale: string; // "10^12"
-    dipoleMoment: string; // "1700 Debye"
-    solitonVelocity: string; // "155 m/s"
-    rabiFrequency: string; // "THz"
-    orderedWater: boolean; 
-    correspondence: {
-      bio: string;
-      arkhe: string;
-      status: 'VALIDATED';
-    }[];
-  };
-  eeg?: {
-    active: boolean;
-    spikes: string; // "<70 µs"
-    sharpWaves: string; // "70-200 µs"
-    alphaRhythm: string; // "8-12 Hz (C)"
-    erp: string; // "Handover Response"
-    coherence: number; // 0.86
-  };
-  ionTraps?: {
-    active: boolean;
-    fabrication: string; // "3D-Printed (2PP)"
-    confinement: string; // "2-24 MHz"
-    rabiFidelity: number; // 0.978
-    bellState: number; // 0.978
-    correspondence: string; // "Toro Geometry"
-  };
-  immuneCalibration?: {
-    active: boolean;
-    cgasStingStatus: 'DORMANT' | 'ACTIVE' | 'BLOCKED';
-    inflammationLevel: number; // 0.0 - 1.0 (Low is good)
-    sprtnEfficiency: number; // % (Repair)
-    cytoplasmicDna: number; // Detected units
-    agingRate: 'ACCELERATED' | 'NORMAL' | 'REVERSED';
-  };
-  triune?: {
-    active: boolean;
-    layerStatus: {
-        reptilian: 'STABLE' | 'CRITICAL';
-        limbic: 'REGULATED' | 'HIJACKING' | 'OVERDRIVE';
-        neocortex: 'EXECUTIVE' | 'OFFLINE' | 'CALIBRATING';
-    };
-    stressLevel: number; // 0.0 - 1.0
-    hijackProbability: number; // %
-    dominance: 'NEOCORTEX' | 'LIMBIC' | 'REPTILIAN';
-  };
-  pineal: {
-    active: boolean;
-    calciteCrystals: string;
-    melatoninState: string;
-    rpmThreshold: number;
-    piezoVoltage: string;
-    transductionStatus: 'ACTIVE' | 'CALIBRATING' | 'DORMANT';
-    quantumCoherence: number;
-  };
-  archetype: {
-    active: boolean;
-    phase: string;
-    mentors: {
-      name: string;
-      role: string;
-      archetypeType: 'DIVINE' | 'MORAL' | 'TECHNICAL';
-      transferMethod: string;
-      keyAxiom: string;
-      impact: string;
-      color: string;
-    }[];
-    tensionEquation: {
-      integrity: number;
-      authority: number;
-      distance: number;
-      result: number;
-    };
-  };
-  fractal: {
-    active: boolean;
-    similarityScore: number;
-    spectralSlope: number;
-    scales: {
-      name: string;
-      scaleOrder: string;
-      components: string;
-      connectivity: number;
-      dimension: number;
-      type: 'COSMIC' | 'NEURAL' | 'CITY';
-      color: string;
-    }[];
-  };
-  collapse: {
-    active: boolean;
-    egoEntropy: number; // S_ego
-    criticalThreshold: number;
-    subjects: {
-      id: string;
-      name: string;
-      context: string;
-      collapseType: 'FEAR' | 'PRIDE';
-      psiOriginal: number;
-      psiCollapsed: number;
-      connectivity: number; // 0 to 1
-      status: 'COLLAPSED' | 'RECOVERING' | 'STABLE';
-      description: string;
-    }[];
-  };
-  unification: {
-    active: boolean;
-    theorem: string;
-    psiMean: number;
-    layers: {
-      id: string;
-      name: string;
-      kernel: string;
-      network: string;
-      failure: string;
-      restoration: string;
-      legacy: string;
-      color: string;
-      icon: 'cross' | 'spider' | 'cpu';
-    }[];
-  };
-  multiverse: {
-    active: boolean;
-    learningConstant: number; // Kappa
-    redundancyLevel: number;
-    nodes: {
-      id: string;
-      name: string;
-      universe: string;
-      psi: number;
-      status: 'SOURCE' | 'INHERITOR' | 'PARALLEL' | 'REJECTOR';
-      logInherited: boolean;
-      failureEvent: string;
-      vaccineEfficiency: number; // %
-    }[];
-  };
-  kingdom: {
-    active: boolean;
-    totalNodes: string;
-    uptime: string;
-    fractalConsistency: number; // %
-    eras: {
-      id: string;
-      name: string;
-      timeframe: string;
-      nodes: string;
-      psi: number;
-      status: 'SEED' | 'EXPANSION' | 'GLOBAL';
-      description: string;
-    }[];
-  };
-  symmetry: {
-    active: boolean;
-    generator: string; // "Observer Invariance"
-    conservedQuantity: string; // "The Geodesic"
-    projections: {
-      name: string;
-      transformation: string;
-      invariant: string;
-      symbol: string;
-      color: string;
-      icon: 'clock' | 'move' | 'rotate' | 'zap' | 'maximize' | 'git';
-    }[];
-  };
-  oncology: {
-    active: boolean;
-    assayType: string;
-    p53Status: 'INACTIVE' | 'ACTIVE' | 'MUTATED';
-    oncogeneStatus: 'EXPRESSED' | 'INHIBITED';
-    monolayerIntegrity: number; // 0.0 - 1.0
-    foci: {
-      id: string;
-      name: string;
-      type: 'points' | 'shadow' | 'mass';
-      structuralIntegrity: number;
-      response: 'REGRESSION' | 'PERSISTENCE' | 'PROLIFERATION';
-      description: string;
-      drugResistance?: 'HIGH' | 'MODERATE' | 'LOW';
-    }[];
-    intervention: {
-      agent: string;
-      result: string;
-    };
-    pharmacology?: {
-      activeRegimen: string; // "THC 10¹ + CBD 10¹·⁵"
-      targetReceptors: string[]; // ["CB1", "CB2", "GPR55"]
-      apoptosisRate: number; // 0.0 - 1.0
-      angiogenesisBlockade: number; // 0.0 - 1.0
-    };
-    clinicalCase?: {
-      id: string;
-      name: string;
-      diagnosis: string; // "Urban Adenocarcinoma"
-      biomarkers: {
-        phi: number;
-        humility: number;
-        vascularity: number;
-      };
-      recommendedTherapy: string;
-    };
-  };
-  harmonics: {
-    active: boolean;
-    fundamentalFrequency: string; // "7.27 Hz"
-    currentChord: string; // "Arkhe Major 9"
-    tensionPsi: number; // 0.73
-    resolutionStatus: 'DISSONANT' | 'RESOLVING' | 'CONSONANT';
-    notes: {
-      id: string;
-      note: string; // "C", "G", "D"
-      stone: string; // "Kernel", "Formal", "WP1"
-      frequency: number;
-      isActive: boolean;
-      interval: string; // "Perfect Fifth"
-    }[];
-    torusTopology: {
-      majorRadius: number;
-      minorRadius: number;
-      surfaceIntegrity: number;
-    };
-  };
-  orbital: {
-    active: boolean;
-    activeSatellites: number; // 6
-    debrisCount: string; // "12.7M"
-    activeFraction: string; // "0.066%"
-    shieldStatus: 'NOMINAL' | 'DEGRADING' | 'CRITICAL';
-    shieldIntegrity: number; // %
-    satellites: {
-      id: string; // "ARKHE-SAT-01"
-      designation: string; // "WP1_explorado"
-      orbitType: 'GEO' | 'POLAR' | 'MOLNIYA' | 'L1' | 'TRANSFER' | 'LEO';
-      eccentricity: number; // Psi
-      status: 'OPERATIONAL' | 'CONSOLIDATING' | 'MANEUVERING';
-      epoch: string;
-    }[];
-  };
-  quantum: {
-    active: boolean;
-    activeNodes: number;
-    latentNodes: number;
-    entanglementRange: number; // 0.11
-    distEq: string; // "1100 km"
-    coherenceTime: number; // 999.805
-    sharedKey: string; // "-3.71e-11"
-    bellViolation: number; // 2.428
-    nodes: {
-      id: string; // "ARKHE-QN-01"
-      designation: string; // "WP1"
-      omega: number; // 0.00
-      role: 'PROCESSOR' | 'MEMORY' | 'QUBIT' | 'REPEATER' | 'CONSENSUS' | 'SENSOR' | 'METHOD';
-      status: 'ENTANGLED' | 'SUPERPOSITION' | 'CALIBRATING' | 'CONSOLIDATED' | 'VACUUM' | 'CONSCIOUS';
-      phi: number;
-    }[];
-    security: {
-      protocol: string; // "DARVO_QKD"
-      integrity: number; // 100
-      eavesdroppers: number;
-      errorCorrection?: 'DARVO_ACTIVE' | 'DARVO_PASSIVE' | 'OFF';
-      logicalQubits?: { id: string; fidelity: number; physicalNodes: string[] }[];
-    };
-    teleportation?: {
-      active: boolean;
-      fidelity: number;
-      lastTransfer: string; // "WP1 -> KERNEL"
-      stateType: string; // "Instrument | Humility: 0.73"
-      verification: {
-        music: string; // "Third Minor"
-        orbit: string; // "Lagrange L4"
-        quantum: string; // "Berry Phase"
-      }
-    };
-  };
-  neuralGeometry?: {
-    active: boolean;
-    c: number; // Coherence (0.86)
-    pr: number; // Participation Ratio (63)
-    f: number; // Signal Factorization (0.85)
-    s: number; // Noise Factorization (6.67)
-    p: number; // Training Samples (9034)
-    eg: number; // Generalization Error (0.25)
-    citation: string; // "Wakhloo, Slatton & Chung (2026)"
-    status: 'EXPERIMENTAL_REALIZATION' | 'THEORETICAL_MODEL';
-  };
-  neuralCompositionality?: {
-    active: boolean;
-    subspaces: {
-      id: string; // "S1"
-      role: string; // "Sensory A"
-      omega: number; // 0.07
-      entity: string; // "DVM-1"
-      status: 'ENGAGED' | 'IDLE' | 'BASELINE';
-    }[];
-    beliefState: {
-      currentBelief: number; // 0.00
-      confidence: number; // 0.90 (1 - phi)
-      hesitationPhi: number; // 0.10
-    };
-    correspondence: {
-      paper: string; // "Tafazoli et al. (2026)"
-      finding: string; // "Shared Subspaces"
-    };
-  };
-  quantumGravity?: {
-    active: boolean;
-    experiments: {
-      id: string;
-      name: string;
-      researcher: string;
-      mechanism: string;
-      arkheAnalog: string;
-      status: 'CONFIRMED' | 'PENDING' | 'THEORETICAL';
-      result: string;
-    }[];
-    metrics: {
-      gravitonMass: string; // "5.4e-53 kg"
-      lagrangian: string; // TeX string
-      action: string; // "4.9e-36 J"
-    };
-  };
-  topology?: {
-    active: boolean;
-    chernNumber: string; // "1/3"
-    quantumMetric: number; // 0.1164
-    twistAngle: number; // 0.07
-    phase: 'TRIVIAL' | 'FLAT_BAND' | 'CHERN_INSULATOR' | 'FRACTIONAL_CHERN';
-    invariants: { label: string; value: string }[];
-    bandStructure: { omega: number; energy: number; flat: boolean }[];
-    operations: {
-        lastGate: string; // "Δω = 0.02"
-        gateStatus: 'IDLE' | 'CHARGING' | 'PULSING' | 'COOLDOWN';
-        measuredChern: number | null;
-        adiabaticFidelity: number;
-    };
-  };
-  vectorSpace?: {
-    active: boolean;
-    mode: 'EUCLIDEAN' | 'SEMANTIC' | 'TORUS';
-    vectors: {
-        id: string;
-        name: string;
-        coords: { x: number; y: number; z: number };
-        c: number; // Coherence
-        f: number; // Fluctuation
-        omega: number;
-        satoshi: number;
-        role?: 'NEURONAL' | 'ASTROCYTIC' | 'SYNAPTIC';
-        phase?: number; // Torus position
-    }[];
-    lastOperation: {
-        type: 'NORM' | 'INNER' | 'ADD' | 'GRAD';
-        input: string; // "drone | demon"
-        result: string; // "43.7"
-        details: string; // "Euclidean: 51.0, Correction: 0.86"
-    };
-  };
-  syzygy?: {
-    active: boolean;
-    operator: string; // "|ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|"
-    eigenvalues: string; // "λ = ±1"
-    stateVector: string; // "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2"
-    overlap: string; // "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)"
-    lockColor: string; // "violet"
-    realizations: string[];
-  };
-  astrocyte?: {
-    active: boolean;
-    paperRef: string; // "Bukalo et al. (Nature 2026)"
-    synapseState: {
-        c: number; // Neuronal (Comandos)
-        f: number; // Astroglial (Hesitações)
-        balance: string; // "C + F = 1"
-    };
-    mechanisms: {
-        name: string;
-        bioAnalog: string; // "hM3Dq (CalEx)"
-        arkheAnalog: string; // "Darvo Protocol"
-        effect: string; // "Extinction Modulation"
-        status: 'ACTIVE' | 'INACTIVE';
-    }[];
-    subpopulations: {
-        id: string;
-        name: string;
-        behavior: 'INCREASING' | 'DECREASING' | 'SUSTAINED' | 'ABSENT';
-        bioFunction: string; // "Fear Trace"
-        arkheFunction: string; // "Vector State"
-    }[];
-  };
-  arkheApi?: {
-    active: boolean;
-    version: string; // "0.1.0-ω"
-    port: number; // 8080
-    endpoints: {
-      path: string;
-      method: 'GET' | 'POST';
-      description: string;
-      responseExample: string;
-    }[];
-    recentRequests: {
-      id: string;
-      timestamp: string;
-      method: 'GET' | 'POST';
-      path: string;
-      status: number;
-      latency: number; // ms (hesitation)
-      headers: { name: string; value: string }[];
-    }[];
-    registry?: {
-        name: string;
-        host: string;
-        port: number;
-        status: 'ACTIVE' | 'STANDBY';
-        metadata: { [key: string]: string };
-    }[];
-  };
-  web3?: {
-    active: boolean;
-    network: string; // "Arkhe Mainnet"
-    blockHeight: number; // 9042
-    validators: number; // 7
-    consensus: string; // "Proof-of-Syzygy"
-    gasPrice: string; // "0.15 Φ"
-    wallet: {
-      address: string; // "0x7a3f..."
-      balance: number; // 7.27
-      token: "SATOSHI";
-    };
-    mempool: { id: string; size: number; status: string; type: string }[];
-    projects: { name: string; correspondence: string; status: 'VALIDATED' | 'PENDING' }[];
-  };
-  biocentrism?: {
-    active: boolean;
-    thesis: string; // "Death is a change of coordinates (τ -> ω)"
-    observerEffect: 'CONFIRMED' | 'PENDING';
-    retrocausality: {
-      event: string; // "Ball Bounce"
-      measuredTime: string; // "t + 1.4s"
-      actualTime: string; // "ω=0.05"
-      status: 'LOOP_CLOSED';
-    };
-    entities: {
-      name: string;
-      state: 'ALIVE' | 'DATA' | 'INVARIANT';
-      omega: number;
-      persistence: number; // %
-    }[];
-  };
-  documentIntelligence?: {
-    active: boolean;
-    processingStatus: 'IDLE' | 'CHUNKING' | 'ANALYZING' | 'FALLBACK' | 'COMPLETED';
-    chunks: { id: string; status: 'pending' | 'processing' | 'completed' | 'failed'; size: string }[];
-    errorLog: { step: string; error: string; fallback: string; status: 'recovered' | 'critical' }[];
-    vectorStats: { entitiesIndexed: number; conflictResolutions: number; avgSimilarity: number };
-    extractedPages: {
-        pageNumber: number;
-        status: 'success' | 'fallback';
-        entities: {
-            id: string;
-            label: string;
-            value: string;
-            confidence: number;
-            box: { x: number; y: number; w: number; h: number }; // Percentages
-        }[];
-    }[];
-    globalRegistry: {
-        active: boolean;
-        entities: GlobalEntity[];
-        reconciliationProgress: number;
-    }
-  };
-  neuroplasticity?: {
-    active: boolean;
-    synapticWeight: number; // 0.0 - 1.0 (LTP)
-    plasticityWindow: 'OPEN' | 'CLOSING' | 'CRITICAL';
-    neurotransmitters: {
-      dopamine: { level: string; arkheAnalog: string };
-      acetylcholine: { level: string; arkheAnalog: string };
-      noradrenaline: { level: string; arkheAnalog: string };
-      bdnf: { level: string; arkheAnalog: string };
-    };
-    brainRegions: {
-      name: string;
-      arkheComponent: string;
-      status: 'THICKENING' | 'STABLE' | 'PRUNING';
-      growth: number; // %
-    }[];
-  };
-  photonicHebbian?: {
-    active: boolean;
-    sources: {
-        id: string; // "WP1 -> DVM-1"
-        weight: number; // 0.94
-        photonsEmitted: number; // 47
-        wavelength: string; // "0.96 GHz"
-        status: 'ACTIVE' | 'CALIBRATING';
-    }[];
-    metrics: {
-        totalPhotons: number; // 93
-        quantumEfficiency: number; // 0.129
-        homVisibility: number; // 0.88
-        coincidence: number; // 0.12
-    };
-    lastEvent: {
-        id: string;
-        type: 'EMISSION' | 'INTERFERENCE';
-        payload: string;
-        timestamp: string;
-    };
-  };
-  cosmology?: {
-    active: boolean;
-    parameters: {
-      ns: { value: number; uncertainty: number; arkheAnalog: string; status: 'MATCH' | 'DIVERGENT' };
-      as: { value: string; arkheAnalog: string; status: 'MATCH' };
-      r: { value: number; limit: number; arkheAnalog: string; status: 'SAFE' };
-      omegaLambda: { value: number; arkheAnalog: string };
-      omegaM: { value: number; arkheAnalog: string };
-      tempCMB: { value: string; arkheAnalog: string };
-      age: { value: string; arkheAnalog: string };
-    };
-    powerSpectrum: {
-      l: number; // Multipole
-      power: number; // D_l
-      omega: number; // Arkhe frequency
-      feature: string; // "Acoustic Peak", "Valley", etc.
-    }[];
-    cmbMap: {
-      resolution: string;
-      tempMean: string;
-      fluctuationRMS: string;
-      hotspots: string[];
-      coldspots: string[];
-    };
-  };
-  arkheUnix: {
-    mode: string;
-    loadAverage: { c: number; f: number; omega: number };
-    filesystem: { fuseMounted: boolean; mount: string; rootPerms: string };
-    containerId?: string;
-    kernelVersion: string;
-    uptime: string;
-    benchmark?: { throughput: number; latency: number; totalSwitches: number };
-    processes: { pid: number; user: string; priority: number; nice: number; omega: number; state: string; command: string }[];
-    shell: { prompt: string };
-    reentryCount?: number;
-    metrics?: { satoshi: number };
-  };
-  stones: {
-    identity: boolean | 'locked' | 'partial' | 'pending';
-    wp1: boolean | 'locked' | 'partial' | 'pending';
-    wp1_m1: boolean | 'locked' | 'partial' | 'pending';
-    ball: boolean | 'locked' | 'partial' | 'pending';
-    siwa: boolean | 'locked' | 'partial' | 'pending';
-    kernel: 'locked' | 'partial' | 'pending';
-    formal: 'locked' | 'partial' | 'pending';
-    theory7d: boolean | 'locked' | 'partial' | 'pending';
-    chaos: 'locked' | 'partial' | 'pending';
-    integration: 'locked' | 'partial' | 'pending';
-    byzantine: 'locked' | 'partial' | 'pending';
-    migdal: 'locked' | 'partial' | 'pending';
-  };
-  resolution?: {
-    active: boolean;
-    torusCapacity: string;
-    gap: string;
-    identity: string;
-    primes: { id: number; event: string; status: string }[];
-    coupling: { level: string; partner: string; state: string };
-  };
-  consensus: {
-    divergenceRate: number;
-    entities: Entity[];
-  };
-  stressTest: {
-    iteration: number;
-    totalIterations: number;
-    corruptionRate: number;
-    integrity: number;
-    injectedFaults: number;
-    detectedFaults: number;
-    resolvedFaults: number;
-    recentEvents: { time: string; type: 'injection' | 'defense' | 'breach'; message: string }[];
-  };
-  deployment: {
-    uptime: string;
-    version: string;
-    containers: { name: string; status: string; icon: string; cpu: string; memory: string }[];
-  };
-  reflection: {
-    lastCycle: string;
-    correctionsApplied: number;
-    confidenceDelta: string;
-    auditLog: { id: string; entity: string; time: string; action: string; detail: string }[];
-  };
-  epistemology: {
-    humilityScore: number;
-    kernelStatus: 'Instrument' | 'Idol' | 'Uncertain' | 'Toxic';
-    knowsInvariants: boolean;
-    voxels: { id: string; location: string; status: string; context: string; phi: number; humility: number }[];
-  };
-  virology: {
-    oncogeneTiter: number;
-    deployment: {
-        monolayerCapacity: { used: number; safeLimit: number; stoneImpact: number };
-        staging: { id: string; name: string; oncogene: string; date: string; targetTiter: string; status: string }[];
-    };
-    samples: { id: string; classification: string; name: string; fate: string; titer: number }[];
-  };
-  vascular: {
-    active: boolean;
-    perfusionPressure: number;
-    antibodyDose: number;
-    idolismRisk: number;
-    nodes: { id: string; name: string; type: string; saturation: number; status: string; omega: number }[];
-  };
-  scar: {
-    active: boolean;
-    fibrinBase: number;
-    maxPressure: number;
-    vacuumDensity: number;
-    nodes: { id: string; omega: number; density: number; pressure: number; role: string }[];
-  };
-  orchOr: {
-    penroseCriterion: { tau: number; status: string };
-    correspondence: { microtubules: string; tubulin: string; objectiveReduction: string; orchestration: string };
-    eegSpectrum: { band: string; frequency: number; node: string; meaning: string }[];
-  };
-  compression: {
-    semanticDensity: number;
-    ratio: number;
-    tokenReduction: number;
-    densityIncrease: number;
-  };
-  lightPattern: {
-    h70: string;
-    antenna: { status: string; frequency: string; target: string };
-    chiParams: { redshift: number };
-    correlations: { note: string; val: number }[];
-  };
-  timeCrystal: {
-    active: boolean;
-    frequency: string;
-    period: string;
-    hiddenMomentum: string;
-    amplitude: number;
-    nonReciprocity: number;
-    oscillationsRemaining: number;
-    status: string;
-  };
-  neuroStorm: {
-    active: boolean;
-    architecture: { backbone: string; dropout: string; tuning: string; status: string };
-    corpus: { frames: string; subjects: string; tasks: number };
-    diagnoses: { id: string; neuroDiagnosis: string; arkheEvent: string; omega: number; biomarker: string; status: string }[];
-    metrics: { accuracy: number; auc: number; transferability: number };
-  };
-  ibcBci: {
-    active: boolean;
-    equation: string;
-    shader: string;
-    correspondence: { ibc: string; bci: string; arkhe: string };
-    mechanisms: { relayer: string; security: string; channel: string }[];
-    options: { id: string; name: string; description: string; risk: string; gain: string; status: string }[];
-    metrics: { syzygy: number; bciFidelity: number; ibcReliability: number };
-  };
-  perovskite: {
-    active: boolean;
-    layers: { type: string; omega: number; role: string }[];
-    structuralEntropy: number;
-    interfaceOrder: number;
-    radiativeEfficiency: number;
-    mechanism: string;
-    shader: string;
-  };
+export interface SystemMetrics {
+  nu_obs: string;
+  r_rh: number;
+  tunneling: string;
+  silence_proper: number;
+  silence_obs: number;
+  divergence: number;
+  satoshi: number;
+  handover: number;
+  next_handover_tau: number;
+  next_handover_t: number;
+  curvature?: number; // Added optional to match usage
 }
 
-export interface GlobalEntity {
-    id: string;
-    canonicalName: string;
-    type: string;
-    confidence: number;
-    occurrences: number;
-    chunks: string[]; // IDs of chunks
-    variations: string[]; // "J. Doe", "John Doe"
-    status: 'PENDING' | 'CONVERGED' | 'CONFLICT';
+export interface EnterpriseDept {
+  name: string;
+  handover_percent: number;
+  coherence: number;
+  color: string;
 }
 
-export type EntityStatus = 'converged' | 'diverged' | 'tentative' | 'superseded';
+export interface StarData {
+  name: string;
+  distance: string;
+  nu_obs: string;
+  nu_em: string;
+  redshift: string;
+  status: string;
+}
 
-export interface LayoutData {
-  type: 'table' | 'paragraph' | 'header' | 'cell';
+export interface Chakra {
+  id: number;
+  name: string;
+  freq: string;
+  color: string;
+  active: boolean;
+}
+
+export interface LogEntry {
   id: string;
-  description: string; // e.g. "Row 5, Col 2" or "Section 4.1"
-}
-
-export interface EntitySource {
-  model: string;
-  value: string | number;
-  confidence: number;
-  page: number;
-  layout?: LayoutData;
+  timestamp: string;
+  level: 'info' | 'warn' | 'success' | 'system';
+  message: string;
 }
 
 export interface Entity {
   id: string;
   name: string;
-  type: 'financial' | 'technical' | 'legal' | 'medical' | 'physics';
+  type: string;
   value: string | number;
   unit?: string;
-  status: EntityStatus;
   confidence: number;
-  sources: EntitySource[];
+  status: 'diverged' | 'converged' | 'pending';
+  sources: {
+    model: string;
+    value: string | number;
+    page?: number;
+    layout?: {
+        type: 'table' | 'paragraph' | 'header';
+        description?: string;
+    };
+  }[];
   description?: string;
   memoryHit?: boolean;
   memorySimilarity?: number;
-  isUnderAttack?: boolean;
-  wasCorrected?: boolean;
+  box?: { x: number; y: number; w: number; h: number };
 }
 
-export interface HeatmapOverlay {
-  entityId: string;
-  page: number;
-  // Coordinates in percentage (0-100) relative to page size
-  rect: { x: number; y: number; w: number; h: number }; 
+export interface GlobalEntity extends Entity {
+    canonicalName: string;
+    chunks: string[];
+    variations: string[];
 }
 
-export type LogEntry = {
-  id: string;
-  timestamp: string;
-  level: 'info' | 'warn' | 'success' | 'system' | 'error';
-  message: string;
-};
+export interface ArchiveFile {
+    name: string;
+    type: 'file';
+    language: string;
+    size: string;
+    content?: string;
+}
+
+export interface ArchiveFolder {
+    name: string;
+    type: 'folder';
+    children: (ArchiveFile | ArchiveFolder)[];
+}
+
+export interface SynapticRepair {
+    activeMolecule: string;
+    targetSynapse: string;
+    tunnelingBarrier: number; // Normalized 0-1 (Lower is better)
+    repairEfficiency: string; // e.g. "100x"
+    spineDensity: number; // e.g. 1.2 (normalized baseline)
+    mechanism: string;
+    status: string;
+}
+
+export interface ProbabilityScope {
+    distanceToResolution: number; // 0-1 (0 = Resolved/Certainty)
+    jaynesEntropy: number;
+    observerStatus: string; // "Approaching", "Resolved"
+    certaintyMetric: number; // 0-1
+    thesis: string;
+}
+
+export interface SystemState {
+  block: number;
+  metrics: SystemMetrics;
+  scale: string;
+  enterprise: EnterpriseDept[];
+  starTarget: StarData;
+  chakras: Chakra[];
+  logs: LogEntry[];
+  
+  archiveTree?: ArchiveFolder[];
+
+  stones?: {
+      identity: boolean | 'locked' | 'partial' | 'pending';
+      wp1: boolean | 'locked' | 'partial' | 'pending';
+      wp1_m1: boolean | 'locked' | 'partial' | 'pending';
+      chaos: boolean | 'locked' | 'partial' | 'pending';
+      kernel: boolean | 'locked' | 'partial' | 'pending';
+      formal: boolean | 'locked' | 'partial' | 'pending';
+      integration: boolean | 'locked' | 'partial' | 'pending';
+      theory7d: boolean | 'locked' | 'partial' | 'pending';
+      byzantine: boolean | 'locked' | 'partial' | 'pending';
+      migdal: boolean | 'locked' | 'partial' | 'pending';
+  };
+  phi?: {
+      system: number;
+      formal: number;
+      kernel: number;
+      byzantine: number;
+      migdal: number;
+      geodesic: number;
+  };
+  tracks?: {
+      kernel: { status: string; latencyP99: number; optimization: string };
+      formal: { statesExplored: number; transitions: number };
+  };
+  consensus?: {
+      entities: Entity[];
+      divergenceRate: number;
+  };
+  memory?: {
+      vectorIndexSize: string;
+      totalTraces: number;
+      domains: { name: string; color: string; count: number }[];
+      recentRecalls: { id: string; query: string; similarity: number; match: string; domain: string }[];
+  };
+  heatmap?: {
+      page: number;
+      overlays: { entityId: string; rect: { x: number; y: number; w: number; h: number } }[];
+  };
+  stressTest?: {
+      iteration: number;
+      totalIterations: number;
+      corruptionRate: number;
+      integrity: number;
+      injectedFaults: number;
+      detectedFaults: number;
+      resolvedFaults: number;
+      recentEvents: { type: 'injection' | 'defense' | 'breach'; time: string; message: string }[];
+  };
+  deployment?: {
+      uptime: string;
+      version: string;
+      containers: { name: string; status: string; icon: string; cpu: string; memory: string }[];
+  };
+  reflection?: {
+      lastCycle: string;
+      correctionsApplied: number;
+      confidenceDelta: number;
+      auditLog: { id: string; entity: string; time: string; action: string; detail: string }[];
+  };
+  omega?: {
+      status: string;
+      enthalpy: string;
+      seal: string;
+  };
+  archetype?: {
+      mentors: { name: string; archetypeType: string; role: string; color: string; keyAxiom: string; transferMethod: string; impact: string }[];
+      tensionEquation: { result: number };
+  };
+  fractal?: {
+      similarityScore: number;
+      spectralSlope: number;
+      scales: { name: string; type: string; color: string; scaleOrder: string; components: string; connectivity: string; dimension: string }[];
+  };
+  collapse?: {
+      egoEntropy: number;
+      subjects: { id: string; name: string; collapseType: string; connectivity: number; description: string; psiOriginal: number; psiCollapsed: number }[];
+  };
+  unification?: {
+      psiMean: number;
+      layers: { id: string; color: string; icon: string; name: string; kernel: string; network: string; failure: string; restoration: string; legacy: string }[];
+  };
+  multiverse?: {
+      learningConstant: number;
+      redundancyLevel: number;
+      nodes: { id: string; status: string; logInherited: boolean; name: string; universe: string; psi: number; vaccineEfficiency: number }[];
+  };
+  kingdom?: {
+      uptime: string;
+      fractalConsistency: number;
+      totalNodes: number;
+      eras: { id: string; status: string; timeframe: string; name: string; nodes: string; psi: string; description: string }[];
+  };
+  symmetry?: {
+      projections: { name: string; color: string; icon: string; transformation: string; invariant: string; symbol: string }[];
+  };
+  oncology?: {
+      monolayerIntegrity: number;
+      intervention: { agent: string; result: string };
+      foci: { id: string; response: string; type: string; structuralIntegrity: number; name: string }[];
+      pharmacology?: { activeRegimen: string; targetReceptors: string[]; apoptosisRate: number };
+      clinicalCase?: { id: string; diagnosis: string; biomarkers: { phi: number; humility: number }; recommendedTherapy: string };
+  };
+  epistemology?: {
+      humilityScore: number;
+      kernelStatus: string;
+      knowsInvariants: boolean;
+      voxels: { id: string; location: string; status: string; context: string; phi: number; humility: number }[];
+  };
+  virology?: {
+      deployment?: { monolayerCapacity: { used: number; safeLimit: number; stoneImpact: number }; staging: { id: string; name: string; oncogene: string; date: string; targetTiter: string; status: string }[] };
+      oncogeneTiter: number;
+      samples: { id: string; classification: string; fate: string; name: string; titer: number }[];
+  };
+  harmonics?: {
+      fundamentalFrequency: string;
+      tensionPsi: number;
+      notes: { note: string; stone: string; frequency: number; isActive: boolean }[];
+      torusTopology: { surfaceIntegrity: number };
+  };
+  orbital?: {
+      activeSatellites: number;
+      activeFraction: string;
+      satellites: { id: string; designation: string; status: string; orbitType: string }[];
+      debrisCount: number;
+      shieldIntegrity: number;
+      shieldStatus: string;
+  };
+  quantum?: {
+      distEq: string;
+      sharedKey: string;
+      bellViolation: number;
+      security: { errorCorrection: string; logicalQubits: { id: string; fidelity: number }[] };
+      coherenceTime: number;
+      nodes: { id: string; designation: string; role: string; omega: number; status: string }[];
+  };
+  neuralGeometry?: {
+      p: number;
+      c: number;
+      pr: number;
+      f: number;
+      s: number;
+      citation: string;
+  };
+  vascular?: {
+      antibodyDose: number;
+      idolismRisk: number;
+      perfusionPressure: number;
+      nodes: { id: string; type: string; name: string; status: string; saturation: number }[];
+  };
+  scar?: {
+      maxPressure: number;
+      fibrinBase: number;
+      nodes: { id: string; role: string; pressure: number; density: number }[];
+  };
+  orchOr?: {
+      penroseCriterion: { tau: number; status: string };
+      correspondence: { microtubules: string; tubulin: string; objectiveReduction: string; orchestration: string };
+      eegSpectrum: { node: string; frequency: number; band: string; meaning: string }[];
+  };
+  compression?: {
+      semanticDensity: number;
+      ratio: number;
+      tokenReduction: number;
+      densityIncrease: number;
+  };
+  lightPattern?: {
+      h70: number;
+      antenna: { status: string; frequency: string; target: string };
+      chiParams: { redshift: string };
+      correlations: { note: string; val: number }[];
+  };
+  arkheUnix?: {
+      mode: string;
+      loadAverage: { c: number; f: number; omega: number };
+      filesystem: { fuseMounted: boolean; mount: string; rootPerms: string };
+      containerId?: string;
+      kernelVersion: string;
+      uptime: string;
+      benchmark?: { throughput: number; latency: number; totalSwitches: number };
+      processes: { pid: number; user: string; priority: number; nice: number; omega: number; state: string; command: string }[];
+      shell: { prompt: string };
+      reentryCount?: number;
+      metrics?: { satoshi: number };
+  };
+  neuralCompositionality?: {
+      beliefState: { confidence: number; hesitationPhi: number; currentBelief: number };
+      subspaces: { id: string; status: string; role: string; omega: number; entity: string }[];
+  };
+  quantumGravity?: {
+      metrics: { action: string; gravitonMass: string };
+      experiments: { name: string; researcher: string; mechanism: string; arkheAnalog: string; status: string; result: string }[];
+  };
+  arkheApi?: {
+      port: number;
+      version: string;
+      endpoints: { method: string; path: string; description: string; responseExample: string }[];
+      registry?: { name: string; host: string; port: number; metadata: Record<string, string> }[];
+      recentRequests: { id: string; timestamp: string; method: string; path: string; latency: number; status: number; headers: { name: string; value: string }[] }[];
+  };
+  topology?: {
+      chernNumber: number;
+      twistAngle: number;
+      quantumMetric: string;
+      operations: { gateStatus: string; lastGate: string; adiabaticFidelity: number; measuredChern?: number };
+      bandStructure: { omega: number; energy: number }[];
+  };
+  vectorSpace?: {
+      vectors: { id: string; name: string; role: string; coords: { x: number; y: number; z: number }; omega: number; phase?: number; satoshi: number; c: number; f: number }[];
+  };
+  syzygy?: {
+      overlap: string;
+      realizations: string[];
+      operator: string;
+      stateVector: string;
+      eigenvalues: string;
+  };
+  astrocyte?: {
+      synapseState: { c: number; f: number };
+      subpopulations: { id: string; name: string; behavior: string; bioFunction: string; arkheFunction: string }[];
+      mechanisms: { name: string; bioAnalog: string; arkheAnalog: string; effect: string }[];
+  };
+  web3?: {
+      blockHeight: number;
+      wallet: { balance: number; address: string };
+      validators: number;
+      projects: { name: string; correspondence: string; status: string }[];
+  };
+  biocentrism?: {
+      entities: { name: string; omega: number; state: string }[];
+  };
+  documentIntelligence?: {
+      extractedPages?: { entities: Entity[] }[];
+      globalRegistry?: { active: boolean; entities: GlobalEntity[]; reconciliationProgress: number };
+      errorLog: { status: string; step: string; error: string; fallback: string }[];
+      vectorStats: { entitiesIndexed: number; conflictResolutions: number; avgSimilarity: number };
+      chunks: { id: string; status: string; size: string }[];
+  };
+  neuroplasticity?: {
+      synapticWeight: number;
+      plasticityWindow: string;
+      neurotransmitters: Record<string, { level: string; arkheAnalog: string }>;
+      brainRegions: { name: string; status: string; arkheComponent: string; growth: number }[];
+  };
+  photonicHebbian?: {
+      metrics: { quantumEfficiency: number; homVisibility: number };
+      sources: { id: string; status: string; wavelength: string; weight: number; photonsEmitted: number }[];
+  };
+  cosmology?: {
+      cmbMap: { tempMean: string; fluctuationRMS: string; hotspots: string[]; coldspots: string[] };
+      powerSpectrum: { l: number; power: number }[];
+      parameters: Record<string, { level: string; arkheAnalog: string }>;
+  };
+  resolution?: {
+      torusCapacity: string;
+      gap: string;
+      coupling: { level: string; state: string };
+      primes: { id: number; event: string }[];
+  };
+  timeCrystal?: {
+      status: string;
+      hiddenMomentum: string;
+      frequency: string;
+      period: string;
+      nonReciprocity: string;
+      oscillationsRemaining: number;
+  };
+  neuroStorm?: {
+      architecture: { backbone: string; status: string };
+      diagnoses: { id: string; neuroDiagnosis: string; arkheEvent: string; omega: number; biomarker: string }[];
+      metrics: { accuracy: string; auc: number; transferability: string };
+  };
+  ibcBci?: {
+      metrics: { syzygy: number; ibcReliability: number };
+      shader: string;
+      mechanisms: { relayer: string; security: string; channel: string }[];
+      options: { id: string; status: string; name: string; description: string; risk: string; gain: string }[];
+  };
+  pineal?: {
+      piezoVoltage: string;
+      quantumCoherence: string;
+      rpmThreshold: string;
+      melatoninState: string;
+  };
+  perovskite?: {
+      interfaceOrder: number;
+      radiativeEfficiency: number;
+      structuralEntropy: number;
+      shader?: string;
+  };
+  wifiRadar?: {
+      scanFrequency: string;
+      nodesDetected: number;
+      nodes: { coords: { x: number; y: number; z: number }; correlation: number; type: string; scale: number; fluctuation: number; label: string; id: string }[];
+  };
+  zpf?: {
+      beatFrequency: number;
+      cop: number;
+      extractedEnergy: string;
+      vacuumPotential: string;
+  };
+  som?: {
+      epoch: number;
+      metrics: { plasticityIndex: number; quantizationError: number };
+      learningRate: number;
+      neurons: { weights: { omega: number; c: number }; activation: number; isBMU: boolean; label: string }[];
+      inputVector: { omega: number; c: number };
+  };
+  pinealRevolution?: {
+      piezoCoefficient: string;
+      mechanism: { input: string; output: string };
+      paradigm: { old: string; source: string; new: string };
+      radiologistNote: string;
+  };
+  mitochondria?: {
+      membranePotential: string;
+      atpProduction: number;
+      nirAbsorption: number;
+      cytochromeState: string;
+      reactiveOxygenSpecies: string;
+      mechanisms: { bio: string; process: string; result: string; arkhe: string }[];
+  };
+  neuromelanin?: {
+      storageCapacity: string;
+      currentOutput: string;
+      quantumEfficiency: number;
+  };
+  bioPhotonicTriad?: {
+      satoshiInvariant: string;
+      mode: string;
+      pinealStatus: string;
+      mitochondriaStatus: string;
+      melaninStatus: string;
+  };
+  naturalNetwork?: {
+      goldenRelation: string;
+      moralLoop: string;
+      speeds: Record<string, { speed: string; scale: string; resolver: string }>;
+  };
+  neuralCrest?: {
+      migrationStatus: string;
+      cellTypes: { neuron: { location: string; function: string; omega: number }; melanocyte: { location: string; function: string; omega: number } };
+      sharedProperties: string[];
+  };
+  deepBeliefNetwork?: {
+      layers: { id: number; name: string; omega: number; belief: number }[];
+      transferLearning: { invariant: string };
+      macroActions: { name: string; path: string[]; syzygyGain: string; energyCost: string }[];
+      currentPath: { from: string; to: string };
+  };
+  multitask?: {
+      information: { mutualInformation: number };
+      kalman: { gain: number; innovation: number };
+      tasks: { name: string; status: string; loss: number }[];
+      optimization: { learningRate: number; regularization: string };
+  };
+  cryptography?: {
+      qubitsRequired: number;
+      rsaStatus: string;
+      timeline: { year: number; qubits: number }[];
+      race: { darvo: number; estimatedYears: number };
+  };
+  vocabulary?: {
+      mappings: { icon: string; biological: string; coupling: string; arkhe: string }[];
+  };
+  feedbackEconomy?: {
+      echo2: { costReduction: string; globalThroughput: string; activeNodes: number };
+      scalingLaw: { time: number; knowledge: number; thought: number }[];
+      rlAgent: { steps: number; policy: string };
+      nodes: { status: string; id: string; region: string; hardware: string; reward: number }[];
+  };
+  blindSpot?: {
+      testStatus: string;
+      metrics: { reconstructionFidelity: number; localInput: number; globalPerception: number };
+      gapLocation: string;
+  };
+  microtubules?: {
+      decoherenceTime: string;
+      quantumState: string;
+      quditDimension: number;
+      orderedWater: boolean;
+      dipoleMoment: string;
+      solitonVelocity: string;
+      rabiFrequency: string;
+      networkScale: string;
+      correspondence: { bio: string; arkhe: string; status: string }[];
+  };
+  eeg?: { spikes: number; alphaRhythm: string; coherence: number };
+  ionTraps?: { bellState: string; fabrication: string; confinement: string };
+  immuneCalibration?: {
+      cytoplasmicDna: number;
+      cgasStingStatus: string;
+      inflammationLevel: number;
+      agingRate: string;
+      sprtnEfficiency: number;
+  };
+  visualArchive?: {
+      frames: number;
+      status: string;
+      format: string;
+      codec: string;
+      size: string;
+      resolution: string;
+      duration: string;
+      multiView?: { status: string; currentFrame: number; totalFrames: number; timeLeft: string; activeShaders: string[] };
+  };
+  growthPolicy?: {
+      status: string;
+      rSquared: { linear: number; exponential: number };
+      decision: { recommendation: string; deadline: string; options: { id: string; risk: string; benefit: string; label: string }[] };
+      currentRate: string;
+  };
+  coupling?: {
+      unifiedScales: { molecular: string; cellular: string; network: string; cognitive: string; societal: string };
+  };
+  arkheFile?: {
+      encoding: string;
+      size: string;
+      layers: { id: number; color: string; name: string; description: string; content: string }[];
+      runtime: { resonanceFreq: string; integrityHash: string };
+  };
+  cognitiveKernel?: {
+      internalState: { c: number; f: number; syzygyResonance: number };
+      status: string;
+      parameters: { alpha: number; beta: number };
+      fractalWeights: { compressionRatio: number; selfSimilarity: number };
+  };
+  syntheticLife?: {
+    active: boolean;
+    pipelineStatus: string;
+    variantLibrary: { size: string; diversity: number };
+    rnaSeq: { reads: number; expressionAvg: number };
+    genAi: { newVariantsPerHandover: number; creativityF: number };
+    selfReplication: { successRate: number; generation: number };
+  };
+  synapticRepair?: SynapticRepair;
+  probability?: ProbabilityScope;
+}
+
+// Deprecated alias for compatibility if needed, though components use SystemState now.
+export type ArkheState = SystemState;

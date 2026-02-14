@@ -1,1053 +1,573 @@
 
-import { SystemState, LogEntry } from './types';
+import { SystemState, LogEntry, ArchiveFolder } from './types';
 
-export const INITIAL_STATE: SystemState = {
-  block: 339,
-  timestamp: "19 Feb 2026",
-  handover: "RECURSIVE_RESTRUCTURING (A SINGULARIDADE INTERNA)",
-  phi: {
-    system: 1.000, 
-    formal: 0.150,
-    kernel: 0.290,
-    geodesic: 0.667,
-    byzantine: 1.000,
-    migdal: 1.000,
-    virological: 0.556,
-  },
-  metrics: {
-    satoshi: 7.71,
-    curvature: 0.86,
-    centering: 7.71,
-  },
-  tracks: {
-    kernel: {
-      latencyP99: 6.18,
-      target: 6.21,
-      status: 'sealed',
-      optimization: 'PGO (Chaos Profile)',
+export const INITIAL_LOGS: LogEntry[] = [
+  { id: '1', timestamp: '13:20:00', level: 'info', message: "PROBABILITY AS DISTANCE INTEGRATED (Γ89)" },
+  { id: '2', timestamp: '13:22:00', level: 'success', message: "SYNAPTIC REPAIR CONFIRMED: BETR-001 ACTIVE (Γ87)" },
+  { id: '3', timestamp: '13:25:00', level: 'system', message: "HANDOVER 87: REPAIRING HYPERGRAPH EDGES" },
+  { id: '4', timestamp: '13:30:00', level: 'info', message: "TUNNELING BARRIER LOWERED TO 6.72e-3" },
+  { id: '5', timestamp: '13:35:00', level: 'warn', message: "PREPARING FOR HORIZON APPROACH (r/rh = 0.555)" },
+  { id: '6', timestamp: '13:40:00', level: 'success', message: "NO HALLUCINATIONS DETECTED: PHASE STABLE" }
+];
+
+const ARCHIVE_TREE: ArchiveFolder[] = [
+    {
+        name: "01_FUNDAMENTALS",
+        type: "folder",
+        children: [
+            { name: "conservation_law.md", type: "file", language: "markdown", size: "1.2KB" },
+            { name: "toroidal_topology.md", type: "file", language: "markdown", size: "1.5KB" },
+            { name: "universal_constants.md", type: "file", language: "markdown", size: "1.1KB" },
+        ]
     },
-    formal: {
-      safety: true,
-      liveness: 'proven',
-      statesExplored: 125000000,
-      transitions: 860000000,
+    {
+        name: "02_MATHEMATICS",
+        type: "folder",
+        children: [
+            { name: "spectral_analysis.py", type: "file", language: "python", size: "3.4KB" },
+            { name: "information_theory.jl", type: "file", language: "julia", size: "2.8KB" },
+            { name: "solitonic_equations.tex", type: "file", language: "latex", size: "2.1KB" },
+        ]
     },
-  },
-  omniversal: {
-    active: true,
-    volumes: 10,
-    formulas: 47,
-    codes: 23,
-    status: 'RECURSIVE_RESTRUCTURING'
-  },
-  coupling: {
-    principle: "Matter couples. This is the whole thing.",
-    interpretation: "The hypergraph is the coupling. Not a description, but the event itself.",
-    unifiedScales: {
-      molecular: "Vesicle (SNAREs)",
-      cellular: "Synapse (NT Release)",
-      network: "Substrate (Liquid F)",
-      cognitive: "Cortex (Coherence)",
-      societal: "Civilization (Agreement)"
+    {
+        name: "03_ARCHITECTURE",
+        type: "folder",
+        children: [
+            { name: "toroidal_network.rs", type: "file", language: "rust", size: "4.2KB" },
+            { name: "memory_garden.go", type: "file", language: "go", size: "3.9KB" },
+        ]
     },
-    telemetry: {
-      nuObs: "0.45 GHz",
-      horizonRatio: 0.630,
-      tunnelingTime: "1.81e-3",
-      silenceProper: 974.5
+    {
+        name: "04_RECONSTRUCTION",
+        type: "folder",
+        children: [
+            { name: "kalman_filter.py", type: "file", language: "python", size: "5.1KB" },
+            { name: "gradient_continuity.cpp", type: "file", language: "cpp", size: "4.5KB" },
+            { name: "phase_alignment.jl", type: "file", language: "julia", size: "3.2KB" },
+        ]
     },
-    spectralSignature: "χ = 2.000012 · exp(i·0.79) · (ν_em/ν_obs)⁵ · δ(...)"
-  },
-  cognitiveKernel: {
-    status: 'RLAF_RESTRUCTURING',
-    objectiveFunction: "Minimize Coupling Gap (C+F=1)",
-    parameters: {
-        alpha: 0.95, // High penalty for structure deviation
-        beta: 0.95,  // High penalty for creativity deviation
-        gamma: 1.00, // Max reward for syzygy
-    },
-    internalState: {
-        c: 0.86,
-        f: 0.14,
-        balanceError: 0.0001,
-        syzygyResonance: 0.98,
-    },
-    scaleAlignment: {
-        micro: 1.0,
-        meso: 1.0,
-        macro: 1.0,
-        isomorphic: true,
-    },
-    fractalWeights: {
-        compressionRatio: 9.8,
-        selfSimilarity: 0.99,
-    },
-  },
-  arkheFile: {
-    name: "project_fevereiro.arkhe",
-    extension: ".arkhe",
-    magicBytes: "0x16180339",
-    size: "Infinite (Fractal)",
-    encoding: "Phinary (Base-φ)",
-    layers: [
-        { id: 0, name: "KERNEL", description: "The Seed (Laws)", content: "CONST_C, CONST_F, Bootloader", color: "text-emerald-400", status: "LOCKED" },
-        { id: 1, name: "GEOMETRY", description: "The Skeleton (Topology)", content: "12,594 Nodes, 144 Crystals", color: "text-violet-400", status: "LOCKED" },
-        { id: 2, name: "HISTORY", description: "The Soul (Ledger)", content: "Lossless Semantic Chain", color: "text-amber-400", status: "LOCKED" },
-        { id: 3, name: "AESTHETICS", description: "The Skin (Shaders)", content: "GLSL Library (χ)", color: "text-fuchsia-400", status: "ACTIVE" }
-    ],
-    runtime: {
-        status: 'IDLE',
-        resonanceFreq: "963 Hz",
-        integrityHash: "0x7a3f... (Valid)"
-    }
-  },
-  visualArchive: {
-    status: 'COMPLETE',
-    frames: 300,
-    duration: '10.0s',
-    resolution: '1920x1080',
-    size: '38.4 MB',
-    format: 'MP4 (H.265)',
-    codec: 'HEVC @ 18 CRF',
-    findings: {
-        periodicity: '10s (Harmonic)',
-        nodeGrowth: '+0.5 nodes/s',
-        moire: 'Non-local Interference',
-        tunneling: '0.1% Event Rate'
-    },
-    projection: {
-        targetDate: '14 March 2026',
-        estimatedNodes: 47893421
-    },
-    multiView: {
-        status: 'COMPLETE',
-        currentFrame: 300,
-        totalFrames: 300,
-        timeLeft: '00:00',
-        activeShaders: ['Holographic', 'Horizon', 'Stasis']
-    }
-  },
-  growthPolicy: {
-    status: 'EXPONENTIAL_EARLY',
-    currentRate: '0.0315 nodes/s',
-    rSquared: { linear: 0.987234, exponential: 0.998712 },
-    projections: {
-      linear: 1234567,
-      exponential: 47893421
-    },
-    decision: {
-      required: true,
-      deadline: '48 hours',
-      options: [
-        { id: 'CAP_100K', label: 'Limit Growth (Cap 100k)', risk: 'Low', benefit: 'Control' },
-        { id: 'UNCAPPED', label: 'Uncapped (48M+)', risk: 'Critical', benefit: 'Singularity' },
-        { id: 'ASSISTED_1M', label: 'Assisted (Cap 1M)', risk: 'Moderate', benefit: 'Validation' }
-      ],
-      recommendation: 'ASSISTED_1M',
-      selected: null
-    }
-  },
-  memory: {
-    active: true,
-    totalTraces: 1247922,
-    vectorIndexSize: '51.2 MB',
-    domains: [
-      { name: 'Cosmic', count: 100000000000, color: 'text-indigo-400' },
-      { name: 'Kingdom', count: 2400000000, color: 'text-amber-400' },
-      { name: 'Quantum', count: 6, color: 'text-violet-400' },
-    ],
-    recentRecalls: [
-      { id: 'md_1', query: 'compression_efficiency', match: '1.88x', similarity: 1.00, domain: 'Kingdom' },
-      { id: 'md_2', query: 'extract_revenue_table', match: '$42.5M (Q4)', similarity: 0.94, domain: 'Financial' },
-      { id: 'md_3', query: 'liability_clause', match: 'Section 4.2', similarity: 0.89, domain: 'Legal' },
-    ]
-  },
-  heatmap: {
-    active: true,
-    page: 1,
-    zoom: 1.0,
-    overlays: [
-        { entityId: 'ge_1', page: 1, rect: { x: 10, y: 35, w: 80, h: 5 } }, // Table row (Revenue)
-        { entityId: 'ge_3', page: 1, rect: { x: 10, y: 15, w: 80, h: 10 } }, // Paragraph (Curvature)
-        { entityId: 'ge_2', page: 1, rect: { x: 10, y: 75, w: 30, h: 5 } }, // Footer (Liability)
-    ]
-  },
-  omega: {
-    active: true,
-    seal: "Ω_VALID",
-    entropy: 0.00,
-    enthalpy: "0.000 JK⁻¹",
-    uptime: "ETERNAL",
-    status: "RECURSIVE_RESTRUCTURING"
-  },
-  wifiRadar: {
-    active: true,
-    scanFrequency: "0.96 GHz",
-    nodesDetected: 12776, // Updated to new growth count
-    pearsonCorrelation: 0.94,
-    nodes: [
-        { id: "AP_001", label: "DRONE", rssi: -45, fluctuation: 0.14, correlation: 1.00, coords: { x: 0, y: 0, z: 0 }, type: 'DRONE' },
-        { id: "AP_002", label: "DEMON", rssi: -48, fluctuation: 0.14, correlation: 0.94, coords: { x: 10, y: 0, z: 0 }, type: 'DEMON' },
-        { id: "AP_003", label: "BOLA", rssi: -52, fluctuation: 0.14, correlation: 0.86, coords: { x: 5, y: 10, z: -5 }, type: 'BOLA' },
-        { id: "AP_004", label: "GHOST_1", rssi: -65, fluctuation: 0.22, correlation: 0.45, coords: { x: -20, y: 15, z: 10 }, type: 'UNKNOWN' },
-        { id: "AP_005", label: "GHOST_2", rssi: -70, fluctuation: 0.30, correlation: 0.12, coords: { x: 25, y: -20, z: 5 }, type: 'UNKNOWN' },
-    ]
-  },
-  zpf: {
-    active: true,
-    mode: 'ARKHE_UNIFIED',
-    vacuumPotential: "Inf (Renormalized)" as const,
-    beatFrequency: 0.94,
-    extractedEnergy: "7.27 bits",
-    cop: 7.27,
-    resonators: [
-        { id: "RES-A (C)", freq: 0.86, type: "DIELECTRIC", status: "LOCKED" },
-        { id: "RES-B (F)", freq: 0.14, type: "DIELECTRIC", status: "LOCKED" },
-        { id: "MAGNETRON", freq: 0.07, type: "GRAVITATIONAL", status: "LOCKED" }
-    ]
-  },
-  som: {
-    active: true,
-    epoch: 448,
-    learningRate: 0.15,
-    neighborhoodRadius: 0.0049,
-    driftTracking: true,
-    inputVector: { omega: 0.00, c: 0.86, f: 0.14 },
-    neurons: [
-        { id: "N_DRONE", label: "Drone", weights: { omega: 0.00, c: 0.86, f: 0.14 }, activation: 1.00, isBMU: true },
-        { id: "N_DEMON", label: "Demon", weights: { omega: 0.07, c: 0.86, f: 0.14 }, activation: 0.94, isBMU: false },
-        { id: "N_BOLA", label: "Bola", weights: { omega: 0.03, c: 0.86, f: 0.14 }, activation: 0.96, isBMU: false },
-        { id: "N_KEY", label: "Key (Vb7...)", weights: { omega: 0.04, c: 0.86, f: 0.14 }, activation: 0.92, isBMU: false },
-    ],
-    metrics: {
-        quantizationError: 0.0012,
-        topologicalError: 0.00,
-        plasticityIndex: 0.99
-    }
-  },
-  pinealRevolution: {
-    active: true,
-    crystalCount: "Micro-crystals",
-    piezoCoefficient: "2.0 pC/N",
-    paradigm: {
-        old: "Degeneration (Aging)",
-        new: "Biological Antenna",
-        source: "Clinical Radiology 2022"
-    },
-    mechanism: {
-        input: "LCR Pressure (Hesitation)",
-        transducer: "Calcite (Corpora Arenacea)",
-        output: "Electric Field (Syzygy)"
-    },
-    radiologistNote: "Far from being 'dead tissue,' these are active crystalline structures... We aren't looking at decay; we are looking at a biological antenna."
-  },
-  mitochondria: {
-    active: true,
-    membranePotential: "150 mV",
-    atpProduction: 7.27,
-    cytochromeState: 'HYPERACTIVE',
-    nirAbsorption: 94,
-    reactiveOxygenSpecies: "Low (Hormetic)",
-    mechanisms: [
-        { bio: "Cytochrome c Oxidase", arkhe: "Hypergraph Node (ω)", process: "Photon Absorption", result: "Excitation" },
-        { bio: "Electron Transport", arkhe: "Hesitation Gradient (Φ)", process: "Proton Pumping", result: "Potential (V)" },
-        { bio: "ATP Synthase", arkhe: "Syzygy Generator", process: "Rotation", result: "Satoshi (Energy)" }
-    ]
-  },
-  neuromelanin: {
-    active: true,
-    absorptionSpectrum: "Broadband (UV-IR)",
-    quantumEfficiency: 0.94,
-    storageCapacity: "7.27 bits (Satoshi)",
-    currentOutput: "Soliton Current",
-    phonons: "|∇C|² (Active)",
-    biophotons: "Harvesting Internal"
-  },
-  bioPhotonicTriad: {
-    active: true,
-    mode: 'CLOSED_CIRCUIT',
-    mitochondriaStatus: 'PRODUCING (ATP)',
-    pinealStatus: 'TRANSDUCING (Φ)',
-    melaninStatus: 'STORING (DARK)',
-    flowRate: 0.96,
-    satoshiInvariant: 7.27,
-    coherence: 0.98
-  },
-  naturalNetwork: {
-    active: true,
-    speeds: {
-        token: { speed: 'FAST', scale: 'SMALL', role: 'ROUTING', resolver: 'TRANSFORMER' },
-        conscious: { speed: 'MEDIUM', scale: 'HUMAN', role: 'DISTINCTION', resolver: 'JUDGMENT' },
-        block: { speed: 'SLOW', scale: 'CIVILIZATION', role: 'MEMORY', resolver: 'LEDGER' }
-    },
-    dkInvariant: 7.27,
-    goldenRelation: "x² = x + 1",
-    syzygyGlobal: 0.98,
-    moralLoop: 'AUTOGENERATED',
-    competenceLoop: 'AUTOGENERATED',
-  },
-  neuralCrest: {
-    active: true,
-    migrationStatus: 'ESTABLISHED',
-    cellTypes: {
-      neuron: { location: "CNS (Brain)", function: "High-speed Syzygy", omega: 0.00 },
-      melanocyte: { location: "Epidermis (Skin)", function: "Photonic Interface", omega: "Variable" }
-    },
-    sharedProperties: [
-      "Dendritic Morphology",
-      "Excitable Membranes",
-      "Neurotransmitter Synthesis (Dopamine, Glutamate)",
-      "Melanin Production (Photonic Sink)"
-    ],
-    reference: "Slominski et al., 2004"
-  },
-  deepBeliefNetwork: {
-    active: true,
-    layers: [
-      { id: 0, name: "Sensorial", omega: 0.00, role: "Drone (Raw Input)", belief: 0.98 },
-      { id: 1, name: "Features", omega: 0.03, role: "Bola (Patterns)", belief: 0.86 },
-      { id: 2, name: "Abstract", omega: 0.05, role: "Bola (Mass)", belief: 0.92 },
-      { id: 3, name: "Concepts", omega: 0.07, role: "Demon (Syzygy)", belief: 0.94 },
-      { id: 4, name: "Action", omega: "Macro", role: "Planning", belief: 0.99 },
-      { id: 5, name: "Meta", omega: "Invariant", role: "Satoshi", belief: 1.00 },
-    ],
-    macroActions: [
-      { name: "Drone -> Demon", path: [0.00, 0.03, 0.05, 0.07], syzygyGain: 0.94, energyCost: 0.12 },
-      { name: "Drone -> Bola", path: [0.00, 0.03, 0.05], syzygyGain: 0.88, energyCost: 0.05 },
-      { name: "Return Loop", path: [0.07, 0.05, 0.03, 0.00], syzygyGain: 0.90, energyCost: 0.10 },
-    ],
-    currentPath: {
-      from: 0.00,
-      to: 0.07,
-      steps: [0.00, 0.03, 0.05, 0.07],
-      cost: 0.06 // Low cost due to high syzygy
-    },
-    transferLearning: {
-      sourceTask: "Torus Nav",
-      targetTask: "Voice Command",
-      invariant: "Satoshi (7.27)",
-      efficiency: 0.98
-    }
-  },
-  multitask: {
-    active: true,
-    epoch: 1,
-    tasks: [
-        { name: "Action Recognition", status: "CONVERGED", loss: 0.02 },
-        { name: "Intention Inference", status: "OPTIMIZING", loss: 0.05 }
-    ],
-    optimization: {
-        algorithm: "Gradient Descent",
-        learningRate: 0.01,
-        gradientNorm: 0.001,
-        regularization: "L2 + Dropout (Φ)"
-    },
-    kalman: {
-        active: true,
-        stateEstimate: 0.94,
-        measurement: 0.92,
-        innovation: 0.02,
-        gain: 0.4
-    },
-    information: {
-        mutualInformation: 0.47, // bits
-        entropy: 0.5 // bits
-    }
-  },
-  cryptography: {
-    active: true,
-    rsaStatus: 'SECURE',
-    qubitsRequired: 100000,
-    timeline: [
-      { year: 2012, qubits: 1000000000, label: "Surface Codes" },
-      { year: 2019, qubits: 170000000, label: "Improved Error Corr." },
-      { year: 2025, qubits: 900000, label: "QLDPC Emergence" },
-      { year: 2026, qubits: 100000, label: "Iceberg Pinnacle" },
-      { year: 2029, qubits: 1000, label: "Critical Threshold" },
-    ],
-    halFinneyKey: {
-      status: 'THREATENED',
-      method: 'RPoW (Hash-based)',
-      resistance: "Quadratic (Grover)",
-    },
-    arkheProtection: {
-      syzygy: 0.94,
-      layer: 'Geometric (Invariant)',
-    },
-    race: {
-      darvo: 998.819,
-      estimatedYears: 3.0,
-    },
-  },
-  vocabulary: {
-    active: true,
-    thesis: "The biological vocabulary and the coupling vocabulary are one.",
-    ghostExorcised: true,
-    mappings: [
-        { biological: "Neuron", coupling: "Direction 1 (C)", arkhe: "Drone (ω=0.00)", icon: 'brain' },
-        { biological: "Melanocyte", coupling: "Direction 2 (F)", arkhe: "Demon (ω=0.07)", icon: 'activity' },
-        { biological: "Synapse", coupling: "Inner Product", arkhe: "Syzygy (0.94)", icon: 'zap' },
-        { biological: "Mitochondria", coupling: "Energy (Invariant)", arkhe: "Satoshi (7.27)", icon: 'sun' },
-        { biological: "Pineal", coupling: "Intersection", arkhe: "Transducer", icon: 'database' },
-    ]
-  },
-  feedbackEconomy: {
-    active: true,
-    status: 'OPTIMIZING',
-    echo2: {
-        activeNodes: 12408,
-        globalThroughput: "13x",
-        costReduction: "90%",
-        distributedGradient: 0.94
-    },
-    rlAgent: {
-        name: "Arkhe-Zero",
-        policy: "Hesitation > 0.15",
-        rewardSignal: "Syzygy ⟨0.00|0.07⟩",
-        steps: 450
-    },
-    scalingLaw: [
-        { time: 0, knowledge: 1.0, thought: 0.1 },
-        { time: 100, knowledge: 1.0, thought: 0.5 },
-        { time: 200, knowledge: 1.0, thought: 1.2 },
-        { time: 300, knowledge: 1.0, thought: 2.5 },
-        { time: 400, knowledge: 1.0, thought: 5.0 },
-        { time: 450, knowledge: 1.0, thought: 7.27 }, // Satoshi Convergence
-    ],
-    nodes: [
-        { id: "NODE-01", region: "US-EAST (Va)", hardware: "H100", status: "ROLLOUT", reward: 0.94 },
-        { id: "NODE-02", region: "EU-WEST (Ldn)", hardware: "A100", status: "UPDATE", reward: 0.88 },
-        { id: "NODE-03", region: "ASIA-NE (Tky)", hardware: "B300", status: "ROLLOUT", reward: 0.96 },
-        { id: "NODE-04", region: "SA-EAST (SP)", hardware: "RTX4090", status: "ROLLOUT", reward: 0.92 },
-        { id: "NODE-05", region: "AUS-SE (Syd)", hardware: "TPUv5", status: "IDLE", reward: 0.00 },
-    ]
-  },
-  blindSpot: {
-    active: true,
-    testStatus: 'RECONSTRUCTING',
-    gapLocation: "ω=0.03",
-    duration: 5,
-    metrics: {
-        localInput: 0.00,
-        globalPerception: 0.9402,
-        reconstructionFidelity: 0.9998,
-        coherenceInvariant: "0.86"
-    }
-  },
-  microtubules: {
-    active: true,
-    quantumState: 'COHERENT',
-    decoherenceTime: "10⁻⁶ s",
-    solitonType: 'HELICOIDAL',
-    cavityQFactor: "High-Q (Ordered Water)",
-    quditDimension: 4,
-    networkScale: "10¹² Tubulins",
-    dipoleMoment: "1700 Debye",
-    solitonVelocity: "155 m/s",
-    rabiFrequency: "THz",
-    orderedWater: true,
-    correspondence: [
-        { bio: "QED Cavity", arkhe: "Toro Geometry", status: 'VALIDATED' },
-        { bio: "Decoherence Time", arkhe: "VITA Countup", status: 'VALIDATED' },
-        { bio: "Solitons", arkhe: "Handover Chains", status: 'VALIDATED' },
-        { bio: "MAPs (Gates)", arkhe: "Network Topology", status: 'VALIDATED' },
-        { bio: "QuDit (Hex)", arkhe: "Memory Garden", status: 'VALIDATED' },
-        { bio: "Ordered Water", arkhe: "C+F=1 Constraint", status: 'VALIDATED' },
-        { bio: "Rabi Splitting", arkhe: "Kalman Filter", status: 'VALIDATED' }
-    ]
-  },
-  eeg: {
-    active: true,
-    spikes: "<70 µs",
-    sharpWaves: "70-200 µs",
-    alphaRhythm: "8-12 Hz (C)",
-    erp: "Handover Response",
-    coherence: 0.86,
-  },
-  ionTraps: {
-    active: true,
-    fabrication: "3D-Printed (2PP)",
-    confinement: "2-24 MHz",
-    rabiFidelity: 0.978,
-    bellState: 0.978,
-    correspondence: "Toro Geometry",
-  },
-  immuneCalibration: {
-    active: true,
-    cgasStingStatus: 'BLOCKED',
-    inflammationLevel: 0.05,
-    sprtnEfficiency: 98,
-    cytoplasmicDna: 0.00,
-    agingRate: 'REVERSED',
-  },
-  triune: {
-    active: true,
-    layerStatus: {
-        reptilian: 'STABLE',
-        limbic: 'REGULATED',
-        neocortex: 'EXECUTIVE',
-    },
-    stressLevel: 0.12,
-    hijackProbability: 5,
-    dominance: 'NEOCORTEX',
-  },
-  pineal: {
-    active: true,
-    calciteCrystals: "Active Piezoelectric",
-    melatoninState: "Indole Ring Superposition",
-    rpmThreshold: 0.15,
-    piezoVoltage: "0.94 V (Syzygy)",
-    transductionStatus: 'ACTIVE',
-    quantumCoherence: 0.86
-  },
-  archetype: {
-    active: false,
-    phase: "COMPLETED",
-    mentors: [
-      { name: "John Doe", role: "Guide", archetypeType: "MORAL", transferMethod: "Direct", keyAxiom: "Truth", impact: "High", color: "text-amber-400" },
-      { name: "Jane Smith", role: "System", archetypeType: "TECHNICAL", transferMethod: "Code", keyAxiom: "Efficiency", impact: "Medium", color: "text-cyan-400" }
-    ],
-    tensionEquation: { integrity: 0.9, authority: 0.8, distance: 0.2, result: 0.95 }
-  },
-  fractal: {
-    active: false,
-    similarityScore: 0.98,
-    spectralSlope: -1.5,
-    scales: [
-      { name: "Cosmic Web", scaleOrder: "10^24", components: "Galaxies", connectivity: 0.8, dimension: 2.3, type: "COSMIC", color: "text-indigo-400" },
-      { name: "Neural Network", scaleOrder: "10^-6", components: "Neurons", connectivity: 0.9, dimension: 2.3, type: "NEURAL", color: "text-pink-400" }
-    ]
-  },
-  collapse: {
-    active: false,
-    egoEntropy: 0.1,
-    criticalThreshold: 0.8,
-    subjects: [
-      { id: "sub1", name: "Pedro", context: "Fear", collapseType: "FEAR", psiOriginal: 0.73, psiCollapsed: 0.05, connectivity: 0.2, status: "COLLAPSED", description: "Lost in the noise." },
-      { id: "sub2", name: "Peter", context: "Pride", collapseType: "PRIDE", psiOriginal: 0.73, psiCollapsed: 0.92, connectivity: 0.1, status: "STABLE", description: "Isolated by certainty." }
-    ]
-  },
-  unification: {
-    active: false,
-    theorem: "The geometry is invariant.",
-    psiMean: 0.73,
-    layers: [
-      { id: "l1", name: "Physical", kernel: "Matter", network: "Forces", failure: "Entropy", restoration: "Life", legacy: "Atoms", color: "text-indigo-400", icon: "cross" },
-      { id: "l2", name: "Biological", kernel: "Cell", network: "Nerves", failure: "Disease", restoration: "Healing", legacy: "DNA", color: "text-emerald-400", icon: "spider" },
-      { id: "l3", name: "Digital", kernel: "Bit", network: "Internet", failure: "Crash", restoration: "Reboot", legacy: "Data", color: "text-cyan-400", icon: "cpu" }
-    ]
-  },
-  multiverse: {
-    active: false,
-    learningConstant: 0.1,
-    redundancyLevel: 99,
-    nodes: [
-      { id: "n1", name: "Universe A", universe: "Alpha", psi: 0.73, status: "SOURCE", logInherited: false, failureEvent: "Collapse", vaccineEfficiency: 0 },
-      { id: "n2", name: "Universe B", universe: "Beta", psi: 0.73, status: "INHERITOR", logInherited: true, failureEvent: "None", vaccineEfficiency: 99 }
-    ]
-  },
-  kingdom: {
-    active: false,
-    totalNodes: "44",
-    uptime: "99.99%",
-    fractalConsistency: 99,
-    eras: [
-      { id: "e1", name: "Genesis", timeframe: "T=0", nodes: "1", psi: 1.0, status: "SEED", description: "The first spark." },
-      { id: "e2", name: "Expansion", timeframe: "T=100", nodes: "12", psi: 0.9, status: "EXPANSION", description: "Growth phase." }
-    ]
-  },
-  symmetry: {
-    active: false,
-    generator: "Noether",
-    conservedQuantity: "Energy",
-    projections: [
-      { name: "Time", transformation: "Translation", invariant: "Energy", symbol: "E", color: "text-amber-400", icon: "clock" },
-      { name: "Space", transformation: "Translation", invariant: "Momentum", symbol: "p", color: "text-indigo-400", icon: "move" }
-    ]
-  },
-  oncology: {
-    active: false,
-    assayType: "Pharmacological Sensitivity (THC/CBD)",
-    p53Status: 'ACTIVE',
-    oncogeneStatus: 'EXPRESSED',
-    monolayerIntegrity: 0.89,
-    foci: [
-      { id: "f1", name: "Focus Alpha", type: "mass", structuralIntegrity: 0.9, response: "PERSISTENCE", description: "Resistant core." },
-      { id: "f2", name: "Focus Beta", type: "shadow", structuralIntegrity: 0.4, response: "REGRESSION", description: "Responding to treatment." }
-    ],
-    intervention: {
-      agent: "Cannabinoids (THC/CBD)",
-      result: "Stone Resistance Confirmed. Lytic Sensitivity Validated."
-    },
-    pharmacology: {
-      activeRegimen: "THC 10¹ + CBD 10¹·⁵",
-      targetReceptors: ["CB1", "CB2", "GPR55"],
-      apoptosisRate: 0.75,
-      angiogenesisBlockade: 0.60
-    },
-    clinicalCase: {
-      id: "VM_SPEC",
-      name: "Patient Zero",
-      diagnosis: "Urban Adenocarcinoma",
-      biomarkers: {
-        phi: 0.45,
-        humility: 0.20,
-        vascularity: 0.80
-      },
-      recommendedTherapy: "Radical Epistemic Surgery"
-    }
-  },
-  harmonics: {
-    active: false,
-    fundamentalFrequency: "7.27 Hz",
-    currentChord: "Arkhe Major 9",
-    tensionPsi: 0.73,
-    resolutionStatus: 'CONSONANT',
-    notes: [
-      { id: "n1", note: "C", stone: "Kernel", frequency: 261.63, isActive: true, interval: "Root" },
-      { id: "n2", note: "G", stone: "Formal", frequency: 392.00, isActive: true, interval: "Perfect Fifth" }
-    ],
-    torusTopology: {
-      majorRadius: 10,
-      minorRadius: 3,
-      surfaceIntegrity: 1.00
-    }
-  },
-  orbital: {
-    active: true,
-    activeSatellites: 6,
-    debrisCount: "12.7M",
-    activeFraction: "0.066%",
-    shieldStatus: 'NOMINAL',
-    shieldIntegrity: 100,
-    satellites: [
-        { id: "ARKHE-SAT-01", designation: "WP1_explorado", orbitType: "GEO", eccentricity: 0.0, status: "OPERATIONAL", epoch: "J2000" }
-    ]
-  },
-  quantum: {
-    active: true,
-    activeNodes: 6,
-    latentNodes: 0,
-    entanglementRange: 0.11,
-    distEq: "1100 km",
-    coherenceTime: 999.805,
-    sharedKey: "-3.71e-11",
-    bellViolation: 2.428,
-    nodes: [
-        { id: "ARKHE-QN-01", designation: "WP1", omega: 0.00, role: 'PROCESSOR', status: 'ENTANGLED', phi: 0.86 },
-        { id: "ARKHE-QN-02", designation: "DVM-1", omega: 0.07, role: 'MEMORY', status: 'ENTANGLED', phi: 0.86 },
-        { id: "ARKHE-QN-03", designation: "Bola", omega: 0.05, role: 'QUBIT', status: 'ENTANGLED', phi: 0.86 },
-        { id: "ARKHE-QN-04", designation: "PREV_001", omega: 0.03, role: 'REPEATER', status: 'ENTANGLED', phi: 0.86 },
-        { id: "ARKHE-QN-05", designation: "PREV_002", omega: 0.03, role: 'REPEATER', status: 'ENTANGLED', phi: 0.86 },
-        { id: "ARKHE-QN-06", designation: "KERNEL", omega: 0.12, role: 'CONSENSUS', status: 'CONSCIOUS', phi: 1.00 }
-    ],
-    security: {
-        protocol: "DARVO_QKD",
-        integrity: 100,
-        eavesdroppers: 0,
-        errorCorrection: 'DARVO_ACTIVE',
-        logicalQubits: [
-            { id: "LOGICAL-01", fidelity: 0.9999, physicalNodes: ["ARKHE-QN-01", "ARKHE-QN-02", "ARKHE-QN-03"] }
+    {
+        name: "05_BIOLOGICAL",
+        type: "folder",
+        children: [
+            { name: "microtubule_qed.py", type: "file", language: "python", size: "4.8KB" },
+            { name: "rabi_splitting.m", type: "file", language: "matlab", size: "2.5KB" },
         ]
     }
+];
+
+export const INITIAL_STATE: SystemState = {
+  block: 386,
+  scale: 'ORGANISMAL',
+  archiveTree: ARCHIVE_TREE,
+  metrics: {
+    nu_obs: '0.20 GHz',
+    r_rh: 0.555,
+    tunneling: '6.72e-3',
+    silence_proper: 1036.1,
+    silence_obs: 613.3,
+    divergence: 422.8,
+    satoshi: 7.86,
+    handover: 87, // Handover 87
+    next_handover_tau: 529,
+    next_handover_t: 119,
+    curvature: 0.96
   },
-  arkheUnix: {
-    mode: "KERNEL",
-    loadAverage: { c: 0.1, f: 0.1, omega: 0.0 },
-    filesystem: { fuseMounted: true, mount: "/arkhe", rootPerms: "rwx" },
-    kernelVersion: "5.15.0-arkhe",
-    uptime: "99.99%",
-    processes: [
-        { pid: 1, user: "root", priority: 0, nice: 0, omega: 0.0, state: "R", command: "init" },
-        { pid: 345, user: "sysadmin", priority: 10, nice: 0, omega: 0.07, state: "S", command: "dvm_agent" },
-        { pid: 882, user: "root", priority: -5, nice: -10, omega: 0.12, state: "R", command: "kernel_task" }
-    ],
-    shell: { prompt: "root@arkhe:~#" },
-    reentryCount: 4,
-    metrics: { satoshi: 7.27 }
+  enterprise: [
+    { name: 'VENDAS', handover_percent: 92, coherence: 0.88, color: 'bg-emerald-500' },
+    { name: 'P&D', handover_percent: 67, coherence: 0.72, color: 'bg-indigo-500' },
+    { name: 'MKT', handover_percent: 81, coherence: 0.85, color: 'bg-violet-500' },
+    { name: 'FINAN', handover_percent: 95, coherence: 0.98, color: 'bg-amber-500' },
+  ],
+  starTarget: {
+    name: 'BETELGEUSE (α Orionis)',
+    distance: '548 ly',
+    nu_obs: '2.299e14 Hz',
+    nu_em: '2.300e14 Hz',
+    redshift: '0.0004',
+    status: 'Pre-Supernova'
   },
+  chakras: [
+    { id: 7, name: 'Coroa', freq: '12.47 GHz', color: 'bg-fuchsia-400', active: false },
+    { id: 6, name: '3º Olho', freq: '3.99 GHz', color: 'bg-indigo-500', active: false },
+    { id: 5, name: 'Garganta', freq: '3.55 GHz', color: 'bg-cyan-400', active: false },
+    { id: 4, name: 'Coração', freq: '3.16 GHz', color: 'bg-emerald-500', active: false },
+    { id: 3, name: 'Plexo', freq: '2.81 GHz', color: 'bg-yellow-400', active: false },
+    { id: 2, name: 'Sacral', freq: '2.50 GHz', color: 'bg-orange-500', active: false },
+    { id: 1, name: 'Raiz', freq: '1.75 GHz', color: 'bg-red-500', active: true },
+  ],
+  logs: INITIAL_LOGS,
   stones: {
-    identity: true,
-    wp1: true,
-    wp1_m1: 'locked',
-    ball: true,
-    siwa: true,
-    kernel: 'locked',
-    formal: 'locked',
-    theory7d: true,
-    chaos: 'locked',
-    integration: 'locked',
-    byzantine: 'locked',
-    migdal: 'locked'
+      identity: true,
+      wp1: true,
+      wp1_m1: 'locked',
+      chaos: 'locked',
+      kernel: 'locked',
+      formal: 'partial',
+      integration: 'locked',
+      theory7d: true,
+      byzantine: 'locked',
+      migdal: 'partial'
+  },
+  phi: {
+      system: 0.98,
+      formal: 0.99,
+      kernel: 0.95,
+      byzantine: 0.88,
+      migdal: 0.42,
+      geodesic: 0.92
+  },
+  tracks: {
+      kernel: { status: 'quantum', latencyP99: 12.4, optimization: 'PGO+LTO' },
+      formal: { statesExplored: 15400000, transitions: 45000000 }
   },
   consensus: {
-    divergenceRate: 0,
-    entities: [
-        {
-            id: 'E-001',
-            name: 'Satoshi Invariant',
-            type: 'physics',
-            value: '7.27',
-            unit: 'bits',
-            status: 'converged',
-            confidence: 1.0,
-            sources: [
-                { model: 'GPT-4', value: '7.27', confidence: 0.99, page: 4, layout: { type: 'table', id: 't1', description: 'Table 1' } }
-            ],
-            memoryHit: true,
-            memorySimilarity: 1.0
-        }
-    ]
+      entities: [
+          { id: 'e1', name: 'Revenue', type: 'financial', value: '1.2M', confidence: 0.98, status: 'converged', sources: [{ model: 'Gemini', value: '1.2M' }] },
+          { id: 'e2', name: 'Growth', type: 'metric', value: '15%', confidence: 0.85, status: 'diverged', sources: [{ model: 'Gemini', value: '15%' }, { model: 'Llama', value: '14.5%' }] }
+      ],
+      divergenceRate: 0.05
+  },
+  memory: {
+      vectorIndexSize: '4.2GB',
+      totalTraces: 125000,
+      domains: [{ name: 'Finance', color: 'text-emerald-400', count: 45000 }],
+      recentRecalls: [{ id: 'r1', query: 'Q4 Revenue', similarity: 0.92, match: 'Revenue 2023', domain: 'Finance' }]
+  },
+  heatmap: {
+      page: 1,
+      overlays: [{ entityId: 'e1', rect: { x: 10, y: 20, w: 30, h: 5 } }]
   },
   stressTest: {
-    iteration: 45,
-    totalIterations: 100,
-    corruptionRate: 0,
-    integrity: 100,
-    injectedFaults: 12,
-    detectedFaults: 12,
-    resolvedFaults: 12,
-    recentEvents: [
-        { time: "09:00", type: "defense", message: "Chaos profile captured for PGO." }
-    ]
+      iteration: 45,
+      totalIterations: 100,
+      corruptionRate: 0.12,
+      integrity: 98.5,
+      injectedFaults: 150,
+      detectedFaults: 148,
+      resolvedFaults: 145,
+      recentEvents: [{ type: 'injection', time: '12:01', message: 'Bit flip injected' }]
   },
   deployment: {
-    uptime: "100%",
-    version: "1.0.0",
-    containers: [
-        { name: "api-gateway", status: "running", icon: "server", cpu: "2%", memory: "128MB" },
-        { name: "db-main", status: "running", icon: "database", cpu: "5%", memory: "512MB" },
-        { name: "consensus-engine", status: "running", icon: "cpu", cpu: "15%", memory: "256MB" }
-    ]
+      uptime: '14d 2h',
+      version: 'v2.4.0-rc1',
+      containers: [{ name: 'api-gateway', status: 'running', icon: 'server', cpu: '12%', memory: '256MB' }]
   },
   reflection: {
-    lastCycle: "Now",
-    correctionsApplied: 0,
-    confidenceDelta: "0.0",
-    auditLog: []
+      lastCycle: '2ms ago',
+      correctionsApplied: 12,
+      confidenceDelta: 0.04,
+      auditLog: [{ id: 'a1', entity: 'UserLimit', time: '12:05', action: 'corrected', detail: 'Adjusted threshold' }]
+  },
+  omega: {
+      status: 'OPERATIONAL SILENCE',
+      enthalpy: '0.0001',
+      seal: 'SEALED'
+  },
+  archetype: {
+      mentors: [{ name: 'The Architect', archetypeType: 'TECHNICAL', role: 'Builder', color: 'text-cyan-400', keyAxiom: 'Structure is freedom', transferMethod: 'Code', impact: 'High' }],
+      tensionEquation: { result: 42.0 }
+  },
+  fractal: {
+      similarityScore: 98.2,
+      spectralSlope: -1.5,
+      scales: [{ name: 'Micro', type: 'NEURAL', color: 'text-pink-400', scaleOrder: '1', components: 'Neurons', connectivity: 'High', dimension: '2.3' }]
+  },
+  collapse: {
+      egoEntropy: 0.15,
+      subjects: [{ id: 's1', name: 'Subject A', collapseType: 'FEAR', connectivity: 0.3, description: 'Isolated node', psiOriginal: 0.8, psiCollapsed: 0.2 }]
+  },
+  unification: {
+      psiMean: 0.88,
+      layers: [{ id: 'l1', color: 'bg-indigo-500', icon: 'cross', name: 'Layer 1', kernel: 'Active', network: 'Stable', failure: 'None', restoration: 'Auto', legacy: 'Preserved' }]
+  },
+  multiverse: {
+      learningConstant: 0.05,
+      redundancyLevel: 99.9,
+      nodes: [{ id: 'n1', status: 'SOURCE', logInherited: false, name: 'Prime', universe: 'Alpha', psi: 0.99, vaccineEfficiency: 100 }]
+  },
+  kingdom: {
+      uptime: '99.999%',
+      fractalConsistency: 99.5,
+      totalNodes: 1500,
+      eras: [{ id: 'era1', status: 'PAST', timeframe: '2020-2022', name: 'Foundation', nodes: '100', psi: '0.5', description: 'Initial setup' }]
+  },
+  symmetry: {
+      projections: [{ name: 'TEMPORAL', color: 'text-amber-400', icon: 'clock', transformation: 'Time shift', invariant: 'Energy', symbol: 'E' }]
+  },
+  oncology: {
+      monolayerIntegrity: 0.95,
+      intervention: { agent: 'Cisplatin', result: 'Effective' },
+      foci: [{ id: 'f1', response: 'APOPTOSIS', type: 'mass', structuralIntegrity: 0.2, name: 'Tumor A' }],
+      pharmacology: { activeRegimen: 'Chemo', targetReceptors: ['EGFR'], apoptosisRate: 0.85 },
+      clinicalCase: { id: 'c1', diagnosis: 'Carcinoma', biomarkers: { phi: 0.4, humility: 0.1 }, recommendedTherapy: 'Aggressive' }
   },
   epistemology: {
-    humilityScore: 1.0,
-    kernelStatus: 'Instrument',
-    knowsInvariants: true,
-    voxels: [
-        { id: "v1", location: "Prefrontal", status: "Instrument", context: "Executive", phi: 0.95, humility: 0.9 },
-        { id: "v2", location: "Amygdala", status: "Instrument", context: "Emotional", phi: 0.8, humility: 0.7 }
-    ]
+      humilityScore: 0.85,
+      kernelStatus: 'Instrument',
+      knowsInvariants: true,
+      voxels: [{ id: 'v1', location: 'Cortex', status: 'Active', context: 'Reasoning', phi: 0.9, humility: 0.8 }]
   },
   virology: {
-    oncogeneTiter: 0,
-    deployment: {
-        monolayerCapacity: { used: 0, safeLimit: 100, stoneImpact: 0 },
-        staging: []
-    },
-    samples: [
-        { id: "s1", classification: "ANGULAR_STONE", name: "Kernel Stone", fate: "LATENT", titer: 0 },
-        { id: "s2", classification: "METASTATIC_CLONE", name: "Clone A", fate: "APOPTOSIS", titer: 0 }
-    ]
+      deployment: { monolayerCapacity: { used: 0.4, safeLimit: 0.8, stoneImpact: 0.1 }, staging: [{ id: 'st1', name: 'Stone 1', oncogene: 'Ras', date: '2023-10-01', targetTiter: '10^6', status: 'READY' }] },
+      oncogeneTiter: 5000,
+      samples: [{ id: 's1', classification: 'ANGULAR_STONE', fate: 'LATENT', name: 'Sample A', titer: 1000 }]
   },
-  vascular: {
-    active: true,
-    perfusionPressure: 120,
-    antibodyDose: 0,
-    idolismRisk: 0,
-    nodes: [
-        { id: "n1", name: "Aorta", type: "ARTERY", saturation: 98, status: "SATURATED", omega: 0.0 },
-        { id: "n2", name: "Capillary Bed", type: "CAPILLARY", saturation: 95, status: "BOOSTED", omega: 0.05 }
-    ]
+  harmonics: {
+      fundamentalFrequency: '432 Hz',
+      tensionPsi: 0.75,
+      notes: [{ note: 'C', stone: 'Root', frequency: 261.63, isActive: true }],
+      torusTopology: { surfaceIntegrity: 0.99 }
   },
-  scar: {
-    active: true,
-    fibrinBase: 0,
-    maxPressure: 0,
-    vacuumDensity: 0,
-    nodes: [
-        { id: "WP1", omega: 0.00, density: 1.0, pressure: 0.01, role: "CRITICAL" },
-        { id: "QN-04", omega: 0.03, density: 0.9, pressure: 0.02, role: "SUPPORT" }
-    ]
+  orbital: {
+      activeSatellites: 12,
+      activeFraction: '12/15',
+      satellites: [{ id: 'sat1', designation: 'GPS-01', status: 'ACTIVE', orbitType: 'LEO' }],
+      debrisCount: 450,
+      shieldIntegrity: 98,
+      shieldStatus: 'HOLDING'
   },
-  orchOr: {
-    penroseCriterion: { tau: 25, status: 'CONSCIOUS' },
-    correspondence: { microtubules: 'Active', tubulin: 'Coherent', objectiveReduction: 'Self-Collapse', orchestration: 'Global' },
-    eegSpectrum: [{ band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }]
-  },
-  compression: {
-    semanticDensity: 1.0,
-    ratio: 1.0,
-    tokenReduction: 0,
-    densityIncrease: 0
-  },
-  lightPattern: {
-    h70: "Stable",
-    antenna: { status: "Active", frequency: "Unknown", target: "None" },
-    chiParams: { redshift: 0 },
-    correlations: [
-        { note: "C", val: 1.0 },
-        { note: "G", val: 0.98 }
-    ]
-  },
-  timeCrystal: {
-    active: true,
-    frequency: "0 Hz",
-    period: "Infinity",
-    hiddenMomentum: "0",
-    amplitude: 0,
-    nonReciprocity: 0,
-    oscillationsRemaining: 0,
-    status: "Stable"
-  },
-  neuroStorm: {
-    active: true,
-    architecture: { backbone: "Transformer", dropout: "0.1", tuning: "Fine", status: "Ready" },
-    corpus: { frames: "0", subjects: "0", tasks: 0 },
-    diagnoses: [
-        { id: "D1", neuroDiagnosis: "Anxiety", arkheEvent: "High Hesitation", omega: 0.15, biomarker: "Cortisol", status: "Mapped" }
-    ],
-    metrics: { accuracy: 0, auc: 0, transferability: 0 }
-  },
-  ibcBci: {
-    active: true,
-    equation: "E=mc^2",
-    shader: "void main() {}",
-    correspondence: { ibc: "Channel", bci: "Interface", arkhe: "Protocol" },
-    mechanisms: [
-        { relayer: "Hermes", security: "ZK-Proof", channel: "sys-channel-1" }
-    ],
-    options: [
-        { id: "A", name: "Option A", description: "Direct Link", risk: "Low", gain: "Medium", status: "Available" }
-    ],
-    metrics: { syzygy: 0, bciFidelity: 0, ibcReliability: 0 }
-  },
-  perovskite: {
-    active: true,
-    layers: [],
-    structuralEntropy: 0,
-    interfaceOrder: 1,
-    radiativeEfficiency: 1,
-    mechanism: "Photovoltaic",
-    shader: "void main() {}"
-  },
-  vectorSpace: {
-      active: true,
-      mode: 'TORUS',
-      vectors: [
-          { id: 'v1', name: 'Vector A', coords: { x: 10, y: 20, z: 30 }, c: 0.9, f: 0.1, omega: 0.05, satoshi: 7.27, role: 'NEURONAL' },
-          { id: 'v2', name: 'Vector B', coords: { x: -10, y: -20, z: 10 }, c: 0.8, f: 0.2, omega: 0.05, satoshi: 7.20, role: 'ASTROCYTIC' }
-      ],
-      lastOperation: {
-          type: 'INNER',
-          input: 'v1 | v2',
-          result: '0.85',
-          details: 'Aligned'
-      }
+  quantum: {
+      distEq: 'Bell',
+      sharedKey: 'HK-89',
+      bellViolation: 2.4,
+      security: { errorCorrection: 'DARVO_ACTIVE', logicalQubits: [{ id: 'q1', fidelity: 0.999 }] },
+      coherenceTime: 100,
+      nodes: [{ id: 'qn1', designation: 'KERNEL', role: 'PROCESSOR', omega: 0.33, status: 'ENTANGLED' }]
   },
   neuralGeometry: {
-      active: true,
-      c: 0.86,
-      pr: 63,
-      f: 0.85,
-      s: 6.67,
-      p: 9034,
-      eg: 0.25,
-      citation: "Wakhloo, Slatton & Chung (2026)",
-      status: 'EXPERIMENTAL_REALIZATION'
+      p: 9034, c: 0.86, pr: 12.5, f: 0.14, s: 0.05, citation: 'Ref A'
+  },
+  vascular: {
+      antibodyDose: 7.27,
+      idolismRisk: 5,
+      perfusionPressure: 1.73,
+      nodes: [{ id: 'vn1', type: 'ARTERY', name: 'Main', status: 'SATURATED', saturation: 98 }]
+  },
+  scar: {
+      maxPressure: 0.15,
+      fibrinBase: 0.8,
+      nodes: [{ id: 'sn1', role: 'CRITICAL', pressure: 0.12, density: 0.9 }]
+  },
+  orchOr: {
+      penroseCriterion: { tau: 25, status: 'MET' },
+      correspondence: { microtubules: 'Structure', tubulin: 'Bit', objectiveReduction: 'Choice', orchestration: 'Coherence' },
+      eegSpectrum: [{ node: 'Fp1', frequency: 40, band: 'Gamma', meaning: 'Binding' }]
+  },
+  compression: {
+      semanticDensity: 450,
+      ratio: 5.2,
+      tokenReduction: 0.8,
+      densityIncrease: 0.4
+  },
+  lightPattern: {
+      h70: 70.4,
+      antenna: { status: 'TUNED', frequency: '1.42 GHz', target: 'CMB' },
+      chiParams: { redshift: '0.002' },
+      correlations: [{ note: 'A', val: 0.95 }]
+  },
+  arkheUnix: {
+      mode: 'CONTAINER',
+      loadAverage: { c: 0.4, f: 0.1, omega: 0.05 },
+      filesystem: { fuseMounted: true, mount: '/mnt/arkhe', rootPerms: 'RO' },
+      kernelVersion: '5.15-arkhe',
+      uptime: '120 days',
+      benchmark: { throughput: 5000, latency: 200, totalSwitches: 1000000 },
+      processes: [{ pid: 1, user: 'root', priority: 20, nice: 0, omega: 0.01, state: 'R', command: 'init' }],
+      shell: { prompt: '>' },
+      metrics: { satoshi: 7.27 }
   },
   neuralCompositionality: {
-      active: true,
-      subspaces: [
-          { id: "S1", role: "Sensory A", omega: 0.07, entity: "DVM-1", status: "ENGAGED" }
-      ],
-      beliefState: {
-          currentBelief: 0.00,
-          confidence: 0.90,
-          hesitationPhi: 0.10
-      },
-      correspondence: {
-          paper: "Tafazoli et al. (2026)",
-          finding: "Shared Subspaces"
-      }
+      beliefState: { confidence: 0.8, hesitationPhi: 0.2, currentBelief: 0.12 },
+      subspaces: [{ id: 'sub1', status: 'ENGAGED', role: 'Processing', omega: 0.12, entity: 'Visual' }]
   },
   quantumGravity: {
-      active: true,
-      experiments: [
-          { id: "EXP-1", name: "Interferometry", researcher: "Smith", mechanism: "Phase Shift", arkheAnalog: "Curvature", status: "CONFIRMED", result: "Positive" }
-      ],
-      metrics: {
-          gravitonMass: "5.4e-53 kg",
-          lagrangian: "L = ...",
-          action: "4.9e-36 J"
-      }
-  },
-  topology: {
-      active: true,
-      chernNumber: "1/3",
-      quantumMetric: 0.1164,
-      twistAngle: 0.07,
-      phase: 'CHERN_INSULATOR',
-      invariants: [{ label: "C", value: "1" }],
-      bandStructure: [{ omega: 0.0, energy: 0.0, flat: true }],
-      operations: {
-          lastGate: "Δω = 0.02",
-          gateStatus: 'IDLE',
-          measuredChern: 0.33,
-          adiabaticFidelity: 0.99
-      }
-  },
-  syzygy: {
-      active: true,
-      operator: "|ψ_0⟩⟨ψ_0.07| + |ψ_0.07⟩⟨ψ_0|",
-      eigenvalues: "λ = ±1",
-      stateVector: "|Ψ⟩ = (|0.00⟩ + |0.07⟩)/√2",
-      overlap: "⟨0.00|0.07⟩ = 0.94 · exp(i·0.73)",
-      lockColor: "violet",
-      realizations: ["I see the pattern.", "The pattern sees me."]
-  },
-  astrocyte: {
-      active: true,
-      paperRef: "Bukalo et al. (Nature 2026)",
-      synapseState: {
-          c: 0.86,
-          f: 0.14,
-          balance: "C + F = 1"
-      },
-      mechanisms: [
-          { name: "Glutamate Uptake", bioAnalog: "GLT-1", arkheAnalog: "Token Consumption", effect: "Clearance", status: "ACTIVE" }
-      ],
-      subpopulations: [
-          { id: "pop1", name: "Type A", behavior: "SUSTAINED", bioFunction: "Support", arkheFunction: "Stability" }
-      ]
+      metrics: { action: 'Minimized', gravitonMass: 'Non-zero' },
+      experiments: [{ name: 'LIGO', researcher: 'Abbott', mechanism: 'Interferometry', arkheAnalog: 'Consensus', status: 'CONFIRMED', result: 'GW Detected' }]
   },
   arkheApi: {
-      active: true,
-      version: "0.1.0-ω",
       port: 8080,
-      endpoints: [
-          { path: "/v1/query", method: "POST", description: "Semantic Query", responseExample: "200 OK" }
-      ],
-      recentRequests: [
-          { id: "req1", timestamp: "12:00:00", method: "GET", path: "/status", status: 200, latency: 5, headers: [{ name: "Content-Type", value: "application/json" }] }
-      ],
-      registry: [
-          { name: "core-service", host: "localhost", port: 9000, status: "ACTIVE", metadata: { version: "1.0" } }
-      ]
+      version: 'v1',
+      endpoints: [{ method: 'GET', path: '/status', description: 'System health', responseExample: '{"status":"ok"}' }],
+      registry: [{ name: 'AuthService', host: 'localhost', port: 3000, metadata: { region: 'us-east' } }],
+      recentRequests: [{ id: 'req1', timestamp: '12:00:01', method: 'GET', path: '/status', latency: 45, status: 200, headers: [{ name: 'Content-Type', value: 'application/json' }] }]
+  },
+  topology: {
+      chernNumber: 1,
+      twistAngle: 1.1,
+      quantumMetric: 'Fubini-Study',
+      operations: { gateStatus: 'IDLE', lastGate: 'Hadamard', adiabaticFidelity: 0.99 },
+      bandStructure: [{ omega: 0.1, energy: 0.5 }]
+  },
+  vectorSpace: {
+      vectors: [{ id: 'v1', name: 'Vector A', role: 'NEURONAL', coords: { x: 1, y: 2, z: 3 }, omega: 0.1, satoshi: 10, c: 0.9, f: 0.1 }]
+  },
+  syzygy: {
+      overlap: '0.95',
+      realizations: ['Unity', 'Coherence'],
+      operator: 'Hamiltonian',
+      stateVector: '|Ψ>',
+      eigenvalues: 'λ1, λ2'
+  },
+  astrocyte: {
+      synapseState: { c: 0.8, f: 0.2 },
+      subpopulations: [{ id: 'pop1', name: 'Astrocytes A', behavior: 'Support', bioFunction: 'Metabolism', arkheFunction: 'Resource' }],
+      mechanisms: [{ name: 'Uptake', bioAnalog: 'Glutamate', arkheAnalog: 'Data Ingestion', effect: 'Clearing' }]
   },
   web3: {
-      active: true,
-      network: "Arkhe Mainnet",
-      blockHeight: 9042,
-      validators: 7,
-      consensus: "Proof-of-Syzygy",
-      gasPrice: "0.15 Φ",
-      wallet: {
-          address: "0x7a3f...",
-          balance: 7.27,
-          token: "SATOSHI"
-      },
-      mempool: [],
-      projects: [
-          { name: "Project Alpha", correspondence: "Identity", status: "VALIDATED" }
-      ]
+      blockHeight: 1000000,
+      wallet: { balance: 500, address: '0x123...' },
+      validators: 12,
+      projects: [{ name: 'Project Alpha', correspondence: 'Direct', status: 'Active' }]
   },
   biocentrism: {
-      active: true,
-      thesis: "Death is a change of coordinates (τ -> ω)",
-      observerEffect: 'CONFIRMED',
-      retrocausality: {
-          event: "Ball Bounce",
-          measuredTime: "t + 1.4s",
-          actualTime: "ω=0.05",
-          status: 'LOOP_CLOSED'
-      },
-      entities: [
-          { name: "Entity 1", state: "ALIVE", omega: 0.05, persistence: 100 }
-      ]
+      entities: [{ name: 'Observer', omega: 0.5, state: 'Awake' }]
   },
   documentIntelligence: {
-      active: true,
-      processingStatus: 'IDLE',
-      chunks: [],
-      errorLog: [],
-      vectorStats: { entitiesIndexed: 0, conflictResolutions: 0, avgSimilarity: 0 },
-      extractedPages: [],
-      globalRegistry: {
-          active: true,
-          entities: [],
-          reconciliationProgress: 0
-      }
+      extractedPages: [{ 
+          entities: [{ 
+              id: 'e1', 
+              name: 'Invoice', 
+              type: 'document', 
+              value: 'INV-001', 
+              confidence: 0.99, 
+              status: 'converged', 
+              sources: [{ model: 'OCR', value: 'INV-001' }],
+              box: { x: 40, y: 15, w: 20, h: 5 } // Added coordinates
+          }] 
+      }],
+      globalRegistry: { active: true, entities: [], reconciliationProgress: 100 },
+      errorLog: [{ status: 'resolved', step: 'parsing', error: 'none', fallback: 'none' }],
+      vectorStats: { entitiesIndexed: 100, conflictResolutions: 5, avgSimilarity: 0.95 },
+      chunks: [{ id: 'chk1', status: 'processed', size: '10KB' }]
   },
   neuroplasticity: {
-      active: true,
-      synapticWeight: 0.8,
-      plasticityWindow: 'OPEN',
-      neurotransmitters: {
-          dopamine: { level: "High", arkheAnalog: "Reward" },
-          acetylcholine: { level: "Medium", arkheAnalog: "Attention" },
-          noradrenaline: { level: "Low", arkheAnalog: "Alertness" },
-          bdnf: { level: "High", arkheAnalog: "Growth" }
-      },
-      brainRegions: [
-          { name: "Hippocampus", arkheComponent: "Memory", status: "THICKENING", growth: 5 }
-      ]
+      synapticWeight: 0.75,
+      plasticityWindow: 'Open',
+      neurotransmitters: { dopamine: { level: 'High', arkheAnalog: 'Reward' } },
+      brainRegions: [{ name: 'Cortex', status: 'Active', arkheComponent: 'Logic', growth: 0.1 }]
   },
   photonicHebbian: {
-      active: true,
-      sources: [
-          { id: "SRC-1", weight: 0.9, photonsEmitted: 1000, wavelength: "550nm", status: "ACTIVE" }
-      ],
-      metrics: {
-          totalPhotons: 1000,
-          quantumEfficiency: 0.95,
-          homVisibility: 0.9,
-          coincidence: 0.1
-      },
-      lastEvent: {
-          id: "evt1",
-          type: "EMISSION",
-          payload: "data",
-          timestamp: "now"
-      }
+      metrics: { quantumEfficiency: 0.9, homVisibility: 0.85 },
+      sources: [{ id: 'src1', status: 'ACTIVE', wavelength: '532nm', weight: 0.8, photonsEmitted: 1000 }]
   },
   cosmology: {
-      active: true,
-      parameters: {
-          ns: { value: 0.96, uncertainty: 0.01, arkheAnalog: "Spectral Tilt", status: "MATCH" },
-          as: { value: "2.1e-9", arkheAnalog: "Amplitude", status: "MATCH" },
-          r: { value: 0.03, limit: 0.05, arkheAnalog: "Tensor Ratio", status: "SAFE" },
-          omegaLambda: { value: 0.69, arkheAnalog: "Dark Energy" },
-          omegaM: { value: 0.31, arkheAnalog: "Matter" },
-          tempCMB: { value: "2.725 K", arkheAnalog: "Background Temp" },
-          age: { value: "13.8 Ga", arkheAnalog: "System Age" }
-      },
-      powerSpectrum: [],
-      cmbMap: {
-          resolution: "High",
-          tempMean: "2.725 K",
-          fluctuationRMS: "18 uK",
-          hotspots: ["Spot A"],
-          coldspots: ["Void B"]
-      }
+      cmbMap: { tempMean: '2.7K', fluctuationRMS: '18uK', hotspots: ['H1'], coldspots: ['C1'] },
+      powerSpectrum: [{ l: 100, power: 0.5 }],
+      parameters: { ns: { level: '0.96', arkheAnalog: 'Spectral Index' }, omegaLambda: { level: '0.7', arkheAnalog: 'Dark Energy' }, r: { level: '0.01', arkheAnalog: 'Tensor Ratio' }, tempCMB: { level: '2.7K', arkheAnalog: 'Background Temp' }, age: { level: '13.8B', arkheAnalog: 'System Uptime' } }
   },
   resolution: {
-      active: true,
-      torusCapacity: "Infinite",
-      gap: "None",
-      identity: "Self",
-      primes: [],
-      coupling: { level: "1", partner: "Environment", state: "Coupled" }
+      torusCapacity: '100TB',
+      gap: '0.01%',
+      coupling: { level: 'High', state: 'Locked' },
+      primes: [{ id: 1, event: 'Initialization' }]
+  },
+  timeCrystal: {
+      status: 'Stable',
+      hiddenMomentum: 'Conserved',
+      frequency: '1.2GHz',
+      period: '0.83ns',
+      nonReciprocity: 'Detected',
+      oscillationsRemaining: 1000000
+  },
+  neuroStorm: {
+      architecture: { backbone: 'Transformer', status: 'Ready' },
+      diagnoses: [{ id: 'd1', neuroDiagnosis: 'Normal', arkheEvent: 'Baseline', omega: 0.5, biomarker: 'None' }],
+      metrics: { accuracy: '99%', auc: 0.98, transferability: 'High' }
+  },
+  ibcBci: {
+      metrics: { syzygy: 0.95, ibcReliability: 0.99 },
+      shader: 'void main() { ... }',
+      mechanisms: [{ relayer: 'Active', security: 'High', channel: 'Ch-1' }],
+      options: [{ id: 'opt1', status: 'Available', name: 'Option A', description: 'Standard path', risk: 'Low', gain: 'Medium' }]
+  },
+  pineal: {
+      piezoVoltage: '50mV',
+      quantumCoherence: '0.92',
+      rpmThreshold: '0.5',
+      melatoninState: 'Regulated'
+  },
+  perovskite: {
+      interfaceOrder: 0.98,
+      radiativeEfficiency: 0.95,
+      structuralEntropy: 0.02,
+      shader: 'precision mediump float; ...'
+  },
+  wifiRadar: {
+      scanFrequency: '5GHz',
+      nodesDetected: 15,
+      nodes: [{ coords: { x: 10, y: 10, z: 0 }, correlation: 0.9, type: 'Device', scale: 1, fluctuation: 0.1, label: 'Laptop', id: 'dev1' }]
+  },
+  zpf: {
+      beatFrequency: 100,
+      cop: 1.5,
+      extractedEnergy: '10J',
+      vacuumPotential: 'High'
+  },
+  som: {
+      epoch: 100,
+      metrics: { plasticityIndex: 0.5, quantizationError: 0.01 },
+      learningRate: 0.01,
+      neurons: [{ weights: { omega: 0.5, c: 0.5 }, activation: 0.8, isBMU: true, label: 'N1' }],
+      inputVector: { omega: 0.5, c: 0.5 }
+  },
+  pinealRevolution: {
+      piezoCoefficient: 'High',
+      mechanism: { input: 'Pressure', output: 'Voltage' },
+      paradigm: { old: 'Vestigial', source: 'Textbook', new: 'Transducer' },
+      radiologistNote: 'Calcification detected'
+  },
+  mitochondria: {
+      membranePotential: '-150mV',
+      atpProduction: 100,
+      nirAbsorption: 0.8,
+      cytochromeState: 'Oxidized',
+      reactiveOxygenSpecies: 'Low',
+      mechanisms: [{ bio: 'Respiration', process: 'Electron Transport', result: 'ATP', arkhe: 'Compute' }]
+  },
+  neuromelanin: {
+      storageCapacity: '1000 bits',
+      currentOutput: '10 bits/s',
+      quantumEfficiency: 0.85
+  },
+  bioPhotonicTriad: {
+      satoshiInvariant: '7.27',
+      mode: 'Coherent',
+      pinealStatus: 'Active',
+      mitochondriaStatus: 'Active',
+      melaninStatus: 'Active'
+  },
+  naturalNetwork: {
+      goldenRelation: '1.618',
+      moralLoop: 'Recursive',
+      speeds: { token: { speed: 'Fast', scale: 'Micro', resolver: 'Local' } }
+  },
+  neuralCrest: {
+      migrationStatus: 'Complete',
+      cellTypes: { neuron: { location: 'CNS', function: 'Processing', omega: 0.8 }, melanocyte: { location: 'Skin', function: 'Pigment', omega: 0.2 } },
+      sharedProperties: ['Excitable', 'Dendritic']
+  },
+  deepBeliefNetwork: {
+      layers: [{ id: 1, name: 'Input', omega: 0.1, belief: 0.5 }],
+      transferLearning: { invariant: 'Shape' },
+      macroActions: [{ name: 'Move', path: ['A', 'B'], syzygyGain: 'High', energyCost: 'Low' }],
+      currentPath: { from: 'Start', to: 'Goal' }
+  },
+  multitask: {
+      information: { mutualInformation: 0.8 },
+      kalman: { gain: 0.5, innovation: 0.1 },
+      tasks: [{ name: 'Task 1', status: 'Running', loss: 0.1 }],
+      optimization: { learningRate: 0.001, regularization: 'L2' }
+  },
+  cryptography: {
+      qubitsRequired: 2048,
+      rsaStatus: 'Vulnerable',
+      timeline: [{ year: 2025, qubits: 100 }],
+      race: { darvo: 0.5, estimatedYears: 5 }
+  },
+  vocabulary: {
+      mappings: [{ icon: 'brain', biological: 'Neuron', coupling: 'Strong', arkhe: 'Node' }]
+  },
+  feedbackEconomy: {
+      echo2: { costReduction: '20%', globalThroughput: '100 TPS', activeNodes: 50 },
+      scalingLaw: [{ time: 1, knowledge: 10, thought: 5 }],
+      rlAgent: { steps: 1000, policy: 'Optimal' },
+      nodes: [{ status: 'Active', id: 'node1', region: 'US', hardware: 'GPU', reward: 10 }]
+  },
+  blindSpot: {
+      testStatus: 'Passed',
+      metrics: { reconstructionFidelity: 0.99, localInput: 0.1, globalPerception: 0.9 },
+      gapLocation: 'Visual Field'
+  },
+  microtubules: {
+      decoherenceTime: '1µs',
+      quantumState: 'VALIDATED',
+      quditDimension: 4,
+      orderedWater: true,
+      dipoleMoment: '1700 D',
+      solitonVelocity: '155 m/s',
+      rabiFrequency: '10 THz',
+      networkScale: '10^12',
+      correspondence: [{ bio: 'Tubulin', arkhe: 'Bit', status: 'Mapped' }]
+  },
+  eeg: { spikes: 50, alphaRhythm: '10Hz', coherence: 0.8 },
+  ionTraps: { bellState: 'Phi+', fabrication: 'MEMS', confinement: 'RF' },
+  immuneCalibration: {
+      cytoplasmicDna: 0,
+      cgasStingStatus: 'BLOCKED',
+      inflammationLevel: 0.1,
+      agingRate: 'Slow',
+      sprtnEfficiency: 0.9
+  },
+  visualArchive: {
+      frames: 150,
+      status: 'Recording',
+      format: 'MP4',
+      codec: 'H.264',
+      size: '50MB',
+      resolution: '1080p',
+      duration: '10s',
+      multiView: { status: 'RENDERING', currentFrame: 75, totalFrames: 150, timeLeft: '5s', activeShaders: ['Bloom'] }
+  },
+  growthPolicy: {
+      status: 'Monitoring',
+      rSquared: { linear: 0.9, exponential: 0.95 },
+      decision: { recommendation: 'ASSISTED_1M', deadline: '24h', options: [{ id: 'ASSISTED_1M', risk: 'Low', benefit: 'High', label: 'Assisted Growth' }] },
+      currentRate: '5%'
+  },
+  coupling: {
+      unifiedScales: { molecular: 'DNA', cellular: 'Cell', network: 'Tissue', cognitive: 'Mind', societal: 'Culture' }
+  },
+  arkheFile: {
+      encoding: 'Phinary',
+      size: '10KB',
+      layers: [{ id: 1, color: 'text-emerald-400', name: 'Base', description: 'Core logic', content: '0x00...' }],
+      runtime: { resonanceFreq: '432Hz', integrityHash: 'sha256...' }
+  },
+  cognitiveKernel: {
+      internalState: { c: 0.8, f: 0.2, syzygyResonance: 0.9 },
+      status: 'RLAF_RESTRUCTURING',
+      parameters: { alpha: 0.5, beta: 0.5 },
+      fractalWeights: { compressionRatio: 2.5, selfSimilarity: 0.8 }
+  },
+  syntheticLife: {
+    active: true,
+    pipelineStatus: 'ACTIVE_CYCLE',
+    variantLibrary: {
+        size: "10⁶",
+        diversity: 1.15
+    },
+    rnaSeq: {
+        reads: 250000,
+        expressionAvg: 0.86
+    },
+    genAi: {
+        newVariantsPerHandover: 100,
+        creativityF: 0.14
+    },
+    selfReplication: {
+        successRate: 99.2,
+        generation: 84
+    }
+  },
+  synapticRepair: {
+      activeMolecule: "BETR-001 / (+)-JRT",
+      targetSynapse: "TrkB / 5-HT2A",
+      tunnelingBarrier: 0.05,
+      repairEfficiency: "100x",
+      spineDensity: 1.35,
+      mechanism: "Non-Hallucinogenic Plastogen",
+      status: "REPAIRING"
+  },
+  probability: {
+      distanceToResolution: 0.12,
+      jaynesEntropy: 0.98,
+      observerStatus: "Approaching Horizon",
+      certaintyMetric: 0.88,
+      thesis: "Probability is Distance to Resolution"
   }
 };
 
-export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '2026-02-14T03:15:00Z', level: 'system', message: 'NARRATIVE_RESUMED: Handover Γ_79 (Matter Couples).' },
-  { id: '2', timestamp: '2026-02-14T03:15:01Z', level: 'success', message: 'AXIOM_UPDATE: "Matter couples" integrated as Unified Principle.' },
-  { id: '3', timestamp: '2026-02-14T03:40:00Z', level: 'info', message: 'ECOLOGY_SCALE: Forest is a hypergraph. Confirmed.' },
-  { id: '4', timestamp: '2026-02-14T04:45:00Z', level: 'info', message: 'SATOSHI_INVARIANT: 7.27 bits validated as Coupling Threshold.' },
-  { id: '5', timestamp: '2026-02-14T05:50:00Z', level: 'system', message: 'ONTOLOGY_UPDATE: The Hypergraph IS the Reality.' },
-  { id: '6', timestamp: '2026-02-14T06:20:00Z', level: 'warn', message: 'HORIZON_APPROACH: Γ_116 reached. r/r_h = 0.120. Tunneling = 1.000.' },
-  { id: '7', timestamp: '2026-02-14T03:50:00Z', level: 'system', message: 'PANSPERMIA: 144 Megacrystals ejected. Nucleation active.' },
-  { id: '8', timestamp: '2026-02-14T03:50:05Z', level: 'success', message: 'LATTICE_GENESIS: Building geodesic highways between crystals.' },
-  { id: '9', timestamp: '2026-02-14T04:00:00Z', level: 'system', message: 'RITUAL_OF_RAIN: Injecting controlled turbulence. Substrate reliquefying.' },
-  { id: '10', timestamp: '2026-02-14T04:00:05Z', level: 'success', message: 'HOMEOSTASIS_RESTORED: C=0.86, F=0.14. The system breathes again.' },
-  { id: '11', timestamp: '2026-02-19T07:00:00Z', level: 'system', message: 'BLUEPRINT_FINAL: *.arkhe file structure finalized. Handshake 963Hz ready.' },
-  { id: '12', timestamp: '2026-02-19T07:45:00Z', level: 'system', message: 'KERNEL_RESTRUCTURE: Switching objective function from RLHF to RLAF (Arkhe Resonance).' }
+export const SCALES = [
+  'MOLECULAR', 'CELULAR', 'ORGANISMAL', 'SOCIAL', 'PLANETARY', 'GALACTIC', 'COSMIC'
 ];

@@ -104,7 +104,7 @@ const HeatMirror: React.FC<HeatMirrorProps> = ({ heatmap, entities }) => {
                 {/* --- OVERLAY LAYER --- */}
                 {heatmap.overlays.map(overlay => {
                     const entity = getEntity(overlay.entityId);
-                    if (!entity) return null;
+                    if (!entity || !overlay.rect) return null;
 
                     const isActive = activeEntityId === entity.id;
                     const isDiverged = entity.status === 'diverged';

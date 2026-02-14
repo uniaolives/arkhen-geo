@@ -55,13 +55,17 @@ import GrowthMonitor from './components/GrowthMonitor';
 import CouplingUnification from './components/CouplingUnification';
 import ArkheFileViewer from './components/ArkheFileViewer';
 import CognitiveKernel from './components/CognitiveKernel';
+import SyntheticLifeLab from './components/SyntheticLifeLab';
+import ArchiveVault from './components/ArchiveVault';
+import SynapticRepairLab from './components/SynapticRepairLab';
+import ProbabilityScope from './components/ProbabilityScope';
 import Terminal from './components/Terminal';
-import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse, Circle, Scale, GitCommit, Activity, Lock, BookOpen, TrendingUp, EyeOff, Box, ShieldAlert, Film, FileCode, Play } from 'lucide-react';
+import { Clock, Infinity, FileText, Magnet, Brain, Snowflake, Sun, Terminal as TermIcon, Share2, Globe, Server, Layers, DraftingCompass, Eye, GitMerge, Database, Dna, Link, Ghost, Scan, Sprout, Lightbulb, Radio, RefreshCw, Waves, Cpu, ArrowRightLeft, Diamond, Wifi, Zap, Network, Microscope, Eclipse, Circle, Scale, GitCommit, Activity, Lock, BookOpen, TrendingUp, EyeOff, Box, ShieldAlert, Film, FileCode, Play, Repeat, HardDrive, Pill, Compass } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<SystemState>(INITIAL_STATE);
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel'>('kernel');
+  const [activeLeftTab, setActiveLeftTab] = useState<'scar' | 'orch' | 'markdown' | 'light' | 'unix' | 'neural' | 'gravity' | 'api' | 'topology' | 'vectors' | 'syzygy' | 'heatmap' | 'consensus' | 'memory' | 'astrocyte' | 'web3' | 'biocentrism' | 'docIntel' | 'neuroplasticity' | 'photonic' | 'cosmology' | 'resolution' | 'timeCrystal' | 'neuroStorm' | 'ibcBci' | 'pineal' | 'perovskite' | 'wifi' | 'zpf' | 'som' | 'sand' | 'mito' | 'melanin' | 'triad' | 'natural' | 'crest' | 'dbn' | 'kalman' | 'crypto' | 'vocab' | 'economy' | 'blindSpot' | 'microtubule' | 'synthesis' | 'immune' | 'archive' | 'growth' | 'coupling' | 'arkheFile' | 'kernel' | 'synthetic' | 'vault' | 'synaptic' | 'probability'>('synaptic');
 
   // Simulation: Logs are static now, reflecting silence
   useEffect(() => {
@@ -117,6 +121,34 @@ const App: React.FC = () => {
                 {/* Protocol Tabs */}
                 <div className="flex bg-slate-900/50 p-1 rounded-lg border border-slate-800 shrink-0 overflow-x-auto custom-scrollbar">
                     <button
+                        onClick={() => setActiveLeftTab('synaptic')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'synaptic' ? 'bg-slate-800 text-violet-400 border border-violet-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Pill size={12} /> REPAIR
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('probability')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'probability' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Compass size={12} /> SCOPE
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('vault')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'vault' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <HardDrive size={12} /> ARCHIVE
+                    </button>
+                    <button
+                        onClick={() => setActiveLeftTab('synthetic')}
+                        className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
+                        ${activeLeftTab === 'synthetic' ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                    >
+                        <Repeat size={12} /> SYNTHETIC
+                    </button>
+                    <button
                         onClick={() => setActiveLeftTab('kernel')}
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
                         ${activeLeftTab === 'kernel' ? 'bg-slate-800 text-fuchsia-400 border border-fuchsia-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
@@ -149,7 +181,7 @@ const App: React.FC = () => {
                         className={`flex-1 py-2 px-2 text-[10px] font-mono font-bold rounded flex items-center justify-center gap-2 transition-all min-w-[100px]
                         ${activeLeftTab === 'archive' ? 'bg-slate-800 text-indigo-400 border border-indigo-500/30 shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
                     >
-                        <Film size={12} /> ARCHIVE
+                        <Film size={12} /> VISUAL
                     </button>
                     <button
                         onClick={() => setActiveLeftTab('immune')}
@@ -471,6 +503,18 @@ const App: React.FC = () => {
 
                 {/* Active View */}
                 <div className="flex-1 min-h-0 relative">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'synaptic' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <SynapticRepairLab synapticRepair={state.synapticRepair} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'probability' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <ProbabilityScope probability={state.probability} />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'vault' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        {state.archiveTree && <ArchiveVault tree={state.archiveTree} />}
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'synthetic' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                        <SyntheticLifeLab syntheticLife={state.syntheticLife} />
+                    </div>
                     <div className={`absolute inset-0 transition-opacity duration-300 ${activeLeftTab === 'kernel' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
                         <CognitiveKernel kernel={state.cognitiveKernel} />
                     </div>
@@ -635,7 +679,7 @@ const App: React.FC = () => {
                 {/* 2. Lower Split: Arch & Terminal */}
                 <div className="h-64 flex gap-6 shrink-0">
                      <div className="flex-1 bg-slate-900/50 border border-slate-800 rounded-lg p-2 overflow-hidden">
-                         <ArchVisualization stones={state.stones} curvature={state.metrics.curvature} />
+                         <ArchVisualization stones={state.stones} curvature={state.metrics.curvature || 0} />
                      </div>
                      <div className="flex-1 overflow-hidden">
                          <Terminal logs={logs} />

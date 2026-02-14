@@ -88,6 +88,8 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                             const isHovered = hoveredEntity === entity.id;
                             const isSelected = selectedEntity === entity.id;
                             
+                            if (!entity.box) return null;
+
                             return (
                                 <div
                                     key={entity.id}
@@ -97,10 +99,10 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                                           'border-indigo-500/30 hover:border-emerald-500/50 z-10'}
                                     `}
                                     style={{
-                                        left: `${entity.box.x}%`,
-                                        top: `${entity.box.y}%`,
-                                        width: `${entity.box.w}%`,
-                                        height: `${entity.box.h}%`
+                                        left: `${entity.box?.x}%`,
+                                        top: `${entity.box?.y}%`,
+                                        width: `${entity.box?.w}%`,
+                                        height: `${entity.box?.h}%`
                                     }}
                                     onMouseEnter={() => setHoveredEntity(entity.id)}
                                     onMouseLeave={() => setHoveredEntity(null)}
@@ -108,7 +110,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                                 >
                                     {(isHovered || isSelected) && (
                                         <div className="absolute -top-6 left-0 bg-slate-900 text-white text-[10px] font-mono px-2 py-0.5 rounded border border-slate-700 whitespace-nowrap z-30 shadow-xl">
-                                            {entity.label} ({entity.confidence})
+                                            {entity.name} ({entity.confidence})
                                         </div>
                                     )}
                                 </div>
@@ -148,7 +150,7 @@ const DocumentIntelligenceLab: React.FC<DocumentIntelligenceLabProps> = ({ docIn
                                     onMouseLeave={() => setHoveredEntity(null)}
                                     onClick={() => setSelectedEntity(entity.id === selectedEntity ? null : entity.id)}
                                 >
-                                    <div className="font-bold mb-1">{entity.label}</div>
+                                    <div className="font-bold mb-1">{entity.name}</div>
                                     <div className="text-white">{entity.value}</div>
                                 </div>
                             ))}
