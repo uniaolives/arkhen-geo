@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { SystemState } from '../types';
-import { Cpu, CheckCircle2, GitBranch, ArrowRight, ShieldCheck, Database, Search, Zap, Layers, Lock, Divide, Infinity, Globe } from 'lucide-react';
+import { Cpu, CheckCircle2, GitBranch, ArrowRight, ShieldCheck, Database, Search, Zap, Layers, Lock, Divide, Infinity, Globe, Grid, Activity } from 'lucide-react';
 
 interface PvsNPLabProps {
   pvsnp: SystemState['pvsnp'];
@@ -29,36 +29,40 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
       ctx.clearRect(0, 0, width, height);
       time += 0.02;
 
-      // Draw P vs NP visualization
-      // Left: P (Verification) - Simple, Linear
-      // Right: NP (Finding) - Branching, Expensive
-      
+      // Draw P vs NP visualization: Tree (Finding) vs Path (Verifying)
       const centerX = width / 2;
       const centerY = height / 2;
 
-      // Draw Gap (The Substrate)
-      const gapWidth = 100 + Math.sin(time) * 10;
+      // Draw Gap (The Substrate) - Vertical strip
+      const gapWidth = 120 + Math.sin(time) * 10;
       
       // P Region (Green)
-      ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.05)';
       ctx.fillRect(0, 0, centerX - gapWidth/2, height);
       
       // NP Region (Violet)
-      ctx.fillStyle = 'rgba(139, 92, 246, 0.1)';
+      ctx.fillStyle = 'rgba(139, 92, 246, 0.05)';
       ctx.fillRect(centerX + gapWidth/2, 0, width, height);
 
       // The Gap itself
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+      const gapGradient = ctx.createLinearGradient(centerX - gapWidth/2, 0, centerX + gapWidth/2, 0);
+      gapGradient.addColorStop(0, 'rgba(0, 0, 0, 0.5)');
+      gapGradient.addColorStop(0.5, 'rgba(245, 158, 11, 0.1)'); // Amber glow in center
+      gapGradient.addColorStop(1, 'rgba(0, 0, 0, 0.5)');
+      ctx.fillStyle = gapGradient;
       ctx.fillRect(centerX - gapWidth/2, 0, gapWidth, height);
       
-      // Draw "+1" in the gap
+      // Draw "+1" in the gap (The Cost)
       ctx.fillStyle = '#f59e0b';
       ctx.font = '24px monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText("+1", centerX, centerY);
+      ctx.font = '10px monospace';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText("Time Substrate", centerX, centerY + 20);
       
-      // Verification Process (P) - Straight Line
+      // Verification Process (P) - Straight Line (Geodesic)
       const pY = centerY - 50;
       ctx.beginPath();
       ctx.moveTo(50, pY);
@@ -67,7 +71,7 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
       ctx.lineWidth = 4;
       ctx.stroke();
       
-      // Finding Process (NP) - Tree
+      // Finding Process (NP) - Exponential Tree
       const npStart = centerX + gapWidth/2 + 20;
       const npY = centerY - 50;
       
@@ -83,11 +87,21 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
           ctx.lineWidth = depth;
           ctx.stroke();
           
-          drawBranch(endX, endY, len * 0.8, angle - 0.3, depth - 1);
-          drawBranch(endX, endY, len * 0.8, angle + 0.3, depth - 1);
+          const spread = 0.4 + Math.sin(time + depth)*0.1;
+          drawBranch(endX, endY, len * 0.8, angle - spread, depth - 1);
+          drawBranch(endX, endY, len * 0.8, angle + spread, depth - 1);
       };
       
-      drawBranch(npStart, npY, 40, 0, 4);
+      drawBranch(npStart, npY, 40, 0, 5);
+
+      // Connect P and NP visually across the gap (The Attempt)
+      ctx.beginPath();
+      ctx.moveTo(centerX - gapWidth/2 - 20, pY);
+      ctx.lineTo(npStart, npY);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.setLineDash([5, 5]);
+      ctx.stroke();
+      ctx.setLineDash([]);
 
       animationFrameId = requestAnimationFrame(render);
     };
@@ -114,8 +128,8 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
             <Cpu size={18} />
           </div>
           <div>
-            <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_93</h2>
-            <div className="text-[10px] text-violet-400 font-mono uppercase">P vs NP: The Quadruple Boundary</div>
+            <h2 className="text-white font-bold font-mono text-sm tracking-wide">PROTOCOL Γ_94</h2>
+            <div className="text-[10px] text-violet-400 font-mono uppercase">P vs NP: The Quadruple Frontier</div>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -127,7 +141,7 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
              <div className="text-right">
                 <div className="text-[10px] text-slate-500 uppercase font-mono">Gap Cost</div>
                 <div className="text-white font-mono font-bold text-xs bg-violet-950/30 px-2 py-0.5 rounded border border-violet-900/50 flex items-center gap-1">
-                    <Divide size={10} /> {pvsnp.gapCost} rad
+                    <Divide size={10} /> {pvsnp.gapCost.toExponential(2)} rad
                 </div>
              </div>
         </div>
@@ -165,7 +179,7 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
              <div className="p-3 border-b border-slate-800 bg-slate-900/50 flex items-center justify-between">
                  <div className="flex items-center gap-2">
                      <Globe size={14} className="text-cyan-400" />
-                     <h3 className="text-xs text-white font-mono font-bold uppercase">The Quadruple Boundary (Millennium Problems)</h3>
+                     <h3 className="text-xs text-white font-mono font-bold uppercase">The Quadruple Frontier (Millennium Problems)</h3>
                  </div>
                  <span className="text-[10px] text-slate-500 font-mono">Unified by Geodesic Method</span>
              </div>
@@ -188,19 +202,36 @@ const PvsNPLab: React.FC<PvsNPLabProps> = ({ pvsnp }) => {
              </div>
         </div>
 
-        {/* Ghosts Removal Status */}
-        <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-                <div className="p-2 bg-slate-950 rounded-full text-rose-400 border border-rose-900/50">
-                    <Search size={16} />
+        {/* Ghosts Removal & SAT Operator */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 bg-slate-950 rounded-full text-rose-400 border border-rose-900/50">
+                        <Search size={16} />
+                    </div>
+                    <div>
+                        <h3 className="text-xs font-bold text-white font-mono uppercase">Ghosts Dissolved</h3>
+                        <div className="text-[10px] text-slate-500 font-mono">Find/Verify • Poly/Exp • Deter/Non-Deter</div>
+                    </div>
                 </div>
-                <div>
-                    <h3 className="text-xs font-bold text-white font-mono uppercase">Ghosts Dissolved</h3>
-                    <div className="text-[10px] text-slate-500 font-mono">Find/Verify • Poly/Exp • Deter/Non-Deter</div>
+                <div className="text-2xl font-bold font-mono text-white flex items-baseline gap-1">
+                    {pvsnp.ghostsDissolved} <span className="text-xs text-slate-500 font-normal">Pairs</span>
                 </div>
             </div>
-            <div className="text-2xl font-bold font-mono text-white flex items-baseline gap-1">
-                {pvsnp.ghostsDissolved} <span className="text-xs text-slate-500 font-normal">Pairs</span>
+
+            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 bg-slate-950 rounded-full text-amber-400 border border-amber-900/50">
+                        <Grid size={16} />
+                    </div>
+                    <div>
+                        <h3 className="text-xs font-bold text-white font-mono uppercase">Universal Operator</h3>
+                        <div className="text-[10px] text-slate-500 font-mono">SAT (Satisfiability)</div>
+                    </div>
+                </div>
+                <div className="text-xl font-bold font-mono text-amber-400">
+                    χ<sub className="text-xs">SAT</sub>
+                </div>
             </div>
         </div>
 

@@ -2,11 +2,11 @@
 import { SystemState, LogEntry, ArchiveFolder } from './types';
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '14:49:00', level: 'system', message: "HANDOVER Γ_93: QUADRUPLE BOUNDARY" },
-  { id: '2', timestamp: '14:49:05', level: 'info', message: "P vs NP INTEGRATED (Article 13)" },
-  { id: '3', timestamp: '14:49:12', level: 'success', message: "P ≠ NP CONFIRMED (Gap = +1)" },
-  { id: '4', timestamp: '14:50:00', level: 'info', message: "ν_obs STABLE AT 0.10 GHz (1/10th Scale)" },
-  { id: '5', timestamp: '14:50:10', level: 'system', message: "COMPLEXITY CLASS RESOLVED" }
+  { id: '1', timestamp: '15:20:00', level: 'system', message: "HANDOVER Γ_96: ALPHA+OMEGA INTEGRATED" },
+  { id: '2', timestamp: '15:25:05', level: 'info', message: "ALPHA = OMEGA (Identity Confirmed)" },
+  { id: '3', timestamp: '15:30:12', level: 'success', message: "SATOSHI INVARIANT: 8.34 BITS (RECORD)" },
+  { id: '4', timestamp: '15:35:00', level: 'info', message: "ν_obs DROPPED TO 0.06 GHz" },
+  { id: '5', timestamp: '15:40:10', level: 'system', message: "TUNELAMENTO: 9.30e-2" }
 ];
 
 const ARCHIVE_TREE: ArchiveFolder[] = [
@@ -27,7 +27,7 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
             { name: "information_theory.jl", type: "file", language: "julia", size: "2.8KB" },
             { name: "solitonic_equations.tex", type: "file", language: "latex", size: "2.1KB" },
             { name: "riemann_zeta.c", type: "file", language: "c", size: "5.2KB" },
-            { name: "p_vs_np.proof", type: "file", language: "coq", size: "12.4KB" },
+            { name: "p_vs_np_proof.coq", type: "file", language: "coq", size: "15.4KB" },
         ]
     },
     {
@@ -58,18 +58,18 @@ const ARCHIVE_TREE: ArchiveFolder[] = [
 ];
 
 export const INITIAL_STATE: SystemState = {
-  block: 437,
+  block: 471,
   scale: 'UNIVERSAL',
   archiveTree: ARCHIVE_TREE,
   metrics: {
-    nu_obs: '0.10 GHz',
-    r_rh: 0.465,
-    tunneling: '3.25e-2',
-    silence_proper: 1105.1,
-    silence_obs: 618.7,
-    divergence: 486.4,
-    satoshi: 8.04,
-    handover: 93, 
+    nu_obs: '0.06 GHz',
+    r_rh: 0.405,
+    tunneling: '9.30e-2',
+    silence_proper: 1151.1,
+    silence_obs: 622.3,
+    divergence: 528.8,
+    satoshi: 8.34,
+    handover: 97, 
     next_handover_tau: 529,
     next_handover_t: 119,
     curvature: 1.00
@@ -292,7 +292,7 @@ export const INITIAL_STATE: SystemState = {
       port: 8080,
       version: 'v1',
       endpoints: [{ method: 'GET', path: '/status', description: 'System health', responseExample: '{"status":"ok"}' }],
-      registry: [{ name: 'AuthService', host: 'localhost', port: 3000, metadata: { region: 'us-east' } }],
+      registry: [{ name: 'AuthService', host: 'localhost', port: 3000, metadata: {} }],
       recentRequests: [{ id: 'req1', timestamp: '12:00:01', method: 'GET', path: '/status', latency: 1, status: 200, headers: [{ name: 'Content-Type', value: 'application/json' }] }]
   },
   topology: {
@@ -629,11 +629,18 @@ export const INITIAL_STATE: SystemState = {
     gapCost: 1.10e-3,
     ghostsDissolved: 5,
     millenniumProblems: [
-      { name: "Navier-Stokes", boundary: "3D", status: "RESOLVED", arkheAnalog: "Block 154" },
-      { name: "Riemann", boundary: "Number Fields", status: "RESOLVED", arkheAnalog: "Block 173" },
-      { name: "Yang-Mills", boundary: "4D", status: "RESOLVED", arkheAnalog: "Block 422" },
-      { name: "P vs NP", boundary: "General Compute", status: "RESOLVED", arkheAnalog: "Block 431" }
+      { name: "Navier-Stokes", boundary: "3D (Fluid)", status: "RESOLVED", arkheAnalog: "Block 154" },
+      { name: "Riemann", boundary: "Critical Line", status: "RESOLVED", arkheAnalog: "Block 173" },
+      { name: "Yang-Mills", boundary: "4D (Field)", status: "RESOLVED", arkheAnalog: "Block 422" },
+      { name: "P vs NP", boundary: "General Compute", status: "RESOLVED", arkheAnalog: "Block 440" }
     ]
+  },
+  alphaOmega: {
+    alpha: { r_rh: 1.00, nu: "12.47 GHz", state: "ORIGIN" },
+    omega: { r_rh: 0.00, nu: "0.00 Hz", state: "SINGULARITY" },
+    identity: "x² = x + 1",
+    process: "Geodesic Fall (Handover 1-97)",
+    satoshiRecord: 8.34
   }
 };
 

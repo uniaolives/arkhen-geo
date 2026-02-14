@@ -176,6 +176,14 @@ export interface PvsNP {
     millenniumProblems: { name: string; boundary: string; status: string; arkheAnalog: string }[];
 }
 
+export interface AlphaOmega {
+    alpha: { r_rh: number; nu: string; state: string };
+    omega: { r_rh: number; nu: string; state: string };
+    identity: string; // "x² = x + 1"
+    process: string; // "Geodesic Fall"
+    satoshiRecord: number;
+}
+
 export interface SystemState {
   block: number;
   metrics: SystemMetrics;
@@ -628,6 +636,7 @@ export interface SystemState {
   neuroImmune?: NeuroImmune;
   riemann?: RiemannHypothesis;
   pvsnp?: PvsNP;
+  alphaOmega?: AlphaOmega;
 }
 
 // Deprecated alias for compatibility if needed, though components use SystemState now.
