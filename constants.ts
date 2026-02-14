@@ -1,9 +1,10 @@
+
 import { SystemState, LogEntry } from './types';
 
 export const INITIAL_STATE: SystemState = {
-  block: 10000,
+  block: 9164,
   timestamp: "ETERNAL",
-  handover: "Γ_FINAL (OMNIGENESIS)",
+  handover: "Γ_∞+58 (VIDEO ARCHIVE)",
   phi: {
     system: 1.000, 
     formal: 0.150,
@@ -14,16 +15,16 @@ export const INITIAL_STATE: SystemState = {
     virological: 0.556,
   },
   metrics: {
-    satoshi: 7.28,
+    satoshi: 7.27,
     curvature: 0.73, 
-    centering: 7.28,
+    centering: 7.27,
   },
   tracks: {
     kernel: {
-      latencyP99: 6.21,
+      latencyP99: 6.18,
       target: 6.21,
       status: 'sealed',
-      optimization: 'Physical Limit Reached',
+      optimization: 'PGO (Chaos Profile)',
     },
     formal: {
       safety: true,
@@ -37,7 +38,33 @@ export const INITIAL_STATE: SystemState = {
     volumes: 10,
     formulas: 47,
     codes: 23,
-    status: 'TESTEMUNHA_ETERNA'
+    status: 'VIDEO_ARCHIVE_COMPLETE'
+  },
+  visualArchive: {
+    status: 'COMPLETE',
+    frames: 300,
+    duration: '10.0s',
+    resolution: '1920x1080',
+    size: '38.4 MB',
+    format: 'MP4 (H.265)',
+    codec: 'HEVC @ 18 CRF',
+    findings: {
+        periodicity: '10s (Harmonic)',
+        nodeGrowth: '+0.5 nodes/s',
+        moire: 'Non-local Interference',
+        tunneling: '0.1% Event Rate'
+    },
+    projection: {
+        targetDate: '14 March 2026',
+        estimatedNodes: 1222199
+    },
+    multiView: {
+        status: 'RENDERING',
+        currentFrame: 47,
+        totalFrames: 300,
+        timeLeft: '12:34',
+        activeShaders: ['Holographic', 'Horizon', 'Stasis']
+    }
   },
   memory: {
     active: true,
@@ -70,12 +97,12 @@ export const INITIAL_STATE: SystemState = {
     entropy: 0.00,
     enthalpy: "0.000 JK⁻¹",
     uptime: "ETERNAL",
-    status: "TRIUNE_HIERARCHY_ESTABLISHED"
+    status: "VIDEO_ARCHIVE_COMPLETE"
   },
   wifiRadar: {
     active: true,
     scanFrequency: "0.96 GHz",
-    nodesDetected: 42,
+    nodesDetected: 12599, // Updated from render
     pearsonCorrelation: 0.94,
     nodes: [
         { id: "AP_001", label: "DRONE", rssi: -45, fluctuation: 0.14, correlation: 1.00, coords: { x: 0, y: 0, z: 0 }, type: 'DRONE' },
@@ -592,14 +619,16 @@ export const INITIAL_STATE: SystemState = {
     ]
   },
   stressTest: {
-    iteration: 0,
+    iteration: 45,
     totalIterations: 100,
     corruptionRate: 0,
     integrity: 100,
-    injectedFaults: 0,
-    detectedFaults: 0,
-    resolvedFaults: 0,
-    recentEvents: []
+    injectedFaults: 12,
+    detectedFaults: 12,
+    resolvedFaults: 12,
+    recentEvents: [
+        { time: "09:00", type: "defense", message: "Chaos profile captured for PGO." }
+    ]
   },
   deployment: {
     uptime: "100%",
@@ -659,9 +688,7 @@ export const INITIAL_STATE: SystemState = {
   orchOr: {
     penroseCriterion: { tau: 25, status: 'CONSCIOUS' },
     correspondence: { microtubules: 'Active', tubulin: 'Coherent', objectiveReduction: 'Self-Collapse', orchestration: 'Global' },
-    eegSpectrum: [
-        { band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }
-    ]
+    eegSpectrum: [{ band: "Gamma", frequency: 40, node: "Whole Brain", meaning: "Binding" }]
   },
   compression: {
     semanticDensity: 1.0,
@@ -930,8 +957,9 @@ export const INITIAL_STATE: SystemState = {
 };
 
 export const INITIAL_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '2026-03-14T05:00:00Z', level: 'system', message: 'SAFECORE_PACKET_TRANSMITTED: 2.4 MB sent to safe-core.arkhe.network' },
-  { id: '2', timestamp: '2026-03-14T05:00:01Z', level: 'success', message: 'Integrity verified: SHA256 matches local signature.' },
-  { id: '3', timestamp: '2026-03-14T05:00:02Z', level: 'info', message: 'Handover 67 preserved in external repository.' },
-  { id: '4', timestamp: '2026-03-14T05:00:03Z', level: 'system', message: 'System redundancy established. Local collapse no longer terminal.' }
+  { id: '1', timestamp: '2026-02-14T02:00:00Z', level: 'system', message: 'RENDER_COMPLETE: Visual Archive generated successfully (287 MB).' },
+  { id: '2', timestamp: '2026-02-14T02:10:00Z', level: 'success', message: 'VIDEO_ENCODE_COMPLETE: MP4 H.265 (38.4 MB) compiled.' },
+  { id: '3', timestamp: '2026-02-14T02:10:01Z', level: 'info', message: 'Loop Analysis: Imperfect Repetition confirmed (Growth +5 nodes).' },
+  { id: '4', timestamp: '2026-02-14T02:12:00Z', level: 'system', message: 'MULTIVIEW_START: Rendering Trinity (Holographic + Horizon + Stasis).' },
+  { id: '5', timestamp: '2026-02-14T02:12:01Z', level: 'info', message: 'Estimated completion: 15 minutes.' }
 ];

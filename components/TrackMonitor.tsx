@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine, Plot } from 'recharts';
 import { SystemState } from '../types';
@@ -57,7 +58,10 @@ const TrackMonitor: React.FC<TrackMonitorProps> = ({ tracks }) => {
         <div className="mt-auto space-y-3">
             <div className="flex justify-between items-center text-sm border-b border-slate-800 pb-2">
                 <span className="text-slate-400">Optimization Strategy</span>
-                <span className="text-white font-mono text-xs">{tracks.kernel.optimization}</span>
+                <div className="flex items-center gap-2">
+                    {tracks.kernel.optimization.includes('PGO') && <Zap size={12} className="text-amber-400" />}
+                    <span className="text-white font-mono text-xs">{tracks.kernel.optimization}</span>
+                </div>
             </div>
             <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-400">Status</span>
